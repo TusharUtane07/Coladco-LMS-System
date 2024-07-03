@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import Darkbutton from '../components/Darkbutton';
+import React, { Component } from "react";
+import { Link, NavLink } from "react-router-dom";
+import Darkbutton from "../components/Darkbutton";
 
 class Appheader extends Component {
   state = {
@@ -11,8 +11,8 @@ class Appheader extends Component {
   toggleActive = () => this.setState({ isActive: !this.state.isActive });
 
   render() {
-    const navClass = `${this.state.isOpen ? ' nav-active' : ''}`;
-    const searchClass = `${this.state.isActive ? ' show' : ''}`;
+    const navClass = `${this.state.isOpen ? " nav-active" : ""}`;
+    const searchClass = `${this.state.isActive ? " show" : ""}`;
 
     return (
       <div className="middle-sidebar-header bg-white">
@@ -127,11 +127,11 @@ class Appheader extends Component {
           </li>
           <Darkbutton />
 
-          <li>
+          {/* <li>
             <Link to="/message">
               <i className="feather-message-square font-xl text-current"></i>
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/default-user-profile">
               <img
@@ -178,7 +178,18 @@ class Appheader extends Component {
                     data-tab="chats"
                   >
                     <i className="feather-tv mr-3"></i>
-                    <span>Course Feed</span>
+                    <span>Dashboard</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    activeClassName="active"
+                    to="/not available"
+                    className="nav-content-bttn open-font"
+                    data-tab="feed"
+                  >
+                    <i className="feather-rss mr-3"></i>
+                    <span>Feed</span>
                   </NavLink>
                 </li>
                 <li>
@@ -188,22 +199,22 @@ class Appheader extends Component {
                     className=" nav-content-bttn open-font"
                     data-tab="friends"
                   >
-                    <i className="feather-shopping-bag mr-3"></i>
-                    <span>Followers</span>
+                    <i className="feather-users mr-3"></i>
+                    <span>People</span>
                   </NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink
                     activeClassName="active"
                     to="/default-channel"
                     className="nav-content-bttn open-font"
                     data-tab="favorites"
                   >
-                    <i className="feather-globe mr-3"></i>
-                    <span>Explore Channel</span>
+                    <i className="feather-users mr-3"></i>
+                    <span>People</span>
                   </NavLink>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <NavLink
                     activeClassName="active"
                     to="/default-live-stream"
@@ -213,7 +224,7 @@ class Appheader extends Component {
                     <i className="feather-play-circle mr-3"></i>
                     <span>Live Stream</span>
                   </NavLink>
-                </li>
+                </li> */}
                 <li className="flex-lg-brackets">
                   <NavLink
                     activeClassName="active"
@@ -221,16 +232,16 @@ class Appheader extends Component {
                     data-tab="archived"
                     className="nav-content-bttn open-font"
                   >
-                    <i className="feather-video mr-3"></i>
-                    <span>Saved Course</span>
+                    <i className="feather-user mr-3"></i>
+                    <span>Profile</span>
                   </NavLink>
                 </li>
               </ul>
 
-              <div className="nav-caption fw-600 font-xssss text-grey-500">
+              {/* <div className="nav-caption fw-600 font-xssss text-grey-500">
                 <span>Following </span>Author
-              </div>
-              <ul className="mb-3">
+              </div> */}
+              {/* <ul className="mb-3">
                 <li>
                   <Link
                     to="/default-author-profile"
@@ -291,21 +302,12 @@ class Appheader extends Component {
                     <span className="circle-icon bg-success mt-3"></span>
                   </Link>
                 </li>
-              </ul>
+              </ul> */}
               <div className="nav-caption fw-600 font-xssss text-grey-500">
                 <span></span> Account
               </div>
               <ul className="mb-3">
                 <li className="logo d-none d-xl-block d-lg-block"></li>
-                <li>
-                  <Link
-                    to="/default-settings"
-                    className="nav-content-bttn open-font h-auto pt-2 pb-2"
-                  >
-                    <i className="font-sm feather-settings mr-3 text-grey-500"></i>
-                    <span>Settings</span>
-                  </Link>
-                </li>
                 <li>
                   <Link
                     to="/default-analytics"
@@ -317,13 +319,23 @@ class Appheader extends Component {
                 </li>
                 <li>
                   <Link
+                    to="/default-settings"
+                    className="nav-content-bttn open-font h-auto pt-2 pb-2"
+                  >
+                    <i className="font-sm feather-settings mr-3 text-grey-500"></i>
+                    <span>Settings</span>
+                  </Link>
+                </li>
+                
+                <li>
+                  {/* <Link
                     to="/message"
                     className="nav-content-bttn open-font h-auto pt-2 pb-2"
                   >
                     <i className="font-sm feather-message-square mr-3 text-grey-500"></i>
                     <span>Chat</span>
                     <span className="circle-count bg-warning mt-0">23</span>
-                  </Link>
+                  </Link> */}
                 </li>
               </ul>
             </div>

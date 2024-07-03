@@ -343,8 +343,8 @@ class Defaultcourseone extends Component {
                     </div>
                   </div>
                   <div className="col-xl-4 col-xxl-3">
-                    <div className="card p-4 mb-4 bg-primary border-0 shadow-xss rounded-lg">
-                      <div className="card-body">
+                    {/* <div className="card p-4 mb-4 bg-primary border-0 shadow-xss rounded-lg"> */}
+                      {/* <div className="card-body">
                         <h2 className="text-white font-xsssss fw-700 text-uppercase ls-3 ">
                           Starter
                         </h2>
@@ -373,6 +373,72 @@ class Defaultcourseone extends Component {
                         >
                           Subscribe
                         </a>
+                      </div> */}
+                    {/* </div> */}
+                    <div className="card shadow-xss rounded-lg border-0 p-4 mb-4">
+                      <h4 className="font-xs fw-700 text-grey-900 d-block mb-3">
+                        Modul
+                        <a href="/default-course-one" className="float-right">
+                          <i className="ti-arrow-circle-right text-grey-500 font-xss"></i>
+                        </a>
+                      </h4>
+                      <div className="card-body d-flex p-0">
+                        <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
+                          1
+                        </span>
+                        <span className="font-xssss fw-500 text-grey-500 ml-2">
+                          Introduction
+                        </span>
+                        <span className="ml-auto font-xssss fw-500 text-grey-500">
+                          12:34
+                        </span>
+                      </div>
+                      <div className="card-body d-flex p-0 mt-3">
+                        <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
+                          2
+                        </span>
+                        <span className="font-xssss fw-500 text-grey-500 ml-2">
+                          Watch the videos
+                        </span>
+                        <span className="ml-auto font-xssss fw-500 text-grey-500">
+                          22:34
+                        </span>
+                      </div>
+
+                      <div className="card-body d-flex p-0 mt-3">
+                        <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
+                          3
+                        </span>
+                        <span className="font-xssss fw-500 text-grey-500 ml-2">
+                          Creating a sliding
+                        </span>
+                        <span className="ml-auto font-xssss fw-500 text-grey-500">
+                          34:34
+                        </span>
+                      </div>
+
+                      <div className="card-body d-flex p-0 mt-3">
+                        <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
+                          4
+                        </span>
+                        <span className="font-xssss fw-500 text-grey-500 ml-2">
+                          Make a Dropdown
+                        </span>
+                        <span className="ml-auto font-xssss fw-500 text-grey-500">
+                          40:34
+                        </span>
+                      </div>
+
+                      <div className="card-body d-flex p-0 mt-3">
+                        <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
+                          5
+                        </span>
+                        <span className="font-xssss fw-500 text-grey-500 ml-2">
+                          Conclusion
+                        </span>
+                        <span className="ml-auto font-xssss fw-500 text-grey-500">
+                          2:34
+                        </span>
                       </div>
                     </div>
                     <div className="card w-100 border-0 mt-0 mb-4 p-4 shadow-xss position-relative rounded-lg bg-white">
@@ -680,72 +746,7 @@ class Defaultcourseone extends Component {
                         </a>
                       </div>
                     </div>
-                    <div className="card shadow-xss rounded-lg border-0 p-4 mb-4">
-                      <h4 className="font-xs fw-700 text-grey-900 d-block mb-3">
-                        Modul
-                        <a href="/default-course-one" className="float-right">
-                          <i className="ti-arrow-circle-right text-grey-500 font-xss"></i>
-                        </a>
-                      </h4>
-                      <div className="card-body d-flex p-0">
-                        <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                          1
-                        </span>
-                        <span className="font-xssss fw-500 text-grey-500 ml-2">
-                          Introduction
-                        </span>
-                        <span className="ml-auto font-xssss fw-500 text-grey-500">
-                          12:34
-                        </span>
-                      </div>
-                      <div className="card-body d-flex p-0 mt-3">
-                        <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                          2
-                        </span>
-                        <span className="font-xssss fw-500 text-grey-500 ml-2">
-                          Watch the videos
-                        </span>
-                        <span className="ml-auto font-xssss fw-500 text-grey-500">
-                          22:34
-                        </span>
-                      </div>
 
-                      <div className="card-body d-flex p-0 mt-3">
-                        <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                          3
-                        </span>
-                        <span className="font-xssss fw-500 text-grey-500 ml-2">
-                          Creating a sliding
-                        </span>
-                        <span className="ml-auto font-xssss fw-500 text-grey-500">
-                          34:34
-                        </span>
-                      </div>
-
-                      <div className="card-body d-flex p-0 mt-3">
-                        <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                          4
-                        </span>
-                        <span className="font-xssss fw-500 text-grey-500 ml-2">
-                          Make a Dropdown
-                        </span>
-                        <span className="ml-auto font-xssss fw-500 text-grey-500">
-                          40:34
-                        </span>
-                      </div>
-
-                      <div className="card-body d-flex p-0 mt-3">
-                        <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                          5
-                        </span>
-                        <span className="font-xssss fw-500 text-grey-500 ml-2">
-                          Conclusion
-                        </span>
-                        <span className="ml-auto font-xssss fw-500 text-grey-500">
-                          2:34
-                        </span>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
