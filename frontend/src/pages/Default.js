@@ -256,8 +256,8 @@ class Default extends Component {
                     >
                       <div className="card-body p-4">
                         <h2 className="display3-size fw-400 display2-md-size sm-mt-7 sm-pt-10">
-                          Find a perfect{' '}
-                          <b className="d-lg-block">Online Course</b>
+                        Start Your Journey in{' '}
+                          <b className="d-lg-block">Web Development</b>
                         </h2>
                         <h4 className="text-grey-500 font-xssss fw-500 ml-1 lh-24">
                           For only course you need to learn web development
@@ -270,7 +270,7 @@ class Default extends Component {
                                 <input
                                   type="text"
                                   className="style1-input bg-transparent border-0 pl-5 font-xsss mb-0 text-grey-500 fw-500"
-                                  placeholder="Search online courses.."
+                                  placeholder="Search your doubt..."
                                 />
                               </div>
                             </div>
@@ -299,9 +299,9 @@ class Default extends Component {
                         </div>
                         <h4 className="text-grey-500 font-xssss fw-500 ml-1 lh-24">
                           <b className="text-grey-800 text-dark">
-                            Popular Search :
+                            Popular Search :{" "} 
                           </b>
-                          Designer, Developer, PHP, HTML, CSS, SCSS
+                           HTML Forms ,  CSS Flexbox , JavaScript Closures , React Props 
                         </h4>
                       </div>
                     </div>
@@ -309,9 +309,9 @@ class Default extends Component {
                   <div className="col-lg-12 pt-2">
                     <h2 className="fw-400 font-lg">
                       Explore <b>Categories</b>
-                      <a href="/" className="float-right">
+                      {/* <a href="/" className="float-right">
                         <i className="feather-edit text-grey-500 font-xs"></i>
-                      </a>
+                      </a> */}
                     </h2>
                   </div>
                   <div className="col-lg-12 mt-3">
@@ -346,9 +346,9 @@ class Default extends Component {
                   <div className="col-lg-12 pt-4 mb-3">
                     <h2 className="fw-400 font-lg d-block">
                       Popular <b> Classes</b>
-                      <a href="/" className="float-right">
+                      {/* <a href="/" className="float-right">
                         <i className="feather-edit text-grey-500 font-xs"></i>
-                      </a>
+                      </a> */}
                     </h2>
                   </div>
                   <div className="col-lg-12 mt-3">
@@ -453,9 +453,9 @@ class Default extends Component {
                   <div className="col-lg-12 pt-0 mb-3">
                     <h2 className="fw-400 font-lg d-block">
                       Latest <b> Classes</b>
-                      <a href="/" className="float-right">
+                      {/* <a href="/" className="float-right">
                         <i className="feather-edit text-grey-500 font-xs"></i>
-                      </a>
+                      </a> */}
                     </h2>
                   </div>
                   <div className="col-lg-12 mt-3">
@@ -557,15 +557,15 @@ class Default extends Component {
                       ))}
                     </Slider>
                   </div>
-                  <div className="col-lg-12 pt-0 mb-3">
+                  {/* <div className="col-lg-12 pt-0 mb-3">
                     <h2 className="fw-400 font-lg d-block">
                       Live <b> Classes</b>
                       <a href="/" className="float-right">
                         <i className="feather-edit text-grey-500 font-xs"></i>
                       </a>
                     </h2>
-                  </div>
-                  <div className="col-lg-12 mt-3">
+                  </div> */}
+                  {/* <div className="col-lg-12 mt-3">
                     <Slider {...memberSlider}>
                       {memberList.map((value, index) => (
                         <div
@@ -600,7 +600,7 @@ class Default extends Component {
                         </div>
                       ))}
                     </Slider>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className="middle-sidebar-right scroll-bar">

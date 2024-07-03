@@ -139,10 +139,10 @@ class Defaultfollower extends Component {
                           </li>
                         </ul>
                         <a
-                          href="/default-follower"
+                          href="/default-user-profile"
                           className="mt-3 p-0 btn p-2 lh-24 w100 ml-1 ls-3 d-inline-block rounded-xl bg-current font-xsssss fw-700 ls-lg text-white"
                         >
-                          FOLLOW
+                          View Profile
                         </a>
                       </div>
                     </div>
