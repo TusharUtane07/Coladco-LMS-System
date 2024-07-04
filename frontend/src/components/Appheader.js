@@ -184,7 +184,7 @@ class Appheader extends Component {
                 <li>
                   <NavLink
                     activeClassName="active"
-                    to="/not available"
+                    to="/feed"
                     className="nav-content-bttn open-font"
                     data-tab="feed"
                   >
