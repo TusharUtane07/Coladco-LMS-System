@@ -61,47 +61,10 @@ class Login extends Component {
                   <div className="col-sm-12 p-0 text-left">
                     <div className="form-group mb-1">
                       <a
-                        href="/login"
+                        href="/default"
                         className="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0 "
                       >
                         Login
-                      </a>
-                    </div>
-                    <h6 className="text-grey-500 font-xssss fw-500 mt-0 mb-0 lh-32">
-                      Dont have account{' '}
-                      <a href="/register" className="fw-700 ml-1">
-                        Register
-                      </a>
-                    </h6>
-                  </div>
-                  <div className="col-sm-12 p-0 text-center mt-2">
-                    <h6 className="mb-0 d-inline-block bg-white fw-500 font-xssss text-grey-500 mb-3">
-                      Or, Sign in with your social account{' '}
-                    </h6>
-                    <div className="form-group mb-1">
-                      <a
-                        href="/login"
-                        className="form-control text-left style2-input text-white fw-600 bg-facebook border-0 p-0 mb-2"
-                      >
-                        <img
-                          src="https://via.placeholder.com/50x50.png"
-                          alt="icon"
-                          className="ml-2 w40 mb-1 mr-5"
-                        />{' '}
-                        Sign in with Google
-                      </a>
-                    </div>
-                    <div className="form-group mb-1">
-                      <a
-                        href="/login"
-                        className="form-control text-left style2-input text-white fw-600 bg-twiiter border-0 p-0 "
-                      >
-                        <img
-                          src="https://via.placeholder.com/50x50.png"
-                          alt="icon"
-                          className="ml-2 w40 mb-1 mr-5"
-                        />{' '}
-                        Sign in with Facebook
                       </a>
                     </div>
                   </div>
