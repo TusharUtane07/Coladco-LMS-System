@@ -83,13 +83,16 @@ import Homefour from './pages/Homefour';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
+import Feed from './pages/Feed';
+import SingleFeedPage from './pages/SingleFeedPage';
 
 class Root extends Component {
   render() {
     return (
       <BrowserRouter basename={'/'}>
         <Switch>
-          <Route exact path={`${process.env.PUBLIC_URL}/`} component={Demo} />
+          <Route exact path={`${process.env.PUBLIC_URL}/`} component={Login} />
+          <Route exact path={`${process.env.PUBLIC_URL}/demo`} component={Demo} />
 
           <Route
             exact
@@ -439,6 +442,16 @@ class Root extends Component {
             exact
             path={`${process.env.PUBLIC_URL}/home-2`}
             component={Hometwo}
+          />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/feed`}
+            component={Feed}
+          />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/post/1`}
+            component={SingleFeedPage}
           />
         </Switch>
       </BrowserRouter>
