@@ -10,12 +10,12 @@ import Myclass from '../components/Myclass';
 
 const latestList = [
   {
-    imageUrl: 'course.png',
-    title: 'Fundamentals for Scrum Master and Agile Projects ',
-    price: '670',
-    tag: 'Python',
-    lesson: '32 ',
-    status: 'alert-warning text-warning',
+    imageUrl: "course.png",
+    title: "Complete Web Development Bootcamp From Zero to Hero",
+    price: "4999",
+    tag: "Mern",
+    lesson: "32 ",
+    status: "alert-warning text-warning",
   },
   {
     imageUrl: 'course.png',
@@ -52,45 +52,45 @@ const latestList = [
 ];
 const popularList = [
   {
-    imageUrl: 'course.png',
-    title: 'Complete Python Bootcamp From Zero to Hero in Python ',
-    price: '2400',
-    tag: 'Python',
-    lesson: '32 ',
-    status: 'alert-warning text-warning',
+    imageUrl: "course.png",
+    title: "Complete Web Development Bootcamp From Zero to Hero",
+    price: "4999",
+    tag: "Mern",
+    lesson: "32 ",
+    status: "alert-warning text-warning",
   },
-  {
-    imageUrl: 'course.png',
-    title: 'Complete Python Bootcamp From Zero to Hero in Python ',
-    price: '40',
-    tag: 'Desinger',
-    lesson: '24 ',
-    status: 'alert-danger text-danger',
-  },
-  {
-    imageUrl: 'course.png',
-    title: 'Java Programming Masterclass for Developers',
-    price: '60',
-    tag: 'Bootstrap',
-    lesson: '14 ',
-    status: 'alert-success text-success',
-  },
-  {
-    imageUrl: 'course.png',
-    title: 'The Data Science Course Complete Data Science ',
-    price: '370',
-    tag: 'Develop',
-    lesson: '23 ',
-    status: 'alert-danger text-danger',
-  },
-  {
-    imageUrl: 'course.png',
-    title: 'Complete Python Bootcamp From Zero to Hero in Python ',
-    price: '450',
-    tag: 'Desinger',
-    lesson: '24 ',
-    status: 'alert-danger text-danger',
-  },
+  // {
+  //   imageUrl: 'course.png',
+  //   title: 'Complete Python Bootcamp From Zero to Hero in Python ',
+  //   price: '40',
+  //   tag: 'Desinger',
+  //   lesson: '24 ',
+  //   status: 'alert-danger text-danger',
+  // },
+  // {
+  //   imageUrl: 'course.png',
+  //   title: 'Java Programming Masterclass for Developers',
+  //   price: '60',
+  //   tag: 'Bootstrap',
+  //   lesson: '14 ',
+  //   status: 'alert-success text-success',
+  // },
+  // {
+  //   imageUrl: 'course.png',
+  //   title: 'The Data Science Course Complete Data Science ',
+  //   price: '370',
+  //   tag: 'Develop',
+  //   lesson: '23 ',
+  //   status: 'alert-danger text-danger',
+  // },
+  // {
+  //   imageUrl: 'course.png',
+  //   title: 'Complete Python Bootcamp From Zero to Hero in Python ',
+  //   price: '450',
+  //   tag: 'Desinger',
+  //   lesson: '24 ',
+  //   status: 'alert-danger text-danger',
+  // },
 ];
 
 const classesList = [
@@ -205,36 +205,40 @@ const memberList = [
 class Default extends Component {
   render() {
     const categorysettings = {
-      arrows: false,
+      arrows: true, 
       dots: false,
-      infinite: true,
-      speed: 300,
+      // infinite: true,
+      // speed: 1000,
       centerMode: false,
       variableWidth: true,
-    };
-    const popularSlider = {
-      arrows: false,
-      dots: false,
-      infinite: true,
-      speed: 300,
-      centerMode: false,
-      variableWidth: true,
-    };
-    const latestSlider = {
-      arrows: false,
-      dots: false,
-      infinite: true,
-      speed: 300,
-      centerMode: false,
-      variableWidth: true,
-    };
-    const memberSlider = {
-      arrows: false,
-      dots: false,
-      infinite: true,
-      speed: 300,
-      centerMode: false,
-      variableWidth: true,
+      autoplay: true,
+      // autoplaySpeed: 1000,
+      prevArrow: <button className="btn btn-primary slick-prev">Previous</button>,
+      nextArrow: <button className="btn btn-primary slick-next">Next</button>,
+    // };
+    // const popularSlider = {
+    //   arrows: false,
+    //   dots: false,
+    //   infinite: true,
+    //   speed: 300,
+    //   centerMode: false,
+    //   variableWidth: true,
+    // };
+    // const latestSlider = {
+    //   arrows: false,
+    //   dots: false,
+    //   infinite: true,
+    //   speed: 300,
+    //   centerMode: false,
+    //   variableWidth: true,
+    // };
+    // const memberSlider = {
+    //   arrows: false,
+    //   dots: false,
+    //   infinite: true,
+    //   speed: 300,
+    //   centerMode: false,
+    //   variableWidth: true,
     };
     return (
       <Fragment>
@@ -345,20 +349,24 @@ class Default extends Component {
                   </div>
                   <div className="col-lg-12 pt-4 mb-3">
                     <h2 className="fw-400 font-lg d-block">
-                      Popular <b> Classes</b>
+                      Our<b>Courses</b>
                       {/* <a href="/" className="float-right">
                         <i className="feather-edit text-grey-500 font-xs"></i>
                       </a> */}
                     </h2>
                   </div>
-                  <div className="col-lg-12 mt-3">
-                    <Slider {...popularSlider}>
+                  <div className="col-lg-12 mt-3 pr-3 pl-3 ">
+                    {/* <Slider {...popularSlider}> */}
+                    <Slider {...categorysettings}>
                       {popularList.map((value, index) => (
                         <div
-                          className="card course-card w300 p-0 shadow-xss border-0 rounded-lg overflow-hidden mr-3 mb-4"
+                          className="card course-card vw-100 h-25 shadow-xss border-0 rounded-lg overflow-hidden mb-4"
                           key={index}
                         >
-                          <div className="card-image w-100 mb-3">
+                          <div
+                            className="card-image w-100 mb-3"
+                            style={{ height: "20rem" }}
+                          >
                             <Link
                               to="/coursedetails"
                               className="video-bttn position-relative d-block"
@@ -377,7 +385,7 @@ class Default extends Component {
                               {value.tag}
                             </span>
                             <span className="font-xss fw-700 pl-3 pr-3 ls-2 lh-32 d-inline-block text-success float-right">
-                              <span className="font-xsssss">$</span>
+                              <span className="font-xsssss">₹</span>
                               {value.price}
                             </span>
                             <h4 className="fw-700 font-xss mt-3 lh-28 mt-0">
@@ -445,6 +453,12 @@ class Default extends Component {
                                 </a>
                               </li>
                             </ul>
+                            <Link
+                              to="/default-course-one"
+                              className="btn btn-primary mt-3 p-3"
+                            >
+                              View Course
+                            </Link>
                           </div>
                         </div>
                       ))}
@@ -459,7 +473,8 @@ class Default extends Component {
                     </h2>
                   </div>
                   <div className="col-lg-12 mt-3">
-                    <Slider {...latestSlider}>
+                    {/* <Slider {...latestSlider}> */}
+                    <Slider {...categorysettings}>
                       {latestList.map((value, index) => (
                         <div
                           className="card course-card w300 p-0 shadow-xss border-0 rounded-lg overflow-hidden mr-3 mb-4"

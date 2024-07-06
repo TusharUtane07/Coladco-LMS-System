@@ -155,7 +155,7 @@ class Appheader extends Component {
                 <Link to="/">
                   <i className="feather-slack text-success display1-size mr-3 ml-3"></i>
                   <span className="d-inline-block fredoka-font ls-3 fw-600 text-current font-xl logo-text mb-0">
-                    Elomoas.
+                  Coladco
                   </span>
                 </Link>
                 <span
