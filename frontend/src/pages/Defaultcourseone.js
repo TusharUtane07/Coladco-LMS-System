@@ -7,8 +7,38 @@ import Myclass from '../components/Myclass';
 import Subscribe from '../components/Subscribe';
 import { Accordion } from 'react-bootstrap';
 import ReactPlayer from 'react-player';
+import { Modal, Input, Rate, Form, Button } from 'antd';
+
 
 class Defaultcourseone extends Component {
+  state = {
+    isModalOpen: false,
+    rating: 0,
+    review: ''
+  };
+
+  showModal = () => {
+    this.setState({ isModalOpen: true });
+  };
+
+  handleOk = () => {
+    // Handle form submission or any other logic here
+    console.log('Rating:', this.state.rating);
+    console.log('Review:', this.state.review);
+    this.setState({ isModalOpen: false });
+  };
+
+  handleCancel = () => {
+    this.setState({ isModalOpen: false });
+  };
+
+  handleRatingChange = (value) => {
+    this.setState({ rating: value });
+  };
+
+  handleReviewChange = (e) => {
+    this.setState({ review: e.target.value });
+  };
   render() {
     return (
       <Fragment>
@@ -344,7 +374,7 @@ class Defaultcourseone extends Component {
                   </div>
                   <div className="col-xl-4 col-xxl-3">
                     {/* <div className="card p-4 mb-4 bg-primary border-0 shadow-xss rounded-lg"> */}
-                      {/* <div className="card-body">
+                    {/* <div className="card-body">
                         <h2 className="text-white font-xsssss fw-700 text-uppercase ls-3 ">
                           Starter
                         </h2>
@@ -628,13 +658,13 @@ class Defaultcourseone extends Component {
                           </div>
                         </div>
                       </div>
-
+                      {/* new review added */}
                       <div className="row">
                         <div className="col-2 text-left">
                           <figure className="avatar float-left mb-0">
                             <img
                               src="assets/images/user.png"
-                              alt="banner"
+                              alt="avatar"
                               className="float-right shadow-none w40 mr-2"
                             />
                           </figure>
@@ -642,111 +672,57 @@ class Defaultcourseone extends Component {
                         <div className="col-10 pl-4">
                           <div className="content">
                             <h6 className="author-name font-xssss fw-600 mb-0 text-grey-800">
-                              Goria Coast
+                              Rahul Kumar
                             </h6>
                             <h6 className="d-block font-xsssss fw-500 text-grey-500 mt-2 mb-0">
                               July 26 at 8:20 PM
                             </h6>
-                            <div className="star d-block w-100 text-left">
-                              <img
-                                src="assets/images/star.png"
-                                alt="star"
-                                className="w10"
-                              />
-                              <img
-                                src="assets/images/star.png"
-                                alt="star"
-                                className="w10"
-                              />
-                              <img
-                                src="assets/images/star.png"
-                                alt="star"
-                                className="w10"
-                              />
-                              <img
-                                src="assets/images/star.png"
-                                alt="star"
-                                className="w10"
-                              />
-                              <img
-                                src="assets/images/star-disable.png"
-                                alt="star"
-                                className="w10"
-                              />
+                            <div className="star d-block text-left">
+                              {[...Array(5)].map((star, index) => (
+                                <img
+                                  key={index}
+                                  src="assets/images/star.png"
+                                  alt="star"
+                                  className="w10"
+                                />
+                              ))}
                             </div>
                             <p className="comment-text lh-24 fw-500 font-xssss text-grey-500 mt-2">
-                              Enjoyed this a lot and well done. We are an early
-                              stage digitally native vertical brand, making
-                              travel bags.{' '}
+                              The web development course gave a thorough
+                              overview of modern tools and frameworks,
+                              simplifying complex concepts. Excited to apply
+                              these skills in real projects.
                             </p>
                           </div>
                         </div>
                       </div>
-
-                      <div className="row">
-                        <div className="col-2 text-left">
-                          <figure className="avatar float-left mb-0">
-                            <img
-                              src="assets/images/user.png"
-                              alt="banner"
-                              className="float-right shadow-none w40 mr-2"
+                      {/*new review end */}
+                      <Button type="primary" onClick={this.showModal}>
+                        Add Review
+                      </Button>
+                      <Modal
+                        title="Please add your review 😊"
+                        open={this.state.isModalOpen}
+                        onOk={this.handleOk}
+                        onCancel={this.handleCancel}
+                      >
+                        <Form>
+                          <Form.Item label="Rating">
+                            <Rate
+                              onChange={this.handleRatingChange}
+                              value={this.state.rating}
                             />
-                          </figure>
-                        </div>
-                        <div className="col-10 pl-4">
-                          <div className="content">
-                            <h6 className="author-name font-xssss fw-600 mb-0 text-grey-800">
-                              Goria Coast
-                            </h6>
-                            <h6 className="d-block font-xsssss fw-500 text-grey-500 mt-2 mb-0">
-                              July 26 at 8:20 PM
-                            </h6>
-                            <div className="star d-block w-100 text-left">
-                              <img
-                                src="assets/images/star.png"
-                                alt="star"
-                                className="w10"
-                              />
-                              <img
-                                src="assets/images/star.png"
-                                alt="star"
-                                className="w10"
-                              />
-                              <img
-                                src="assets/images/star.png"
-                                alt="star"
-                                className="w10"
-                              />
-                              <img
-                                src="assets/images/star.png"
-                                alt="star"
-                                className="w10"
-                              />
-                              <img
-                                src="assets/images/star-disable.png"
-                                alt="star"
-                                className="w10"
-                              />
-                            </div>
-                            <p className="comment-text lh-24 fw-500 font-xssss text-grey-500 mt-2">
-                              Enjoyed this a lot and well done. We are an early
-                              stage digitally native vertical brand, making
-                              travel bags.{' '}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="row">
-                        <a
-                          href="/default-course-one"
-                          className="d-block p-2 lh-32 w-100 text-center ml-3 mr-3 bg-greylight fw-600 font-xssss text-grey-900"
-                        >
-                          Add a Review
-                        </a>
-                      </div>
+                          </Form.Item>
+                          <Form.Item label="Review">
+                            <Input.TextArea
+                              rows={4}
+                              onChange={this.handleReviewChange}
+                              value={this.state.review}
+                            />
+                          </Form.Item>
+                        </Form>
+                      </Modal>
                     </div>
-
                   </div>
                 </div>
               </div>
