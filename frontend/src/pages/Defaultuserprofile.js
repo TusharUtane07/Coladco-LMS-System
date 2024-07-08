@@ -313,7 +313,7 @@ const courseList = [
                         <span className="dot ml-2 mr-2 d-inline-block btn-round-xss bg-grey"></span>
                         <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
                           Desinger
-                          
+              
                         </span>
                         <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
                           PHP
