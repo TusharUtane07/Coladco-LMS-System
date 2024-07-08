@@ -1,10 +1,11 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
 import Adminsidebar from '../components/Adminsidebar';
 import AdminTopnav from '../components/AdminTopnav';
 import Adminfooter from '../components/Adminfooter';
 import Pagination from '../components/Pagination';
+import useAxios from "../network/useAxios"
 
 const customerList = [
   {
@@ -110,6 +111,7 @@ const customerList = [
 ];
 
 class Adminproductadd extends Component {
+
   constructor() {
     super();
     this.state = {
@@ -119,7 +121,9 @@ class Adminproductadd extends Component {
   handleModel() {
     this.setState({ location: !this.state.location });
   }
+
   render() {
+
     return (
       <Fragment>
         <div id="wrapper">
