@@ -1,8 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, useEffect } from 'react';
 import Header from '../components/Header';
 
 import Footer from '../components/Footer';
 import Slider from 'react-slick';
+import axios from 'axios';
 
 const brandList = [
   { bimg: 'b-1.png' },
@@ -57,8 +58,18 @@ const feedbackList = [
   },
 ];
 
-class About extends Component {
-  render() {
+const About = () => {
+  const check = () =>{
+    axios.get('https://api.example.com/data')
+  .then(response => {
+    // Handle successful response
+    console.log(response.data);  // This will log the API response data
+  })
+  .catch(error => {
+    // Handle error
+    console.error('Error fetching data:', error);
+  });
+  }
     const brandsettings = {
       arrows: false,
       dots: false,
@@ -142,12 +153,15 @@ class About extends Component {
                 </a>
               </div>
               <div className="col-lg-12 mt-5 text-center pt-3">
-                <a
-                  href="/about"
+                <button
+                  onClick={()=>{
+                    console.log("sadas")
+                    check()
+                  }}
                   className="ml-1 mr-1 rounded-lg text-primary font-xss border-size-md border-primary fw-600 open-font p-3 w200 btn md-mb-2 mt-3"
                 >
                   Learn More
-                </a>
+                </button>
                 <h3 className="font-xss fw-600 text-grey-500 p-3 d-inline-block d-none-xs">
                   or
                 </h3>
@@ -338,7 +352,7 @@ class About extends Component {
         <Footer bgColor="bg-dark" />
       </Fragment>
     );
-  }
+  
 }
 
 export default About;
