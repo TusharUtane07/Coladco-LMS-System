@@ -1,9 +1,10 @@
-import React, { Component, Fragment, useEffect } from 'react';
+import React, { Component, Fragment, useEffect, useState } from 'react';
 import Header from '../components/Header';
 
 import Footer from '../components/Footer';
 import Slider from 'react-slick';
 import axios from 'axios';
+import useAxios from '../network/useAxios';
 
 const brandList = [
   { bimg: 'b-1.png' },
@@ -59,17 +60,15 @@ const feedbackList = [
 ];
 
 const About = () => {
-  const check = () =>{
-    axios.get('https://api.example.com/data')
-  .then(response => {
-    // Handle successful response
-    console.log(response.data);  // This will log the API response data
-  })
-  .catch(error => {
-    // Handle error
-    console.error('Error fetching data:', error);
-  });
-  }
+  const [url, setUrl] = useState("");
+  const { loading, data, error } = useAxios(url);
+
+  const check = () => {
+    setUrl("https://jsonplaceholder.typicode.com/todos/1");
+    console.log(loading, data, error)
+  };
+
+
     const brandsettings = {
       arrows: false,
       dots: false,
