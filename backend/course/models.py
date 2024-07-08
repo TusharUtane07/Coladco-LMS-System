@@ -7,9 +7,7 @@ class Course(models.Model):
     thumbnail = models.ImageField(upload_to='thumbnails/')
     price = models.DecimalField(max_digits=10, decimal_places=2)
     rating = models.DecimalField(max_digits=3, decimal_places=2)
-    # modules = models.JSONField() #! ask here about foreign key and clear out the confusion about foreign key.
-    # videos = models.JSONField() 
-    
+
     class Meta:
         managed = True
         db_table = "course"

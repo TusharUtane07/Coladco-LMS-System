@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import Slider from 'react-slick';
 import axios from 'axios';
 import useAxios from '../network/useAxios';
+import { courseRelated, phoneNumberOtp } from '../urls/urls';
 
 const brandList = [
   { bimg: 'b-1.png' },
@@ -61,13 +62,17 @@ const feedbackList = [
 
 const About = () => {
   const [url, setUrl] = useState("");
-  const { loading, data, error } = useAxios(url);
+  const [data, setData] = useState("");
+  const [courseResponse, courseError, courseLoading, courseFetch] = useAxios();
 
   const check = () => {
-    setUrl("https://jsonplaceholder.typicode.com/todos/1");
-    console.log(loading, data, error)
+    courseFetch(courseRelated())
   };
-
+  useEffect(()=>{
+    if(courseResponse?.result == "success"){
+      setData(courseResponse?.message )
+    }
+  },[courseResponse])
 
     const brandsettings = {
       arrows: false,
@@ -97,7 +102,7 @@ const About = () => {
             <div className="row">
               <div className="col-lg-6">
                 <h2 className="text-grey-900 fw-700 display1-size display2-md-size pb-2 mb-0 mt-3 d-block lh-3">
-                  Choose the plan <br /> that's right for your business
+                  {data}<br /> that's right for your business
                 </h2>
               </div>
             </div>
@@ -165,7 +170,8 @@ const About = () => {
                   or
                 </h3>
                 <a
-                  href="/about"
+                  onClick={check}
+                  disabled={courseLoading}
                   className="ml-1 mr-1 rounded-lg alert-primary text-primary font-xss border-size-md border-0 fw-600 open-font p-3 w200 btn"
                 >
                   Contact Us
