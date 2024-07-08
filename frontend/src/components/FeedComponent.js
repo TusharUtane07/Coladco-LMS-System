@@ -1,39 +1,59 @@
-import React, { Component, Fragment } from "react";
+import React from "react";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoShareOutline } from "react-icons/io5";
 import { GoComment } from "react-icons/go";
-import Appfooter from "../components/Appfooter";
-import Navheader from "../components/Navheader";
-import Appheader from "../components/Appheader";
 
 const FeedComponent = () => {
   return (
-    <Fragment>
-      <div className="main-wrapper">
-        <Navheader />
-        <div className="main-content">
-          <Appheader />
-          <div className="search-bar mb-3">
-            <input type="text" className="form-control" placeholder="Search..." />
-          </div>
-          <div className="m-3" style={{ display: "flex", gap: "1rem" }}>
+    <>
+      <style jsx>{`
+        @media (max-width: 1200px) {
+          .main-content {
+            width: 60rem !important;
+            margin-left: -10rem !important; /* Adjust margin-left for smaller screens */
+          }
+        }
+
+        @media (max-width: 768px) {
+          .main-content {
+            width: 40rem !important;
+            margin-left: -5rem !important; /* Adjust margin-left for even smaller screens */
+          }
+        }
+
+        @media (max-width: 480px) {
+          .main-content {
+            width: 20rem !important;
+            margin-left:0.6rem !important; /* Adjust margin-left for very small screens */
+          }
+        }
+      `}</style>
+      <div className="main-content" style={{ marginLeft: "-17rem", marginRight: "1rem", width: "78rem" }}>
+        <div 
+          className="feed-container" 
+          style={{
+            width: "100%",
+            padding: "1rem", 
+            border: "1px solid #ddd", 
+            borderRadius: "8px", 
+            boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)"
+          }}
+        >
+          <div style={{ display: "flex", gap: "1rem" }}>
             <div>
               <img
                 src="https://via.placeholder.com/150"
-                alt="Dummy Image"
+                alt="Profile Image"
                 style={{ width: "4rem", borderRadius: "50%" }}
               />
             </div>
             <div>
               <h4>
-                Suraj Dahiya<span> - Jul 2</span>
+                Suraj Turkar<span> - Jul 2</span>
               </h4>
               <div>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                  dolorem consequuntur facere dolore deserunt nostrum. Atque
-                  impedit velit sint nostrum aspernatur animi, molestiae temporibus
-                  iure.
+                  Can someone explain how Flexbox works in CSS? I am trying to create a layout where items are centered both horizontally and vertically.
                 </p>
               </div>
               <div
@@ -41,8 +61,8 @@ const FeedComponent = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
+                  marginTop: "0.5rem"
                 }}
-                className="mr-3"
               >
                 <div>
                   <IoIosHeartEmpty size={20} />
@@ -56,11 +76,10 @@ const FeedComponent = () => {
               </div>
             </div>
           </div>
-          <hr />
+          <hr style={{ margin: "1rem 0" }} />
         </div>
-        <Appfooter />
       </div>
-    </Fragment>
+    </>
   );
 };
 
