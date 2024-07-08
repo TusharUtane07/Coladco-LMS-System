@@ -27,7 +27,7 @@ class Video(models.Model):
     module = models.ForeignKey(Module, on_delete=models.CASCADE, related_name="videos")
     title = models.CharField(max_length=255)
     url = models.URLField()
-    duration = models.models.DurationField()
+    duration = models.DurationField()
 
     class Meta:
         managed = True
@@ -37,7 +37,7 @@ class Review(models.Model):
     course = models.ForeignKey(Course, related_name='reviews', on_delete=models.CASCADE)
     user = models.ForeignKey(Profile, related_name='reviews', on_delete=models.CASCADE)
     review_text = models.TextField()
-    rating = models.DecimalField(max_digits=5)
+    rating = models.DecimalField(max_digits=5, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
