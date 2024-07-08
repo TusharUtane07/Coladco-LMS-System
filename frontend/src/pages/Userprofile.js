@@ -8,7 +8,7 @@ import { Tab, Tabs } from 'react-bootstrap';
 const memberList = [
   {
     imageUrl: 'user.png',
-    name: 'Aliqa Macale ',
+    name: 'Aliqa Macaley ',
     email: 'support@gmail.com',
     bgimage: 'course.png',
   },

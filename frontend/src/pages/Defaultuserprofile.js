@@ -273,8 +273,7 @@ const courseList = [
   },
 ];
 
-class Defaultuserprofile extends Component {
-  render() {
+  const Defaultuserprofile = () => {
     return (
       <Fragment>
         <div className="main-wrapper">
@@ -1061,12 +1060,11 @@ class Defaultuserprofile extends Component {
               </div>
             </div>
           </div>
-
           <Appfooter />
         </div>
       </Fragment>
     );
   }
-}
+
 
 export default Defaultuserprofile;

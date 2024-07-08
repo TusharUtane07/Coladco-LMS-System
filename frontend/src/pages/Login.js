@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   return (
@@ -48,23 +49,23 @@ const Login = () => {
                     >
                       Remember me
                     </label>
-                    <a
-                      href="/forgot"
+                    <Link
+                      to="/forgot"
                       className="fw-600 font-xssss text-grey-700 mt-1 float-right"
                     >
                       Forgot your Password?
-                    </a>
+                    </Link>
                   </div>
                 </form>
 
                 <div className="col-sm-12 p-0 text-left">
                   <div className="form-group mb-1">
-                    <a
-                      href="/default"
-                      className="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0 "
+                    <Link
+                      to="/default"
+                      className="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0"
                     >
                       Login
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -74,8 +75,6 @@ const Login = () => {
       </div>
     </Fragment>
   );
-}
-
-
+};
 
 export default Login;
