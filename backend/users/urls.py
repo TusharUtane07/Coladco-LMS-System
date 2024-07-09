@@ -1,11 +1,11 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import ProfileViewSet, UserViewSet
 
-router = DefaultRouter()
-router.register(r'profiles', ProfileViewSet)
-router.register(r'users', UserViewSet)
+from django.urls import path
+from .views import UserSingleView, UserViewSet, ProfileViewSet, profileSingleView
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('all-profile-fetch/',  ProfileViewSet.as_view(), name='all-profile-fetch'),
+    path('single-profile-fetch/',  profileSingleView.as_view(), name='single-profile-fetch'),
+    
+    path('all-users-fetch/',  UserViewSet.as_view(), name='all-users-fetch'),
+    path('single-users-fetch/',  UserSingleView.as_view(), name='single-users-fetch'),
 ]
