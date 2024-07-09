@@ -7,7 +7,11 @@ class Course(models.Model):
     thumbnail = models.ImageField(upload_to='thumbnails/')
     price = models.DecimalField(max_digits=10, decimal_places=2)
     rating = models.DecimalField(max_digits=3, decimal_places=2)
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 8cdf9200481393ef0596ce76c12a462deeddaa81
     class Meta:
         managed = True
         db_table = "course"
