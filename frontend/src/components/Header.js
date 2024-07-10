@@ -173,12 +173,13 @@ const Header = ({ divClass, color = 'light' }) => {
         <div className="row">
           <div className="col-lg-9 navbar pt-0 pb-0">
             <Link to="/" className="navbar-brand">
+            <h1 className="fredoka-font ls-3 fw-700 text-current font-xxl">
               <img
                 src={logo}
                 style={{ width: "70px", height: "70px", marginRight: "0.3rem" }}
                 alt="Logo"
               />
-              <h1 className="fredoka-font ls-3 fw-700 text-current font-xxl">
+              
                 Coladco
                 <span className="d-block font-xsssss ls-1 text-grey-500 open-font">
                   Online Learning Platform
