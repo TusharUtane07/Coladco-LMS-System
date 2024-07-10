@@ -6,8 +6,9 @@ import { Accordion } from "react-bootstrap";
 import ReactPlayer from "react-player";
 import { FaAngleDown } from "react-icons/fa";
 
-class Coursedetails extends Component {
-  render() {
+
+
+const Coursedetails = () => {
     return (
       <Fragment>
         <Upperheader />
@@ -936,6 +937,5 @@ class Coursedetails extends Component {
       </Fragment>
     );
   }
-}
 
 export default Coursedetails;

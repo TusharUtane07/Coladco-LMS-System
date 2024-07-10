@@ -15,7 +15,7 @@ class Footer extends Component {
                     <h1 className="fredoka-font ls-3 fw-700 text-current font-xxl">
                       Coladco
                       <span className="d-block font-xsssss ls-1 text-grey-500 open-font ">
-                        Online Learning Course
+                        Online Learning Platform
                       </span>
                     </h1>
                   </Link>
