@@ -15,6 +15,18 @@ class CourseManager:
             raise Exception("No course id provided")
         all_courses_objs = Course.objects.filter(id=course_id)
         return all_courses_objs
+
+    @staticmethod
+    def update_single_courses(data):
+        course_id = data.get("courseId", False)
+        description = data.get("description", False)
+        if not course_id:
+            raise Exception("No course id provided")
+        all_courses_objs = Course.objects.filter(id=course_id)
+        if all_courses_objs:
+            all_courses_objs[0].description = description
+            all_courses_objs[0].save()
+        return all_courses_objs
     
 class ModuleManager:
 
@@ -58,3 +70,13 @@ class ReviewManager:
             raise Exception("No Reviews id provided")
         all_reviews_objs = Review.objects.filter(id=review_id)
         return all_reviews_objs
+
+    @staticmethod
+    def delete_single_course(data):
+        course_id = data.get("courseId", False)
+        if not course_id:
+            raise Exception("No course id provided")
+        all_courses_objs = Course.objects.filter(id=course_id)
+        if all_courses_objs:
+            all_courses_objs[0].delete()
+        return all_courses_objs
