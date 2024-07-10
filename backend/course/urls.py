@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import CourseViewSet, CourseSingleView, ModuleViewSet, ModuleSingleView, VideoViewSet, VideoSingleView, ReviewViewSet, ReviewSingleView
+from .views import CourseViewSet, CourseSingleView, ModuleViewSet, ModuleSingleView, VideoViewSet, VideoSingleView, \
+    ReviewViewSet, ReviewSingleView, deleteSingleCourse
 
 urlpatterns = [
     path('all-courses-fetch/',  CourseViewSet.as_view(), name='all-courses-fetch'),
@@ -13,4 +14,7 @@ urlpatterns = [
     
     path('all-reviews-fetch/',  ReviewViewSet.as_view(), name='all-reviews-fetch'),
     path('single-reviews-fetch/',  ReviewSingleView.as_view(), name='single-reviews-fetch'),
+    path('update-single-course/', CourseSingleView.as_view(), name='update-users-fetch'),
+    path('delete-single-course/', deleteSingleCourse.as_view(), name='delete-single-course'),
+
 ]

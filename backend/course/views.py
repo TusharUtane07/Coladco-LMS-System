@@ -26,8 +26,17 @@ class CourseSingleView(APIView):
         try:
             data = request.data
             courses_objs = CourseManager.get_single_courses(data)
-            serialized_data = CourseSerializer(courses_objs).data
+            serialized_data = CourseSerializer(courses_objs, many=True).data
             return Response({"result": serialized_data, "message": CourseConstants.SUCCESS}, 200)
+        except Exception as err:
+            return Response(str(err), 500)
+
+    @staticmethod
+    def post(request):
+        try:
+            data = request.data
+            courses_objs = CourseManager.update_single_courses(data)
+            return Response({"result": "success", "message": CourseConstants.SUCCESS}, 200)
         except Exception as err:
             return Response(str(err), 500)
         
@@ -102,7 +111,15 @@ class ReviewSingleView(APIView):
             return Response({"result": serialized_data, "message": ReviewConstants.SUCCESS}, 200)
         except Exception as err:
             return Response(str(err), 500)
-        
 
 
+class deleteSingleCourse(APIView):
 
+    @staticmethod
+    def post(request):
+        try:
+            data = request.data
+            reviews_objs = ReviewManager.delete_single_course(data)
+            return Response({"result": "success", "message": ReviewConstants.SUCCESS}, 200)
+        except Exception as err:
+            return Response(str(err), 500)
