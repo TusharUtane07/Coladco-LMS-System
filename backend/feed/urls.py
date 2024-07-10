@@ -1,11 +1,11 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import PostViewSet, CommentsViewSet
 
-router = DefaultRouter()
-router.register(r'posts', PostViewSet)
-router.register(r'comments', CommentsViewSet)
+from django.urls import path
+from .views import PostViewSet, PostSingleView, CommentSingleView, CommentViewSet
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('all-posts-fetch/',  PostViewSet.as_view(), name='all-posts-fetch'),
+    path('single-posts-fetch/',  PostSingleView.as_view(), name='single-posts-fetch'),
+    
+    path('all-comments-fetch/',  CommentViewSet.as_view(), name='all-comments-fetch'),
+    path('single-comments-fetch/',  CommentSingleView.as_view(), name='single-comments-fetch'),
 ]
