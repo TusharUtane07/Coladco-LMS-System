@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Darkbutton from "../components/Darkbutton";
+import logo from "../assets/logo.jpg"
 
 class Appheader extends Component {
   state = {
@@ -153,7 +154,7 @@ class Appheader extends Component {
             <div className="nav-content">
               <div className="nav-top">
                 <Link to="/">
-                  <i className="feather-slack text-success display1-size mr-3 ml-3"></i>
+                  <img src={logo} style={{ width: '60px', height: '60px' ,marginTop:"0.5rem"}} alt="Logo" />
                   <span className="d-inline-block fredoka-font ls-3 fw-600 text-current font-xl logo-text mb-0">
                   Coladco
                   </span>

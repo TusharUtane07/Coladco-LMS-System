@@ -655,41 +655,81 @@ const Defaultcourseone = () => {
                     </div>
                     {/* new review added */}
                     <div className="row">
-                      <div className="col-2 text-left">
-                        <figure className="avatar float-left mb-0">
-                          <img
-                            src="assets/images/user.png"
-                            alt="avatar"
-                            className="float-right shadow-none w40 mr-2"
-                          />
-                        </figure>
-                      </div>
-                      <div className="col-10 pl-4">
-                        <div className="content">
-                          <h6 className="author-name font-xssss fw-600 mb-0 text-grey-800">
-                            Rahul Kumar
-                          </h6>
-                          <h6 className="d-block font-xsssss fw-500 text-grey-500 mt-2 mb-0">
-                            July 26 at 8:20 PM
-                          </h6>
-                          <div className="star d-block text-left">
-                            {[...Array(5)].map((star, index) => (
-                              <img
-                                key={index}
-                                src="assets/images/star.png"
-                                alt="star"
-                                className="w10"
-                              />
-                            ))}
-                          </div>
-                          <p className="comment-text lh-24 fw-500 font-xssss text-grey-500 mt-2">
-                            The web development course gave a thorough overview
-                            of modern tools and frameworks, simplifying complex
-                            concepts. Excited to apply these skills in real
-                            projects.
-                          </p>
+                    <div className="col-2 text-left">
+                      <figure className="avatar float-left mb-0">
+                        <img
+                          src="assets/images/user.png"
+                          alt="avatar"
+                          className="float-right shadow-none w40 mr-2"
+                        />
+                      </figure>
+                    </div>
+                    <div className="col-10 pl-4">
+                      <div className="content">
+                        <h6 className="author-name font-xssss fw-600 mb-0 text-grey-800">
+                          Rahul Kumar
+                        </h6>
+                        <h6 className="d-block font-xsssss fw-500 text-grey-500 mt-2 mb-0">
+                          June 5
+                        </h6>
+                        <div className="star d-block text-left">
+                          {[...Array(5)].map((star, index) => (
+                            <img
+                              key={index}
+                              src="assets/images/star.png"
+                              alt="star"
+                              className="w10"
+                            />
+                          ))}
                         </div>
+                        <p className="comment-text lh-24 fw-500 font-xssss text-grey-500 mt-2">
+                          The web development course gave a thorough overview of
+                          modern tools and frameworks, simplifying complex
+                          concepts. Excited to apply these skills in real
+                          projects.
+                        </p>
                       </div>
+                    </div>
+                  </div>
+
+                  <div className="row mt-4">
+                    {/* Review 2 */}
+                    <div className="col-2 text-left">
+                      <figure className="avatar float-left mb-0">
+                        <img
+                          src="assets/images/user.png"
+                          alt="avatar"
+                          className="float-right shadow-none w40 mr-2"
+                        />
+                      </figure>
+                    </div>
+                    <div className="col-10 pl-4">
+                      <div className="content">
+                        <h6 className="author-name font-xssss fw-600 mb-0 text-grey-800">
+                          Neha Sharma
+                        </h6>
+                        <h6 className="d-block font-xsssss fw-500 text-grey-500 mt-2 mb-0">
+                          June 25
+                        </h6>
+                        <div className="star d-block text-left">
+                          {[...Array(5)].map((star, index) => (
+                            <img
+                              key={index}
+                              src="assets/images/star.png"
+                              alt="star"
+                              className="w10"
+                            />
+                          ))}
+                        </div>
+                        <p className="comment-text lh-24 fw-500 font-xssss text-grey-500 mt-2">
+                          This course completely changed my perspective on web
+                          development. The instructor's teaching style made
+                          complex topics seem easy. Highly recommend it!
+                        </p>
+                      </div>
+                    </div>
+                  
+
                     </div>
                     {/*new review end */}
                     <Button type="primary" onClick={showModal} >

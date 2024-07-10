@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import logo from "../assets/logo.jpg"
 
 class Header extends Component {
   state = {
@@ -20,9 +21,10 @@ class Header extends Component {
         <div className="container">
           <div className="row">
             <div className="col-lg-9 navbar pt-0 pb-0">
+            <img src={logo} style={{ width: '70px', height: '70px'  ,marginRight:"0.3rem" }} alt="Logo" />
               <Link to="/">
                 <h1 className="fredoka-font ls-3 fw-700 text-current font-xxl">
-                  Elomoas
+                  Coladco
                   <span className="d-block font-xsssss ls-1 text-grey-500 open-font ">
                     Online Learning Course
                   </span>
@@ -70,7 +72,7 @@ class Header extends Component {
                           404
                         </NavDropdown.Item>
                       </NavDropdown>
-                      <NavDropdown title="Blog" id="basic-nav-dropdown">
+                      {/* <NavDropdown title="Blog" id="basic-nav-dropdown">
                         <NavDropdown.Item href="/blog">Blog</NavDropdown.Item>
                         <NavDropdown.Item href="/blog-sidebar">
                           Blog Sidebar
@@ -78,8 +80,8 @@ class Header extends Component {
                         <NavDropdown.Item href="/blog-single">
                           Blog Single
                         </NavDropdown.Item>
-                      </NavDropdown>
-                      <NavDropdown title="Courses" id="basic-nav-dropdown">
+                      </NavDropdown> */}
+                      {/* <NavDropdown title="Courses" id="basic-nav-dropdown">
                         <NavDropdown.Item href="/courses-grid-1">
                           Course Gird 1
                         </NavDropdown.Item>
@@ -101,7 +103,10 @@ class Header extends Component {
                         <NavDropdown.Item href="/author-profile">
                           Author Profile
                         </NavDropdown.Item>
-                      </NavDropdown>
+                      </NavDropdown> */}
+                       <NavDropdown.Item href="/course-details" className='mr-4'>
+                           Course
+                        </NavDropdown.Item>
                       <NavDropdown.Item href="/contact">
                         Contact
                       </NavDropdown.Item>
