@@ -1,12 +1,14 @@
-import React, { Component, Fragment } from 'react';
-import Header from '../components/Header';
-import Upperheader from '../components/Upperheader';
-import Footer from '../components/Footer';
-import { Accordion } from 'react-bootstrap';
-import ReactPlayer from 'react-player';
+import React, { Component, Fragment } from "react";
+import Header from "../components/Header";
+import Upperheader from "../components/Upperheader";
+import Footer from "../components/Footer";
+import { Accordion } from "react-bootstrap";
+import ReactPlayer from "react-player";
+import { FaAngleDown } from "react-icons/fa";
 
-class Coursedetails extends Component {
-  render() {
+
+
+const Coursedetails = () => {
     return (
       <Fragment>
         <Upperheader />
@@ -15,8 +17,8 @@ class Coursedetails extends Component {
         <div className="course-details pt-lg--7 pb-lg--7 pt-5 pb-5">
           <div className="container">
             <div className="row">
-              <div className="col-xl-8 col-xxl-9 col-lg-8">
-                <div className="card border-0 mb-0 rounded-lg overflow-hidden">
+              <div className="col-xl-8 col-xxl-9 col-lg-8 mt-n5">
+                {/* <div className="card border-0 mb-0 rounded-lg overflow-hidden">
                   <ReactPlayer
                     controls="true"
                     width="100%"
@@ -26,16 +28,15 @@ class Coursedetails extends Component {
                     // light={`assets/images/${value.videoimage}`}
                     url={`assets/images/video4.mp4`}
                   />
-                </div>
+                </div> */}
                 <div className="card d-block border-0 rounded-lg overflow-hidden dark-bg-transparent bg-transparent mt-4 pb-3">
                   <div className="row">
                     <div className="col-10">
-                      <h2 className="fw-700 font-md d-block lh-4 mb-2">
-                        Microsoft Access Development, Design and Advanced
-                        Methods Workshop Tutorial
+                      <h2 className="fw-700 font-md d-block lh-4 mb-3 "style={{ width: '46rem' }}>
+                        Complete Web Development Bootcamp From Zero to Hero
                       </h2>
                     </div>
-                    <div className="col-2">
+                    {/* <div className="col-2">
                       <a
                         href="/default-course-one"
                         className="btn-round-md ml-3 d-inline-block float-right rounded-lg bg-danger"
@@ -48,33 +49,37 @@ class Coursedetails extends Component {
                       >
                         <i className="feather-share-2 font-sm text-grey-700"></i>
                       </a>
-                    </div>
+                    </div> */}
                   </div>
 
-                  <span className="font-xssss fw-700 text-grey-900 d-inline-block ml-0 text-dark">
-                    Cassica Vanni
+                  <span className="font-xsss fw-700 text-grey-900 d-inline-block ml-0 text-dark">
+                    Yatin Vohra
                   </span>
                   <span className="dot ml-2 mr-2 d-inline-block btn-round-xss bg-grey"></span>
                   <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
-                    Developer
+                    Full Stack Developer,
                   </span>
                   <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
-                    Design
+                    Freelancer,
                   </span>
                   <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
-                    Developer
+                    Javascript,
                   </span>
                   <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
-                    HTML5
+                    React Js,
                   </span>
                   <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
-                    Jquery
+                    Python,
+                  </span>
+                  <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
+                    Django
                   </span>
                   <span className="dot ml-2 mr-2 d-inline-block btn-round-xss bg-grey"></span>
                   <span className="font-xssss fw-700 text-primary d-inline-block ml-0 ">
-                    Follow Author
+                    Instructor
                   </span>
                 </div>
+
                 <div className="card d-block border-0 rounded-lg overflow-hidden mt-3">
                   <Accordion
                     defaultActiveKey="0"
@@ -84,19 +89,37 @@ class Coursedetails extends Component {
                       eventKey="0"
                       className="accordion-item border-0 mb-0 shadow-xss rounded-sm bg-white"
                     >
-                      <Accordion.Header>
-                        How do I make a yearly payment?
+                      <Accordion.Header
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          width: "100%",
+                        }}
+                      >
+                        <span>Course Overview</span>
+                        <div style={{ marginLeft: "auto" }}>
+                          <button
+                            style={{
+                              background: "transparent",
+                              border: "none",
+                              color: "#007bff",
+                              cursor: "pointer",
+                              fontSize: "1.2rem",
+                            }}
+                          >
+                            <FaAngleDown />
+                          </button>
+                        </div>
                       </Accordion.Header>
+
                       <Accordion.Body>
                         <div className="card-body d-flex p-2">
                           <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
                             1
                           </span>
                           <span className="font-xssss fw-500 text-grey-500 ml-2">
-                            Introduction to the course
-                          </span>
-                          <span className="ml-auto font-xssss fw-500 text-grey-500">
-                            12:34
+                            Introduction to Full Stack Web Development
                           </span>
                         </div>
                         <div className="card-body d-flex p-2">
@@ -104,10 +127,8 @@ class Coursedetails extends Component {
                             2
                           </span>
                           <span className="font-xssss fw-500 text-grey-500 ml-2">
-                            Enjoyed this a lot and well done.
-                          </span>
-                          <span className="ml-auto font-xssss fw-500 text-grey-500">
-                            54:22
+                            Frontend: HTML5, CSS3, Bootstrap, JavaScript,
+                            ReactJS, Redux Toolkit
                           </span>
                         </div>
                         <div className="card-body d-flex p-2">
@@ -115,10 +136,32 @@ class Coursedetails extends Component {
                             3
                           </span>
                           <span className="font-xssss fw-500 text-grey-500 ml-2">
-                            Excel project such as animation with password
+                            Backend: Python and Django
                           </span>
-                          <span className="ml-auto font-xssss fw-500 text-grey-500">
-                            40:00
+                        </div>
+                        <div className="card-body d-flex p-2">
+                          <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
+                            4
+                          </span>
+                          <span className="font-xssss fw-500 text-grey-500 ml-2">
+                            Certificate, Internship, and Job Assistance
+                          </span>
+                        </div>
+                        <div className="card-body d-flex p-2">
+                          <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
+                            5
+                          </span>
+                          <span className="font-xssss fw-500 text-grey-500 ml-2">
+                            Freelancing Guidance and Client Acquisition
+                          </span>
+                        </div>
+                        <div className="card-body d-flex p-2">
+                          <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
+                            6
+                          </span>
+                          <span className="font-xssss fw-500 text-grey-500 ml-2">
+                            Connections with 3 Recruiter Agencies for Jobs and
+                            Internships
                           </span>
                         </div>
                       </Accordion.Body>
@@ -127,8 +170,28 @@ class Coursedetails extends Component {
                       eventKey="1"
                       className="accordion-item border-0 mb-0 shadow-xss rounded-6"
                     >
-                      <Accordion.Header>
-                        People chart infographics Animation
+                      <Accordion.Header
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          width: "100%",
+                        }}
+                      >
+                        <span>Frontend Developmeny</span>
+                        <div style={{ marginLeft: "auto" }}>
+                          <button
+                            style={{
+                              background: "transparent",
+                              border: "none",
+                              color: "#007bff",
+                              cursor: "pointer",
+                              fontSize: "1.2rem",
+                            }}
+                          >
+                            <FaAngleDown />
+                          </button>
+                        </div>
                       </Accordion.Header>
                       <Accordion.Body>
                         <div className="card-body d-flex p-2">
@@ -136,10 +199,7 @@ class Coursedetails extends Component {
                             1
                           </span>
                           <span className="font-xssss fw-500 text-grey-500 ml-2">
-                            Introduction to the course
-                          </span>
-                          <span className="ml-auto font-xssss fw-500 text-grey-500">
-                            12:34
+                            HTML5, CSS3, and Bootstrap
                           </span>
                         </div>
                         <div className="card-body d-flex p-2">
@@ -147,10 +207,7 @@ class Coursedetails extends Component {
                             2
                           </span>
                           <span className="font-xssss fw-500 text-grey-500 ml-2">
-                            Enjoyed this a lot and well done.
-                          </span>
-                          <span className="ml-auto font-xssss fw-500 text-grey-500">
-                            54:22
+                            JavaScript Fundamentals
                           </span>
                         </div>
                         <div className="card-body d-flex p-2">
@@ -158,10 +215,61 @@ class Coursedetails extends Component {
                             3
                           </span>
                           <span className="font-xssss fw-500 text-grey-500 ml-2">
-                            Excel project such as animation with password
+                            ReactJS and Redux Toolkit
                           </span>
-                          <span className="ml-auto font-xssss fw-500 text-grey-500">
-                            40:00
+                        </div>
+                      </Accordion.Body>
+                    </Accordion.Item>
+                    <Accordion.Item
+                      eventKey="2"
+                      className="accordion-item border-0 mb-0 shadow-xss rounded-6"
+                    >
+                      <Accordion.Header
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          width: "100%",
+                        }}
+                      >
+                        <span>Backend Development</span>
+                        <div style={{ marginLeft: "auto" }}>
+                          <button
+                            style={{
+                              background: "transparent",
+                              border: "none",
+                              color: "#007bff",
+                              cursor: "pointer",
+                              fontSize: "1.2rem",
+                            }}
+                          >
+                            <FaAngleDown />
+                          </button>
+                        </div>
+                      </Accordion.Header>
+                      <Accordion.Body>
+                        <div className="card-body d-flex p-2">
+                          <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
+                            1
+                          </span>
+                          <span className="font-xssss fw-500 text-grey-500 ml-2">
+                            Python Basics
+                          </span>
+                        </div>
+                        <div className="card-body d-flex p-2">
+                          <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
+                            2
+                          </span>
+                          <span className="font-xssss fw-500 text-grey-500 ml-2">
+                            Django Framework
+                          </span>
+                        </div>
+                        <div className="card-body d-flex p-2">
+                          <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
+                            3
+                          </span>
+                          <span className="font-xssss fw-500 text-grey-500 ml-2">
+                            Building RESTful APIs
                           </span>
                         </div>
                       </Accordion.Body>
@@ -170,8 +278,28 @@ class Coursedetails extends Component {
                       eventKey="3"
                       className="accordion-item border-0 mb-0 shadow-xss rounded-6"
                     >
-                      <Accordion.Header>
-                        Development to the Course
+                      <Accordion.Header
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          width: "100%",
+                        }}
+                      >
+                        <span>Job and Internship Assistance</span>
+                        <div style={{ marginLeft: "auto" }}>
+                          <button
+                            style={{
+                              background: "transparent",
+                              border: "none",
+                              color: "#007bff",
+                              cursor: "pointer",
+                              fontSize: "1.2rem",
+                            }}
+                          >
+                            <FaAngleDown />
+                          </button>
+                        </div>
                       </Accordion.Header>
                       <Accordion.Body>
                         <div className="card-body d-flex p-2">
@@ -179,10 +307,7 @@ class Coursedetails extends Component {
                             1
                           </span>
                           <span className="font-xssss fw-500 text-grey-500 ml-2">
-                            Introduction to the course
-                          </span>
-                          <span className="ml-auto font-xssss fw-500 text-grey-500">
-                            12:34
+                            Resume Building
                           </span>
                         </div>
                         <div className="card-body d-flex p-2">
@@ -190,10 +315,7 @@ class Coursedetails extends Component {
                             2
                           </span>
                           <span className="font-xssss fw-500 text-grey-500 ml-2">
-                            Enjoyed this a lot and well done.
-                          </span>
-                          <span className="ml-auto font-xssss fw-500 text-grey-500">
-                            54:22
+                            Interview Preparation
                           </span>
                         </div>
                         <div className="card-body d-flex p-2">
@@ -201,10 +323,7 @@ class Coursedetails extends Component {
                             3
                           </span>
                           <span className="font-xssss fw-500 text-grey-500 ml-2">
-                            Excel project such as animation with password
-                          </span>
-                          <span className="ml-auto font-xssss fw-500 text-grey-500">
-                            40:00
+                            Connections with 3 Recruiter Agencies
                           </span>
                         </div>
                       </Accordion.Body>
@@ -213,66 +332,86 @@ class Coursedetails extends Component {
                       eventKey="4"
                       className="accordion-item border-0 mb-0 shadow-xss rounded-6"
                     >
-                      <Accordion.Header>
-                        Creating a sliding down menu
+                      <Accordion.Header
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          width: "100%",
+                        }}
+                      >
+                        <span>Freelancing Guidance</span>
+                        <div style={{ marginLeft: "auto" }}>
+                          <button
+                            style={{
+                              background: "transparent",
+                              border: "none",
+                              color: "#007bff",
+                              cursor: "pointer",
+                              fontSize: "1.2rem",
+                            }}
+                          >
+                            <FaAngleDown />
+                          </button>
+                        </div>
                       </Accordion.Header>
                       <Accordion.Body>
-                        <p>
-                          Serenity Is Multi-Faceted Blockchain Based Ecosystem,
-                          Energy Retailer For The People, Focusing On The
-                          Promotion Of Sustainable Living, Renewable Energy
-                          Production And Smart Energy Grid Utility
-                          Services.Serenity Is Multi-Faceted Blockchain Based
-                          Ecosystem, Energy Retailer For The People, Focusing On
-                          The Promotion Of Sustainable Living, Renewable Energy
-                          Production And Smart Energy Grid Utility Services.
-                        </p>
+                        <div className="card-body d-flex p-2">
+                          <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
+                            1
+                          </span>
+                          <span className="font-xssss fw-500 text-grey-500 ml-2">
+                            How to Get Started with Freelancing
+                          </span>
+                        </div>
+                        <div className="card-body d-flex p-2">
+                          <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
+                            2
+                          </span>
+                          <span className="font-xssss fw-500 text-grey-500 ml-2">
+                            Finding and Acquiring Clients
+                          </span>
+                        </div>
+                        <div className="card-body d-flex p-2">
+                          <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
+                            3
+                          </span>
+                          <span className="font-xssss fw-500 text-grey-500 ml-2">
+                            Building a Strong Portfolio
+                          </span>
+                        </div>
                       </Accordion.Body>
                     </Accordion.Item>
                   </Accordion>
                 </div>
+
                 <div className="card d-block border-0 rounded-lg overflow-hidden p-4 shadow-xss mt-4 alert-success">
                   <h2 className="fw-700 font-sm mb-3 mt-1 pl-1 text-success mb-4">
-                    What you'll learn from this lesson
+                    What you'll learn from this course
                   </h2>
-                  <h4 className="font-xssss fw-600 text-grey-600 mb-3 pl-30 position-relative lh-24">
+                  <h4 className="font-xssss fw-600 text-grey-600 mb-3 pl-4 position-relative lh-24">
                     <i className="ti-check font-xssss btn-round-xs bg-success text-white position-absolute left-0 top-5"></i>
-                    Create awesome animated splash screens for any Excel project
-                    such as animation with password access to a work book,
-                    loading animation.
+                    Master the essentials of full-stack web development,
+                    including HTML5, CSS3, Bootstrap, JavaScript, ReactJS, and
+                    Redux Toolkit for front-end development.
                   </h4>
-                  <h4 className="font-xssss fw-600 text-grey-600 mb-3 pl-30 position-relative lh-24">
+                  <h4 className="font-xssss fw-600 text-grey-600 mb-3 pl-4 position-relative lh-24">
                     <i className="ti-check font-xssss btn-round-xs bg-success text-white position-absolute left-0 top-5"></i>
-                    After completing this course you'll be confident to create
-                    any subtle to complex animation that will turn any project a
-                    professional work and surely you'll become an awesome
-                    developer and designer
+                    Gain proficiency in backend development using Python and
+                    Django, enabling you to build robust and scalable web
+                    applications.
                   </h4>
-                  <h4 className="font-xssss fw-600 text-grey-600 mb-3 pl-30 position-relative lh-24">
+                  <h4 className="font-xssss fw-600 text-grey-600 mb-3 pl-4 position-relative lh-24">
                     <i className="ti-check font-xssss btn-round-xs bg-success text-white position-absolute left-0 top-5"></i>
-                    Create awesome animated splash screens for any Excel project
-                    such as animation with password access to a work book,
-                    loading animation.
+                    Receive a certificate upon completion, along with internship
+                    and job placement assistance. Learn essential freelancing
+                    skills and strategies to acquire clients.
                   </h4>
-                  <h4 className="font-xssss fw-600 text-grey-600 mb-3 pl-30 position-relative lh-24">
+                  <h4 className="font-xssss fw-600 text-grey-600 mb-3 pl-4 position-relative lh-24">
                     <i className="ti-check font-xssss btn-round-xs bg-success text-white position-absolute left-0 top-5"></i>
-                    After completing this course you'll be confident to create
-                    any subtle to complex animation that will turn any project a
-                    professional work and surely you'll become an awesome
-                    developer and designer
-                  </h4>
-                  <h4 className="font-xssss fw-600 text-grey-600 mb-3 pl-30 position-relative lh-24">
-                    <i className="ti-check font-xssss btn-round-xs bg-success text-white position-absolute left-0 top-5"></i>
-                    Create awesome animated splash screens for any Excel project
-                    such as animation with password access to a work book,
-                    loading animation.
-                  </h4>
-                  <h4 className="font-xssss fw-600 text-grey-600 mb-3 pl-30 position-relative lh-24">
-                    <i className="ti-check font-xssss btn-round-xs bg-success text-white position-absolute left-0 top-5"></i>
-                    After completing this course you'll be confident to create
-                    any subtle to complex animation that will turn any project a
-                    professional work and surely you'll become an awesome
-                    developer and designer
+                    Benefit from our network with 3 recruiter agencies,
+                    providing opportunities for both jobs and internships in the
+                    tech industry.
                   </h4>
                 </div>
 
@@ -281,22 +420,30 @@ class Coursedetails extends Component {
                     Description
                   </h2>
                   <p className="font-xssss fw-500 lh-28 text-grey-600 mb-0 pl-2">
-                    After creating more than a dozen courses on Microsoft Access
-                    databases and programming in VBA, many students have
-                    contacted me with discussions on specific problems and
-                    scenarios. From these discussions, I have created videos
-                    reviewing the details of the most useful techniques that
-                    everyone will eventually need. I have made sure that every
-                    detail of these techniques is recorded in the videos! BUT
-                    you should be somewhat familiar with VBA since there are
-                    lots of coding examples in the course. <br /> There are MANY
-                    tips and tricks in this workshop that you will not find an
-                    ANY of my other courses! <br /> I also include a specific
-                    database design challenge from a student and then go over
-                    the details of how I would handle it. <br /> If you are
-                    willing to take the time to go through this course you could
-                    easily be much more productive with Microsoft Access in just
-                    a few hours.
+                    After creating many full-stack websites for multiple clients
+                    across the world, I have accumulated extensive experience in
+                    delivering scalable and effective web development courses.
+                    These experiences have given me a deep understanding of
+                    various client requirements and challenges, enabling me to
+                    create industry-level projects. <br />
+                    <br />
+                    With a portfolio spanning diverse industries and client
+                    needs, I specialize in using HTML5, CSS3, Bootstrap, Ant
+                    Design, JavaScript, ReactJS, Redux Toolkit, Python, and
+                    Django. My approach emphasizes writing clean code, creating
+                    responsive designs, and building user-friendly interfaces.{" "}
+                    <br />
+                    <br />
+                    In addition to technical skills, I offer comprehensive
+                    support including certificate programs, internship
+                    placements, and job assistance. I also provide guidance on
+                    freelancing strategies and acquiring clients. Furthermore, I
+                    maintain connections with 3 recruiter agencies, offering
+                    opportunities for career growth in the tech industry. <br />
+                    <br />
+                    Whether you're starting your journey or looking to enhance
+                    your skills, my courses provide practical insights and
+                    hands-on experience to excel in web development.
                   </p>
                 </div>
 
@@ -305,15 +452,15 @@ class Coursedetails extends Component {
                     Requirements
                   </h2>
                   <p className="font-xssss fw-500 lh-28 text-grey-600 mb-0 pl-2">
-                    After creating more than a dozen courses on Microsoft Access
-                    databases and programming in VBA, many students have
-                    contacted me with discussions on specific problems and
-                    scenarios. From these discussions.
+                    You need one basic laptop or PC, and you have to have
+                    dedication and fire inside you. Trust me, I can guide you
+                    step-by-step to become a professional web developer. No
+                    prior experience required, just a passion for learning.
                   </p>
                 </div>
               </div>
               <div className="col-xl-4 col-xxl-3 col-lg-4">
-                <div className="card p-4 mb-4 bg-primary border-0 shadow-xss rounded-lg">
+                {/* <div className="card p-4 mb-4 bg-primary border-0 shadow-xss rounded-lg">
                   <div className="card-body">
                     <h2 className="text-white font-xsssss fw-700 text-uppercase ls-3 ">
                       Starter
@@ -342,7 +489,7 @@ class Coursedetails extends Component {
                       Subscribe
                     </a>
                   </div>
-                </div>
+                </div> */}
                 <div className="card w-100 border-0 mt-0 mb-4 p-4 shadow-xss position-relative rounded-lg bg-white">
                   <div className="row">
                     <div className="col-5 pr-0">
@@ -522,11 +669,12 @@ class Coursedetails extends Component {
                   </div>
 
                   <div className="row">
+                    {/* Review 1 */}
                     <div className="col-2 text-left">
                       <figure className="avatar float-left mb-0">
                         <img
                           src="assets/images/user.png"
-                          alt="banner"
+                          alt="avatar"
                           className="float-right shadow-none w40 mr-2"
                         />
                       </figure>
@@ -534,53 +682,38 @@ class Coursedetails extends Component {
                     <div className="col-10 pl-4">
                       <div className="content">
                         <h6 className="author-name font-xssss fw-600 mb-0 text-grey-800">
-                          Goria Coast
+                          Rahul Kumar
                         </h6>
                         <h6 className="d-block font-xsssss fw-500 text-grey-500 mt-2 mb-0">
-                          July 26 at 8:20 PM
+                          June 5
                         </h6>
-                        <div className="star d-block w-100 text-left">
-                          <img
-                            src="assets/images/star.png"
-                            alt="star"
-                            className="w10"
-                          />
-                          <img
-                            src="assets/images/star.png"
-                            alt="star"
-                            className="w10"
-                          />
-                          <img
-                            src="assets/images/star.png"
-                            alt="star"
-                            className="w10"
-                          />
-                          <img
-                            src="assets/images/star.png"
-                            alt="star"
-                            className="w10"
-                          />
-                          <img
-                            src="assets/images/star-disable.png"
-                            alt="star"
-                            className="w10"
-                          />
+                        <div className="star d-block text-left">
+                          {[...Array(5)].map((star, index) => (
+                            <img
+                              key={index}
+                              src="assets/images/star.png"
+                              alt="star"
+                              className="w10"
+                            />
+                          ))}
                         </div>
                         <p className="comment-text lh-24 fw-500 font-xssss text-grey-500 mt-2">
-                          Enjoyed this a lot and well done. We are an early
-                          stage digitally native vertical brand, making travel
-                          bags.{' '}
+                          The web development course gave a thorough overview of
+                          modern tools and frameworks, simplifying complex
+                          concepts. Excited to apply these skills in real
+                          projects.
                         </p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="row">
+                  <div className="row mt-4">
+                    {/* Review 2 */}
                     <div className="col-2 text-left">
                       <figure className="avatar float-left mb-0">
                         <img
                           src="assets/images/user.png"
-                          alt="banner"
+                          alt="avatar"
                           className="float-right shadow-none w40 mr-2"
                         />
                       </figure>
@@ -588,57 +721,148 @@ class Coursedetails extends Component {
                     <div className="col-10 pl-4">
                       <div className="content">
                         <h6 className="author-name font-xssss fw-600 mb-0 text-grey-800">
-                          Goria Coast
+                          Neha Sharma
                         </h6>
                         <h6 className="d-block font-xsssss fw-500 text-grey-500 mt-2 mb-0">
-                          July 26 at 8:20 PM
+                          June 25
                         </h6>
-                        <div className="star d-block w-100 text-left">
-                          <img
-                            src="assets/images/star.png"
-                            alt="star"
-                            className="w10"
-                          />
-                          <img
-                            src="assets/images/star.png"
-                            alt="star"
-                            className="w10"
-                          />
-                          <img
-                            src="assets/images/star.png"
-                            alt="star"
-                            className="w10"
-                          />
-                          <img
-                            src="assets/images/star.png"
-                            alt="star"
-                            className="w10"
-                          />
-                          <img
-                            src="assets/images/star-disable.png"
-                            alt="star"
-                            className="w10"
-                          />
+                        <div className="star d-block text-left">
+                          {[...Array(5)].map((star, index) => (
+                            <img
+                              key={index}
+                              src="assets/images/star.png"
+                              alt="star"
+                              className="w10"
+                            />
+                          ))}
                         </div>
                         <p className="comment-text lh-24 fw-500 font-xssss text-grey-500 mt-2">
-                          Enjoyed this a lot and well done. We are an early
-                          stage digitally native vertical brand, making travel
-                          bags.{' '}
+                          This course completely changed my perspective on web
+                          development. The instructor's teaching style made
+                          complex topics seem easy. Highly recommend it!
                         </p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="row">
-                    <a
-                      href="/default-course-one"
-                      className="d-block p-2 lh-32 w-100 text-center ml-3 mr-3 bg-greylight fw-600 font-xssss text-grey-900"
-                    >
-                      Add a Review
-                    </a>
+                  <div className="row mt-4">
+                    {/* Review 3 */}
+                    <div className="col-2 text-left">
+                      <figure className="avatar float-left mb-0">
+                        <img
+                          src="assets/images/user.png"
+                          alt="avatar"
+                          className="float-right shadow-none w40 mr-2"
+                        />
+                      </figure>
+                    </div>
+                    <div className="col-10 pl-4">
+                      <div className="content">
+                        <h6 className="author-name font-xssss fw-600 mb-0 text-grey-800">
+                          Vikram Singh
+                        </h6>
+                        <h6 className="d-block font-xsssss fw-500 text-grey-500 mt-2 mb-0">
+                          June 20
+                        </h6>
+                        <div className="star d-block text-left">
+                          {[...Array(4)].map((star, index) => (
+                            <img
+                              key={index}
+                              src="assets/images/star.png"
+                              alt="star"
+                              className="w10"
+                            />
+                          ))}
+                        </div>
+                        <p className="comment-text lh-24 fw-500 font-xssss text-grey-500 mt-2">
+                          The course content was very practical. I learned how
+                          to build websites from scratch using the latest
+                          technologies. It's a great starting point for anyone
+                          interested in web development.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="row mt-4">
+                    {/* Review 4 */}
+                    <div className="col-2 text-left">
+                      <figure className="avatar float-left mb-0">
+                        <img
+                          src="assets/images/user.png"
+                          alt="avatar"
+                          className="float-right shadow-none w40 mr-2"
+                        />
+                      </figure>
+                    </div>
+                    <div className="col-10 pl-4">
+                      <div className="content">
+                        <h6 className="author-name font-xssss fw-600 mb-0 text-grey-800">
+                          Pooja Patel
+                        </h6>
+                        <h6 className="d-block font-xsssss fw-500 text-grey-500 mt-2 mb-0">
+                          June 5
+                        </h6>
+                        <div className="star d-block text-left">
+                          {[...Array(5)].map((star, index) => (
+                            <img
+                              key={index}
+                              src="assets/images/star.png"
+                              alt="star"
+                              className="w10"
+                            />
+                          ))}
+                        </div>
+                        <p className="comment-text lh-24 fw-500 font-xssss text-grey-500 mt-2">
+                          I'm amazed by how much I've learned in such a short
+                          time. The course structure is excellent, and the
+                          hands-on projects are very helpful. I feel confident
+                          to start my own web development projects now.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="row mt-4">
+                    {/* Review 5 */}
+                    <div className="col-2 text-left">
+                      <figure className="avatar float-left mb-0">
+                        <img
+                          src="assets/images/user.png"
+                          alt="avatar"
+                          className="float-right shadow-none w40 mr-2"
+                        />
+                      </figure>
+                    </div>
+                    <div className="col-10 pl-4">
+                      <div className="content">
+                        <h6 className="author-name font-xssss fw-600 mb-0 text-grey-800">
+                          Deepak Verma
+                        </h6>
+                        <h6 className="d-block font-xsssss fw-500 text-grey-500 mt-2 mb-0">
+                          June 8
+                        </h6>
+                        <div className="star d-block text-left">
+                          {[...Array(4)].map((star, index) => (
+                            <img
+                              key={index}
+                              src="assets/images/star.png"
+                              alt="star"
+                              className="w10"
+                            />
+                          ))}
+                        </div>
+                        <p className="comment-text lh-24 fw-500 font-xssss text-grey-500 mt-2">
+                          Learning web development through this course has been
+                          a game-changer for me. The explanations are clear, and
+                          the projects are practical. I can't wait to implement
+                          these skills in real-world scenarios.
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className="card shadow-xss rounded-lg border-0 p-4 mb-4">
+                {/* <div className="card shadow-xss rounded-lg border-0 p-4 mb-4">
                   <h4 className="font-xs fw-700 text-grey-900 d-block mb-3">
                     Modul
                     <a href="/default-course-one" className="float-right">
@@ -703,7 +927,7 @@ class Coursedetails extends Component {
                       2:34
                     </span>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -713,6 +937,5 @@ class Coursedetails extends Component {
       </Fragment>
     );
   }
-}
 
 export default Coursedetails;
