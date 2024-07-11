@@ -1,12 +1,12 @@
-import React, { Component, Fragment } from 'react';
-import Appfooter from '../components/Appfooter';
-import Navheader from '../components/Navheader';
-import Appheader from '../components/Appheader';
-import Profile from '../components/Profile';
-import Subscribe from '../components/Subscribe';
-import Slider from 'react-slick';
-import { Link } from 'react-router-dom';
-import Myclass from '../components/Myclass';
+import React, { Component, Fragment } from "react";
+import Appfooter from "../components/Appfooter";
+import Navheader from "../components/Navheader";
+import Appheader from "../components/Appheader";
+import Profile from "../components/Profile";
+import Subscribe from "../components/Subscribe";
+import Slider from "react-slick";
+import { Link } from "react-router-dom";
+import Myclass from "../components/Myclass";
 
 const latestList = [
   {
@@ -18,36 +18,36 @@ const latestList = [
     status: "alert-warning text-warning",
   },
   {
-    imageUrl: 'course.png',
-    title: 'Automate the Boring Stuff with Python Programming',
-    price: '760',
-    tag: 'Bootstrap',
-    lesson: '14 ',
-    status: 'alert-primary text-primary',
+    imageUrl: "course.png",
+    title: "Automate the Boring Stuff with Python Programming",
+    price: "760",
+    tag: "Bootstrap",
+    lesson: "14 ",
+    status: "alert-primary text-primary",
   },
   {
-    imageUrl: 'course.png',
-    title: 'The Data Science Course Complete Data Science ',
-    price: '370',
-    tag: 'Develop',
-    lesson: '23 ',
-    status: 'alert-danger text-danger',
+    imageUrl: "course.png",
+    title: "The Data Science Course Complete Data Science ",
+    price: "370",
+    tag: "Develop",
+    lesson: "23 ",
+    status: "alert-danger text-danger",
   },
   {
-    imageUrl: 'course.png',
-    title: 'Complete Python Bootcamp From Zero to Hero in Python ',
-    price: '2400',
-    tag: 'Python',
-    lesson: '32 ',
-    status: 'alert-warning text-warning',
+    imageUrl: "course.png",
+    title: "Complete Python Bootcamp From Zero to Hero in Python ",
+    price: "2400",
+    tag: "Python",
+    lesson: "32 ",
+    status: "alert-warning text-warning",
   },
   {
-    imageUrl: 'course.png',
-    title: 'Complete Python Bootcamp From Zero to Hero in Python ',
-    price: '40',
-    tag: 'Desinger',
-    lesson: '24 ',
-    status: 'alert-danger text-danger',
+    imageUrl: "course.png",
+    title: "Complete Python Bootcamp From Zero to Hero in Python ",
+    price: "40",
+    tag: "Desinger",
+    lesson: "24 ",
+    status: "alert-danger text-danger",
   },
 ];
 const popularList = [
@@ -95,150 +95,154 @@ const popularList = [
 
 const classesList = [
   {
-    imageUrl: 'user.png',
-    title: 'Bootstrap',
-    num: '32 Course',
-    bg: '#fcf1eb',
+    imageUrl: "user.png",
+    title: "Bootstrap",
+    num: "32 Course",
+    bg: "#fcf1eb",
   },
   {
-    imageUrl: 'user.png',
-    title: 'HTML',
-    num: '54 Course',
-    bg: '#fff9eb',
+    imageUrl: "user.png",
+    title: "HTML",
+    num: "54 Course",
+    bg: "#fff9eb",
   },
   {
-    imageUrl: 'user.png',
-    title: 'Jquery',
-    num: '76 Course',
-    bg: '#e5f4fb',
+    imageUrl: "user.png",
+    title: "Jquery",
+    num: "76 Course",
+    bg: "#e5f4fb",
   },
   {
-    imageUrl: 'user.png',
-    title: 'SASS',
-    num: '76 Course',
-    bg: '#dcf4f8',
+    imageUrl: "user.png",
+    title: "SASS",
+    num: "76 Course",
+    bg: "#dcf4f8",
   },
   {
-    imageUrl: 'user.png',
-    title: 'React',
-    num: '23 Course',
-    bg: '#fcf1eb',
+    imageUrl: "user.png",
+    title: "React",
+    num: "23 Course",
+    bg: "#fcf1eb",
   },
 
   {
-    imageUrl: 'user.png',
-    title: 'JAVA',
-    num: '78 Course',
-    bg: '#fff9eb',
+    imageUrl: "user.png",
+    title: "JAVA",
+    num: "78 Course",
+    bg: "#fff9eb",
   },
   {
-    imageUrl: 'user.png',
-    title: 'Python',
-    num: '65 Course',
-    bg: '#e5f4fb',
+    imageUrl: "user.png",
+    title: "Python",
+    num: "65 Course",
+    bg: "#e5f4fb",
   },
   {
-    imageUrl: 'user.png',
-    title: 'MongoDB',
-    num: '11 Course',
-    bg: '#fcf1eb',
+    imageUrl: "user.png",
+    title: "MongoDB",
+    num: "11 Course",
+    bg: "#fcf1eb",
   },
   {
-    imageUrl: 'user.png',
-    title: 'Bootstrap',
-    num: '32 Course',
-    bg: '#fcf1eb',
+    imageUrl: "user.png",
+    title: "Bootstrap",
+    num: "32 Course",
+    bg: "#fcf1eb",
   },
   {
-    imageUrl: 'user.png',
-    title: 'Bootstrap',
-    num: '32 Course',
-    bg: '#fff9eb',
+    imageUrl: "user.png",
+    title: "Bootstrap",
+    num: "32 Course",
+    bg: "#fff9eb",
   },
 ];
 
 const memberList = [
   {
-    imageUrl: 'user.png',
-    name: 'Aliqa Macale ',
-    email: 'support@gmail.com',
-    bgimage: 'course.png',
+    imageUrl: "user.png",
+    name: "Aliqa Macale ",
+    email: "support@gmail.com",
+    bgimage: "course.png",
   },
   {
-    imageUrl: 'user.png',
-    name: 'John Steere ',
-    email: 'support@gmail.com',
-    bgimage: 'course.png',
+    imageUrl: "user.png",
+    name: "John Steere ",
+    email: "support@gmail.com",
+    bgimage: "course.png",
   },
   {
-    imageUrl: 'user.png',
-    name: 'Mohannad Zitoun ',
-    email: 'support@gmail.com',
-    bgimage: 'course.png',
+    imageUrl: "user.png",
+    name: "Mohannad Zitoun ",
+    email: "support@gmail.com",
+    bgimage: "course.png",
   },
   {
-    imageUrl: 'user.png',
-    name: 'Aliqa Macale ',
-    email: 'support@gmail.com',
-    bgimage: 'course.png',
+    imageUrl: "user.png",
+    name: "Aliqa Macale ",
+    email: "support@gmail.com",
+    bgimage: "course.png",
   },
   {
-    imageUrl: 'user.png',
-    name: 'Hendrix Stamp ',
-    email: 'support@gmail.com',
-    bgimage: 'course.png',
+    imageUrl: "user.png",
+    name: "Hendrix Stamp ",
+    email: "support@gmail.com",
+    bgimage: "course.png",
   },
   {
-    imageUrl: 'user.png',
-    name: 'Mohannad Zitoun ',
-    email: 'support@gmail.com',
-    bgimage: 'course.png',
+    imageUrl: "user.png",
+    name: "Mohannad Zitoun ",
+    email: "support@gmail.com",
+    bgimage: "course.png",
   },
   {
-    imageUrl: 'user.png',
-    name: 'John Steere ',
-    email: 'support@gmail.com',
-    bgimage: 'course.png',
+    imageUrl: "user.png",
+    name: "John Steere ",
+    email: "support@gmail.com",
+    bgimage: "course.png",
   },
 ];
 
-class Default extends Component {
-  render() {
+const Default = () => {
     const categorysettings = {
-      arrows: true, 
+      arrows: true,
       dots: false,
-      // infinite: true,
-      // speed: 1000,
+      infinite: true,
+      speed: 500,
+      arrows: true,
+      dots: false,
       centerMode: false,
       variableWidth: true,
       autoplay: true,
-      // autoplaySpeed: 1000,
-      prevArrow: <button className="btn btn-primary slick-prev">Previous</button>,
-      nextArrow: <button className="btn btn-primary slick-next">Next</button>,
-    // };
-    // const popularSlider = {
-    //   arrows: false,
-    //   dots: false,
-    //   infinite: true,
-    //   speed: 300,
-    //   centerMode: false,
-    //   variableWidth: true,
-    // };
-    // const latestSlider = {
-    //   arrows: false,
-    //   dots: false,
-    //   infinite: true,
-    //   speed: 300,
-    //   centerMode: false,
-    //   variableWidth: true,
-    // };
-    // const memberSlider = {
-    //   arrows: false,
-    //   dots: false,
-    //   infinite: true,
-    //   speed: 300,
-    //   centerMode: false,
-    //   variableWidth: true,
+      
+      prevArrow: (
+        <button className="btn btn-primary slick-prev">Previous</button>
+      ),
+      nextArrow: (
+        <button className="btn btn-primary slick-next">Next</button>
+      ),
+      // const popularSlider = {
+      //   arrows: false,
+      //   dots: false,
+      //   infinite: true,
+      //   speed: 300,
+      //   centerMode: false,
+      //   variableWidth: true,
+      // };
+      // const latestSlider = {
+      //   arrows: false,
+      //   dots: false,
+      //   infinite: true,
+      //   speed: 300,
+      //   centerMode: false,
+      //   variableWidth: true,
+      // };
+      // const memberSlider = {
+      //   arrows: false,
+      //   dots: false,
+      //   infinite: true,
+      //   speed: 300,
+      //   centerMode: false,
+      //   variableWidth: true,
     };
     return (
       <Fragment>
@@ -260,7 +264,7 @@ class Default extends Component {
                     >
                       <div className="card-body p-4">
                         <h2 className="display3-size fw-400 display2-md-size sm-mt-7 sm-pt-10">
-                        Start Your Journey in{' '}
+                          Start Your Journey in{" "}
                           <b className="d-lg-block">Web Development</b>
                         </h2>
                         <h4 className="text-grey-500 font-xssss fw-500 ml-1 lh-24">
@@ -303,9 +307,10 @@ class Default extends Component {
                         </div>
                         <h4 className="text-grey-500 font-xssss fw-500 ml-1 lh-24">
                           <b className="text-grey-800 text-dark">
-                            Popular Search :{" "} 
+                            Popular Search :{" "}
                           </b>
-                           HTML Forms ,  CSS Flexbox , JavaScript Closures , React Props 
+                          HTML Forms , CSS Flexbox , JavaScript Closures , React
+                          Props
                         </h4>
                       </div>
                     </div>
@@ -349,7 +354,7 @@ class Default extends Component {
                   </div>
                   <div className="col-lg-12 pt-4 mb-3">
                     <h2 className="fw-400 font-lg d-block">
-                      Our<b>Courses</b>
+                      Our<b> Courses</b>
                       {/* <a href="/" className="float-right">
                         <i className="feather-edit text-grey-500 font-xs"></i>
                       </a> */}
@@ -367,7 +372,7 @@ class Default extends Component {
                             className="card-image w-100 mb-3"
                             style={{ height: "20rem" }}
                           >
-                            <Link
+                            <span
                               to="/coursedetails"
                               className="video-bttn position-relative d-block"
                             >
@@ -376,7 +381,7 @@ class Default extends Component {
                                 alt="course"
                                 className="w-100"
                               />
-                            </Link>
+                            </span>
                           </div>
                           <div className="card-body pt-0">
                             <span
@@ -389,68 +394,60 @@ class Default extends Component {
                               {value.price}
                             </span>
                             <h4 className="fw-700 font-xss mt-3 lh-28 mt-0">
-                              <Link
+                              <span
                                 to="/coursedetails"
                                 className="text-dark text-grey-900"
                               >
                                 {value.title}
-                              </Link>
+                              </span>
                             </h4>
                             <h6 className="font-xssss text-grey-500 fw-600 ml-0 mt-2">
                               {value.lesson} Lesson
                             </h6>
                             <ul className="memberlist mt-3 mb-2 ml-0 d-block">
                               <li>
-                                <a href="/">
-                                  <img
-                                    src="assets/images/user.png"
-                                    alt="avater"
-                                    className="w30 d-inline-block rounded-circle"
-                                  />
-                                </a>
+                                <img
+                                  src="assets/images/user.png"
+                                  alt="avater"
+                                  className="w30 d-inline-block rounded-circle"
+                                />
                               </li>
                               <li>
-                                <a href="/">
-                                  <img
-                                    src="assets/images/user.png"
-                                    alt="avater"
-                                    className="w30 d-inline-block rounded-circle"
-                                  />
-                                </a>
+                                <img
+                                  src="assets/images/user.png"
+                                  alt="avater"
+                                  className="w30 d-inline-block rounded-circle"
+                                />
                               </li>
                               <li>
-                                <a href="/">
-                                  <img
-                                    src="assets/images/user.png"
-                                    alt="avater"
-                                    className="w30 d-inline-block"
-                                  />
-                                </a>
+                                <img
+                                  src="assets/images/user.png"
+                                  alt="avater"
+                                  className="w30 d-inline-block"
+                                />
                               </li>
                               <li>
-                                <a href="/">
-                                  <img
-                                    src="assets/images/user.png"
-                                    alt="avater"
-                                    className="w30 d-inline-block rounded-circle"
-                                  />
-                                </a>
+                                <img
+                                  src="assets/images/user.png"
+                                  alt="avater"
+                                  className="w30 d-inline-block rounded-circle"
+                                />
                               </li>
                               <li className="last-member">
-                                <a
-                                  href="/"
+                                <Link
+                                  to="/default-course-one"
                                   className="bg-greylight fw-600 text-grey-500 font-xssss ls-3 text-center"
                                 >
                                   +2
-                                </a>
+                                </Link>
                               </li>
                               <li className="pl-4 w-auto">
-                                <a
-                                  href="/"
+                                <Link
+                                  to="/default-course-one"
                                   className="fw-500 text-grey-500 font-xssss"
                                 >
                                   Student apply
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                             <Link
@@ -633,6 +630,6 @@ class Default extends Component {
       </Fragment>
     );
   }
-}
+
 
 export default Default;

@@ -10,11 +10,9 @@ import { FaAngleDown } from "react-icons/fa";
 
 const Coursedetails = () => {
     return (
-      <Fragment>
-        <Upperheader />
+      <Fragment >
         <Header />
-
-        <div className="course-details pt-lg--7 pb-lg--7 pt-5 pb-5">
+        <div className="course-details pt-lg--7 pb-lg--7 pb-5">
           <div className="container">
             <div className="row">
               <div className="col-xl-8 col-xxl-9 col-lg-8 mt-n5">
@@ -933,7 +931,7 @@ const Coursedetails = () => {
           </div>
         </div>
 
-        <Footer />
+        <Footer bgColor="bg-dark" />
       </Fragment>
     );
   }

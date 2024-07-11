@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class Footer extends Component {
-  render() {
-    const { bgColor } = this.props;
+const Footer = ({ bgColor } ) => {
     return (
       <div className={`footer-wrapper mt-0 ${bgColor}`}>
         <div className="container">
@@ -20,49 +18,41 @@ class Footer extends Component {
                     </h1>
                   </Link>
                   <p className="w-100 mt-5">
-                    41 madison ave, floor 24 new work, <br />
-                    NY 10010 1-877-932-7111 <br /> support@mail.com
+                  425, Sector 31, Faridabad, Haryana 121002<br />
+                  +91 70424 14212 <br /> support@mail.com
                   </p>
                   <ul className="list-inline">
                     <li className="list-inline-item mr-3">
-                      <Link to="#">
-                        <i className="ti-facebook"></i>
-                      </Link>
+                      <a href="https://www.linkedin.com/in/yatinvohra/" target="_blank">
+                      <i className="ti-linkedin"></i>
+                      </a>
                     </li>
                     <li className="list-inline-item mr-3">
-                      <Link to="#">
-                        <i className="ti-twitter-alt"></i>
-                      </Link>
-                    </li>
-                    <li className="list-inline-item mr-3">
-                      <Link to="#">
-                        <i className="ti-linkedin"></i>
-                      </Link>
+                      <a href="https://twitter.com/devwithyatin" target="_blank">
+                      <i className="ti-twitter-alt"></i>
+                      </a>
                     </li>
                     <li className="list-inline-item">
-                      <Link to="#">
+                      <a href="https://www.instagram.com/devwithyatin?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="target="_blank">
                         <i className="ti-instagram"></i>
-                      </Link>
+                      </a>
                     </li>
                   </ul>
                 </div>
                 <div className="col-md-3 col-lg-2 col-sm-3 col-xs-6 md-mb-2">
-                  <h5>Language</h5>
+                  <h5>Company</h5>
                   <ul>
                     <li>
-                      <Link to="#">English</Link>
+                      <Link to="#">About Us</Link>
                     </li>
                     <li>
-                      <Link to="#">Spanish</Link>
+                      <Link to="#">Careers</Link>
                     </li>
                     <li>
-                      <Link to="#">Arab</Link>
+                      <Link to="#">Our Blog</Link>
                     </li>
                     <li>
-                      <Link to="#">Urdu</Link>
-                    </li>
-                    <li>
-                      <Link to="#">Brazil</Link>
+                      <Link to="/contact">Contact Us</Link>
                     </li>
                   </ul>
                 </div>
@@ -70,19 +60,16 @@ class Footer extends Component {
                   <h5>Channel</h5>
                   <ul>
                     <li>
-                      <Link to="#">Makeup</Link>
+                      <Link to="#">Product</Link>
                     </li>
                     <li>
-                      <Link to="#">Dresses</Link>
+                      <Link to="#">Customers</Link>
                     </li>
                     <li>
-                      <Link to="#">Girls</Link>
+                      <Link to="#">Pricing</Link>
                     </li>
                     <li>
-                      <Link to="#">Sandals</Link>
-                    </li>
-                    <li>
-                      <Link to="#">Headphones</Link>
+                      <Link to="#">Help Center</Link>
                     </li>
                   </ul>
                 </div>
@@ -91,9 +78,6 @@ class Footer extends Component {
                   <ul>
                     <li>
                       <Link to="#">FAQ</Link>
-                    </li>
-                    <li>
-                      <Link to="#">Term of use</Link>
                     </li>
                     <li>
                       <Link to="#">Privacy Policy</Link>
@@ -109,12 +93,10 @@ class Footer extends Component {
                 <div className="col-md-3 col-lg-2 col-sm-4 col-xs-6">
                   <h5 className="mb-3">Office</h5>
                   <p className="w-100">
-                    41 madison ave, floor 24 new work, NY 10010 <br />
-                    1-877-932-7111
+                  425, Sector 31, Faridabad, Haryana 121002
                   </p>
                   <p className="w-100">
-                    41 madison ave, floor 24 new work, NY 10010 <br />
-                    1-877-932-7111
+                  +91 70424 14212
                   </p>
                 </div>
               </div>
@@ -123,14 +105,14 @@ class Footer extends Component {
             <div className="col-sm-12 lower-footer pt-0"></div>
             <div className="col-sm-6 col-xs-12">
               <p className="copyright-text">
-                © 2021 copyright. All rights reserved.
+                © 2021 Coladco. All rights reserved.
               </p>
             </div>
             <div className="col-sm-6 col-xs-12 text-right">
               <p className="copyright-text float-right">
-                Design by
+                Design and Developed by {""}
                 <Link to="#" className="">
-                  uitheme
+                Coladco
                 </Link>
               </p>
             </div>
@@ -139,6 +121,6 @@ class Footer extends Component {
       </div>
     );
   }
-}
+
 
 export default Footer;

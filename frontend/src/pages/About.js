@@ -69,8 +69,12 @@ const About = () => {
     variableWidth: false,
     autoplay: true,
     autoplaySpeed: 1000,
-    prevArrow: <FaArrowAltCircleLeft />,
-    nextArrow: <FaArrowAltCircleRight />,
+    prevArrow: (
+      <button className="btn btn-primary slick-prev">Previous</button>
+    ),
+    nextArrow: (
+      <button className="btn btn-primary slick-next">Next</button>
+    ),
   };
   
   const feedbacksettings = {
@@ -83,8 +87,12 @@ const About = () => {
     variableWidth: false,
     autoplay: true,
     autoplaySpeed: 1000,
-    prevArrow: <FaArrowAltCircleLeft />,
-    nextArrow: <FaArrowAltCircleRight />,
+    prevArrow: (
+      <button className="btn btn-primary slick-prev">Previous</button>
+    ),
+    nextArrow: (
+      <button className="btn btn-primary slick-next">Next</button>
+    ),
   };
   
 
@@ -112,11 +120,6 @@ const About = () => {
             <div className="col-lg-5 offset-lg-1">
               <ul className="d-block list-inline float-right-md mb-3">
                 <li className="list-inline-item mr-1">
-                  <a href="https://twitter.com/devwithyatin" target="_blank" className="btn-round-md bg-twiiter">
-                    <i className="font-xs ti-twitter-alt text-white"></i>
-                  </a>
-                </li>
-                <li className="list-inline-item mr-1">
                   <a href="https://www.linkedin.com/in/yatinvohra/" target="_blank" className="btn-round-md bg-linkedin">
                     <i className="font-xs ti-linkedin text-white"></i>
                   </a>
@@ -124,6 +127,11 @@ const About = () => {
                 <li className="list-inline-item mr-1">
                   <a href="https://www.instagram.com/devwithyatin?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"className="btn-round-md bg-instagram">
                     <i className="font-xs ti-instagram text-white"></i>
+                  </a>
+                </li>
+                 <li className="list-inline-item mr-1">
+                  <a href="https://twitter.com/devwithyatin" target="_blank" className="btn-round-md bg-twiiter">
+                    <i className="font-xs ti-twitter-alt text-white"></i>
                   </a>
                 </li>
               </ul>
