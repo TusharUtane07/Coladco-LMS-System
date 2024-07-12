@@ -8,15 +8,24 @@ import { IoShareOutline } from "react-icons/io5";
 import { GoComment } from "react-icons/go";
 
 
+
 const Feed = () => {
   return (
     <Fragment>
+       <style>
+        {`
+          @media (max-width: 768px) {
+            .mt-sm-2 {
+              margin-top:4rem !important;
+            }
+          }
+        `}
+      </style>
       <div className="main-wrapper">
         <Navheader />
         <div className="main-content">
           <Appheader />
-          <div className="m-2 text-center">
-            {/* <h1 className="text-center m-3">Solve your queries here</h1> */}
+          <div className="m-2 text-center mt-sm-2">
             <div className="m-2">
               <textarea
                 style={{ width: "98%", border: "none" }}
@@ -69,7 +78,7 @@ const Feed = () => {
               </h4>
               <div>
                 <p>
-                  Can someone explain how Flexbox works in CSS? I am trying to create a layout where items are centered both horizontally and vertically.
+                  Can someone explain how Flexboxt works in CSS? I am trying to create a layout where items are centered both horizontally and vertically.
                 </p>
               </div>
               <div
@@ -95,6 +104,7 @@ const Feed = () => {
         
         </div>
         </div>
+        <Appfooter />
       </div>
     </Fragment>
   );
