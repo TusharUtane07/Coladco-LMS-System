@@ -176,7 +176,7 @@ const Coursedetails = () => {
                           width: "100%",
                         }}
                       >
-                        <span>Frontend Developmeny</span>
+                        <span>Frontend Development</span>
                         <div style={{ marginLeft: "auto" }}>
                           <button
                             style={{

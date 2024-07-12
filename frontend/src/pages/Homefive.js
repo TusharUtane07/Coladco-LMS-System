@@ -126,7 +126,7 @@ const feedbackList = [
     status: "Full Stack Developer and Freelancer",
     color: "bg-warning",
     icon: "ti-quote-right",
-    des: "Hello, My name is Jatin Vohra. I am a full-stack developer and freelancer with a total of five years of experience in web development and freelancing. Over the years, I have created multiple websites for clients from all over the world. I have also been doing dropshipping for almost five years. I assure you that I will teach you web development and freelancing in the best way possible, based on my extensive experience. I will guide you on how to work effectively in the real market, sharing practical insights and strategies",
+    des: "Hello, My name is Yatin Vohra. I am a full-stack developer and freelancer with a total of five years of experience in web development and freelancing. Over the years, I have created multiple websites for clients from all over the world. I have also been doing dropshipping for almost five years. I assure you that I will teach you web development and freelancing in the best way possible, based on my extensive experience. I will guide you on how to work effectively in the real market, sharing practical insights and strategies",
   },
 ];
 
