@@ -1,36 +1,32 @@
-import React, { Component, Fragment } from 'react';
-import Header from '../components/Header';
-import Upperheader from '../components/Upperheader';
-import Footer from '../components/Footer';
-
-import GoogleMapReact from 'google-map-react';
+import React, { Component, Fragment } from "react";
+import Header from "../components/Header";
+import Upperheader from "../components/Upperheader";
+import Footer from "../components/Footer";
+import GoogleMapReact from "google-map-react";
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 class Contact extends Component {
-  static defaultProps = {
-    center: {
-      lat: 59.95,
-      lng: 30.33,
-    },
-    zoom: 11,
-  };
   render() {
     return (
       <Fragment>
-        <Upperheader />
+        <style>
+          {`
+            .map-wrapper iframe {
+              border: none;
+            }
+          `}
+        </style>
         <Header />
         <div className="map-wrapper">
-          <div style={{ height: '600px', width: '100%' }}>
-            <GoogleMapReact
-              defaultCenter={this.props.center}
-              defaultZoom={this.props.zoom}
-            >
-              <AnyReactComponent
-                lat={59.955413}
-                lng={30.337844}
-                text="My Marker"
-              />
-            </GoogleMapReact>
+          <div style={{ border: "none" }}>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.2063592405652!2d77.31077127382802!3d28.443195092656573!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cdd5a5c0f5ee5%3A0xdb84e509fb0203a9!2sColadco%20Digital%20And%20Software%20Solutions!5e0!3m2!1sen!2sin!4v1720693848739!5m2!1sen!2sin"
+              width="100%"
+              height="450"
+              allowfullscreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
 
@@ -79,7 +75,7 @@ class Contact extends Component {
                             className="form-check-label font-xsss text-grey-500 fw-500"
                             htmlFor="exampleCheck1"
                           >
-                            I agree to the term of this{' '}
+                            I agree to the term of this{" "}
                             <a href="/contact" className="text-grey-600 fw-600">
                               Privacy Policy
                             </a>
@@ -113,28 +109,7 @@ class Contact extends Component {
                         few days.
                       </p>
                       <a
-                        href="/contact"
-                        className="fw-700 font-xsss text-primary"
-                      >
-                        Get in touch
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="col-lg-4 col-md-4 xs-mb-2">
-                    <div className="card shadow-xss border-0 p-5 rounded-lg">
-                      <span className="btn-round-xxxl alert-primary">
-                        <i className="feather-map-pin text-primary font-xl"></i>
-                      </span>
-                      <h2 className="fw-700 font-sm mt-4 mb-3 text-grey-900">
-                        Contact us
-                      </h2>
-                      <p className="font-xsss text-grey-500 fw-500 mb-3">
-                        Ask us a question by email and we will respond within a
-                        few days.
-                      </p>
-                      <a
-                        href="/contact"
+                        href="mailto:dummyemail@example.com"
                         className="fw-700 font-xsss text-primary"
                       >
                         Get in touch
@@ -151,14 +126,36 @@ class Contact extends Component {
                         Call us
                       </h2>
                       <p className="font-xsss text-grey-500 fw-500 mb-3">
-                        Ask us a question by email and we will respond within a
-                        few days.
+                        Reach out to us via phone for immediate assistance.
                       </p>
                       <a
-                        href="/contact"
+                        href="tel:+917042414212"
                         className="fw-700 font-xsss text-primary"
                       >
-                        Get in touch
+                        +91 70424 14212
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="col-lg-4 col-md-4 xs-mb-2">
+                    <div className="card shadow-xss border-0 p-5 rounded-lg">
+                      <span className="btn-round-xxxl alert-primary">
+                        <i className="feather-map-pin text-primary font-xl"></i>
+                      </span>
+                      <h2 className="fw-700 font-sm mt-4 mb-3 text-grey-900">
+                        Find us
+                      </h2>
+                      <p className="font-xsss text-grey-500 fw-500 mb-3">
+                        Click the link below to open our location on Google
+                        Maps.
+                      </p>
+                      <a
+                        href="https://maps.app.goo.gl/pwznxoVA3qsd7aTKA"
+                        className="fw-700 font-xsss text-primary"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Open Location
                       </a>
                     </div>
                   </div>
@@ -167,7 +164,7 @@ class Contact extends Component {
             </div>
           </div>
         </div>
-        <Footer />
+        <Footer bgColor="bg-dark" />
       </Fragment>
     );
   }

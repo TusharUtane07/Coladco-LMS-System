@@ -152,75 +152,69 @@
 
 //New Code
 
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import logo from "../assets/logo.jpg";
 
 const Header = ({ divClass, color = 'light' }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const toggleOpen = () => setIsOpen(!isOpen);
 
-  const toggleOpen = () => {
-    setIsOpen(!isOpen);
-  };
-
-  let colorClass = color === 'dark' ? 'text-white' : '';
+  const navClass = `${isOpen ? ' show' : ''}`;
+  const colorClass = color === 'dark' ? 'text-white' : '';
 
   return (
     <div className={`header-wrapper pt-3 pb-3 shadow-xss ${divClass}`}>
       <div className="container">
         <div className="row">
           <div className="col-lg-9 navbar pt-0 pb-0">
-            <Link to="/" className="navbar-brand">
-            <h1 className="fredoka-font ls-3 fw-700 text-current font-xxl">
-              <img
+            <Link to="/">
+            <div style={{display:"flex" }}>
+            <img
                 src={logo}
-                style={{ width: "70px", height: "70px", marginRight: "0.3rem" }}
+                style={{ width: "70px", height: "70px", marginRight: "0.3rem",marginTop:"3px" }}
                 alt="Logo"
               />
-              
+               <h1 className="fredoka-font ls-3 fw-700 text-current font-xxl mt-2">
                 Coladco
-                <span className="d-block font-xsssss ls-1 text-grey-500 open-font">
-                  Online Learning Platform
+                <span className="d-block font-xsssss ls-1 text-grey-500 open-font ">
+                  Online Learning Course
                 </span>
               </h1>
+            </div>
+             
             </Link>
             <button className="navbar-toggler" onClick={toggleOpen}>
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className={`collapse navbar-collapse${isOpen ? ' show' : ''}`} id="navbarNavDropdown">
-              <Navbar expand="lg" className="dropdown-navbar slide-navmenu nav-menu">
+            <div
+              className={`collapse navbar-collapse ${navClass}`}
+              id="navbarNavDropdown"
+            >
+              <Navbar expand="lg" className="nav-menu">
                 <Navbar id="basic-navbar-nav" className="w-100 d-block">
-                  <Nav className={`${colorClass}`}>
-                    <NavDropdown title="Home" id="basic-nav-dropdown">
-                      <NavDropdown.Item as={Link} to="/home-2">
-                        Home One
-                      </NavDropdown.Item>
-                      <NavDropdown.Item as={Link} to="/home-3">
-                        Home Two
-                      </NavDropdown.Item>
-                      <NavDropdown.Item as={Link} to="/home-4">
-                        Home Three
-                      </NavDropdown.Item>
-                      <NavDropdown.Item as={Link} to="/home-5">
-                        Home Four
-                      </NavDropdown.Item>
-                      <NavDropdown.Item as={Link} to="/home-6">
-                        Home Five
-                      </NavDropdown.Item>
-                    </NavDropdown>
-
-                    <NavDropdown.Item as={Link} to="/about" className="mr-4">
-                      About
-                    </NavDropdown.Item>
-
-                    <NavDropdown.Item as={Link} to="/course-details" className="mr-4">
-                      Course
-                    </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/contact">
-                      Contact
-                    </NavDropdown.Item>
+                  <Nav className={`${colorClass} w-100 d-flex justify-content-around`}>
+                    <Nav.Item>
+                      <Nav.Link as={Link} to="/home-5">
+                        Home
+                      </Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link as={Link} to="/about">
+                        About
+                      </Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link as={Link} to="/course-details">
+                        Course
+                      </Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link as={Link} to="/contact">
+                        Contact
+                      </Nav.Link>
+                    </Nav.Item>
                   </Nav>
                 </Navbar>
               </Navbar>
