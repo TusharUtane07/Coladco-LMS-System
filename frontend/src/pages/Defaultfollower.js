@@ -6,6 +6,8 @@ import Appheader from '../components/Appheader';
 import Profile from '../components/Profile';
 import Myclass from '../components/Myclass';
 import Subscribe from '../components/Subscribe';
+import useAxios from '../network/useAxios.js'
+import profile from '../assets/profile.jpg'
 
 const memberList = [
   {
@@ -59,6 +61,21 @@ const memberList = [
 ];
 
 const Defaultfollower = () => {
+
+  const { loading, data, error } = useAxios('http://127.0.0.1:8000/api/v1/all-profile-fetch/');
+
+  if (loading) {
+    console.log('Loading...');
+  }
+
+  if (error) {
+    console.log('Error:', error);
+  }
+
+  if (data) {
+    console.log('Data:', data.data);
+  }
+
   return (
     <Fragment>
       <div className="main-wrapper">
@@ -70,7 +87,7 @@ const Defaultfollower = () => {
           <div className="middle-sidebar-bottom">
             <div className="middle-sidebar-left">
               <div className="row">
-                {memberList.map((value, index) => (
+                {data?.data?.map((value, index) => (
                   <div key={index} className="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                     <div className="card mb-4 d-block w-100 shadow-xss rounded-lg p-4 border-0 text-center">
                       <Link
@@ -84,20 +101,20 @@ const Defaultfollower = () => {
                         className="ml-auto mr-auto rounded-lg overflow-hidden d-inline-block"
                       >
                         <img
-                          src={`assets/images/${value.imageUrl}`}
+                          src={profile}
                           alt="avater"
                           className="p-0 w100 shadow-xss"
                         />
                       </Link>
-                      <h4 className="fw-700 font-xs mt-3 mb-1">
-                        {value.name}{' '}
+                      <h4 className="fw-700 text-capitalize font-xs mt-3 mb-1">
+                        {value.username}{' '}
                         <i className="ti-check font-xssss btn-round-xs bg-success text-white ml-1"></i>
                       </h4>
                       <p className="fw-600 font-xssss text-grey-500 mt-0 mb-2">
                         {value.email}
                       </p>
                       <div className="clearfix"></div>
-                      <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
+                      {/* <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
                         Designer
                       </span>
                       <span className="dot ml-2 mr-2 d-inline-block btn-round-xss bg-grey"></span>
@@ -107,9 +124,9 @@ const Defaultfollower = () => {
                       <span className="dot ml-2 mr-2 d-inline-block btn-round-xss bg-grey"></span>
                       <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
                         HTML5
-                      </span>
+                      </span> */}
 
-                      <ul className="list-inline border-0 mt-4">
+                      {/* <ul className="list-inline border-0 mt-4">
                         <li className="list-inline-item text-center mr-4">
                           <h4 className="fw-700 font-md">
                             {value.Connections}{' '}
@@ -134,9 +151,9 @@ const Defaultfollower = () => {
                             </span>
                           </h4>
                         </li>
-                      </ul>
+                      </ul> */}
                       <Link
-                        to="/default-user-profile"
+                        to={`/default-user-profile/`}
                         className="mt-3 p-0 btn p-2 lh-24 w100 ml-1 ls-3 d-inline-block rounded-xl bg-current font-xsssss fw-700 ls-lg text-white"
                       >
                         View Profile

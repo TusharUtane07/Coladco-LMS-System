@@ -64,7 +64,7 @@ class ProfileSingleView(APIView):
     @staticmethod
     def get(request):
         try:
-            data = request.data
+            data = request.query_params
             profile_objs = ProfileManager.get_single_profile(data)
             serialized_data = ProfileSerializer(profile_objs, many=True).data
             return Response({"result": "success", "data": serialized_data, "message": ProfileConstants.SUCCESS}, 200)
