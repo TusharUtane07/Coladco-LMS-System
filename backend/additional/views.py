@@ -1,9 +1,9 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .constants import BookmarksConstants, TechToLearnConstants
-from .manage import BookmarksManager, TechToLearnManager
-from .serializers import BookmarksSerializer, TechToLearnSerializer
+from .constants import BookmarksConstants, TechToLearnConstants, SubscriptionsConstants
+from .manage import BookmarksManager, TechToLearnManager, SubscriptionsManager
+from .serializers import BookmarksSerializer, TechToLearnSerializer, SubscriptionsSerializer
 
 class BookmarksViewSet(APIView):
 
@@ -87,3 +87,45 @@ class TechToLearnSingleView(APIView):
             return Response({"result": "success", "message": TechToLearnConstants.SUCCESS}, 200)
         except Exception as err:
             return Response(str(err), 500)
+
+class SubscriptionsViewSet(APIView):
+
+    @staticmethod
+    def get(request):
+        try:
+            data = request.query_params
+            subscriptions_objs = SubscriptionsManager.get_all_subscriptions(data)
+            serialized_data = SubscriptionsSerializer(subscriptions_objs, many=True).data
+            return Response({"result": "success", "data": serialized_data, "message": SubscriptionsConstants.SUCCESS}, 200)
+        except Exception as err:
+            return Response({"result": "error", "message": str(err)}, 500)
+
+class SubscriptionsSingleView(APIView):
+
+    @staticmethod
+    def get(request):
+        try:
+            data = request.data
+            subscription_obj = SubscriptionsManager.get_single_subscription(data)
+            serialized_data = SubscriptionsSerializer(subscription_obj).data
+            return Response({"result": "success", "data": serialized_data, "message": SubscriptionsConstants.SUCCESS}, 200)
+        except Exception as err:
+            return Response({"result": "error", "message": str(err)}, 500)
+        
+    @staticmethod
+    def post(request):
+        try:
+            data = request.data
+            subscription_obj = SubscriptionsManager.update_single_subscription(data)
+            return Response({"result": "success", "message": SubscriptionsConstants.SUCCESS}, 200)
+        except Exception as err:
+            return Response({"result": "error", "message": str(err)}, 500)
+
+    @staticmethod
+    def delete(request):
+        try:
+            data = request.data
+            SubscriptionsManager.delete_single_subscription(data)
+            return Response({"result": "success", "message": SubscriptionsConstants.SUCCESS}, 200)
+        except Exception as err:
+            return Response({"result": "error", "message": str(err)}, 500)

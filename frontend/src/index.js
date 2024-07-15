@@ -24,6 +24,8 @@ import Adminreview from './pages/Adminreview';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
+import RegisterNext from './pages/RegisterNext';
+import JobPosting from './pages/JobPosting';
 import Forgot from './pages/Forgot';
 import Coming from './pages/Coming';
 import Notfound from './pages/Notfound';
@@ -174,6 +176,16 @@ class Root extends Component {
             exact
             path={`${process.env.PUBLIC_URL}/register`}
             component={Register}
+          />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/register-next`}
+            component={RegisterNext}
+          />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/job-posting`}
+            component={JobPosting}
           />
           <Route
             exact

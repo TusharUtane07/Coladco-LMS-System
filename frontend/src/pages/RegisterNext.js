@@ -1,15 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-class Register extends Component {
+class RegisterNext extends Component {
   state = {
-    name: '',
-    email: '',
-    phone: '',
+    password: '',
+    confirmPassword: '',
     errors: {
-      name: '',
-      email: '',
-      phone: '',
+      password: '',
+      confirmPassword: '',
     },
   };
 
@@ -19,29 +17,24 @@ class Register extends Component {
   };
 
   validateForm = () => {
-    const { name, email, phone } = this.state;
+    const { password, confirmPassword } = this.state;
     let errors = {};
     let formIsValid = true;
 
-    if (!name) {
+    if (!password) {
       formIsValid = false;
-      errors['name'] = 'Name is required';
+      errors['password'] = 'Password is required';
+    } else if (password.length <= 6) {
+      formIsValid = false;
+      errors['password'] = 'Password must be greater than 6 characters';
     }
 
-    if (!email) {
+    if (!confirmPassword) {
       formIsValid = false;
-      errors['email'] = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      errors['confirmPassword'] = 'Confirm password is required';
+    } else if (password !== confirmPassword) {
       formIsValid = false;
-      errors['email'] = 'Email is not valid';
-    }
-
-    if (!phone) {
-      formIsValid = false;
-      errors['phone'] = 'Phone number is required';
-    } else if (!/^\d{10}$/.test(phone)) {
-      formIsValid = false;
-      errors['phone'] = 'Phone number must be 10 digits';
+      errors['confirmPassword'] = 'Passwords do not match';
     }
 
     this.setState({ errors });
@@ -53,12 +46,12 @@ class Register extends Component {
     if (this.validateForm()) {
       // Submit form
       console.log('Form submitted');
-      this.props.history.push('/register-next');
+      this.props.history.push('/'); 
     }
   };
 
   render() {
-    const { name, email, phone, errors } = this.state;
+    const { password, confirmPassword, errors } = this.state;
 
     return (
       <Fragment>
@@ -76,44 +69,47 @@ class Register extends Component {
                 <div className="card-body rounded-0 text-left">
                   <h2 className="fw-700 display1-size display2-md-size mb-4">
                     Create <br />
-                    your account
+                    your password
                   </h2>
                   <form onSubmit={this.handleSubmit}>
                     <div className="form-group icon-input mb-3">
                       <i className="font-sm ti-user text-grey-500 pr-0"></i>
                       <input
-                        type="text"
-                        name="name"
+                        type="password"
+                        name="password"
                         className="style2-input pl-5 form-control text-grey-900 font-xsss fw-600"
-                        placeholder="Your Name"
-                        value={name}
+                        placeholder="Password"
+                        value={password}
                         onChange={this.handleChange}
                       />
-                      {errors.name && <div className="text-danger">{errors.name}</div>}
+                      {errors.password && <div className="text-danger">{errors.password}</div>}
                     </div>
                     <div className="form-group icon-input mb-3">
                       <i className="font-sm ti-email text-grey-500 pr-0"></i>
                       <input
-                        type="text"
-                        name="email"
+                        type="password"
+                        name="confirmPassword"
                         className="style2-input pl-5 form-control text-grey-900 font-xsss fw-600"
-                        placeholder="Your Email Address"
-                        value={email}
+                        placeholder="Confirm Password"
+                        value={confirmPassword}
                         onChange={this.handleChange}
                       />
-                      {errors.email && <div className="text-danger">{errors.email}</div>}
+                      {errors.confirmPassword && (
+                        <div className="text-danger">{errors.confirmPassword}</div>
+                      )}
                     </div>
-                    <div className="form-group icon-input mb-3">
-                      <i className="font-sm ti-email text-grey-500 pr-0"></i>
+                    <div className="form-check text-left mb-3">
                       <input
-                        type="number"
-                        name="phone"
-                        className="style2-input pl-5 form-control text-grey-900 font-xsss fw-600"
-                        placeholder="Your Phone Number"
-                        value={phone}
-                        onChange={this.handleChange}
+                        type="checkbox"
+                        className="form-check-input mt-2"
+                        id="exampleCheck1"
                       />
-                      {errors.phone && <div className="text-danger">{errors.phone}</div>}
+                      <label
+                        className="form-check-label font-xssss text-grey-500"
+                        htmlFor="exampleCheck1"
+                      >
+                        Accept Term and Conditions
+                      </label>
                     </div>
                     <div className="form-group mb-1">
                       <button
@@ -124,12 +120,6 @@ class Register extends Component {
                       </button>
                     </div>
                   </form>
-                  <h6 className="text-grey-500 font-xssss fw-500 mt-0 mb-0 lh-32">
-                    Already have account{' '}
-                    <a href="/login" className="fw-700 ml-1">
-                      Login
-                    </a>
-                  </h6>
                 </div>
               </div>
             </div>
@@ -140,4 +130,5 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default RegisterNext;
+ 

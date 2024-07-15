@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'feed',
     'course', 
     'additional',
-    'users'
+    'users',
+    'jobposting'
 ]
 
 MIDDLEWARE = [

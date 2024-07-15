@@ -29,6 +29,7 @@ urlpatterns = [
     path('api/v1/', include('feed.urls')),
     path('api/v1/', include('users.urls')),
     path('api/v1/', include('additional.urls')),
+    path('api/v1/', include('jobposting.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

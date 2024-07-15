@@ -1,7 +1,4 @@
-from additional.models import Bookmarks, TechToLearn
-
-
-from additional.models import Bookmarks
+from additional.models import Bookmarks, TechToLearn, Subscriptions
 
 class BookmarksManager:
 
@@ -84,3 +81,51 @@ class TechToLearnManager:
         tech_to_learn.delete()
         
         return tech_to_learn
+    
+class SubscriptionsManager:
+
+    @staticmethod
+    def get_all_subscriptions(data):
+        all_subscriptions_objs = Subscriptions.objects.all()
+        return all_subscriptions_objs
+
+    @staticmethod
+    def get_single_subscription(data):
+        subscription_id = data.get("subscriptionId", False)
+        if not subscription_id:
+            raise Exception("No subscription id provided")
+        subscription = Subscriptions.objects.filter(id=subscription_id).first()
+        if not subscription:
+            raise Exception("Subscription not found")
+        return subscription
+
+    @staticmethod
+    def update_single_subscription(data):
+        subscription_id = data.get("subscriptionId", False)
+        if not subscription_id:
+            raise Exception("No subscription id provided")
+        
+        subscription = Subscriptions.objects.filter(id=subscription_id).first()
+        if not subscription:
+            raise Exception("Subscription not found")
+        
+        subscription.user_id = data.get("userId", subscription.user_id)
+        subscription.course_id = data.get("courseId", subscription.course_id)
+        subscription.save()
+        
+        return subscription
+
+    @staticmethod
+    def delete_single_subscription(data):
+        subscription_id = data.get("subscriptionId", False)
+        if not subscription_id:
+            raise Exception("No subscription id provided")
+        
+        subscription = Subscriptions.objects.filter(id=subscription_id).first()
+        if not subscription:
+            raise Exception("Subscription not found")
+        
+        subscription.delete()
+        
+        return subscription
+    
