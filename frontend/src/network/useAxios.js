@@ -1,32 +1,55 @@
+/* eslint-disable */
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { useRouter } from "../hooks/use-router";
 
-const useAxios = (url) => {
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const response = await axios.get(url);
-        setData(response.data);
-        setError(null);
-      } catch (err) {
-        setError(err);
-        setData(null);
-      } finally {
-        setLoading(false);
-      }
-    };
+const useAxios = () => {
+    const router = useRouter();
 
-    if (url) {
-      fetchData();
+    const [response, setResponse] = useState([]);
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false); 
+    const [controller, setController] = useState();
+
+    const axiosFetch = async (configObj) => {
+
+        const {
+            axiosInstance,
+            method,
+            url,
+            requestConfig = {}
+        } = configObj;
+        try {
+            // axiosInstance.defaults.headers['jwtToken'] = token;
+            setLoading(true);
+            const ctrl = new AbortController();
+            setController(ctrl);
+            const res = await axiosInstance[method.toLowerCase()](url, {
+                ...requestConfig
+            });
+            setResponse(res.data);
+        } catch (err) {
+            setError(err);
+            if (err?.response?.status === 404) {
+                setError(err);
+            }
+            if (err?.response?.status === 403) {
+                router.push("/login-phone")
+            }
+            else{
+                setError(err);
+            }
+        } finally {
+            setLoading(false);
+        }
     }
-  }, [url]);
 
-  return { loading, data, error };
-};
+    useEffect(() => {
+        const check = controller && controller.abort()
+        return () => check;
+    }, [controller]);
 
-export default useAxios;
+    return [response, error, loading, axiosFetch, setError];
+}
+
+export default useAxios

@@ -16,7 +16,7 @@ class Bookmarks(models.Model):
 class TechToLearn(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
-    thumbnail = models.ImageField(upload_to='thumbnails/')
+    thumbnail = models.ImageField(upload_to='techImages/')
     
     class Meta:
         managed = True

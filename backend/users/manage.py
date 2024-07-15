@@ -88,3 +88,11 @@ class ProfileManager:
             all_profile_objs[0].delete()
 
         return all_profile_objs
+
+
+    @staticmethod
+    def get_login_token(data):
+        username = data.get('username', False)
+        password = data.get('password', False)
+        all_profile_objs = Profile.objects.all()
+        return all_profile_objs

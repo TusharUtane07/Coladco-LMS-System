@@ -3,6 +3,8 @@ from django.urls import path
 from .views import UserSingleView, UserViewSet, ProfileViewSet, ProfileSingleView
 
 urlpatterns = [
+    path('get-login/', ProfileViewSet.as_view(), name='get-login'),
+    path('register-profile/', ProfileViewSet.as_view(), name='register-profile'),
     path('all-profile-fetch/', ProfileViewSet.as_view(), name='all-profile-fetch'),
     path('single-profile-fetch/', ProfileSingleView.as_view(), name='single-profile-fetch'),
     path('single-profile-update/', ProfileSingleView.as_view(), name='single-profile-update'),

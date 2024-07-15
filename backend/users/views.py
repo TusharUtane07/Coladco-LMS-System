@@ -88,3 +88,16 @@ class ProfileSingleView(APIView):
             return Response({"result": "success", "message": ProfileConstants.SUCCESS}, 200)
         except Exception as err:
             return Response(str(err), 500)
+
+
+class GetLoginToken(APIView):
+
+    @staticmethod
+    def post(request):
+        try:
+            data = request.data
+            profile_objs = ProfileManager.get_login_token(data)
+            serialized_data = ProfileSerializer(profile_objs, many=True).data
+            return Response({"result": "success", "data": serialized_data, "message": ProfileConstants.SUCCESS}, 200)
+        except Exception as err:
+            return Response(str(err), 500)
