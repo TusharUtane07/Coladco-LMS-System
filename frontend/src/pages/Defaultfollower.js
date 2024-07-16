@@ -62,7 +62,7 @@ const memberList = [
 
 const Defaultfollower = () => {
 
-  const { loading, data, error } = useAxios('http://127.0.0.1:8000/api/v1/all-profile-fetch/');
+  const { loading, data, error } = useAxios();
 
   if (loading) {
     console.log('Loading...');

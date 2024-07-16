@@ -10,3 +10,8 @@ class TechToLearnSerializer(serializers.ModelSerializer):
     class Meta:
         model = TechToLearn
         fields = '__all__'
+
+class SubscriptionsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TechToLearn
+        fields = '__all__'

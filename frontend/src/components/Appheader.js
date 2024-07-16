@@ -154,10 +154,7 @@ class Appheader extends Component {
             <div className="nav-content">
               <div className="nav-top">
                 <Link to="/">
-                  <img src={logo} style={{ width: '60px', height: '60px' ,marginTop:"0.5rem"}} alt="Logo" />
-                  <span className="d-inline-block fredoka-font ls-3 fw-600 text-current font-xl logo-text mb-0">
-                  Coladco
-                  </span>
+                  <img src={logo} style={{  height: '7rem', margin: "auto" ,marginTop:"1.5rem"}} alt="Logo" />
                 </Link>
                 <span
                   onClick={this.toggleOpen}
@@ -167,7 +164,7 @@ class Appheader extends Component {
                 </span>
               </div>
               <div className="nav-caption fw-600 font-xssss text-grey-500">
-                <span>New </span>Feeds
+               
               </div>
               <ul className="mb-3">
                 <li className="logo d-none d-xl-block d-lg-block"></li>
@@ -191,6 +188,17 @@ class Appheader extends Component {
                   >
                     <i className="feather-rss mr-3"></i>
                     <span>Feed</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    activeClassName="active"
+                    to="/job-posting"
+                    className="nav-content-bttn open-font"
+                    data-tab="feed"
+                  >
+                    <i className="feather-rss mr-3"></i>
+                    <span>Job Posting</span>
                   </NavLink>
                 </li>
                 <li>
