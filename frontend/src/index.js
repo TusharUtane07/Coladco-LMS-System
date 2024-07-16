@@ -88,6 +88,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import Feed from './pages/Feed';
 import SingleFeedPage from './pages/SingleFeedPage';
+import JobListingDetails from './pages/JobListingDetails';
 
 class Root extends Component {
   render() {
@@ -186,6 +187,11 @@ class Root extends Component {
             exact
             path={`${process.env.PUBLIC_URL}/job-posting`}
             component={JobPosting}
+          />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/job-listing/id`}
+            component={JobListingDetails}
           />
           <Route
             exact
