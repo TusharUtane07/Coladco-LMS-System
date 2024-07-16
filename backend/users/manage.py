@@ -94,5 +94,7 @@ class ProfileManager:
     def get_login_token(data):
         username = data.get('username', False)
         password = data.get('password', False)
-        all_profile_objs = Profile.objects.all()
-        return all_profile_objs
+        all_profile_objs = User.objects.filter(username=username, password=password)
+        if all_profile_objs:
+            return True
+        return False

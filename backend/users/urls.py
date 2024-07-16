@@ -1,9 +1,9 @@
 from django.urls import path
 
-from .views import UserSingleView, UserViewSet, ProfileViewSet, ProfileSingleView
+from .views import UserSingleView, UserViewSet, ProfileViewSet, ProfileSingleView, GetLoginToken
 
 urlpatterns = [
-    path('get-login/', ProfileViewSet.as_view(), name='get-login'),
+    path('/login-user/', GetLoginToken.as_view(), name='login-user'),
     path('register-profile/', ProfileViewSet.as_view(), name='register-profile'),
     path('all-profile-fetch/', ProfileViewSet.as_view(), name='all-profile-fetch'),
     path('single-profile-fetch/', ProfileSingleView.as_view(), name='single-profile-fetch'),

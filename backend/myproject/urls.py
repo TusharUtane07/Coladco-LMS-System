@@ -25,11 +25,11 @@ from myproject import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include('course.urls')),
-    path('api/v1/', include('feed.urls')),
-    path('api/v1/', include('users.urls')),
-    path('api/v1/', include('additional.urls')),
-    path('api/v1/', include('jobposting.urls')),
+    path('api/v1/course', include('course.urls')),
+    path('api/v1/feed', include('feed.urls')),
+    path('api/v1/users', include('users.urls')),
+    path('api/v1/additional', include('additional.urls')),
+    path('api/v1/jobposting', include('jobposting.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

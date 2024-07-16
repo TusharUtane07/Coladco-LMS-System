@@ -1,7 +1,19 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useAxios from '../network/useAxios';
+import { loginFunctionApi } from '../urls/urls';
 
 const Login = () => {
+  const [logineResponse, logineError, logineLoading, logineFetch] = useAxios();
+  const [formValues, setFormValues] = useState({})
+  const loginFunction = () => {
+    logineFetch(loginFunctionApi(formValues))
+  }
+  useEffect(()=>{
+    if(logineError){
+      console.log(logineError)
+    }
+  },[logineError])
   return (
     <Fragment>
       <div className="main-wrap">
@@ -27,6 +39,9 @@ const Login = () => {
                       type="text"
                       className="style2-input pl-5 form-control text-grey-900 font-xssss fw-600"
                       placeholder="Email Address"
+                      onChange={(e)=>{
+                        setFormValues((prev)=>({...prev, username:e.target.value}))
+                      }}
                     />
                   </div>
                   <div className="form-group icon-input mb-1">
@@ -34,6 +49,9 @@ const Login = () => {
                       type="Password"
                       className="style2-input pl-5 form-control text-grey-900 font-xssss ls-3"
                       placeholder="Password"
+                      onChange={(e)=>{
+                        setFormValues((prev)=>({...prev, password:e.target.value}))
+                      }}
                     />
                     <i className="font-sm ti-lock text-grey-500 pr-0"></i>
                   </div>
@@ -61,10 +79,13 @@ const Login = () => {
                 <div className="col-sm-12 p-0 text-left">
                   <div className="form-group mb-1">
                     <Link
-                      to="/default"
+                    onClick={()=>{
+                      loginFunction()
+                    }}
+                     
                       className="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0"
                     >
-                      Login
+                     {logineLoading ? "loading" : "Login" } 
                     </Link>
                   </div>
                 </div>
