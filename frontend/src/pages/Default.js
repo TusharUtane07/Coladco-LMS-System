@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useEffect, useState } from "react";
 import Appfooter from "../components/Appfooter";
 import Navheader from "../components/Navheader";
 import Appheader from "../components/Appheader";
@@ -7,6 +7,9 @@ import Subscribe from "../components/Subscribe";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import Myclass from "../components/Myclass";
+import useAxios from "../network/useAxios";
+import { courseApi, techToLearnApi } from "../urls/urls";
+import { test_url_images } from "../config/environment";
 
 const latestList = [
   {
@@ -203,6 +206,31 @@ const memberList = [
 ];
 
 const Default = () => {
+
+  const [techToLearnResponse, techToLearnError, techToLearnLoading, techToLearnFetch] = useAxios();
+  const [courseResponse, courseError, courseLoading, courseFetch] = useAxios();
+
+  const [tech, setTech] = useState([]);
+  const [course, setCourse] = useState([]);
+  
+  useEffect(()=> {
+    techToLearnFetch(techToLearnApi())
+    courseFetch(courseApi())
+  }, [])
+  
+  useEffect(() => {
+    if (techToLearnResponse?.data) {
+      setTech(techToLearnResponse.data)
+      console.log(techToLearnResponse.data)
+    }
+    if(courseResponse?.data){
+      setCourse(courseResponse.data)
+      console.log(courseResponse.data)
+    }
+  }, [])
+
+  console.log(techToLearnLoading)
+
     const categorysettings = {
       arrows: true,
       dots: false,
@@ -324,33 +352,36 @@ const Default = () => {
                     </h2>
                   </div>
                   <div className="col-lg-12 mt-3">
-                    <Slider {...categorysettings}>
-                      {classesList.map((value, index) => (
+                  {techToLearnLoading ? (
+  <p>Loading...</p>
+) : (
+  <Slider {...categorysettings}>
+    {tech && techToLearnResponse?.data?.map((value, index) => (
                         <div
                           key={index}
                           className="card cat-card-hover mr-3 w140 border-0 p-0 text-center"
                         >
                           <div
                             className="card-body p-4 ml-0 rounded-lg"
-                            style={{ background: `${value.bg}` }}
+                            // style={{ background: `${value.bg}` }}
                           >
                             <a href="/" className="btn-round-xl bg-white">
                               <img
-                                src={`assets/images/${value.imageUrl}`}
+                                src={`${test_url_images + value?.thumbnail}`}
                                 alt="icon"
                                 className="p-2 w-100"
                               />
                             </a>
                             <h4 className="fw-600 font-xsss mt-3 mb-0">
-                              {value.title}
-                              <span className="d-block font-xsssss fw-500 text-grey-500 mt-2">
+                              {value.name}
+                              {/* <span className="d-block font-xsssss fw-500 text-grey-500 mt-2">
                                 {value.num}
-                              </span>
+                              </span> */}
                             </h4>
                           </div>
                         </div>
                       ))}
-                    </Slider>
+                    </Slider>)}
                   </div>
                   <div className="col-lg-12 pt-4 mb-3">
                     <h2 className="fw-400 font-lg d-block">
@@ -363,7 +394,7 @@ const Default = () => {
                   <div className="col-lg-12 mt-3 pr-3 pl-3 ">
                     {/* <Slider {...popularSlider}> */}
                     <Slider {...categorysettings}>
-                      {popularList.map((value, index) => (
+                      {courseResponse?.data?.map((value, index) => (
                         <div
                           className="card course-card vw-100 h-25 shadow-xss border-0 rounded-lg overflow-hidden mb-4"
                           key={index}
@@ -377,7 +408,7 @@ const Default = () => {
                               className="video-bttn position-relative d-block"
                             >
                               <img
-                                src={`assets/images/${value.imageUrl}`}
+                                src={`${test_url_images + value.thumbnail}`}
                                 alt="course"
                                 className="w-100"
                               />
@@ -387,7 +418,7 @@ const Default = () => {
                             <span
                               className={`font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-lg ls-2 d-inline-block mr-1 ${value.status}`}
                             >
-                              {value.tag}
+                              {value.price}
                             </span>
                             <span className="font-xss fw-700 pl-3 pr-3 ls-2 lh-32 d-inline-block text-success float-right">
                               <span className="font-xsssss">₹</span>
@@ -398,7 +429,7 @@ const Default = () => {
                                 to="/coursedetails"
                                 className="text-dark text-grey-900"
                               >
-                                {value.title}
+                                {value.name}
                               </span>
                             </h4>
                             <h6 className="font-xssss text-grey-500 fw-600 ml-0 mt-2">

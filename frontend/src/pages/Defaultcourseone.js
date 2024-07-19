@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Appfooter from '../components/Appfooter';
 import Navheader from '../components/Navheader';
 import Appheader from '../components/Appheader';
@@ -8,18 +8,46 @@ import Subscribe from '../components/Subscribe';
 import { Accordion } from 'react-bootstrap';
 import ReactPlayer from 'react-player';
 import { Modal, Input, Rate, Form, Button } from 'antd';
+import { courseApi, moduleApi } from '../urls/urls';
+import useAxios from '../network/useAxios';
 
 const Defaultcourseone = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState('');
 
+  const [courseResponse, courseError, courseLoading, courseFetch] = useAxios();
+  const [moduleResponse, moduleError, moduleLoading, moduleFetch] = useAxios();
+
+  const [course, setCourse] = useState([]);
+  const [module, setModule] = useState([]);
+  
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await courseFetch(courseApi());
+      await moduleFetch(moduleApi());
+    };
+
+    fetchData();
+  }, []);
+  
+  useEffect(() => {
+    if (courseResponse?.data) {
+      setCourse(courseResponse.data);
+      console.log(courseResponse.data);
+    }
+    if (moduleResponse?.data) {
+      setModule(moduleResponse.data);
+      console.log(moduleResponse.data);
+    }
+  }, [courseResponse, moduleResponse]);
+
   const showModal = () => {
     setIsModalOpen(true);
   };
 
   const handleOk = () => {
-    // Handle form submission or any other logic here
     console.log('Rating:', rating);
     console.log('Review:', review);
     setIsModalOpen(false);
@@ -63,8 +91,7 @@ const Defaultcourseone = () => {
                     <div className="row">
                       <div className="col-10">
                         <h2 className="fw-700 font-md d-block lh-4 mb-2">
-                          Microsoft Access Development, Design and Advanced
-                          Methods Workshop Tutorial
+                        {course ? <p>{course[0]?.name}</p> : <p>Loading course...</p>}
                         </h2>
                       </div>
                       <div className="col-2">
@@ -336,26 +363,11 @@ const Defaultcourseone = () => {
                       Description
                     </h2>
                     <p className="font-xssss fw-500 lh-28 text-grey-600 mb-0 pl-2">
-                      After creating more than a dozen courses on Microsoft
-                      Access databases and programming in VBA, many students
-                      have contacted me with discussions on specific problems
-                      and scenarios. From these discussions, I have created
-                      videos reviewing the details of the most useful techniques
-                      that everyone will eventually need. I have made sure that
-                      every detail of these techniques is recorded in the
-                      videos! BUT you should be somewhat familiar with VBA since
-                      there are lots of coding examples in the course. <br />{" "}
-                      There are MANY tips and tricks in this workshop that you
-                      will not find an ANY of my other courses! <br /> I also
-                      include a specific database design challenge from a
-                      student and then go over the details of how I would handle
-                      it. <br /> If you are willing to take the time to go
-                      through this course you could easily be much more
-                      productive with Microsoft Access in just a few hours.
+                    {course ? <p>{course[0]?.description}</p> : <p>Loading course...</p>}
                     </p>
                   </div>
 
-                  <div className="card d-block border-0 rounded-lg overflow-hidden p-4 shadow-xss mt-4 mb-5">
+                  {/* <div className="card d-block border-0 rounded-lg overflow-hidden p-4 shadow-xss mt-4 mb-5">
                     <h2 className="fw-700 font-sm mb-3 mt-1 pl-1 mb-3">
                       Requirements
                     </h2>
@@ -365,7 +377,7 @@ const Defaultcourseone = () => {
                       have contacted me with discussions on specific problems
                       and scenarios. From these discussions.
                     </p>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="col-xl-4 col-xxl-3">
                   {/* <div className="card p-4 mb-4 bg-primary border-0 shadow-xss rounded-lg"> */}
@@ -401,70 +413,31 @@ const Defaultcourseone = () => {
                       </div> */}
                   {/* </div> */}
                   <div className="card shadow-xss rounded-lg border-0 p-4 mb-4">
-                    <h4 className="font-xs fw-700 text-grey-900 d-block mb-3">
-                      Modul
+                      <h4 className="font-xs fw-700 text-grey-900 d-block mb-3">
+                      Module
                       <a href="/default-course-one" className="float-right">
                         <i className="ti-arrow-circle-right text-grey-500 font-xss"></i>
                       </a>
                     </h4>
+                    { module?.map((item) => {
+                      return(
+
+  <>
                     <div className="card-body d-flex p-0">
                       <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                        1
+                        {item?.id}
                       </span>
                       <span className="font-xssss fw-500 text-grey-500 ml-2">
-                        Introduction
+                       {item.name}
                       </span>
                       <span className="ml-auto font-xssss fw-500 text-grey-500">
-                        12:34
+                       10:34
                       </span>
                     </div>
-                    <div className="card-body d-flex p-0 mt-3">
-                      <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                        2
-                      </span>
-                      <span className="font-xssss fw-500 text-grey-500 ml-2">
-                        Watch the videos
-                      </span>
-                      <span className="ml-auto font-xssss fw-500 text-grey-500">
-                        22:34
-                      </span>
-                    </div>
-
-                    <div className="card-body d-flex p-0 mt-3">
-                      <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                        3
-                      </span>
-                      <span className="font-xssss fw-500 text-grey-500 ml-2">
-                        Creating a sliding
-                      </span>
-                      <span className="ml-auto font-xssss fw-500 text-grey-500">
-                        34:34
-                      </span>
-                    </div>
-
-                    <div className="card-body d-flex p-0 mt-3">
-                      <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                        4
-                      </span>
-                      <span className="font-xssss fw-500 text-grey-500 ml-2">
-                        Make a Dropdown
-                      </span>
-                      <span className="ml-auto font-xssss fw-500 text-grey-500">
-                        40:34
-                      </span>
-                    </div>
-
-                    <div className="card-body d-flex p-0 mt-3">
-                      <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                        5
-                      </span>
-                      <span className="font-xssss fw-500 text-grey-500 ml-2">
-                        Conclusion
-                      </span>
-                      <span className="ml-auto font-xssss fw-500 text-grey-500">
-                        2:34
-                      </span>
-                    </div>
+</>
+)
+                    })
+                    }
                   </div>
                   <div className="card w-100 border-0 mt-0 mb-4 p-4 shadow-xss position-relative rounded-lg bg-white">
                     <div className="row">

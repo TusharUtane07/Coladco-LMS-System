@@ -13,3 +13,33 @@ export const loginFunctionApi = (payload_data) => {
 export const userRegisterFunctionApi = (payload_data) => {
   return project.post(Urls.LOGIN_USER, payload_data);
 };
+
+// tech to learn 
+export const techToLearnApi = () => {
+  return project.get(Urls.TECH_TO_LEARN)
+}
+
+// course 
+export const courseApi = () => {
+  return project.get(Urls.COURSE)
+}
+
+// modules
+export const moduleApi = () => {
+  return project.get(Urls.MODULE)
+}
+
+// people
+export const peopleApi = () => {
+  return project.get(Urls.PEOPLE)
+}
+
+// job posting
+export const jobPostingApi = () => {
+  return project.get(Urls.JOBPOSTING)
+}
+
+// post
+export const feedPostApi = () => {
+  return project.get(Urls.FEEDPOST)
+}

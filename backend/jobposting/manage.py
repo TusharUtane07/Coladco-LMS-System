@@ -29,6 +29,7 @@ class JobPostingManager:
             raise Exception("Job posting not found")
         
         job_posting.company_name = data.get("companyName", job_posting.company_name)
+        job_posting.company_job_profile = data.get("jobProfile", job_posting.job_profile)
         job_posting.years_of_experience = data.get("yearsOfExperience", job_posting.years_of_experience)
         job_posting.description = data.get("description", job_posting.description)
         job_posting.link = data.get("link", job_posting.link)

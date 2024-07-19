@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import FeedComponent from "../components/FeedComponent";
 import Appfooter from "../components/Appfooter";
 import Navheader from "../components/Navheader";
@@ -6,10 +6,28 @@ import Appheader from "../components/Appheader";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoShareOutline } from "react-icons/io5";
 import { GoComment } from "react-icons/go";
+import { feedPostApi } from "../urls/urls";
+import useAxios from "../network/useAxios";
 
 
 
 const Feed = () => {
+
+  const [feedPostResponse, feedPostError, feedPostLoading, feedPostFetch] = useAxios();
+
+  const [feedPost, setFeedPost] = useState([]);
+  
+  useEffect(()=> {
+    feedPostFetch(feedPostApi())
+  }, [])
+  
+  useEffect(() => {
+    if(feedPostFetch?.data){
+      setFeedPost(feedPostResponse?.data)
+      console.log(feedPostResponse)
+    }
+  }, [])
+
   return (
     <Fragment>
        <style>

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Appfooter from '../components/Appfooter';
 import Navheader from '../components/Navheader';
@@ -8,6 +8,7 @@ import Myclass from '../components/Myclass';
 import Subscribe from '../components/Subscribe';
 import useAxios from '../network/useAxios.js'
 import profile from '../assets/profile.jpg'
+import { peopleApi } from '../urls/urls.jsx';
 
 const memberList = [
   {
@@ -62,19 +63,21 @@ const memberList = [
 
 const Defaultfollower = () => {
 
-  const { loading, data, error } = useAxios();
 
-  if (loading) {
-    console.log('Loading...');
-  }
+  const [peopleResponse, peopleError, peopleLoading, peopleFetch] = useAxios();
 
-  if (error) {
-    console.log('Error:', error);
-  }
-
-  if (data) {
-    console.log('Data:', data.data);
-  }
+  const [people, setPeople] = useState([]);
+  
+  useEffect(()=> {
+    peopleFetch(peopleApi())
+  }, [])
+  
+  useEffect(() => {
+    if(peopleResponse?.data){
+      setPeople(peopleResponse?.data)
+      console.log(peopleResponse?.data)
+    }
+  }, [])
 
   return (
     <Fragment>
@@ -84,10 +87,10 @@ const Defaultfollower = () => {
         <div className="main-content">
           <Appheader />
 
-          <div className="middle-sidebar-bottom">
+          <div className="middle-sidebar-bottom">  
             <div className="middle-sidebar-left">
               <div className="row">
-                {data?.data?.map((value, index) => (
+                {peopleResponse?.data?.map((value, index) => (
                   <div key={index} className="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                     <div className="card mb-4 d-block w-100 shadow-xss rounded-lg p-4 border-0 text-center">
                       <Link
