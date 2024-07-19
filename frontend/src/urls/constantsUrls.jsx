@@ -12,7 +12,16 @@ export class Urls {
     // course
     static COURSE = Urls.MPHRMS_API_PREFIX + 'course/all-courses-fetch/'
 
+    // module
+    static MODULE = Urls.MPHRMS_API_PREFIX + 'course/all-modules-fetch/'
+
     // people
     static PEOPLE = Urls.MPHRMS_API_PREFIX + 'users/all-profile-fetch/'
+
+    // job posting
+    static JOBPOSTING = Urls.MPHRMS_API_PREFIX + 'jobposting/all-job-postings-fetch/'
+    
+    // feed post 
+    static FEEDPOST = Urls.MPHRMS_API_PREFIX + 'feed/all-posts-fetch/'
 
 }

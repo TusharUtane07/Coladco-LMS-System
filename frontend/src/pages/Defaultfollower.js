@@ -87,7 +87,7 @@ const Defaultfollower = () => {
         <div className="main-content">
           <Appheader />
 
-          <div className="middle-sidebar-bottom">
+          <div className="middle-sidebar-bottom">  
             <div className="middle-sidebar-left">
               <div className="row">
                 {peopleResponse?.data?.map((value, index) => (

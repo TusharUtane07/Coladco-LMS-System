@@ -24,7 +24,22 @@ export const courseApi = () => {
   return project.get(Urls.COURSE)
 }
 
+// modules
+export const moduleApi = () => {
+  return project.get(Urls.MODULE)
+}
+
 // people
 export const peopleApi = () => {
   return project.get(Urls.PEOPLE)
+}
+
+// job posting
+export const jobPostingApi = () => {
+  return project.get(Urls.JOBPOSTING)
+}
+
+// post
+export const feedPostApi = () => {
+  return project.get(Urls.FEEDPOST)
 }

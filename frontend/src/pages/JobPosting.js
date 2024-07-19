@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, useEffect, useState } from 'react';
 import Appfooter from '../components/Appfooter';
 import Navheader from '../components/Navheader';
 import Appheader from '../components/Appheader';
@@ -7,6 +7,8 @@ import Myclass from '../components/Myclass';
 import Subscribe from '../components/Subscribe';
 import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
+import { jobPostingApi } from '../urls/urls';
+import useAxios from '../network/useAxios.js'
 
 const popularList = [
   {
@@ -33,9 +35,22 @@ const popularList = [
   },
   
 ];
+const JobPosting = () => {
 
-class JobPosting extends Component {
-  render() {
+  const [jobPostingResponse, jobPostingError, jobPostingLoading, jobPostingFetch] = useAxios();
+
+  const [jobPosting, setJobPosting] = useState([]);
+  
+  useEffect(()=> {
+    jobPostingFetch(jobPostingApi())
+  }, [])
+  
+  useEffect(() => {
+    if(jobPostingFetch?.data){
+      setJobPosting(jobPostingResponse?.data)
+      console.log(jobPostingResponse)
+    }
+  }, [])
     
     const popularSlider = {
       arrows: false,
@@ -59,7 +74,7 @@ class JobPosting extends Component {
                 <div className="row">                  
                   <div className="col-lg-12 mt-3 d-flex flex-row justify-content-center">
                     
-                      {popularList.map((value, index) => (
+                      {jobPostingResponse?.data?.map((value, index) => (
                         <div
                           className="card course-card w300 p-0 shadow-xss border-0 rounded-lg overflow-hidden mr-3 mb-4"
                           key={index}
@@ -82,11 +97,11 @@ class JobPosting extends Component {
                                 to="/job-listing/id"
                                 className="text-dark text-grey-900"
                               >
-                                {value.title}
+                                {value.company_name}
                               </Link>
                             </h4>
                             <h6 className="font-xssss text-grey-500 fw-600 ml-0 mt-2">
-                              Amazon
+                              YOE: {value.years_of_experience}
                             </h6>
                           </div>
                         </div>
@@ -111,6 +126,6 @@ class JobPosting extends Component {
       </Fragment>
     );
   }
-}
+
 
 export default JobPosting;
