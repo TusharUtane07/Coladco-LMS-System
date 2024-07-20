@@ -23,6 +23,11 @@ from django.conf.urls.static import static
 
 from myproject import settings
 
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/course', include('course.urls')),
@@ -30,6 +35,8 @@ urlpatterns = [
     path('api/v1/users', include('users.urls')),
     path('api/v1/additional', include('additional.urls')),
     path('api/v1/jobposting', include('jobposting.urls')),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
