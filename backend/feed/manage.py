@@ -1,11 +1,11 @@
-from feed.models import Post, Comments
+from feed.models import Post
 
 
 class PostManager:
 
     @staticmethod
     def get_all_posts(data):
-        all_posts_objs = Post.objects.all()
+        all_posts_objs = Post.objects.filter().prefetch_related("post_comments")
         return all_posts_objs
 
     @staticmethod
@@ -46,7 +46,8 @@ class CommentsManager:
 
     @staticmethod
     def get_all_comments(data):
-        all_comments_objs = Comments.objects.all()
+        # all_comments_objs = Comments.objects.all()
+        all_comments_objs = []
         return all_comments_objs
 
     @staticmethod
@@ -54,7 +55,8 @@ class CommentsManager:
         comments_id = data.get("commentsId", False)
         if not comments_id:
             raise Exception("No Comment id provided")
-        all_comments_objs = Comments.objects.filter(id=comments_id)
+        # all_comments_objs = Comments.objects.filter(id=comments_id)
+        all_comments_objs = []
         return all_comments_objs
     
     @staticmethod
@@ -63,7 +65,8 @@ class CommentsManager:
         if not comment_id:
             raise Exception("No comment id provided")
         
-        all_comments_objs = Comments.objects.filter(id=comment_id)
+        all_comments_objs = []
+        # all_comments_objs = Comments.objects.filter(id=comment_id)
         if all_comments_objs:
             comment = all_comments_objs[0]
             comment.message = data.get("message", comment.message)
@@ -77,7 +80,8 @@ class CommentsManager:
         if not comment_id:
             raise Exception("No comment id provided")
         
-        all_comments_objs = Comments.objects.filter(id=comment_id)
+        all_comments_objs = []
+        # all_comments_objs = Comments.objects.filter(id=comment_id)
         if all_comments_objs:
             all_comments_objs[0].delete()
         

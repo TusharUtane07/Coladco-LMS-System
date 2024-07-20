@@ -173,15 +173,10 @@ const Header = ({ divClass, color = 'light' }) => {
             <div style={{display:"flex" }}>
             <img
                 src={logo}
-                style={{ width: "70px", height: "70px", marginRight: "0.3rem",marginTop:"3px" }}
+                style={{ width: "86px", height: "76px", marginRight: "0.3rem",marginTop:"3px" }}
                 alt="Logo"
               />
-               <h1 className="fredoka-font ls-3 fw-700 text-current font-xxl mt-2">
-                Coladco
-                <span className="d-block font-xsssss ls-1 text-grey-500 open-font ">
-                  Online Learning Course
-                </span>
-              </h1>
+               
             </div>
              
             </Link>
@@ -196,7 +191,7 @@ const Header = ({ divClass, color = 'light' }) => {
                 <Navbar id="basic-navbar-nav" className="w-100 d-block">
                   <Nav className={`${colorClass} w-100 d-flex justify-content-around`}>
                     <Nav.Item>
-                      <Nav.Link as={Link} to="/home-5">
+                      <Nav.Link as={Link} to="/">
                         Home
                       </Nav.Link>
                     </Nav.Item>

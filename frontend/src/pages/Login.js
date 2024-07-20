@@ -71,14 +71,14 @@ const Login = () => {
                       to="/forgot"
                       className="fw-600 font-xssss text-grey-700 mt-1 float-right"
                     >
-                      Forgot your Password?
+                      Forgot Your Password?
                     </Link>
                   </div>
                 </form>
 
                 <div className="col-sm-12 p-0 text-left">
                   <div className="form-group mb-1">
-                    <Link
+                    <button
                     onClick={()=>{
                       loginFunction()
                     }}
@@ -86,8 +86,18 @@ const Login = () => {
                       className="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0"
                     >
                      {logineLoading ? "loading" : "Login" } 
-                    </Link>
+                    </button>
+                    <button
+                    onClick={()=>{
+                      loginFunction()
+                    }}
+                     
+                      className="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0 mt-2"
+                    >
+                     {logineLoading ? "loading" : "Login" } 
+                    </button>
                   </div>
+                  
                 </div>
               </div>
             </div>

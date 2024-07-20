@@ -95,7 +95,8 @@ class Root extends Component {
     return (
       <BrowserRouter basename={'/'}>
         <Switch>
-          <Route exact path={`${process.env.PUBLIC_URL}/`} component={Login} />
+        <Route exact path={`/login`} component={Login} />
+
           <Route exact path={`${process.env.PUBLIC_URL}/demo`} component={Demo} />
 
           <Route
@@ -442,11 +443,7 @@ class Root extends Component {
             path={`${process.env.PUBLIC_URL}/home-3`}
             component={Homethree}
           />
-          <Route
-            exact
-            path={`${process.env.PUBLIC_URL}/home-5`}
-            component={Homefive}
-          />
+          
           <Route
             exact
             path={`${process.env.PUBLIC_URL}/home-6`}
@@ -471,6 +468,11 @@ class Root extends Component {
             exact
             path={`${process.env.PUBLIC_URL}/post/1`}
             component={SingleFeedPage}
+          />
+<Route
+            exact
+            path={`${process.env.PUBLIC_URL}/`}
+            component={Homefive}
           />
         </Switch>
       </BrowserRouter>
