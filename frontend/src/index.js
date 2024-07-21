@@ -91,6 +91,7 @@ import Feed from './pages/Feed';
 import SingleFeedPage from './pages/SingleFeedPage';
 import JobListingDetails from './pages/JobListingDetails';
 import VerifyOtp from './pages/VerifyOtp';
+import AdminJobPanel from './pages/AdminJobPannel';
 
 class Root extends Component {
   render() {
@@ -475,6 +476,11 @@ class Root extends Component {
             exact
             path={`${process.env.PUBLIC_URL}/feed`}
             component={Feed}
+          />
+           <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/admin-job-list`}
+            component={AdminJobPanel}
           />
           <Route
             exact

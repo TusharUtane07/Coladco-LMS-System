@@ -102,6 +102,24 @@ class Adminsidebar extends Component {
         <li className="has-droupdown nav-item">
           <Link to="#" className="navi-link">
             <i className="feather-user droupdown-toggle mr-2"></i>
+            <span>Jobs</span>
+          </Link>
+          <ul className="submenu">
+            <li className="nav-item">
+              <NavLink className="navi-link" to="/admin-job-list">
+                Job List
+              </NavLink>
+            </li>
+            {/* <li className="nav-item">
+              <NavLink className="navi-link" to="/admin-customerview">
+                Customer Details
+              </NavLink>
+            </li> */}
+          </ul>
+        </li>
+        <li className="has-droupdown nav-item">
+          <Link to="#" className="navi-link">
+            <i className="feather-user droupdown-toggle mr-2"></i>
             <span>Customer</span>
           </Link>
           <ul className="submenu">

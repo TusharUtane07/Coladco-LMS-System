@@ -24,6 +24,9 @@ class JobPostingViewSet(APIView):
                 "result": "error",
                 "message": str(err)
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    # @staticmethod
+    # def post(request):
+
 
 class JobPostingSingleView(APIView):
 
