@@ -30,7 +30,7 @@ class JobPostingSingleView(APIView):
     @staticmethod
     def get(request):
         try:
-            data = request.data
+            data = request.query_params
             job_posting_obj = JobPostingManager.get_single_job_posting(data)
             serialized_data = JobPostingSerializer(job_posting_obj).data
             return Response({

@@ -66,6 +66,7 @@ import Defaultlive from './pages/Defaultlive';
 import Defaultcourseone from './pages/Defaultcourseone';
 import Defaultcoursetwo from './pages/Defaultcoursetwo';
 import Defaultuserprofile from './pages/Defaultuserprofile';
+import SingleUserProfile from './pages/SingleUserProfile';
 import Defaultauthorprofile from './pages/Defaultauthorprofile';
 import Defaultanalytics from './pages/Defaultanalytics';
 
@@ -191,7 +192,7 @@ class Root extends Component {
           />
           <Route
             exact
-            path={`${process.env.PUBLIC_URL}/job-listing/id`}
+            path={`${process.env.PUBLIC_URL}/job-listing/:id`}
             component={JobListingDetails}
           />
           <Route
@@ -344,6 +345,11 @@ class Root extends Component {
             exact
             path={`${process.env.PUBLIC_URL}/default-user-profile`}
             component={Defaultuserprofile}
+          />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/user-profile/:id`}
+            component={SingleUserProfile}
           />
           <Route
             exact

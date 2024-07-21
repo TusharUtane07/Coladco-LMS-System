@@ -17,9 +17,11 @@ export class Urls {
 
     // people
     static PEOPLE = Urls.MPHRMS_API_PREFIX + 'users/all-profile-fetch/'
+    static USER_PROFILE = Urls.MPHRMS_API_PREFIX + 'users/single-profile-fetch/'
 
     // job posting
     static JOBPOSTING = Urls.MPHRMS_API_PREFIX + 'jobposting/all-job-postings-fetch/'
+    static JOBLISTINGDETAILS = Urls.MPHRMS_API_PREFIX + 'jobposting/single-job-posting-fetch/'
     
     // feed post 
     static FEEDPOST = Urls.MPHRMS_API_PREFIX + 'feed/all-posts-fetch/'

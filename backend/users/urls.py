@@ -6,7 +6,7 @@ urlpatterns = [
     path('/login-user/', GetLoginToken.as_view(), name='login-user'),
     path('register-profile/', ProfileViewSet.as_view(), name='register-profile'),
     path('/all-profile-fetch/', ProfileViewSet.as_view(), name='all-profile-fetch'),
-    path('single-profile-fetch/', ProfileSingleView.as_view(), name='single-profile-fetch'),
+    path('/single-profile-fetch/', ProfileSingleView.as_view(), name='single-profile-fetch'),
     path('single-profile-update/', ProfileSingleView.as_view(), name='single-profile-update'),
     path('single-profile-delete/', ProfileSingleView.as_view(), name='single-profile-delete'),
     

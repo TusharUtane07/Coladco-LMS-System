@@ -69,7 +69,7 @@ class Defaultsettings extends Component {
                             Acount
                           </div>
                           <ul className="list-inline mb-4">
-                            <li className="list-inline-item d-block border-bottom mr-0">
+                            {/* <li className="list-inline-item d-block border-bottom mr-0">
                               <Link to="/payment" className="pt-2 pb-2 d-flex">
                                 <i className="btn-round-md bg-mini-gradiant text-white feather-credit-card font-md mr-3"></i>{' '}
                                 <h4 className="fw-600 font-xssss mb-0 mt-3">
@@ -77,7 +77,7 @@ class Defaultsettings extends Component {
                                 </h4>
                                 <i className="ti-angle-right font-xsss text-grey-500 ml-auto mt-3"></i>
                               </Link>
-                            </li>
+                            </li> */}
                             <li className="list-inline-item d-block  mr-0">
                               <Link to="/password" className="pt-2 pb-2 d-flex">
                                 <i className="btn-round-md bg-blue-gradiant text-white feather-inbox font-md mr-3"></i>{' '}
@@ -92,7 +92,7 @@ class Defaultsettings extends Component {
                             Other
                           </div>
                           <ul className="list-inline">
-                            <li className="list-inline-item d-block border-bottom mr-0">
+                            {/* <li className="list-inline-item d-block border-bottom mr-0">
                               <Link
                                 to="/default-settings"
                                 className="pt-2 pb-2 d-flex"
@@ -103,7 +103,7 @@ class Defaultsettings extends Component {
                                 </h4>
                                 <i className="ti-angle-right font-xsss text-grey-500 ml-auto mt-3"></i>
                               </Link>
-                            </li>
+                            </li> */}
                             <li className="list-inline-item d-block border-bottom mr-0">
                               <Link
                                 to="/default-settings"
