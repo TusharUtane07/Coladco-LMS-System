@@ -363,7 +363,6 @@ const Default = () => {
                         >
                           <div
                             className="card-body p-4 ml-0 rounded-lg"
-                            // style={{ background: `${value.bg}` }}
                           >
                             <a href="/" className="btn-round-xl bg-white">
                               <img

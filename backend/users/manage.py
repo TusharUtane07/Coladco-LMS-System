@@ -99,7 +99,7 @@ class ProfileManager:
 
     @staticmethod
     def get_all_profile(data):
-        all_profile_objs = Profile.objects.all()
+        all_profile_objs = Profile.objects.filter().prefetch_related("user")
         return all_profile_objs
 
     @staticmethod
@@ -120,9 +120,10 @@ class ProfileManager:
         if all_profile_objs:
             profile = all_profile_objs[0]
             profile.email = data.get("email", profile.email)
-            profile.username = data.get("username", profile.username)
             profile.phone_number = data.get("phone_number", profile.phone_number)
-            profile.social = data.get("social", profile.social)
+            profile.linkedin = data.get("linkedin", profile.linkedin)
+            profile.twitter = data.get("twitter", profile.twitter)
+            profile.instagram = data.get("instagram", profile.instagram)
             profile.bio = data.get("bio", profile.bio)
             profile.profile_image = data.get("profile_image", profile.profile_image)
             profile.save()

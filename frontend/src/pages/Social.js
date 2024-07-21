@@ -88,20 +88,6 @@ class Social extends Component {
                               />
                             </div>
                           </div>
-
-                          <div className="col-lg-6 mb-3">
-                            <div className="form-group">
-                              <label className="mont-font fw-600 font-xsss">
-                                Flickr
-                              </label>
-                              <input
-                                type="text"
-                                name="comment-name"
-                                className="form-control"
-                              />
-                            </div>
-                          </div>
-
                           <div className="col-lg-6 mb-3">
                             <div className="form-group">
                               <label className="mont-font fw-600 font-xsss">
@@ -114,33 +100,6 @@ class Social extends Component {
                               />
                             </div>
                           </div>
-
-                          <div className="col-lg-6 mb-3">
-                            <div className="form-group">
-                              <label className="mont-font fw-600 font-xsss">
-                                Skype
-                              </label>
-                              <input
-                                type="text"
-                                name="comment-name"
-                                className="form-control"
-                              />
-                            </div>
-                          </div>
-
-                          <div className="col-lg-6 mb-3">
-                            <div className="form-group">
-                              <label className="mont-font fw-600 font-xsss">
-                                Google
-                              </label>
-                              <input
-                                type="text"
-                                name="comment-name"
-                                className="form-control"
-                              />
-                            </div>
-                          </div>
-
                           <div className="col-lg-12 mb-0 mt-2">
                             <Link
                               to="/"

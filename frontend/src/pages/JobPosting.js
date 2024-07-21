@@ -81,7 +81,7 @@ const JobPosting = () => {
                         >
                           <div className="card-image w-100 mb-3">
                             <Link
-                              to="/job-listing/id"
+                              to={`/job-listing/${value.id}/`}
                               className=" position-relative d-block"
                             >
                               <img
@@ -94,7 +94,7 @@ const JobPosting = () => {
                           <div className="card-body pt-0">                            
                             <h4 className="fw-700 font-xss mt-3 lh-28 mt-0">
                               <Link
-                                to="/job-listing/id"
+                                to={`/job-listing/${value.id}/`}
                                 className="text-dark text-grey-900"
                               >
                                 {value.company_name}

@@ -5,7 +5,7 @@ class PostManager:
 
     @staticmethod
     def get_all_posts(data):
-        all_posts_objs = Post.objects.filter().prefetch_related("post_comments")
+        all_posts_objs = Post.objects.filter().prefetch_related("post_comments", "profile")
         return all_posts_objs
 
     @staticmethod

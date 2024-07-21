@@ -9,7 +9,6 @@ urlpatterns = [
     path('/single-profile-fetch/', ProfileSingleView.as_view(), name='single-profile-fetch'),
     path('/single-profile-update/', ProfileSingleView.as_view(), name='single-profile-update'),
     path('/single-profile-delete/', ProfileSingleView.as_view(), name='single-profile-delete'),
-    
     path('/all-users-fetch/', UserViewSet.as_view(), name='all-users-fetch'),
     path('/single-users-fetch/', UserSingleView.as_view(), name='single-users-fetch'),
     path('/single-users-update/', UserSingleView.as_view(), name='single-users-update'),

@@ -16,6 +16,8 @@ const Feed = () => {
   const [feedPostResponse, feedPostError, feedPostLoading, feedPostFetch] = useAxios();
 
   const [feedPost, setFeedPost] = useState([]);
+  const [formValues, setFormValues] = useState({})
+
   
   useEffect(()=> {
     feedPostFetch(feedPostApi())
@@ -70,57 +72,62 @@ const Feed = () => {
             </div>
           </div>
           <hr />
-		  <div 
-          className="feed-container" 
-          style={{
-            width: "97%",
-            padding: "1rem", 
-            border: "1px solid #ddd", 
-            borderRadius: "8px", 
-            boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-			marginLeft:"0.5rem",
-			marginRight:"0.5rem"
-          }}
-        >
-          <div style={{ display: "flex", gap: "1rem" }}>
-            <div>
-              <img
-                src="https://via.placeholder.com/150"
-                alt="Profile Image"
-                style={{ width: "4rem", borderRadius: "50%" }}
-              />
-            </div>
-            <div>
-              <h4>
-                Suraj Turkar<span> - Jul 2</span>
-              </h4>
-              <div>
-                <p>
-                  Can someone explain how Flexboxt works in CSS? I am trying to create a layout where items are centered both horizontally and vertically.
-                </p>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  marginTop: "0.5rem"
-                }}
-              >
+          { feedPostResponse?.data?.map((item, index) => {
+
+            return(
+              <div 
+              className="feed-container" 
+              style={{
+                width: "97%",
+                padding: "1rem", 
+                border: "1px solid #ddd", 
+                borderRadius: "8px", 
+                boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+                margin: "0.5rem"
+              }}
+            >
+              <div style={{ display: "flex", gap: "1rem", width: "100%" }}>
                 <div>
-                  <IoIosHeartEmpty size={20} />
+                  <img
+                    src="https://via.placeholder.com/150"
+                    alt="Profile Image"
+                    style={{ width: "4rem", borderRadius: "50%" }}
+                  />
                 </div>
-                <div>
-                  <GoComment size={20} />
-                </div>
-                <div>
-                  <IoShareOutline size={20} />
+                <div style={{ flexGrow: 1 }}>
+                  <h4 style={{textTransform: "capitalize"}}>
+                    {item?.profile?.user?.username}<span> - Jul 2</span>
+                  </h4>
+                  <div>
+                    <p>
+                      {item?.message}
+                    </p>
+                  </div>
                 </div>
               </div>
+                <div
+                  style={{
+                    width: "100%", 
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    marginTop: "0.5rem",
+                  }}
+                >
+                  <div>
+                    <IoIosHeartEmpty size={20} />
+                  </div>
+                  <div>
+                    <GoComment size={20} />
+                  </div>
+                  <div>
+                    <IoShareOutline size={20} />
+                  </div>
+                </div>
             </div>
-          </div>
-        
-        </div>
+          )
+          })
+          }
         </div>
         <Appfooter />
       </div>

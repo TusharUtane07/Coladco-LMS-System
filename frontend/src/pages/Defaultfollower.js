@@ -156,7 +156,7 @@ const Defaultfollower = () => {
                         </li>
                       </ul> */}
                       <Link
-                        to={`/default-user-profile/`}
+                        to={`/user-profile/${value.id}/`}
                         className="mt-3 p-0 btn p-2 lh-24 w100 ml-1 ls-3 d-inline-block rounded-xl bg-current font-xsssss fw-700 ls-lg text-white"
                       >
                         View Profile

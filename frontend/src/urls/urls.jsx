@@ -33,10 +33,17 @@ export const moduleApi = () => {
 export const peopleApi = () => {
   return project.get(Urls.PEOPLE)
 }
+export const profileApi = (payload_data) => {
+  return project.get(Urls.USER_PROFILE, payload_data)
+}
 
 // job posting
 export const jobPostingApi = () => {
   return project.get(Urls.JOBPOSTING)
+}
+
+export const jobListingDetails = (payload_data) => {
+  return project.get(Urls.JOBLISTINGDETAILS, payload_data)
 }
 
 // post
