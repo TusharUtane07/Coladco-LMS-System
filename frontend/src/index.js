@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import './main.scss';
-
+import 'react-toastify/dist/ReactToastify.css';
 
 // Common Layout
 import Demo from './demo/Demo';
@@ -90,6 +90,7 @@ import * as serviceWorker from './serviceWorker';
 import Feed from './pages/Feed';
 import SingleFeedPage from './pages/SingleFeedPage';
 import JobListingDetails from './pages/JobListingDetails';
+import VerifyOtp from './pages/VerifyOtp';
 
 class Root extends Component {
   render() {
@@ -184,6 +185,11 @@ class Root extends Component {
             exact
             path={`${process.env.PUBLIC_URL}/register-next`}
             component={RegisterNext}
+          />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/verify-otp`}
+            component={VerifyOtp}
           />
           <Route
             exact

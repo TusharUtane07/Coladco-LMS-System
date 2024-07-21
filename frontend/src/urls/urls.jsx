@@ -11,7 +11,7 @@ export const loginFunctionApi = (payload_data) => {
   return project.post(Urls.LOGIN_USER, payload_data);
 };
 export const userRegisterFunctionApi = (payload_data) => {
-  return project.post(Urls.LOGIN_USER, payload_data);
+  return project.post(Urls.REGISTER_USER, payload_data);
 };
 
 // tech to learn 

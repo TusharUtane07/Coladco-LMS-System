@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import Profile, User
+from .models import Profile, UserDefault
 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
+        model = UserDefault
         fields = '__all__'
 
         
@@ -18,5 +18,5 @@ class UserProfileSerializer(serializers.ModelSerializer):
     user_profile = ProfileSerializer()
 
     class Meta:
-        model = User
+        model = UserDefault
         fields = '__all__'

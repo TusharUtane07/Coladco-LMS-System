@@ -4,7 +4,7 @@ export class Urls {
 
     // users
     static LOGIN_USER = Urls.MPHRMS_API_PREFIX + 'users/login-user/';
-    static REGISTER_USER = Urls.MPHRMS_API_PREFIX + 'users/register-user/';
+    static REGISTER_USER = Urls.MPHRMS_API_PREFIX + 'users/register-profile/';
 
     // tech to learn
     static TECH_TO_LEARN = Urls.MPHRMS_API_PREFIX + 'additional/all-tech-to-learn-fetch/'

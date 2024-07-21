@@ -235,7 +235,7 @@ const Header = ({ divClass, color = 'light' }) => {
               <span className="icon-count bg-current">2</span>
             </Link>
             <Link
-              to="#"
+              to="/login"
               className={`float-right d-none d-lg-block text-center mt-1 ml-4 text-grey-800 ${colorClass}`}
             >
               <i className="ti-user font-lg"></i>

@@ -87,17 +87,14 @@ const Login = () => {
                     >
                      {logineLoading ? "loading" : "Login" } 
                     </button>
-                    <button
-                    onClick={()=>{
-                      loginFunction()
-                    }}
-                     
-                      className="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0 mt-2"
-                    >
-                     {logineLoading ? "loading" : "Login" } 
-                    </button>
+
                   </div>
-                  
+                  <h6 className="text-grey-500 font-xssss fw-500 mt-0 mb-0 lh-32">
+                      Dont have account{' '}
+                      <Link to="/register" className="fw-700 ml-1">
+                        Register
+                      </Link>
+                    </h6>
                 </div>
               </div>
             </div>
