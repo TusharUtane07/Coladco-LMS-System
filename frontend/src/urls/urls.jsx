@@ -29,6 +29,10 @@ export const techToLearnApi = () => {
 export const courseApi = () => {
   return project.get(Urls.COURSE)
 }
+// videos 
+export const videosApi = () => {
+  return project.get(Urls.VIDEOS)
+}
 
 // modules
 export const moduleApi = () => {
@@ -55,4 +59,9 @@ export const jobListingDetails = (payload_data) => {
 // post
 export const feedPostApi = () => {
   return project.get(Urls.FEEDPOST)
+}
+
+// bookmarks
+export const fetchBookmarksApi = () => {
+  return project.get(Urls.BOOKMARKS)
 }

@@ -116,6 +116,8 @@ class ProfileManager:
             profile.email = data.get("email", profile.email)
             profile.phone_number = data.get("phone_number", profile.phone_number)
             profile.linkedin = data.get("linkedin", profile.linkedin)
+            profile.facebook = data.get("facebook", profile.facebook)
+            profile.github = data.get("github", profile.github)
             profile.twitter = data.get("twitter", profile.twitter)
             profile.instagram = data.get("instagram", profile.instagram)
             profile.bio = data.get("bio", profile.bio)

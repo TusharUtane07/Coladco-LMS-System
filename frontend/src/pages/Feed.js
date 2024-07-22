@@ -16,7 +16,7 @@ const Feed = () => {
   const [feedPostResponse, feedPostError, feedPostLoading, feedPostFetch] = useAxios();
 
   const [feedPost, setFeedPost] = useState([]);
-  const [formValues, setFormValues] = useState({})
+  const [formValues, setFormValues] = useState({ message: "" });
 
   
   useEffect(()=> {
@@ -28,7 +28,13 @@ const Feed = () => {
       setFeedPost(feedPostResponse?.data)
       console.log(feedPostResponse)
     }
-  }, [])
+  }, [feedPostResponse])
+
+  const handlePostSubmit = (e) => {
+    e.preventDefault();
+    console.log(formValues)
+    setFormValues({...formValues, message: ""})
+  }
 
   return (
     <Fragment>
@@ -52,6 +58,8 @@ const Feed = () => {
                 className="p-3 h100 bg-greylight lh-16 mt-3"
                 rows="5"
                 placeholder="Write your question..."
+                onChange={(e) => setFormValues({ ...formValues, message: e.target.value })}
+                value={formValues.message}
               ></textarea>
               <div className="mx-3" style={{ width: `98%` }}>
                 <form className="chat-form d-block clearfix">
@@ -64,7 +72,7 @@ const Feed = () => {
                   <button className="bg-dark border-0 btn-round-md ml-2 float-left">
                     <i className="ti-image text-white lh-4 font-md"></i>
                   </button>
-                  <button className="bg-current p-0 float-right w200 text-white fw-600 font-xsss text-uppercase">
+                  <button onClick={handlePostSubmit} className="bg-current p-0 float-right w200 text-white fw-600 font-xsss text-uppercase">
                     Post
                   </button>
                 </form>

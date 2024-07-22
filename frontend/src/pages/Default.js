@@ -8,7 +8,7 @@ import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import Myclass from "../components/Myclass";
 import useAxios from "../network/useAxios";
-import { courseApi, techToLearnApi } from "../urls/urls";
+import { courseApi, fetchBookmarksApi, techToLearnApi } from "../urls/urls";
 import { test_url_images } from "../config/environment";
 
 const latestList = [
@@ -209,13 +209,16 @@ const Default = () => {
 
   const [techToLearnResponse, techToLearnError, techToLearnLoading, techToLearnFetch] = useAxios();
   const [courseResponse, courseError, courseLoading, courseFetch] = useAxios();
+  const [bookmarksResponse, bookmarksError, bookmarksLoading, bookmarksFetch] = useAxios();
 
   const [tech, setTech] = useState([]);
   const [course, setCourse] = useState([]);
+  const [bookmarks, setBookmarks] = useState([]);
   
   useEffect(()=> {
     techToLearnFetch(techToLearnApi())
     courseFetch(courseApi())
+    bookmarksFetch(fetchBookmarksApi())
   }, [])
   
   useEffect(() => {
@@ -227,9 +230,12 @@ const Default = () => {
       setCourse(courseResponse.data)
       console.log(courseResponse.data)
     }
+    if(bookmarksResponse?.data){
+      setBookmarks(bookmarksResponse.data)
+      console.log(bookmarksResponse.data)
+    }
   }, [])
 
-  console.log(techToLearnLoading)
 
     const categorysettings = {
       arrows: true,
@@ -363,12 +369,16 @@ const Default = () => {
                         >
                           <div
                             className="card-body p-4 ml-0 rounded-lg"
+                            style={{height: "12rem", display: "flex", flexDirection: "column",
+                              gap: "1rem", justifyContent: "space-between"
+                            }}
                           >
                             <a href="/" className="btn-round-xl bg-white">
                               <img
                                 src={`${test_url_images + value?.thumbnail}`}
                                 alt="icon"
-                                className="p-2 w-100"
+                                className="p-2"
+                                style={{height: "6rem"}}
                               />
                             </a>
                             <h4 className="fw-600 font-xsss mt-3 mb-0">
@@ -493,7 +503,7 @@ const Default = () => {
                   </div>
                   <div className="col-lg-12 pt-0 mb-3">
                     <h2 className="fw-400 font-lg d-block">
-                      Latest <b> Classes</b>
+                      Bookmarked <b> Classes</b>
                       {/* <a href="/" className="float-right">
                         <i className="feather-edit text-grey-500 font-xs"></i>
                       </a> */}
@@ -502,7 +512,7 @@ const Default = () => {
                   <div className="col-lg-12 mt-3">
                     {/* <Slider {...latestSlider}> */}
                     <Slider {...categorysettings}>
-                      {latestList.map((value, index) => (
+                      {bookmarksResponse?.data?.map((value, index) => (
                         <div
                           className="card course-card w300 p-0 shadow-xss border-0 rounded-lg overflow-hidden mr-3 mb-4"
                           key={index}
@@ -525,22 +535,22 @@ const Default = () => {
                             >
                               {value.tag}
                             </span>
-                            <span className="font-xss fw-700 pl-3 pr-3 ls-2 lh-32 d-inline-block text-success float-right">
+                            {/* <span className="font-xss fw-700 pl-3 pr-3 ls-2 lh-32 d-inline-block text-success float-right">
                               <span className="font-xsssss">$</span>
                               {value.price}
-                            </span>
+                            </span> */}
                             <h4 className="fw-700 font-xss mt-3 lh-28 mt-0">
                               <Link
                                 to="/coursedetails"
                                 className="text-dark text-grey-900"
                               >
-                                {value.title}
+                                {value?.module?.name}
                               </Link>
                             </h4>
-                            <h6 className="font-xssss text-grey-500 fw-600 ml-0 mt-2">
+                            {/* <h6 className="font-xssss text-grey-500 fw-600 ml-0 mt-2">
                               {value.lesson} Lesson
-                            </h6>
-                            <ul className="memberlist mt-3 mb-2 ml-0 d-block">
+                            </h6> */}
+                            {/* <ul className="memberlist mt-3 mb-2 ml-0 d-block">
                               <li>
                                 <a href="/">
                                   <img
@@ -593,7 +603,7 @@ const Default = () => {
                                   Student apply
                                 </a>
                               </li>
-                            </ul>
+                            </ul> */}
                           </div>
                         </div>
                       ))}

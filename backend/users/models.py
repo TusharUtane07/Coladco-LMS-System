@@ -17,6 +17,8 @@ class Profile(models.Model):
     gender = models.CharField(max_length=3)
     phone_number = models.CharField(max_length=15, unique=True)
     instagram = models.TextField(null=True)
+    facebook = models.TextField(null=True)
+    github = models.TextField(null=True)
     linkedin = models.TextField(null=True)
     twitter = models.TextField(null=True)
     bio = models.TextField()

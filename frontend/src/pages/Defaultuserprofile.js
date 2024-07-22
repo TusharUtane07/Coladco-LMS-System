@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, useState } from 'react';
 import Appfooter from '../components/Appfooter';
 import Navheader from '../components/Navheader';
 import Appheader from '../components/Appheader';
@@ -8,159 +8,159 @@ import Subscribe from '../components/Subscribe';
 import { Link } from 'react-router-dom';
 import { Tab, Tabs } from 'react-bootstrap';
 
-const memberList = [
-  {
-    imageUrl: 'user.png',
-    name: 'Aliqa Macale ',
-    email: 'support@gmail.com',
-    bgimage: 'blog.png',
-  },
-  {
-    imageUrl: 'user.png',
-    name: 'John Steere ',
-    email: 'support@gmail.com',
-    bgimage: 'blog.png',
-  },
-  {
-    imageUrl: 'user.png',
-    name: 'Mohannad Zitoun ',
-    email: 'support@gmail.com',
-    bgimage: 'blog.png',
-  },
-  {
-    imageUrl: 'user.png',
-    name: 'Aliqa Macale ',
-    email: 'support@gmail.com',
-    bgimage: 'blog.png',
-  },
-  {
-    imageUrl: 'user.png',
-    name: 'Hendrix Stamp ',
-    email: 'support@gmail.com',
-    bgimage: 'blog.png',
-  },
-  {
-    imageUrl: 'user.png',
-    name: 'Mohannad Zitoun ',
-    email: 'support@gmail.com',
-    bgimage: 'blog.png',
-  },
-  {
-    imageUrl: 'user.png',
-    name: 'John Steere ',
-    email: 'support@gmail.com',
-    bgimage: 'blog.png',
-  },
-];
-const liveList = [
-  {
-    imageUrl: 'user.png',
-    name: 'Aliqa Macale ',
-    email: 'support@gmail.com',
-    status: 'LIVE',
-    statusColor: 'bg-danger',
-    bgimage: 'blog.png',
-  },
-  {
-    imageUrl: 'user.png',
-    name: 'John Steere ',
-    email: 'support@gmail.com',
-    status: 'OFFLINE',
-    statusColor: 'bg-dark',
-    bgimage: 'blog.png',
-  },
-  {
-    imageUrl: 'user.png',
-    name: 'Mohannad Zitoun ',
-    email: 'support@gmail.com',
-    status: 'LIVE',
-    statusColor: 'bg-danger',
-    bgimage: 'blog.png',
-  },
-  {
-    imageUrl: 'user.png',
-    name: 'Aliqa Macale ',
-    email: 'support@gmail.com',
-    status: 'OFFLINE',
-    statusColor: 'bg-dark',
-    bgimage: 'blog.png',
-  },
-  {
-    imageUrl: 'user.png',
-    name: 'Hendrix Stamp ',
-    email: 'support@gmail.com',
-    status: 'LIVE',
-    statusColor: 'bg-danger',
-    bgimage: 'blog.png',
-  },
-  {
-    imageUrl: 'user.png',
-    name: 'Mohannad Zitoun ',
-    email: 'support@gmail.com',
-    status: 'LIVE',
-    statusColor: 'bg-danger',
-    bgimage: 'blog.png',
-  },
-  {
-    imageUrl: 'user.png',
-    name: 'John Steere ',
-    email: 'support@gmail.com',
-    status: 'LIVE',
-    statusColor: 'bg-danger',
-    bgimage: 'bb-9.png',
-  },
-];
+// const memberList = [
+//   {
+//     imageUrl: 'user.png',
+//     name: 'Aliqa Macale ',
+//     email: 'support@gmail.com',
+//     bgimage: 'blog.png',
+//   },
+//   {
+//     imageUrl: 'user.png',
+//     name: 'John Steere ',
+//     email: 'support@gmail.com',
+//     bgimage: 'blog.png',
+//   },
+//   {
+//     imageUrl: 'user.png',
+//     name: 'Mohannad Zitoun ',
+//     email: 'support@gmail.com',
+//     bgimage: 'blog.png',
+//   },
+//   {
+//     imageUrl: 'user.png',
+//     name: 'Aliqa Macale ',
+//     email: 'support@gmail.com',
+//     bgimage: 'blog.png',
+//   },
+//   {
+//     imageUrl: 'user.png',
+//     name: 'Hendrix Stamp ',
+//     email: 'support@gmail.com',
+//     bgimage: 'blog.png',
+//   },
+//   {
+//     imageUrl: 'user.png',
+//     name: 'Mohannad Zitoun ',
+//     email: 'support@gmail.com',
+//     bgimage: 'blog.png',
+//   },
+//   {
+//     imageUrl: 'user.png',
+//     name: 'John Steere ',
+//     email: 'support@gmail.com',
+//     bgimage: 'blog.png',
+//   },
+// ];
+// const liveList = [
+//   {
+//     imageUrl: 'user.png',
+//     name: 'Aliqa Macale ',
+//     email: 'support@gmail.com',
+//     status: 'LIVE',
+//     statusColor: 'bg-danger',
+//     bgimage: 'blog.png',
+//   },
+//   {
+//     imageUrl: 'user.png',
+//     name: 'John Steere ',
+//     email: 'support@gmail.com',
+//     status: 'OFFLINE',
+//     statusColor: 'bg-dark',
+//     bgimage: 'blog.png',
+//   },
+//   {
+//     imageUrl: 'user.png',
+//     name: 'Mohannad Zitoun ',
+//     email: 'support@gmail.com',
+//     status: 'LIVE',
+//     statusColor: 'bg-danger',
+//     bgimage: 'blog.png',
+//   },
+//   {
+//     imageUrl: 'user.png',
+//     name: 'Aliqa Macale ',
+//     email: 'support@gmail.com',
+//     status: 'OFFLINE',
+//     statusColor: 'bg-dark',
+//     bgimage: 'blog.png',
+//   },
+//   {
+//     imageUrl: 'user.png',
+//     name: 'Hendrix Stamp ',
+//     email: 'support@gmail.com',
+//     status: 'LIVE',
+//     statusColor: 'bg-danger',
+//     bgimage: 'blog.png',
+//   },
+//   {
+//     imageUrl: 'user.png',
+//     name: 'Mohannad Zitoun ',
+//     email: 'support@gmail.com',
+//     status: 'LIVE',
+//     statusColor: 'bg-danger',
+//     bgimage: 'blog.png',
+//   },
+//   {
+//     imageUrl: 'user.png',
+//     name: 'John Steere ',
+//     email: 'support@gmail.com',
+//     status: 'LIVE',
+//     statusColor: 'bg-danger',
+//     bgimage: 'bb-9.png',
+//   },
+// ];
 
-const channelList = [
-  {
-    imageUrl: 'user.png',
-    title: 'Mobile Product Design',
-    des: 'Learn new secrets to creating awesome Microsoft Access databases and VBA coding not covered in any of my other courses!',
-    tag1: 'FULL TIME',
-    tag2: 'DESINER',
-    tag3: '30 MIN',
-  },
-  {
-    imageUrl: 'user.png',
-    title: 'HTML Developer',
-    des: 'Learn new secrets to creating awesome Microsoft Access databases and VBA coding not covered in any of my other courses!',
-    tag1: '',
-    tag2: 'DESINER',
-    tag3: '30 MIN',
-  },
-  {
-    imageUrl: 'user.png',
-    title: 'Advanced CSS and Sass',
-    des: 'Learn new secrets to creating awesome Microsoft Access databases and VBA coding not covered in any of my other courses!',
-    tag1: 'FULL TIME',
-    tag2: 'DEVELOPER',
-    tag3: '21 HOUR',
-  },
-  {
-    imageUrl: 'user.png',
-    title: 'Modern React with Redux',
-    des: 'Learn new secrets to creating awesome Microsoft Access databases and VBA coding not covered in any of my other courses!',
-    tag1: 'HALF TIME',
-    tag2: 'DESINER',
-    tag3: '5 HOUNRS',
-  },
-  {
-    imageUrl: 'user.png',
-    title: 'Node JS',
-    des: 'Learn new secrets to creating awesome Microsoft Access databases and VBA coding not covered in any of my other courses!',
-    tag1: 'HALF TIME',
-    tag2: 'CODER',
-    tag3: '45 MIN',
-  },
-  {
-    imageUrl: 'user.png',
-    title: 'Mobile Product Design',
-    des: 'Learn new secrets to creating awesome Microsoft Access databases and VBA coding not covered in any of my other courses!',
-    tag1: 'FULL TIME',
-    tag2: 'DESINER',
-    tag3: '30 MIN',
-  },
-];
+// const channelList = [
+//   {
+//     imageUrl: 'user.png',
+//     title: 'Mobile Product Design',
+//     des: 'Learn new secrets to creating awesome Microsoft Access databases and VBA coding not covered in any of my other courses!',
+//     tag1: 'FULL TIME',
+//     tag2: 'DESINER',
+//     tag3: '30 MIN',
+//   },
+//   {
+//     imageUrl: 'user.png',
+//     title: 'HTML Developer',
+//     des: 'Learn new secrets to creating awesome Microsoft Access databases and VBA coding not covered in any of my other courses!',
+//     tag1: '',
+//     tag2: 'DESINER',
+//     tag3: '30 MIN',
+//   },
+//   {
+//     imageUrl: 'user.png',
+//     title: 'Advanced CSS and Sass',
+//     des: 'Learn new secrets to creating awesome Microsoft Access databases and VBA coding not covered in any of my other courses!',
+//     tag1: 'FULL TIME',
+//     tag2: 'DEVELOPER',
+//     tag3: '21 HOUR',
+//   },
+//   {
+//     imageUrl: 'user.png',
+//     title: 'Modern React with Redux',
+//     des: 'Learn new secrets to creating awesome Microsoft Access databases and VBA coding not covered in any of my other courses!',
+//     tag1: 'HALF TIME',
+//     tag2: 'DESINER',
+//     tag3: '5 HOUNRS',
+//   },
+//   {
+//     imageUrl: 'user.png',
+//     title: 'Node JS',
+//     des: 'Learn new secrets to creating awesome Microsoft Access databases and VBA coding not covered in any of my other courses!',
+//     tag1: 'HALF TIME',
+//     tag2: 'CODER',
+//     tag3: '45 MIN',
+//   },
+//   {
+//     imageUrl: 'user.png',
+//     title: 'Mobile Product Design',
+//     des: 'Learn new secrets to creating awesome Microsoft Access databases and VBA coding not covered in any of my other courses!',
+//     tag1: 'FULL TIME',
+//     tag2: 'DESINER',
+//     tag3: '30 MIN',
+//   },
+// ];
 const badgeList = [
   {
     imageUrl: 'user.png',
@@ -274,6 +274,9 @@ const courseList = [
 ];
 
   const Defaultuserprofile = () => {
+
+    const [showEdit, setShowEdit] = useState(true);
+
     return (
       <Fragment>
         <div className="main-wrapper">
@@ -393,14 +396,17 @@ const courseList = [
                         <h2 className="fw-400 font-lg d-block">
                           <b>About Me</b>
                           <a
-                            href="/default-user-profile"
+                          style={{
+                            cursor: "pointer"
+                          }}
+                            onClick={() => setShowEdit(!showEdit)}
                             className="float-right"
                           >
                             <i className="feather-edit text-grey-500 font-xs"></i>
                           </a>
                         </h2>
                       </div>
-                      <div className="card-body pb-0">
+                     { showEdit ?<div className="card-body pb-0">
                         <div className="row">
                           <div className="col-xl-12">
                             <p className="font-xssss fw-600 lh-28 text-grey-500 pl-0">
@@ -469,10 +475,99 @@ const courseList = [
                             </ul>
                           </div>
                         </div>
-                      </div>
+                      </div> : <div> <div className="col-lg-12 mb-3">
+                            <label className="mont-font fw-600 font-xsss">
+                              Description
+                            </label>
+                            <textarea
+                              className="form-control mb-0 p-3 bg-greylight lh-16"
+                              rows="5"
+                              placeholder="Write your description..."
+                            ></textarea>
+                             {/* <div className="card-body p-lg-5 p-4 w-100 border-0"> */}
+                      {/* <form action="#"> */}
+                        <div className="row mt-2">
+                          <div className="col-lg-6 mb-3">
+                            <div className="form-group">
+                              <label className="mont-font fw-600 font-xsss">
+                                Facebook
+                              </label>
+                              <input
+                                type="text"
+                                name="comment-name"
+                                className="form-control"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="col-lg-6 mb-3">
+                            <div className="form-group">
+                              <label className="mont-font fw-600 font-xsss">
+                                Twitter
+                              </label>
+                              <input
+                                type="text"
+                                name="comment-name"
+                                className="form-control"
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6 mb-3">
+                            <div className="form-group">
+                              <label className="mont-font fw-600 font-xsss">
+                                Linkedin
+                              </label>
+                              <input
+                                type="text"
+                                name="comment-name"
+                                className="form-control"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="col-lg-6 mb-3">
+                            <div className="form-group">
+                              <label className="mont-font fw-600 font-xsss">
+                                Instagram
+                              </label>
+                              <input
+                                type="text"
+                                name="comment-name"
+                                className="form-control"
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6 mb-3">
+                            <div className="form-group">
+                              <label className="mont-font fw-600 font-xsss">
+                                Github
+                              </label>
+                              <input
+                                type="text"
+                                name="comment-name"
+                                className="form-control"
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-12 mb-0 mt-2">
+                            <Link
+                              to="/"
+                              className="bg-current text-center text-white font-xsss fw-600 p-3 w175 rounded-lg d-inline-block"
+                            >
+                              Save
+                            </Link>
+                          </div>
+                        </div>
+
+
+                        {/* <div className="row"> */}
+                        {/* </div> */}
+                      {/* </form> */}
+                    {/* </div> */}
+                          </div></div>}
                     </div>
                   </Tab>
-                  <Tab eventKey="video" title="VIDEO">
+                  {/* <Tab eventKey="video" title="VIDEO">
                     <div className="card d-block w-100 border-0 shadow-xss rounded-lg overflow-hidden p-lg-4 p-2">
                       <div className="card-body mb-lg-3 pb-0">
                         <h2 className="fw-400 font-lg d-block">
@@ -590,7 +685,7 @@ const courseList = [
                         </div>
                       </div>
                     </div>
-                  </Tab>
+                  </Tab> */}
                   <Tab eventKey="bdage" title="BADGE">
                     <div className="card d-block w-100 border-0 shadow-xss rounded-lg overflow-hidden p-lg-4 p-2">
                       <div className="card-body mb-lg-3 pb-0">
@@ -657,7 +752,7 @@ const courseList = [
                       </div>
                     </div>
                   </Tab>
-                  <Tab eventKey="group" title="GROUP">
+                  {/* <Tab eventKey="group" title="GROUP">
                     <div className="card d-block w-100 border-0 shadow-xss rounded-lg overflow-hidden p-lg-4 p-2">
                       <div className="card-body mb-lg-3 pb-0">
                         <h2 className="fw-400 font-lg d-block">
@@ -790,8 +885,8 @@ const courseList = [
                         </div>
                       </div>
                     </div>
-                  </Tab>
-                  <Tab eventKey="friends" title="FRIENDS">
+                  </Tab> */}
+                  {/* <Tab eventKey="friends" title="FRIENDS">
                     <div className="card d-block w-100 border-0 shadow-xss rounded-lg overflow-hidden p-lg-4 p-2">
                       <div className="card-body mb-lg-3 pb-0">
                         <h2 className="fw-400 font-lg d-block">
@@ -874,8 +969,8 @@ const courseList = [
                         </div>
                       </div>
                     </div>
-                  </Tab>
-                  <Tab eventKey="group" title="STREAM"></Tab>
+                  </Tab> */}
+                  {/* <Tab eventKey="group" title="STREAM"></Tab> */}
                   <Tab eventKey="saved" title="SAVED">
                     <div className="card d-block w-100 border-0 shadow-xss rounded-lg overflow-hidden p-lg-4 p-2">
                       <div className="card-body mb-lg-3 pb-0">
@@ -995,7 +1090,7 @@ const courseList = [
                       </div>
                     </div>
                   </Tab>
-                  <Tab eventKey="live" title="LIVE">
+                  {/* <Tab eventKey="live" title="LIVE">
                     <div className="card d-block w-100 border-0 shadow-xss rounded-lg overflow-hidden p-lg-4 p-2">
                       <div className="card-body mb-lg-3 pb-0">
                         <h2 className="fw-400 font-lg d-block">
@@ -1049,7 +1144,7 @@ const courseList = [
                         </div>
                       </div>
                     </div>
-                  </Tab>
+                  </Tab> */}
                 </Tabs>
               </div>
               <div className="middle-sidebar-right scroll-bar">

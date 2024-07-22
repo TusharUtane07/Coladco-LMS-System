@@ -4,7 +4,7 @@ class BookmarksManager:
 
     @staticmethod
     def get_all_bookmarks(data):
-        all_bookmarks_objs = Bookmarks.objects.all()
+        all_bookmarks_objs = Bookmarks.objects.filter().prefetch_related("module")
         return all_bookmarks_objs
 
     @staticmethod
@@ -22,7 +22,6 @@ class BookmarksManager:
             raise Exception("No bookmarks id provided")
         
         bookmark = Bookmarks.objects.filter(id=bookmarks_id)
-        bookmark.video_id = data.get("videoId", bookmark.video_id)
         bookmark.module_id = data.get("moduleId", bookmark.module_id)
         bookmark.save()
         

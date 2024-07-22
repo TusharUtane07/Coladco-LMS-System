@@ -77,7 +77,7 @@ class VideoManager:
 
     @staticmethod
     def get_all_videos(data):
-        all_videos_objs = Video.objects.all()
+        all_videos_objs = Video.objects.select_related('module').all()
         return all_videos_objs
 
     @staticmethod

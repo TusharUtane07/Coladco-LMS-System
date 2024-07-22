@@ -12,6 +12,7 @@ class ModuleSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class VideoSerializer(serializers.ModelSerializer):
+    module = ModuleSerializer()
     class Meta:
         model = Video
         fields = '__all__'

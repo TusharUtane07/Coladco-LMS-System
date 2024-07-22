@@ -469,7 +469,7 @@ const courseList = [
                       </div>
                     </div>
                   </Tab>
-                  <Tab eventKey="video" title="VIDEO">
+                  {/* <Tab eventKey="video" title="VIDEO">
                     <div className="card d-block w-100 border-0 shadow-xss rounded-lg overflow-hidden p-lg-4 p-2">
                       <div className="card-body mb-lg-3 pb-0">
                         <h2 className="fw-400 font-lg d-block">
@@ -587,7 +587,7 @@ const courseList = [
                         </div>
                       </div>
                     </div>
-                  </Tab>
+                  </Tab> */}
                   <Tab eventKey="bdage" title="BADGE">
                     <div className="card d-block w-100 border-0 shadow-xss rounded-lg overflow-hidden p-lg-4 p-2">
                       <div className="card-body mb-lg-3 pb-0">
@@ -654,7 +654,7 @@ const courseList = [
                       </div>
                     </div>
                   </Tab>
-                  <Tab eventKey="group" title="GROUP">
+                  {/* <Tab eventKey="group" title="GROUP">
                     <div className="card d-block w-100 border-0 shadow-xss rounded-lg overflow-hidden p-lg-4 p-2">
                       <div className="card-body mb-lg-3 pb-0">
                         <h2 className="fw-400 font-lg d-block">
@@ -787,8 +787,8 @@ const courseList = [
                         </div>
                       </div>
                     </div>
-                  </Tab>
-                  <Tab eventKey="friends" title="FRIENDS">
+                  </Tab> */}
+                  {/* <Tab eventKey="friends" title="FRIENDS">
                     <div className="card d-block w-100 border-0 shadow-xss rounded-lg overflow-hidden p-lg-4 p-2">
                       <div className="card-body mb-lg-3 pb-0">
                         <h2 className="fw-400 font-lg d-block">
@@ -871,8 +871,8 @@ const courseList = [
                         </div>
                       </div>
                     </div>
-                  </Tab>
-                  <Tab eventKey="group" title="STREAM"></Tab>
+                  </Tab> */}
+                  {/* <Tab eventKey="group" title="STREAM"></Tab> */}
                   <Tab eventKey="saved" title="SAVED">
                     <div className="card d-block w-100 border-0 shadow-xss rounded-lg overflow-hidden p-lg-4 p-2">
                       <div className="card-body mb-lg-3 pb-0">
@@ -992,7 +992,7 @@ const courseList = [
                       </div>
                     </div>
                   </Tab>
-                  <Tab eventKey="live" title="LIVE">
+                  {/* <Tab eventKey="live" title="LIVE">
                     <div className="card d-block w-100 border-0 shadow-xss rounded-lg overflow-hidden p-lg-4 p-2">
                       <div className="card-body mb-lg-3 pb-0">
                         <h2 className="fw-400 font-lg d-block">
@@ -1046,7 +1046,7 @@ const courseList = [
                         </div>
                       </div>
                     </div>
-                  </Tab>
+                  </Tab> */}
                 </Tabs>
               </div>
               <div className="middle-sidebar-right scroll-bar">

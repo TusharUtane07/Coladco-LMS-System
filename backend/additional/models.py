@@ -5,9 +5,9 @@ from course.models import Video
 from course.models import Module
 
 class Bookmarks(models.Model):
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="bookmarks")
-    video = models.ForeignKey(Video, on_delete=models.CASCADE, related_name="bookmarks")
-    module = models.ForeignKey(Module, on_delete=models.CASCADE, related_name="bookmarks")
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="profile_user")
+    # video = models.ForeignKey(Video, on_delete=models.CASCADE, related_name="bookmarks")
+    module = models.ForeignKey(Module, on_delete=models.CASCADE, related_name="module_id")
     created_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:

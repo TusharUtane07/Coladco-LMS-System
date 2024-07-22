@@ -43,7 +43,7 @@ class Defaultsettings extends Component {
                                 <i className="ti-angle-right font-xsss text-grey-500 ml-auto mt-3"></i>
                               </Link>
                             </li>
-                            <li className="list-inline-item d-block border-bottom mr-0">
+                            {/* <li className="list-inline-item d-block border-bottom mr-0">
                               <Link
                                 to="/contact-information"
                                 className="pt-2 pb-2 d-flex"
@@ -54,7 +54,7 @@ class Defaultsettings extends Component {
                                 </h4>
                                 <i className="ti-angle-right font-xsss text-grey-500 ml-auto mt-3"></i>
                               </Link>
-                            </li>
+                            </li> */}
                             <li className="list-inline-item d-block mr-0">
                               <Link to="/social" className="pt-2 pb-2 d-flex">
                                 <i className="btn-round-md bg-red-gradiant text-white feather-twitter font-md mr-3"></i>

@@ -20,7 +20,7 @@ class Module(models.Model):
 
     class Meta:
         managed = True
-        db_table = "module"
+        db_table = "modules"
         
 class Video(models.Model):
     module = models.ForeignKey(Module, on_delete=models.CASCADE, related_name="videos")
