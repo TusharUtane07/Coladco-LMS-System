@@ -46,6 +46,10 @@ const Feed = () => {
 
   const handlePostSubmit = (e) => {
     e.preventDefault();
+    if (!formValues.message.trim()) {
+      toast.error("Empty message cannot be shared");
+      return;
+    }
     addNewPost()
     setFormValues({...formValues, message: ""})
   }

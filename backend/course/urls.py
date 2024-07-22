@@ -3,7 +3,8 @@ from .views import (
     CourseViewSet, CourseSingleView,
     ModuleViewSet, ModuleSingleView,
     VideoViewSet, VideoSingleView,
-    ReviewViewSet, ReviewSingleView
+    ReviewViewSet, ReviewSingleView,
+    NewReviewPostSet
 )
 
 urlpatterns = [
@@ -23,6 +24,7 @@ urlpatterns = [
     path('/single-videos-delete/', VideoSingleView.as_view(), name='single-videos-delete'), 
     
     path('/all-reviews-fetch/',  ReviewViewSet.as_view(), name='all-reviews-fetch'),
+    path('/new-review-course/', NewReviewPostSet.as_view(), name='new-review-course'),
     path('/single-reviews-fetch/',  ReviewSingleView.as_view(), name='single-reviews-fetch'),
     path('/single-reviews-update/', ReviewSingleView.as_view(), name='single-reviews-update'),
     path('/single-reviews-delete/', ReviewSingleView.as_view(), name='single-reviews-delete'), 

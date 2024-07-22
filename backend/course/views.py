@@ -154,7 +154,6 @@ class ReviewViewSet(APIView):
 
 
 class ReviewSingleView(APIView):
-
     @staticmethod
     def get(request):
         try:
@@ -180,5 +179,18 @@ class ReviewSingleView(APIView):
             data = request.data
             ReviewManager.delete_single_review(data)
             return Response({"result": "success", "message": ReviewConstants.SUCCESS}, 200)
+        except Exception as err:
+            return Response(str(err), 500)
+
+
+class NewReviewPostSet(APIView):
+    permission_classes = [IsUserAuth]
+
+    @staticmethod
+    def post(request):
+        try:
+            data = request.data
+            ReviewManager.add_new_review(request, data)
+            return Response({"result": "success", "message": ReviewConstants.REVIEW_SUCCESS_UPDATE}, 200)
         except Exception as err:
             return Response(str(err), 500)

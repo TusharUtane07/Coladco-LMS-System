@@ -6,3 +6,4 @@ class VideoConstants:
     SUCCESS = "Video API is Successfully Working"
 class ReviewConstants:
     SUCCESS = "Reviews API is Successfully Working"
+    REVIEW_SUCCESS_UPDATE = "Review Added Successfully"

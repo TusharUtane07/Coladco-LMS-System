@@ -14,7 +14,11 @@ import useAxios from '../network/useAxios';
 const Defaultcourseone = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [rating, setRating] = useState(0);
-  const [review, setReview] = useState('');
+  const [review, setReview] = useState('');  
+  const [formValues, setFormValues] = useState({
+    rating: 0,
+    review: '',
+  });
 
   const [courseResponse, courseError, courseLoading, courseFetch] = useAxios();
   const [moduleResponse, moduleError, moduleLoading, moduleFetch] = useAxios();
@@ -70,6 +74,13 @@ const Defaultcourseone = () => {
 
   const handleReviewChange = (e) => {
     setReview(e.target.value);
+  };
+
+  const handleFormChange = (changedValues) => {
+    setFormValues({
+      ...formValues,
+      ...changedValues,
+    });
   };
 
   return (
@@ -590,17 +601,18 @@ const Defaultcourseone = () => {
                       onOk={handleOk}
                       onCancel={handleCancel}
                     >
-                      <Form>
-                        <Form.Item label="Rating">
-                          <Rate onChange={handleRatingChange} value={rating} />
-                        </Form.Item>
-                        <Form.Item label="Review" >
-                          <Input.TextArea
-                            onChange={handleReviewChange}
-                            value={review}
-                          />
-                        </Form.Item>
-                      </Form>
+                      <Form
+  initialValues={formValues}
+  onValuesChange={(changedValues) => handleFormChange(changedValues)}
+>
+  <Form.Item label="Rating" name="rating">
+    <Rate />
+  </Form.Item>
+  <Form.Item label="Review" name="review">
+    <Input.TextArea />
+  </Form.Item>
+</Form>
+
                     </Modal>
                   </div>
                 </div>
