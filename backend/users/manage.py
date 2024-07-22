@@ -4,7 +4,10 @@ from django.db import transaction
 from django.db.models import Q
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth.hashers import make_password, check_password
+import random
+import string
 
+from jwtconfig.manage import JwtManager
 from users.models import UserDefault, Profile, OtpVerify
 import jwt
 from django.utils import timezone
@@ -144,11 +147,38 @@ class ProfileManager:
         username = data.get('username', False)
         password = data.get('password', False)
         try:
-            all_profile_objs = Profile.objects.select_related('user').get(user__username=username, user__password=password)
+            query = Q()
+            query &= Q(user__username=username) | Q(email=username) | Q(phone_number=username)
+            query &= Q(user__password=password)
+            all_profile_objs = Profile.objects.select_related('user').get(query)
+            payload = {
+                "profile_id": all_profile_objs.id,
+                "full_name": all_profile_objs.full_name,
+            }
+            return JwtManager.create_token(payload, payload)
         except Exception as e:
-            raise Exception("User doesnt exits")
+            raise Exception("The ID or password you entered is incorrect. Please try again.")
 
     @staticmethod
+    def generate_username(full_name, phone_number):
+        name_parts = full_name.split(" ")
+        if len(name_parts) >= 2:
+            first_name = name_parts[0]
+            last_name = name_parts[-1]
+        else:
+            first_name = name_parts[0]
+            last_name = ''.join(random.choices(string.ascii_lowercase + string.digits, k=3))
+        if len(phone_number) >= 4:
+            last_four_digits = phone_number[-4:]
+        else:
+            return None
+
+        random_string = ''.join(random.choices(string.ascii_lowercase + string.digits, k=3))
+        username = first_name[0].lower() + last_name.lower() + last_four_digits + random_string
+
+        return username
+    @staticmethod
+    @transaction.atomic
     def create_password(data):
         phone = data.get('phone', False)
         password = data.get('password', False)
@@ -156,7 +186,15 @@ class ProfileManager:
             all_profile_objs = Profile.objects.filter(phone_number=phone)
             if not all_profile_objs:
                 raise Exception("Something went wrong from our side")
-            UserDefault.objects.create(user=all_profile_objs[0])
+            user_name = ProfileManager.generate_username(all_profile_objs[0].full_name, all_profile_objs[0].phone_number)
+            user_obj = UserDefault.objects.create(username=user_name, password=password)
+            all_profile_objs[0].user = user_obj
+            all_profile_objs[0].save()
+            payload = {
+                "profile_id": all_profile_objs[0].id,
+                "full_name": all_profile_objs[0].full_name,
+            }
+            return JwtManager.create_token(payload, payload)
         except Exception as e:
             raise Exception("User doesnt exits")
 

@@ -302,7 +302,7 @@ class Root extends Component {
 
           <Route
             exact
-            path={`${process.env.PUBLIC_URL}/default`}
+            path={`${process.env.PUBLIC_URL}/overview`}
             component={Default}
           />
           <Route

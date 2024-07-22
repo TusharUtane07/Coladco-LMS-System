@@ -6,7 +6,7 @@ export class Urls {
     static LOGIN_USER = Urls.MPHRMS_API_PREFIX + 'users/login-user/';
     static REGISTER_USER = Urls.MPHRMS_API_PREFIX + 'users/register-profile/';
     static VERIFY_OTP = Urls.MPHRMS_API_PREFIX + 'users/verify-otp/';
-    static CHANGE_PASSWORD_USER = Urls.MPHRMS_API_PREFIX + 'users/change-password-user/';
+    static CREATE_PASSWORD_USER = Urls.MPHRMS_API_PREFIX + 'users/create-password-user/';
 
     // tech to learn
     static TECH_TO_LEARN = Urls.MPHRMS_API_PREFIX + 'additional/all-tech-to-learn-fetch/'

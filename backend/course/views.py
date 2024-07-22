@@ -1,12 +1,14 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
+from jwtconfig.custom_permissions import IsUserAuth
 from .constants import CourseConstants, ModuleConstants, VideoConstants, ReviewConstants
 from .manage import CourseManager, ModuleManager, ReviewManager, VideoManager
 from .serializers import CourseSerializer, ModuleSerializer, VideoSerializer, ReviewSerializer
 
 
 class CourseViewSet(APIView):
+    permission_classes = [IsUserAuth]
 
     @staticmethod
     def get(request):

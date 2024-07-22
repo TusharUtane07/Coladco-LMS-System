@@ -3,7 +3,8 @@ import { withRouter } from 'react-router-dom';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useLocation } from 'react-router-dom';
 import useAxios from '../network/useAxios';
-import { verifyOtpFunctionApi } from '../urls/urls';
+import { changePasswordFunctionApi } from '../urls/urls';
+import { ToastContainer, toast } from 'react-toastify';
 
 const RegisterNext = () => {
   const route = useHistory()
@@ -19,7 +20,7 @@ const RegisterNext = () => {
     },
   });
   const changePassword = () => {
-    createPasswordFetch(verifyOtpFunctionApi({...formValues , phone:data?.phone}))
+    createPasswordFetch(changePasswordFunctionApi({...formValues , phone:data?.phone}))
   }
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -57,8 +58,7 @@ const RegisterNext = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      
-      route.push('/'); 
+      changePassword()
     }
   };
   useEffect(()=>{
@@ -66,6 +66,18 @@ const RegisterNext = () => {
       route.push("/register")
     }
   },[])
+  useEffect(()=>{
+
+    if(createPasswordError){
+      toast.error(createPasswordError?.response?.data)
+    }
+  },[createPasswordError ])
+  useEffect(()=>{
+    if (createPasswordResponse?.result == "success" && createPasswordResponse?.token){
+      localStorage.setItem("coladjsTk",  createPasswordResponse?.token)
+      route.push("/overview")
+    }
+  },[createPasswordResponse])
 
     const { password, confirmPassword, errors } = formValues;
 
@@ -141,6 +153,7 @@ const RegisterNext = () => {
             </div>
           </div>
         </div>
+        <ToastContainer/>
       </Fragment>
     );
   

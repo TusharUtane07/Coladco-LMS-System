@@ -2,18 +2,25 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAxios from '../network/useAxios';
 import { loginFunctionApi } from '../urls/urls';
+import { ToastContainer, toast } from 'react-toastify';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Login = () => {
+  const route = useHistory()
   const [logineResponse, logineError, logineLoading, logineFetch] = useAxios();
   const [formValues, setFormValues] = useState({})
   const loginFunction = () => {
     logineFetch(loginFunctionApi(formValues))
   }
   useEffect(()=>{
-    if(logineError){
-      console.log(logineError)
+    if(logineResponse?.result == "success"){
+      localStorage.setItem("coladjsTk",  logineResponse?.token)
+     route.push('/overview');
     }
-  },[logineError])
+    if(logineError){
+      toast.error(logineError?.response?.data)
+    }
+  },[logineResponse,logineError ])
   return (
     <Fragment>
       <div className="main-wrap">
@@ -38,7 +45,7 @@ const Login = () => {
                     <input
                       type="text"
                       className="style2-input pl-5 form-control text-grey-900 font-xssss fw-600"
-                      placeholder="Email Address"
+                      placeholder="Enter your Username or Phone"
                       onChange={(e)=>{
                         setFormValues((prev)=>({...prev, username:e.target.value}))
                       }}
@@ -101,6 +108,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </Fragment>
   );
 };

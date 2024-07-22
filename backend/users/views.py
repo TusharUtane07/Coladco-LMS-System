@@ -99,7 +99,7 @@ class GetLoginToken(APIView):
     def post(request):
         try:
             data = request.data
-            all_profile_objs,  access_token, refresh_token = ProfileManager.get_login_token(data)
+            access_token, refresh_token = ProfileManager.get_login_token(data)
             return Response({"result": "success", "message": ProfileConstants.SUCCESS,
                              "token" : access_token}, 200)
         except Exception as err:
@@ -131,7 +131,8 @@ class CreatePassword(APIView):
     def post(request):
         try:
             data = request.data
-            check = UserManager.verify_otp(data)
-            return Response({"result": "success", "message": ProfileConstants.PROFILE_REGISTER, }, 200)
+            access_token, refresh_token = ProfileManager.create_password(data)
+
+            return Response({"result": "success", "message": ProfileConstants.PROFILE_REGISTER,"token":access_token }, 200)
         except Exception as err:
             return Response(str(err), 500)

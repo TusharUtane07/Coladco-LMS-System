@@ -171,7 +171,7 @@ class Appheader extends Component {
                 <li>
                   <NavLink
                     activeClassName="active"
-                    to="/default"
+                    to="/overview"
                     className="nav-content-bttn open-font"
                     data-tab="chats"
                   >

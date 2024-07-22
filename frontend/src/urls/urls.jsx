@@ -17,7 +17,7 @@ export const verifyOtpFunctionApi = (payload_data) => {
   return project.post(Urls.VERIFY_OTP, payload_data);
 };
 export const changePasswordFunctionApi = (payload_data) => {
-  return project.post(Urls.VERIFY_OTP, payload_data);
+  return project.post(Urls.CREATE_PASSWORD_USER, payload_data);
 };
 
 // tech to learn 
