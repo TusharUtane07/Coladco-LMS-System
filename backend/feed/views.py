@@ -1,6 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
+from jwtconfig.custom_permissions import IsUserAuth
 from .constants import PostConstants, CommentsConstants
 from .manage import PostManager,  CommentsManager
 from .serializers import PostSerializer, CommentsSerializer
@@ -14,6 +15,18 @@ class PostViewSet(APIView):
             post_objs = PostManager.get_all_posts(data)
             serialized_data = PostSerializer(post_objs, many=True).data
             return Response({"result": "success", "data": serialized_data, "message": PostConstants.SUCCESS}, 200)
+        except Exception as err:
+            return Response(str(err), 500)
+
+class NewPostUserSet(APIView):
+    permission_classes = [IsUserAuth]
+
+    @staticmethod
+    def post(request):
+        try:
+            data = request.data
+            PostManager.add_new_post(request, data)
+            return Response({"result": "success", "message": PostConstants.FEED_SUCCESS_UPDATE}, 200)
         except Exception as err:
             return Response(str(err), 500)
 

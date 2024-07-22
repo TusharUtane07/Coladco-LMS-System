@@ -30,6 +30,7 @@ export class Urls {
     
     // feed post 
     static FEEDPOST = Urls.MPHRMS_API_PREFIX + 'feed/all-posts-fetch/'
+    static NEW_POST_USER = Urls.MPHRMS_API_PREFIX + 'feed/new-post-user/'
 
     // bookmarks
     static BOOKMARKS = Urls.MPHRMS_API_PREFIX + 'additional/all-bookmarks-fetch/'

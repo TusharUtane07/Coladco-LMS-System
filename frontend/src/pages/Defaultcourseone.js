@@ -23,7 +23,7 @@ const Defaultcourseone = () => {
   const [course, setCourse] = useState([]);
   const [module, setModule] = useState([]);
   const [videos, setVideos] = useState([]);
-  
+  const [activeVideoUrl, setVideoUrl] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -91,7 +91,7 @@ const Defaultcourseone = () => {
                       className="react-player"
                       playing
                       // light={`assets/images/${value.videoimage}`}
-                      url={`assets/images/video4.mp4`}
+                      url={activeVideoUrl?activeVideoUrl:`assets/images/video4.mp4`}
                     />
                   </div>
                   <div className="card d-block border-0 rounded-lg overflow-hidden dark-bg-transparent bg-transparent mt-4 pb-3">
@@ -145,7 +145,9 @@ const Defaultcourseone = () => {
   const filteredVideos = videos?.filter(video => video?.module.id === item?.id);
 
   return (
-    <div key={item.id} className="card d-block border-0 rounded-lg overflow-hidden mt-3">
+    <div key={item.id} className="card d-block border-0 rounded-lg overflow-hidden mt-3"
+
+    >
       <Accordion
         defaultActiveKey="0"
         className="accordian mb-0 accordian-course"
@@ -160,7 +162,12 @@ const Defaultcourseone = () => {
           <Accordion.Body>
             {filteredVideos.length > 0 ? (
               filteredVideos.map(video => (
-                <div key={video.id} className="card-body d-flex p-2">
+                <div key={video.id} className="card-body d-flex p-2" 
+                onClick={()=>{
+                  console.log(video)
+                  setVideoUrl(video.url)
+                }}
+                >
                   <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
                     {video.id}
                   </span>

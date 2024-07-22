@@ -9,6 +9,16 @@ class PostManager:
         return all_posts_objs
 
     @staticmethod
+    def add_new_post(request, data):
+        message = data.get("message")
+        user_id = request.user.id
+        if not message:
+            raise Exception("No message is provided")
+        if not user_id:
+            raise Exception("No user is provided")
+        Post.objects.create(message=message, profile_id=user_id)
+
+    @staticmethod
     def get_single_posts(data):
         posts_id = data.get("postId", False)
         if not posts_id:

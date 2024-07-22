@@ -6,14 +6,15 @@ import Appheader from "../components/Appheader";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoShareOutline } from "react-icons/io5";
 import { GoComment } from "react-icons/go";
-import { feedPostApi } from "../urls/urls";
+import { feedPostApi, NewFeedPost } from "../urls/urls";
 import useAxios from "../network/useAxios";
-
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const Feed = () => {
 
   const [feedPostResponse, feedPostError, feedPostLoading, feedPostFetch] = useAxios();
+  const [newFReedResponse, newFReedError, newFReedLoading, newFReedFetch] = useAxios();
 
   const [feedPost, setFeedPost] = useState([]);
   const [formValues, setFormValues] = useState({ message: "" });
@@ -23,6 +24,19 @@ const Feed = () => {
     feedPostFetch(feedPostApi())
   }, [])
   
+  const addNewPost = () => {
+    newFReedFetch(NewFeedPost(formValues))
+  }
+
+  useEffect(()=>{
+    if(newFReedResponse?.result == "success"){
+      feedPostFetch(feedPostApi())
+    }
+    if(newFReedError){
+      toast.error(newFReedError?.response?.data)
+    }
+  },[newFReedResponse,newFReedError ])
+
   useEffect(() => {
     if(feedPostFetch?.data){
       setFeedPost(feedPostResponse?.data)
@@ -32,7 +46,7 @@ const Feed = () => {
 
   const handlePostSubmit = (e) => {
     e.preventDefault();
-    console.log(formValues)
+    addNewPost()
     setFormValues({...formValues, message: ""})
   }
 
@@ -139,6 +153,7 @@ const Feed = () => {
         </div>
         <Appfooter />
       </div>
+      <ToastContainer/>
     </Fragment>
   );
 };

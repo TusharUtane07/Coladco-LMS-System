@@ -57,8 +57,11 @@ export const jobListingDetails = (payload_data) => {
 }
 
 // post
-export const feedPostApi = () => {
-  return project.get(Urls.FEEDPOST)
+export const feedPostApi = (payload_data) => {
+  return project.get(Urls.FEEDPOST, payload_data)
+}
+export const NewFeedPost = (payload_data) => {
+  return project.post(Urls.NEW_POST_USER, payload_data)
 }
 
 // bookmarks
