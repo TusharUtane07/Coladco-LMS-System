@@ -6,7 +6,7 @@ This is a Learning Management System (LMS) developed using React and Create Reac
 
 Before you begin, ensure you have met the following requirements:
 
-- *Node.js*: Ensure you have Node.js installed. If not, download it from [nodejs.org](https://nodejs.org/). For this project, use Node.js version 14.15.1.
+- *Node.js*: Ensure you have Node.js installed. If not, download it from [nodejs.org](https://nodejs.org/). For this project, use Node.js version 14.15.0.
 
 - *nvm-windows*: If you need to manage multiple Node.js versions, install nvm-windows from the [nvm-windows releases page](https://github.com/coreybutler/nvm-windows/releases).
 
