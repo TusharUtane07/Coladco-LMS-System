@@ -17,6 +17,9 @@ export class Urls {
     // module
     static MODULE = Urls.MPHRMS_API_PREFIX + 'course/all-modules-fetch/'
 
+    // videos
+    static VIDEOS = Urls.MPHRMS_API_PREFIX + 'course/all-videos-fetch/'
+
     // people
     static PEOPLE = Urls.MPHRMS_API_PREFIX + 'users/all-profile-fetch/'
     static USER_PROFILE = Urls.MPHRMS_API_PREFIX + 'users/single-profile-fetch/'
@@ -27,5 +30,8 @@ export class Urls {
     
     // feed post 
     static FEEDPOST = Urls.MPHRMS_API_PREFIX + 'feed/all-posts-fetch/'
+
+    // bookmarks
+    static BOOKMARKS = Urls.MPHRMS_API_PREFIX + 'additional/all-bookmarks-fetch/'
 
 }

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState, version } from 'react';
 import Appfooter from '../components/Appfooter';
 import Navheader from '../components/Navheader';
 import Appheader from '../components/Appheader';
@@ -8,7 +8,7 @@ import Subscribe from '../components/Subscribe';
 import { Accordion } from 'react-bootstrap';
 import ReactPlayer from 'react-player';
 import { Modal, Input, Rate, Form, Button } from 'antd';
-import { courseApi, moduleApi } from '../urls/urls';
+import { courseApi, moduleApi, videosApi } from '../urls/urls';
 import useAxios from '../network/useAxios';
 
 const Defaultcourseone = () => {
@@ -18,15 +18,18 @@ const Defaultcourseone = () => {
 
   const [courseResponse, courseError, courseLoading, courseFetch] = useAxios();
   const [moduleResponse, moduleError, moduleLoading, moduleFetch] = useAxios();
+  const [videosResponse, videosError, videosLoading, videosFetch] = useAxios();
 
   const [course, setCourse] = useState([]);
   const [module, setModule] = useState([]);
+  const [videos, setVideos] = useState([]);
   
 
   useEffect(() => {
     const fetchData = async () => {
       await courseFetch(courseApi());
       await moduleFetch(moduleApi());
+      await videosFetch(videosApi());
     };
 
     fetchData();
@@ -41,7 +44,11 @@ const Defaultcourseone = () => {
       setModule(moduleResponse.data);
       console.log(moduleResponse.data);
     }
-  }, [courseResponse, moduleResponse]);
+    if (videosResponse?.data) {
+      setVideos(videosResponse.data);
+      console.log(videosResponse.data);
+    }
+  }, [courseResponse, moduleResponse, videosResponse]);
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -111,10 +118,10 @@ const Defaultcourseone = () => {
                     </div>
 
                     <span className="font-xssss fw-700 text-grey-900 d-inline-block ml-0 text-dark">
-                      Cassica Vanni
+                      Instructor: Yatin Vohra
                     </span>
                     <span className="dot ml-2 mr-2 d-inline-block btn-round-xss bg-grey"></span>
-                    <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
+                    {/* <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
                       Developer
                     </span>
                     <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
@@ -132,187 +139,49 @@ const Defaultcourseone = () => {
                     <span className="dot ml-2 mr-2 d-inline-block btn-round-xss bg-grey"></span>
                     <span className="font-xssss fw-700 text-primary d-inline-block ml-0 ">
                       Follow Author
-                    </span>
+                    </span> */}
                   </div>
-                  <div className="card d-block border-0 rounded-lg overflow-hidden mt-3">
-                    <Accordion
-                      defaultActiveKey="0"
-                      className="accordian mb-0 accordian-course"
-                    >
-                      <Accordion.Item
-                        eventKey="0"
-                        className="accordion-item border-0 mb-0 shadow-xss rounded-sm bg-white"
-                      >
-                        <Accordion.Header>
-                          How do I make a yearly payment?
-                        </Accordion.Header>
-                        <Accordion.Body>
-                          <div className="card-body d-flex p-2">
-                            <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                              1
-                            </span>
-                            <span className="font-xssss fw-500 text-grey-500 ml-2">
-                              Introduction to the course
-                            </span>
-                            <span className="ml-auto font-xssss fw-500 text-grey-500">
-                              12:34
-                            </span>
-                          </div>
-                          <div className="card-body d-flex p-2">
-                            <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                              2
-                            </span>
-                            <span className="font-xssss fw-500 text-grey-500 ml-2">
-                              Enjoyed this a lot and well done.
-                            </span>
-                            <span className="ml-auto font-xssss fw-500 text-grey-500">
-                              54:22
-                            </span>
-                          </div>
-                          <div className="card-body d-flex p-2">
-                            <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                              3
-                            </span>
-                            <span className="font-xssss fw-500 text-grey-500 ml-2">
-                              Excel project such as animation with password
-                            </span>
-                            <span className="ml-auto font-xssss fw-500 text-grey-500">
-                              40:00
-                            </span>
-                          </div>
-                        </Accordion.Body>
-                      </Accordion.Item>
-                      <Accordion.Item
-                        eventKey="1"
-                        className="accordion-item border-0 mb-0 shadow-xss rounded-6"
-                      >
-                        <Accordion.Header>
-                          People chart infographics Animation
-                        </Accordion.Header>
-                        <Accordion.Body>
-                          <div className="card-body d-flex p-2">
-                            <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                              1
-                            </span>
-                            <span className="font-xssss fw-500 text-grey-500 ml-2">
-                              Introduction to the course
-                            </span>
-                            <span className="ml-auto font-xssss fw-500 text-grey-500">
-                              12:34
-                            </span>
-                          </div>
-                          <div className="card-body d-flex p-2">
-                            <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                              2
-                            </span>
-                            <span className="font-xssss fw-500 text-grey-500 ml-2">
-                              Enjoyed this a lot and well done.
-                            </span>
-                            <span className="ml-auto font-xssss fw-500 text-grey-500">
-                              54:22
-                            </span>
-                          </div>
-                          <div className="card-body d-flex p-2">
-                            <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                              3
-                            </span>
-                            <span className="font-xssss fw-500 text-grey-500 ml-2">
-                              Excel project such as animation with password
-                            </span>
-                            <span className="ml-auto font-xssss fw-500 text-grey-500">
-                              40:00
-                            </span>
-                          </div>
-                        </Accordion.Body>
-                      </Accordion.Item>
-                      <Accordion.Item
-                        eventKey="3"
-                        className="accordion-item border-0 mb-0 shadow-xss rounded-6"
-                      >
-                        <Accordion.Header>
-                          Development to the Course
-                        </Accordion.Header>
-                        <Accordion.Body>
-                          <div className="card-body d-flex p-2">
-                            <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                              1
-                            </span>
-                            <span className="font-xssss fw-500 text-grey-500 ml-2">
-                              Introduction to the course
-                            </span>
-                            <span className="ml-auto font-xssss fw-500 text-grey-500">
-                              12:34
-                            </span>
-                          </div>
-                          <div className="card-body d-flex p-2">
-                            <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                              2
-                            </span>
-                            <span className="font-xssss fw-500 text-grey-500 ml-2">
-                              Enjoyed this a lot and well done.
-                            </span>
-                            <span className="ml-auto font-xssss fw-500 text-grey-500">
-                              54:22
-                            </span>
-                          </div>
-                          <div className="card-body d-flex p-2">
-                            <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                              3
-                            </span>
-                            <span className="font-xssss fw-500 text-grey-500 ml-2">
-                              Excel project such as animation with password
-                            </span>
-                            <span className="ml-auto font-xssss fw-500 text-grey-500">
-                              40:00
-                            </span>
-                          </div>
-                        </Accordion.Body>
-                      </Accordion.Item>
-                      <Accordion.Item
-                        eventKey="4"
-                        className="accordion-item border-0 mb-0 shadow-xss rounded-6"
-                      >
-                        <Accordion.Header>
-                          Creating a sliding down menu
-                        </Accordion.Header>
-                        <Accordion.Body>
-                          <div className="card-body d-flex p-2">
-                            <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                              1
-                            </span>
-                            <span className="font-xssss fw-500 text-grey-500 ml-2">
-                              Introduction to the course
-                            </span>
-                            <span className="ml-auto font-xssss fw-500 text-grey-500">
-                              12:34
-                            </span>
-                          </div>
-                          <div className="card-body d-flex p-2">
-                            <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                              2
-                            </span>
-                            <span className="font-xssss fw-500 text-grey-500 ml-2">
-                              Enjoyed this a lot and well done.
-                            </span>
-                            <span className="ml-auto font-xssss fw-500 text-grey-500">
-                              54:22
-                            </span>
-                          </div>
-                          <div className="card-body d-flex p-2">
-                            <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
-                              3
-                            </span>
-                            <span className="font-xssss fw-500 text-grey-500 ml-2">
-                              Excel project such as animation with password
-                            </span>
-                            <span className="ml-auto font-xssss fw-500 text-grey-500">
-                              40:00
-                            </span>
-                          </div>
-                        </Accordion.Body>
-                      </Accordion.Item>
-                    </Accordion>
-                  </div>
+                  {module?.map((item) => {
+  const filteredVideos = videos?.filter(video => video?.module.id === item?.id);
+
+  return (
+    <div key={item.id} className="card d-block border-0 rounded-lg overflow-hidden mt-3">
+      <Accordion
+        defaultActiveKey="0"
+        className="accordian mb-0 accordian-course"
+      >
+        <Accordion.Item
+          eventKey="0"
+          className="accordion-item border-0 mb-0 shadow-xss rounded-sm bg-white"
+        >
+          <Accordion.Header>
+            {item.name}
+          </Accordion.Header>
+          <Accordion.Body>
+            {filteredVideos.length > 0 ? (
+              filteredVideos.map(video => (
+                <div key={video.id} className="card-body d-flex p-2">
+                  <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
+                    {video.id}
+                  </span>
+                  <span className="font-xssss fw-500 text-grey-500 ml-2">
+                    {video.title}
+                  </span>
+                  <span className="ml-auto font-xssss fw-500 text-grey-500">
+                    12:34
+                  </span>
+                </div>
+              ))
+            ) : (
+              <p className='font-xssss fw-500 text-grey-500 ml-2'>No videos available for this module.</p>
+            )}
+          </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
+    </div>
+  );
+})}
+
                   <div className="card d-block border-0 rounded-lg overflow-hidden p-4 shadow-xss mt-4 alert-success">
                     <h2 className="fw-700 font-sm mb-3 mt-1 pl-1 text-success mb-4">
                       What you'll learn from this lesson
@@ -443,7 +312,7 @@ const Defaultcourseone = () => {
                     <div className="row">
                       <div className="col-5 pr-0">
                         <h2 className="display3-size lh-1 m-0 text-grey-900 fw-700">
-                          4.2
+                          {course[0]?.rating}
                         </h2>
                       </div>
                       <div className="col-7 pl-0 text-right">
