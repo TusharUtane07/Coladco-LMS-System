@@ -278,27 +278,25 @@ const courseList = [
 
   const SingleUserProfile = () => {
 
-    const [profileResponse, profileError, profileLoading, profileFetch] = useAxios();
-  const {id} = useParams();
-  console.log(id)
-  const [profile, setProfile] = useState([]);
+  //   const [profileResponse, profileError, profileLoading, profileFetch] = useAxios();
+  // const {id} = useParams();
+  // console.log(id)
+  const [profile, setProfile] = useState({});
   
-  useEffect(()=> {
-    if(id){
-      profileFetch(profileApi({
-        profileId: id
-      }))
-    }
-  }, [])
+  // useEffect(()=> {
+  //   if(id){
+  //     profileFetch(profileApi({
+  //       profileId: id
+  //     }))
+  //   }
+  // }, [])
   
-  useEffect(() => {
-    if(profileResponse?.data){
-      setProfile(profileResponse?.data)
-    }
-  }, [])
+  // useEffect(() => {
+  //   if(profileResponse?.result == "success" && profileResponse?.data){
+  //     setProfile(profileResponse?.data[0])
+  //   }
+  // }, [profileResponse])
   
-  console.log(profileResponse?.data)
-  console.log(profile)
     return (
       <Fragment>
         <div className="main-wrapper">
@@ -329,7 +327,7 @@ const courseList = [
                       </div>
                       <div className="col-xl-4 col-lg-6 pl-xl-5 pb-xl-5 pb-3">
                         <h4 className="fw-700 font-md text-white mt-3 mb-1 capitalise" style={{textTransform:"capitalize"}}>
-                          {profileResponse && profile?.user.username}
+                          {profile?.user?.username}
                           <i className="ti-check font-xssss btn-round-xs bg-success text-white ml-1"></i>
                         </h4>
                         <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-0">

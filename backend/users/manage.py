@@ -7,8 +7,8 @@ from django.contrib.auth.hashers import make_password, check_password
 
 from users.models import UserDefault, Profile, OtpVerify
 import jwt
-from django.conf import settings
-
+from django.utils import timezone
+from datetime import timedelta
 class UserManager:
 
     @staticmethod
@@ -23,6 +23,24 @@ class UserManager:
             raise Exception("No User id provided")
         all_user_objs = UserDefault.objects.filter(id=user_id)
         return all_user_objs
+    @staticmethod
+    def is_otp_valid(obj):
+        return timezone.now() <= obj.created_at + timedelta(minutes=3)
+
+    @staticmethod
+    def verify_otp(data):
+        phone = data.get("phone", False)
+        number_1 = data.get("number1", False)
+        number_2 = data.get("number2", False)
+        number_3 = data.get("number3", False)
+        number_4 = data.get("number4", False)
+        if not ( phone or number_1 or number_2 or number_3 or number_4 ):
+            raise Exception("Invalid phone or otp entered")
+        otp_entered = number_1 + number_2 + number_3 + number_4
+        all_user_objs = OtpVerify.objects.filter(phone_number=phone, otp=otp_entered).first()
+        if all_user_objs and UserManager.is_otp_valid(all_user_objs):
+            return True
+        raise Exception("Otp entered is either invalid or expired")
 
     @staticmethod
     def update_single_user(data):
@@ -125,6 +143,18 @@ class ProfileManager:
         password = data.get('password', False)
         try:
             all_profile_objs = Profile.objects.select_related('user').get(user__username=username, user__password=password)
+        except Exception as e:
+            raise Exception("User doesnt exits")
+
+    @staticmethod
+    def create_password(data):
+        phone = data.get('phone', False)
+        password = data.get('password', False)
+        try:
+            all_profile_objs = Profile.objects.filter(phone_number=phone)
+            if not all_profile_objs:
+                raise Exception("Something went wrong from our side")
+            UserDefault.objects.create(user=all_profile_objs[0])
         except Exception as e:
             raise Exception("User doesnt exits")
 

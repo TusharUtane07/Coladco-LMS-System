@@ -115,3 +115,23 @@ class RegisterUser(APIView):
             return Response({"result": "success", "message": ProfileConstants.PROFILE_REGISTER, }, 200)
         except Exception as err:
             return Response(str(err), 500)
+
+class VerifyOtp(APIView):
+    @staticmethod
+    def post(request):
+        try:
+            data = request.data
+            check = UserManager.verify_otp(data)
+            return Response({"result": "success", "message": ProfileConstants.PROFILE_REGISTER, }, 200)
+        except Exception as err:
+            return Response(str(err), 500)
+
+class CreatePassword(APIView):
+    @staticmethod
+    def post(request):
+        try:
+            data = request.data
+            check = UserManager.verify_otp(data)
+            return Response({"result": "success", "message": ProfileConstants.PROFILE_REGISTER, }, 200)
+        except Exception as err:
+            return Response(str(err), 500)

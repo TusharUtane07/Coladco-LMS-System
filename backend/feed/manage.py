@@ -1,4 +1,4 @@
-from feed.models import Post
+from feed.models import Post, PostComments
 
 
 class PostManager:
@@ -52,10 +52,11 @@ class CommentsManager:
 
     @staticmethod
     def get_single_comments(data):
+        profile_id = 1
         comments_id = data.get("commentsId", False)
         if not comments_id:
             raise Exception("No Comment id provided")
-        # all_comments_objs = Comments.objects.filter(id=comments_id)
+        all_comments_objs = PostComments.objects.filter(id=comments_id, profile=profile_id)
         all_comments_objs = []
         return all_comments_objs
     

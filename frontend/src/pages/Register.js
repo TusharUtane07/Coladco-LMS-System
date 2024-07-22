@@ -75,7 +75,7 @@ setFormValues((prev)=>({...prev,
   const { name, email, phone,gender, errors } = formValues;
   useEffect(()=>{
     if(registerResponse?.result == "success"){
-     route.push('/verify-otp');
+     route.push('/verify-otp', {phone: formValues?.phone});
     }
     if(registerError){
       toast.error(registerError?.response?.data)

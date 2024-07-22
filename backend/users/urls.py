@@ -1,11 +1,14 @@
 from django.urls import path
 
-from .views import UserSingleView, UserViewSet, ProfileViewSet, ProfileSingleView, GetLoginToken, RegisterUser
+from .views import UserSingleView, UserViewSet, ProfileViewSet, ProfileSingleView, GetLoginToken, RegisterUser, \
+    VerifyOtp, CreatePassword
 
 urlpatterns = [
     path('/login-user/', GetLoginToken.as_view(), name='login-user'),
     path('/register-profile/', RegisterUser.as_view(), name='register-profile'),
-    path('/all-profile-fetch', ProfileViewSet.as_view(), name='all-profile-fetch'),
+    path('/verify-otp/', VerifyOtp.as_view(), name='verify-otp'),
+    path('/change-password-user/', CreatePassword.as_view(), name='change-password-user'),
+    path('/all-profile-fetch/', ProfileViewSet.as_view(), name='all-profile-fetch'),
     path('/single-profile-fetch/', ProfileSingleView.as_view(), name='single-profile-fetch'),
     path('/single-profile-update/', ProfileSingleView.as_view(), name='single-profile-update'),
     path('/single-profile-delete/', ProfileSingleView.as_view(), name='single-profile-delete'),

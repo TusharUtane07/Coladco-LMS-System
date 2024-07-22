@@ -13,6 +13,12 @@ export const loginFunctionApi = (payload_data) => {
 export const userRegisterFunctionApi = (payload_data) => {
   return project.post(Urls.REGISTER_USER, payload_data);
 };
+export const verifyOtpFunctionApi = (payload_data) => {
+  return project.post(Urls.VERIFY_OTP, payload_data);
+};
+export const changePasswordFunctionApi = (payload_data) => {
+  return project.post(Urls.VERIFY_OTP, payload_data);
+};
 
 // tech to learn 
 export const techToLearnApi = () => {
