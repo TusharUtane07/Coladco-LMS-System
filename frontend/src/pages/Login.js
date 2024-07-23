@@ -15,6 +15,7 @@ const Login = () => {
   useEffect(()=>{
     if(logineResponse?.result == "success"){
       localStorage.setItem("coladjsTk",  logineResponse?.token)
+      console.log(logineResponse?.data)
      route.push('/overview');
     }
     if(logineError){

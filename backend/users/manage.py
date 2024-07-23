@@ -155,7 +155,8 @@ class ProfileManager:
                 "profile_id": all_profile_objs.id,
                 "full_name": all_profile_objs.full_name,
             }
-            return JwtManager.create_token(payload, payload)
+            accessToken, refershToken = JwtManager.create_token(payload, payload)
+            return accessToken, refershToken , all_profile_objs
         except Exception as e:
             raise Exception("The ID or password you entered is incorrect. Please try again.")
 
