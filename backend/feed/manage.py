@@ -1,4 +1,4 @@
-from feed.models import Post
+from feed.models import Post, PostComments
 
 
 class PostManager:
@@ -7,6 +7,16 @@ class PostManager:
     def get_all_posts(data):
         all_posts_objs = Post.objects.filter().prefetch_related("post_comments", "profile")
         return all_posts_objs
+
+    @staticmethod
+    def add_new_post(request, data):
+        message = data.get("message")
+        user_id = request.user.id
+        if not message:
+            raise Exception("No message is provided")
+        if not user_id:
+            raise Exception("No user is provided")
+        Post.objects.create(message=message, profile_id=user_id)
 
     @staticmethod
     def get_single_posts(data):
@@ -52,10 +62,11 @@ class CommentsManager:
 
     @staticmethod
     def get_single_comments(data):
+        profile_id = 1
         comments_id = data.get("commentsId", False)
         if not comments_id:
             raise Exception("No Comment id provided")
-        # all_comments_objs = Comments.objects.filter(id=comments_id)
+        all_comments_objs = PostComments.objects.filter(id=comments_id, profile=profile_id)
         all_comments_objs = []
         return all_comments_objs
     

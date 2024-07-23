@@ -303,7 +303,7 @@ class Root extends Component {
 
           <Route
             exact
-            path={`${process.env.PUBLIC_URL}/default`}
+            path={`${process.env.PUBLIC_URL}/overview`}
             component={Default}
           />
           <Route
@@ -355,7 +355,7 @@ class Root extends Component {
           />
           <Route
             exact
-            path={`${process.env.PUBLIC_URL}/user-profile/:id`}
+            path={`/user-profile/:id`}
             component={SingleUserProfile}
           />
           <Route

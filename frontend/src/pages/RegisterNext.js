@@ -1,23 +1,36 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useLocation } from 'react-router-dom';
+import useAxios from '../network/useAxios';
+import { changePasswordFunctionApi } from '../urls/urls';
+import { ToastContainer, toast } from 'react-toastify';
 
-class RegisterNext extends Component {
-  state = {
+const RegisterNext = () => {
+  const route = useHistory()
+  const [createPasswordResponse, createPasswordError, createPasswordLoading, createPasswordFetch] = useAxios();
+  const location = useLocation();
+  const data = location.state;
+  const [formValues, setFormValues] = useState ({
     password: '',
     confirmPassword: '',
     errors: {
       password: '',
       confirmPassword: '',
     },
-  };
-
-  handleChange = (e) => {
+  });
+  const changePassword = () => {
+    createPasswordFetch(changePasswordFunctionApi({...formValues , phone:data?.phone}))
+  }
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    setFormValues((prev)=>({...prev,
+      [name]: value
+    }));  
   };
 
-  validateForm = () => {
-    const { password, confirmPassword } = this.state;
+  const validateForm = () => {
+    const { password, confirmPassword } = formValues;
     let errors = {};
     let formIsValid = true;
 
@@ -36,22 +49,37 @@ class RegisterNext extends Component {
       formIsValid = false;
       errors['confirmPassword'] = 'Passwords do not match';
     }
-
-    this.setState({ errors });
+    setFormValues((prev)=>({...prev,
+      errors: errors
+    }));
     return formIsValid;
   };
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (this.validateForm()) {
-      // Submit form
-      console.log('Form submitted');
-      this.props.history.push('/'); 
+    if (validateForm()) {
+      changePassword()
     }
   };
+  useEffect(()=>{
+    if (!data?.phone){
+      route.push("/register")
+    }
+  },[])
+  useEffect(()=>{
 
-  render() {
-    const { password, confirmPassword, errors } = this.state;
+    if(createPasswordError){
+      toast.error(createPasswordError?.response?.data)
+    }
+  },[createPasswordError ])
+  useEffect(()=>{
+    if (createPasswordResponse?.result == "success" && createPasswordResponse?.token){
+      localStorage.setItem("coladjsTk",  createPasswordResponse?.token)
+      route.push("/overview")
+    }
+  },[createPasswordResponse])
+
+    const { password, confirmPassword, errors } = formValues;
 
     return (
       <Fragment>
@@ -71,7 +99,7 @@ class RegisterNext extends Component {
                     Create <br />
                     your password
                   </h2>
-                  <form onSubmit={this.handleSubmit}>
+                  <form onSubmit={handleSubmit}>
                     <div className="form-group icon-input mb-3">
                       <i className="font-sm ti-user text-grey-500 pr-0"></i>
                       <input
@@ -80,19 +108,19 @@ class RegisterNext extends Component {
                         className="style2-input pl-5 form-control text-grey-900 font-xsss fw-600"
                         placeholder="Password"
                         value={password}
-                        onChange={this.handleChange}
+                        onChange={handleChange}
                       />
                       {errors.password && <div className="text-danger">{errors.password}</div>}
                     </div>
                     <div className="form-group icon-input mb-3">
-                      <i className="font-sm ti-email text-grey-500 pr-0"></i>
-                      <input
+                    <i className="font-sm ti-user text-grey-800 pr-0"></i>
+                    <input
                         type="password"
                         name="confirmPassword"
                         className="style2-input pl-5 form-control text-grey-900 font-xsss fw-600"
                         placeholder="Confirm Password"
                         value={confirmPassword}
-                        onChange={this.handleChange}
+                        onChange={handleChange}
                       />
                       {errors.confirmPassword && (
                         <div className="text-danger">{errors.confirmPassword}</div>
@@ -125,9 +153,10 @@ class RegisterNext extends Component {
             </div>
           </div>
         </div>
+        <ToastContainer/>
       </Fragment>
     );
-  }
+  
 }
 
 export default RegisterNext;

@@ -5,6 +5,8 @@ export class Urls {
     // users
     static LOGIN_USER = Urls.MPHRMS_API_PREFIX + 'users/login-user/';
     static REGISTER_USER = Urls.MPHRMS_API_PREFIX + 'users/register-profile/';
+    static VERIFY_OTP = Urls.MPHRMS_API_PREFIX + 'users/verify-otp/';
+    static CREATE_PASSWORD_USER = Urls.MPHRMS_API_PREFIX + 'users/create-password-user/';
 
     // tech to learn
     static TECH_TO_LEARN = Urls.MPHRMS_API_PREFIX + 'additional/all-tech-to-learn-fetch/'
@@ -14,6 +16,9 @@ export class Urls {
 
     // module
     static MODULE = Urls.MPHRMS_API_PREFIX + 'course/all-modules-fetch/'
+
+    // videos
+    static VIDEOS = Urls.MPHRMS_API_PREFIX + 'course/all-videos-fetch/'
 
     // people
     static PEOPLE = Urls.MPHRMS_API_PREFIX + 'users/all-profile-fetch/'
@@ -25,5 +30,9 @@ export class Urls {
     
     // feed post 
     static FEEDPOST = Urls.MPHRMS_API_PREFIX + 'feed/all-posts-fetch/'
+    static NEW_POST_USER = Urls.MPHRMS_API_PREFIX + 'feed/new-post-user/'
+
+    // bookmarks
+    static BOOKMARKS = Urls.MPHRMS_API_PREFIX + 'additional/all-bookmarks-fetch/'
 
 }

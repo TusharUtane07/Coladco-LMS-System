@@ -1,10 +1,10 @@
 /* eslint-disable */
 import { useState, useEffect } from "react";
-import { useRouter } from "../hooks/use-router";
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 const useAxios = () => {
-    const router = useRouter();
+    const router = useHistory();
 
     const [response, setResponse] = useState([]);
     const [error, setError] = useState('');
@@ -19,8 +19,11 @@ const useAxios = () => {
             url,
             requestConfig = {}
         } = configObj;
+
         try {
-            // axiosInstance.defaults.headers['jwtToken'] = token;
+            let token = localStorage.getItem("coladjsTk")
+            console.log("toke",token)
+            axiosInstance.defaults.headers['jwtToken'] = token;
             setLoading(true);
             const ctrl = new AbortController();
             setController(ctrl);
@@ -33,8 +36,9 @@ const useAxios = () => {
             if (err?.response?.status === 404) {
                 setError(err);
             }
-            if (err?.response?.status === 403) {
-                router.push("/login-phone")
+            if (err?.response?.status === 401) {
+                localStorage.removeItem("coladjsTk")
+                router.push("/login")
             }
             else{
                 setError(err);

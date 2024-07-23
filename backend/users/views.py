@@ -99,9 +99,10 @@ class GetLoginToken(APIView):
     def post(request):
         try:
             data = request.data
-            all_profile_objs,  access_token, refresh_token = ProfileManager.get_login_token(data)
+            access_token, refresh_token, profile = ProfileManager.get_login_token(data)
+            serialized_data = ProfileSerializer(profile).data
             return Response({"result": "success", "message": ProfileConstants.SUCCESS,
-                             "token" : access_token}, 200)
+                             "token" : access_token, "data":serialized_data}, 200)
         except Exception as err:
             return Response(str(err), 500)
 
@@ -113,5 +114,26 @@ class RegisterUser(APIView):
             data = request.data
             UserManager.register_new_user(data)
             return Response({"result": "success", "message": ProfileConstants.PROFILE_REGISTER, }, 200)
+        except Exception as err:
+            return Response(str(err), 500)
+
+class VerifyOtp(APIView):
+    @staticmethod
+    def post(request):
+        try:
+            data = request.data
+            check = UserManager.verify_otp(data)
+            return Response({"result": "success", "message": ProfileConstants.PROFILE_REGISTER, }, 200)
+        except Exception as err:
+            return Response(str(err), 500)
+
+class CreatePassword(APIView):
+    @staticmethod
+    def post(request):
+        try:
+            data = request.data
+            access_token, refresh_token = ProfileManager.create_password(data)
+
+            return Response({"result": "success", "message": ProfileConstants.PROFILE_REGISTER,"token":access_token }, 200)
         except Exception as err:
             return Response(str(err), 500)

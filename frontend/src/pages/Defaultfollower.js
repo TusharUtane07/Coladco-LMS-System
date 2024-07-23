@@ -110,7 +110,7 @@ const Defaultfollower = () => {
                         />
                       </Link>
                       <h4 className="fw-700 text-capitalize font-xs mt-3 mb-1">
-                        {value.username}{' '}
+                        {value.full_name}{' '}
                         <i className="ti-check font-xssss btn-round-xs bg-success text-white ml-1"></i>
                       </h4>
                       <p className="fw-600 font-xssss text-grey-500 mt-0 mb-2">

@@ -77,7 +77,7 @@ class VideoManager:
 
     @staticmethod
     def get_all_videos(data):
-        all_videos_objs = Video.objects.all()
+        all_videos_objs = Video.objects.select_related('module').all()
         return all_videos_objs
 
     @staticmethod
@@ -110,6 +110,19 @@ class ReviewManager:
     def get_all_reviews(data):
         all_reviews_objs = Review.objects.all()
         return all_reviews_objs
+
+    @staticmethod
+    def add_new_review(request, data):
+        # message = data.get("message")
+        review_text = data.get("reviewText")
+        rating = data.get("rating")
+        course = data.get(1)
+        user_id = request.user.id
+        if not review_text:
+            raise Exception("No message is provided")
+        if not user_id:
+            raise Exception("No user is provided")
+        Review.objects.create(review_text=review_text, user=user_id, rating = rating, course =course)
 
     @staticmethod
     def get_single_reviews(data):

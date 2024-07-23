@@ -263,7 +263,7 @@ class Defaultcategory extends Component {
                               </p>
                               <div className="clearfix"></div>
                               <a
-                                href="/default"
+                                href="/overview"
                                 className="bg-primary-gradiant border-0 text-white fw-600 text-uppercase font-xssss float-left rounded-lg d-inline-block mt-0 p-2 lh-34 text-center ls-3 w200 mt-3"
                               >
                                 Get Course
