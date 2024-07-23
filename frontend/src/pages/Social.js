@@ -19,7 +19,7 @@ const Social = () => {
     github: ''
   });
   const [profile, setProfile] = useState({});
-  const [isLoading, setIsLoading] = useState(true); // Add a loading state
+  const [isLoading, setIsLoading] = useState(true); 
 
   useEffect(() => {
     profileFetch(profileApi({ profileId: 1 }));
@@ -35,12 +35,12 @@ const Social = () => {
         facebook: profileResponse?.data[0]?.facebook || '',
         github: profileResponse?.data[0]?.github || ''
       });
-      setIsLoading(false); // Set loading state to false after data is set
+      setIsLoading(false); 
     }
   }, [profileResponse]);
 
   if (isLoading) {
-    return <div>Loading...</div>; // Show a loading indicator while data is being fetched
+    return <div>Loading...</div>; 
   }
 
   return (
@@ -51,7 +51,7 @@ const Social = () => {
         <div className="main-content">
           <Appheader />
 
-          <div className="middle-sidebar-bottom bg-lightblue theme-dark-bg">
+          <div className="middle-sidebar-bottom  theme-dark-bg">
             <div className="middle-sidebar-left">
               <div className="middle-wrap">
                 <div className="card w-100 border-0 bg-white shadow-xs p-0 mb-4">

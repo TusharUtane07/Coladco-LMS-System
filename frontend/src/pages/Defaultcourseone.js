@@ -40,6 +40,7 @@ const Defaultcourseone = () => {
   }, []);
   
   useEffect(() => {
+    window.scrollTo(0,0)
     if (courseResponse?.data) {
       setCourse(courseResponse.data);
       console.log(courseResponse.data);

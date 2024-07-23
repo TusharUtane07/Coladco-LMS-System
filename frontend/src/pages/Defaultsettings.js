@@ -6,9 +6,17 @@ import Profile from '../components/Profile';
 import Myclass from '../components/Myclass';
 import Subscribe from '../components/Subscribe';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-class Defaultsettings extends Component {
-  render() {
+const Defaultsettings = () => {
+
+  const route = useHistory();
+
+  const handleLogout = () => {
+    localStorage.removeItem("coladjsTk")
+    route.push("/login")
+  }
+
     return (
       <Fragment>
         <div className="main-wrapper">
@@ -17,7 +25,7 @@ class Defaultsettings extends Component {
           <div className="main-content">
             <Appheader />
 
-            <div className="middle-sidebar-bottom bg-lightblue theme-dark-bg">
+            <div className="middle-sidebar-bottom  theme-dark-bg">
               <div className="middle-sidebar-left">
                 <div className="middle-wrap">
                   <div className="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
@@ -117,16 +125,16 @@ class Defaultsettings extends Component {
                               </Link>
                             </li>
                             <li className="list-inline-item d-block mr-0">
-                              <Link
-                                to="/default-settings"
-                                className="pt-2 pb-2 d-flex"
+                              <div
+                                onClick={handleLogout}
+                                className="pt-2 pb-2 d-flex cursor-pointer"
                               >
                                 <i className="btn-round-md bg-red-gradiant text-white feather-lock font-md mr-3"></i>{' '}
                                 <h4 className="fw-600 font-xssss mb-0 mt-3">
                                   Logout
                                 </h4>
                                 <i className="ti-angle-right font-xsss text-grey-500 ml-auto mt-3"></i>
-                              </Link>
+                              </div>
                             </li>
                           </ul>
                         </div>
@@ -150,7 +158,7 @@ class Defaultsettings extends Component {
         </div>
       </Fragment>
     );
-  }
+
 }
 
 export default Defaultsettings;
