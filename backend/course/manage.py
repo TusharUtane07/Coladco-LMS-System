@@ -112,6 +112,19 @@ class ReviewManager:
         return all_reviews_objs
 
     @staticmethod
+    def add_new_review(request, data):
+        # message = data.get("message")
+        review_text = data.get("reviewText")
+        rating = data.get("rating")
+        course = data.get(1)
+        user_id = request.user.id
+        if not review_text:
+            raise Exception("No message is provided")
+        if not user_id:
+            raise Exception("No user is provided")
+        Review.objects.create(review_text=review_text, user=user_id, rating = rating, course =course)
+
+    @staticmethod
     def get_single_reviews(data):
         review_id = data.get("reviewId", False)
         if not review_id:

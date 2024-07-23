@@ -278,24 +278,24 @@ const courseList = [
 
   const SingleUserProfile = () => {
 
-  //   const [profileResponse, profileError, profileLoading, profileFetch] = useAxios();
-  // const {id} = useParams();
-  // console.log(id)
+    const [profileResponse, profileError, profileLoading, profileFetch] = useAxios();
+  const {id} = useParams();
+  console.log(id)
   const [profile, setProfile] = useState({});
   
-  // useEffect(()=> {
-  //   if(id){
-  //     profileFetch(profileApi({
-  //       profileId: id
-  //     }))
-  //   }
-  // }, [])
+  useEffect(()=> {
+    if(id){
+      profileFetch(profileApi({
+        profileId: id
+      }))
+    }
+  }, [])
   
-  // useEffect(() => {
-  //   if(profileResponse?.result == "success" && profileResponse?.data){
-  //     setProfile(profileResponse?.data[0])
-  //   }
-  // }, [profileResponse])
+  useEffect(() => {
+    if(profileResponse?.result == "success" && profileResponse?.data){
+      setProfile(profileResponse?.data[0])
+    }
+  }, [profileResponse])
   
     return (
       <Fragment>
@@ -327,7 +327,7 @@ const courseList = [
                       </div>
                       <div className="col-xl-4 col-lg-6 pl-xl-5 pb-xl-5 pb-3">
                         <h4 className="fw-700 font-md text-white mt-3 mb-1 capitalise" style={{textTransform:"capitalize"}}>
-                          {profile?.user?.username}
+                          {profile?.full_name}
                           <i className="ti-check font-xssss btn-round-xs bg-success text-white ml-1"></i>
                         </h4>
                         <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-0">
@@ -344,7 +344,7 @@ const courseList = [
                         <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
                           HTML5
                         </span>
-                        <ul className="memberlist mt-3 mb-2 ml-0">
+                        {/* <ul className="memberlist mt-3 mb-2 ml-0">
                           <li>
                             <a href="/default-user-profile">
                               <img
@@ -389,9 +389,9 @@ const courseList = [
                               +2
                             </a>
                           </li>
-                        </ul>
+                        </ul> */}
                       </div>
-                      <div className="col-xl-4 col-lg-6 d-block">
+                      {/* <div className="col-xl-4 col-lg-6 d-block">
                         <h2 className="display5-size text-white fw-700 lh-1 mr-3">
                           98
                           <i className="feather-arrow-up-right text-success font-xl"></i>
@@ -399,7 +399,7 @@ const courseList = [
                         <h4 className="text-white font-sm fw-600 mt-0 lh-3">
                           Your learning level points!
                         </h4>
-                      </div>
+                      </div> */}
                       <div className="col-xl-3 mt-4"></div>
                     </div>
                   </div>
@@ -419,7 +419,7 @@ const courseList = [
                             href="/default-user-profile"
                             className="float-right"
                           >
-                            <i className="feather-edit text-grey-500 font-xs"></i>
+                            {/* <i className="feather-edit text-grey-500 font-xs"></i> */}
                           </a>
                         </h2>
                       </div>
@@ -432,7 +432,8 @@ const courseList = [
                             <ul className="d-flex align-items-center mt-2 mb-3 float-left">
                               <li className="mr-2">
                                 <a
-                                  href="/default-user-profile"
+                                  href={`${profile?.facebook}`}
+                                  target='_blank'
                                   className="btn-round-md bg-facebook"
                                 >
                                   <i className="font-xs ti-facebook text-white"></i>
@@ -440,7 +441,7 @@ const courseList = [
                               </li>
                               <li className="mr-2">
                                 <a
-                                  href="/default-user-profile"
+                                 href={`${profile?.twitter}`}
                                   className="btn-round-md bg-twiiter"
                                 >
                                   <i className="font-xs ti-twitter-alt text-white"></i>
@@ -448,7 +449,7 @@ const courseList = [
                               </li>
                               <li className="mr-2">
                                 <a
-                                  href="/default-user-profile"
+                                  href={`${profile?.linkedin}`}
                                   className="btn-round-md bg-linkedin"
                                 >
                                   <i className="font-xs ti-linkedin text-white"></i>
