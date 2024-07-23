@@ -52,6 +52,15 @@ export const jobPostingApi = () => {
   return project.get(Urls.JOBPOSTING)
 }
 
+export const jobPostingPostApi = (payload_data) => {
+  return project.post(Urls.JOBPOSTING, payload_data)
+}
+
+export const jobPostingDeleteApi = (payload_data) => {
+  return project.post(Urls.JOB_POSTING_SINGLE_TASK, payload_data)
+}
+
+
 export const jobListingDetails = (payload_data) => {
   return project.get(Urls.JOBLISTINGDETAILS, payload_data)
 }
