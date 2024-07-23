@@ -16,6 +16,7 @@ const Login = () => {
     if(logineResponse?.result == "success"){
       localStorage.setItem("coladjsTk",  logineResponse?.token)
       console.log(logineResponse?.data)
+      // edit - > profile - > redux
      route.push('/overview');
     }
     if(logineError){
