@@ -91,6 +91,8 @@ import Feed from './pages/Feed';
 import SingleFeedPage from './pages/SingleFeedPage';
 import JobListingDetails from './pages/JobListingDetails';
 import VerifyOtp from './pages/VerifyOtp';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 class Root extends Component {
   render() {
@@ -492,5 +494,9 @@ class Root extends Component {
   }
 }
 
-ReactDOM.render(<Root />, document.getElementById('root'));
+ReactDOM.render(
+<Provider store={store}>
+  <Root />
+</Provider>,
+document.getElementById('root'));
 serviceWorker.register();

@@ -17,7 +17,7 @@ class Password extends Component {
           <div className="main-content">
             <Appheader />
 
-            <div className="middle-sidebar-bottom bg-lightblue theme-dark-bg">
+            <div className="middle-sidebar-bottom  theme-dark-bg">
               <div className="middle-sidebar-left">
                 <div className="middle-wrap">
                   <div className="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
