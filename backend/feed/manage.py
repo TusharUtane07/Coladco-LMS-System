@@ -59,6 +59,16 @@ class CommentsManager:
         # all_comments_objs = Comments.objects.all()
         all_comments_objs = []
         return all_comments_objs
+    
+    @staticmethod
+    def add_new_comment(request, data):
+        message = data.get("message")
+        user_id = request.user.id
+        if not message:
+            raise Exception("No comment is provided")
+        if not user_id:
+            raise Exception("No user is provided")
+        Post.objects.create(message=message, profile_id=user_id)
 
     @staticmethod
     def get_single_comments(data):

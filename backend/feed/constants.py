@@ -3,3 +3,4 @@ class PostConstants:
     FEED_SUCCESS_UPDATE = "Your Feed has been updated"
 class CommentsConstants:
     SUCCESS = "Comment API is Successfully Working"
+    COMMENT_SUCCESS_UPDATE = "Comment added successfully"

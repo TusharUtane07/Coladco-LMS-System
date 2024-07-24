@@ -72,6 +72,18 @@ class CommentViewSet(APIView):
             return Response({"result": "success", "data": serialized_data, "message": CommentsConstants.SUCCESS}, 200)
         except Exception as err:
             return Response(str(err), 500)
+        
+class NewCommentUserSet(APIView):
+    permission_classes = [IsUserAuth]
+
+    @staticmethod
+    def post(request):
+        try:
+            data = request.data
+            CommentsManager.add_new_comment(request, data)
+            return Response({"result": "success", "message": CommentsConstants.COMMENT_SUCCESS_UPDATE}, 200)
+        except Exception as err:
+            return Response(str(err), 500)
 
 class CommentSingleView(APIView):
 

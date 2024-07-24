@@ -21,35 +21,35 @@ export const changePasswordFunctionApi = (payload_data) => {
 };
 
 // tech to learn 
-export const techToLearnApi = () => {
-  return project.get(Urls.TECH_TO_LEARN)
+export const techToLearnApi = (payload_data) => {
+  return project.get(Urls.TECH_TO_LEARN, payload_data)
 }
 
 // course 
-export const courseApi = () => {
-  return project.get(Urls.COURSE)
+export const courseApi = (payload_data) => {
+  return project.get(Urls.COURSE, payload_data)
 }
 // videos 
-export const videosApi = () => {
-  return project.get(Urls.VIDEOS)
+export const videosApi = (payload_data) => {
+  return project.get(Urls.VIDEOS, payload_data)
 }
 
 // modules
-export const moduleApi = () => {
-  return project.get(Urls.MODULE)
+export const moduleApi = (payload_data) => {
+  return project.get(Urls.MODULE, payload_data)
 }
 
 // people
-export const peopleApi = () => {
-  return project.get(Urls.PEOPLE)
+export const peopleApi = (payload_data) => {
+  return project.get(Urls.PEOPLE, payload_data)
 }
 export const profileApi = (payload_data) => {
   return project.get(Urls.USER_PROFILE, payload_data)
 }
 
 // job posting
-export const jobPostingApi = () => {
-  return project.get(Urls.JOBPOSTING)
+export const jobPostingApi = (payload_data) => {
+  return project.get(Urls.JOBPOSTING, payload_data)
 }
 
 export const jobListingDetails = (payload_data) => {
@@ -63,8 +63,11 @@ export const feedPostApi = (payload_data) => {
 export const NewFeedPost = (payload_data) => {
   return project.post(Urls.NEW_POST_USER, payload_data)
 }
+export const NewCommentPost = (payload_data) => {
+  return project.post(Urls.NEW_COMMENT_USER, payload_data)
+}
 
 // bookmarks
-export const fetchBookmarksApi = () => {
-  return project.get(Urls.BOOKMARKS)
+export const fetchBookmarksApi = (payload_data) => {
+  return project.get(Urls.BOOKMARKS, payload_data)
 }
