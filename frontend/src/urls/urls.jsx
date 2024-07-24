@@ -66,6 +66,10 @@ export const NewFeedPost = (payload_data) => {
 export const NewCommentPost = (payload_data) => {
   return project.post(Urls.NEW_COMMENT_USER, payload_data)
 }
+export const LikePostApi = (payload_data) => {
+  return project.post(Urls.NEW_LIKE_POST, payload_data)
+}
+
 
 // bookmarks
 export const fetchBookmarksApi = (payload_data) => {

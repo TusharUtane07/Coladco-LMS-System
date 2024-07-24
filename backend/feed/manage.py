@@ -5,7 +5,7 @@ class PostManager:
 
     @staticmethod
     def get_all_posts(data):
-        all_posts_objs = Post.objects.filter().prefetch_related("post_comments", "profile")
+        all_posts_objs = Post.objects.filter().prefetch_related("post_comments", "profile").order_by("-created_at")
         return all_posts_objs
 
     @staticmethod
@@ -18,6 +18,14 @@ class PostManager:
             raise Exception("No user is provided")
         Post.objects.create(message=message, profile_id=user_id)
 
+    @staticmethod
+    def like_post(post_id):
+        post = Post.objects.filter(id=post_id).first()
+        if post:
+            post.likes += 1
+            post.save()
+        return post
+    
     @staticmethod
     def get_single_posts(data):
         posts_id = data.get("postId", False)
@@ -56,19 +64,22 @@ class CommentsManager:
 
     @staticmethod
     def get_all_comments(data):
-        # all_comments_objs = Comments.objects.all()
-        all_comments_objs = []
+        all_comments_objs = PostComments.objects.order_by('-created_at')
         return all_comments_objs
     
     @staticmethod
     def add_new_comment(request, data):
-        message = data.get("message")
+        comment = data.get("comment")
+        post_id = data.get("postId")
         user_id = request.user.id
-        if not message:
+        if not comment:
             raise Exception("No comment is provided")
         if not user_id:
             raise Exception("No user is provided")
-        Post.objects.create(message=message, profile_id=user_id)
+        if not post_id:
+            raise Exception("No post id is provided")
+        post = Post.objects.get(id=post_id)
+        PostComments.objects.create(comment=comment, profile_id=user_id, post=post)
 
     @staticmethod
     def get_single_comments(data):
