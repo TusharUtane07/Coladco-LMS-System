@@ -122,7 +122,7 @@ const Feed = () => {
                 </div>
                 <div style={{ flexGrow: 1 }}>
                   <h4 style={{textTransform: "capitalize"}}>
-                    {item?.profile?.user?.username}<span> - Jul 2</span>
+                    {item?.profile?.full_name}<span> - Jul 2</span>
                   </h4>
                   <div>
                     <p>

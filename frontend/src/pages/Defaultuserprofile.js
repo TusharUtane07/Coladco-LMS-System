@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useState } from 'react';
+import React, { Component, Fragment, useEffect, useState } from 'react';
 import Appfooter from '../components/Appfooter';
 import Navheader from '../components/Navheader';
 import Appheader from '../components/Appheader';
@@ -7,6 +7,7 @@ import Myclass from '../components/Myclass';
 import Subscribe from '../components/Subscribe';
 import { Link } from 'react-router-dom';
 import { Tab, Tabs } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
 // const memberList = [
 //   {
@@ -276,6 +277,15 @@ const courseList = [
   const Defaultuserprofile = () => {
 
     const [showEdit, setShowEdit] = useState(true);
+    const [user, setUser] = useState(null);
+    const userFromRedux = useSelector((state) => state.user.user);
+console.log(userFromRedux)
+    useEffect(() => {
+      if(userFromRedux){
+        setUser(userFromRedux);
+      }
+    },[userFromRedux])
+   
 
     return (
       <Fragment>
@@ -307,69 +317,13 @@ const courseList = [
                       </div>
                       <div className="col-xl-4 col-lg-6 pl-xl-5 pb-xl-5 pb-3">
                         <h4 className="fw-700 font-md text-white mt-3 mb-1">
-                          Hendrix Stamp
+                          {user?.full_name}
                           <i className="ti-check font-xssss btn-round-xs bg-success text-white ml-1"></i>
                         </h4>
                         <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-0">
-                          support@gmail.com
+                          {user?.email}
                         </span>
                         <span className="dot ml-2 mr-2 d-inline-block btn-round-xss bg-grey"></span>
-                        <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
-                          Desinger
-              
-                        </span>
-                        <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
-                          PHP
-                        </span>
-                        <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
-                          HTML5
-                        </span>
-                        <ul className="memberlist mt-3 mb-2 ml-0">
-                          <li>
-                            <a href="/default-user-profile">
-                              <img
-                                src="assets/images/user.png"
-                                alt="user"
-                                className="w30 d-inline-block rounded-circle"
-                              />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="/default-user-profile">
-                              <img
-                                src="assets/images/user.png"
-                                alt="user"
-                                className="w30 d-inline-block rounded-circle"
-                              />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="/default-user-profile">
-                              <img
-                                src="assets/images/user.png"
-                                alt="user"
-                                className="w30 d-inline-block rounded-circle"
-                              />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="/default-user-profile">
-                              <img
-                                src="assets/images/user.png"
-                                alt="user"
-                                className="w30 d-inline-block rounded-circle"
-                              />
-                            </a>
-                          </li>
-                          <li className="last-member">
-                            <a
-                              href="/default-user-profile"
-                              className="bg-greylight fw-600 text-grey-500 text-center font-xssss ls-3"
-                            >
-                              +2
-                            </a>
-                          </li>
-                        </ul>
                       </div>
                       <div className="col-xl-4 col-lg-6 d-block">
                         <h2 className="display5-size text-white fw-700 lh-1 mr-3">
@@ -410,26 +364,7 @@ const courseList = [
                         <div className="row">
                           <div className="col-xl-12">
                             <p className="font-xssss fw-600 lh-28 text-grey-500 pl-0">
-                              I have a Business Management degree from Bangalore
-                              University and a long time Excel expert. I create
-                              professional Excel reports/dashboards for clients
-                              and conduct Excel workshops for business
-                              professionals. Currently am a freelance motion
-                              graphics artist and a Music producer. I like to be
-                              productive and creative at work. I like to
-                              continuously increase my skills and stay in tuned
-                              with the technology industry.
-                            </p>
-                            <p className="font-xssss fw-600 lh-28 text-grey-500 pl-0">
-                              I have a Business Management degree from Bangalore
-                              University and a long time Excel expert. I create
-                              professional Excel reports/dashboards for clients
-                              and conduct Excel workshops for business
-                              professionals. Currently am a freelance motion
-                              graphics artist and a Music producer. I like to be
-                              productive and creative at work. I like to
-                              continuously increase my skills and stay in tuned
-                              with the technology industry.
+                              Description
                             </p>
                             <ul className="d-flex align-items-center mt-2 mb-3 float-left">
                               <li className="mr-2">
@@ -462,14 +397,6 @@ const courseList = [
                                   className="btn-round-md bg-instagram"
                                 >
                                   <i className="font-xs ti-instagram text-white"></i>
-                                </a>
-                              </li>
-                              <li className="mr-2">
-                                <a
-                                  href="/default-user-profile"
-                                  className="btn-round-md bg-pinterest"
-                                >
-                                  <i className="font-xs ti-pinterest text-white"></i>
                                 </a>
                               </li>
                             </ul>

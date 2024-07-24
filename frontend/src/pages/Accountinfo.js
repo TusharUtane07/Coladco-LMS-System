@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, useEffect, useState } from 'react';
 import Appfooter from '../components/Appfooter';
 import Navheader from '../components/Navheader';
 import Appheader from '../components/Appheader';
@@ -6,9 +6,43 @@ import Profile from '../components/Profile';
 import Darkmode from '../components/Darkmode';
 import Subscribe from '../components/Subscribe';
 import { Link } from 'react-router-dom';
+import { profileApi } from '../urls/urls';
+import useAxios from '../network/useAxios';
 
-class Accountinfo extends Component {
-  render() {
+const Accountinfo = () => {
+  const [profileResponse, profileError, profileLoading, profileFetch] = useAxios();
+  const [formValues, setFormValues] = useState({
+    full_name: "",
+    email: "",
+    phone: "",
+  });
+  const [profile, setProfile] = useState({});
+  const [isLoading, setIsLoading] = useState(true); 
+
+  useEffect(() => {
+    profileFetch(profileApi({ profileId: 1 }));
+  }, []);
+
+  useEffect(() => {
+    if (profileResponse?.result === 'success' && profileResponse?.data) {
+      setProfile(profileResponse?.data[0]);
+      setFormValues({
+        full_name: profileResponse?.data[0]?.full_name || '',
+        email: profileResponse?.data[0]?.email || '',
+        phone: profileResponse?.data[0]?.phone_number || '',
+      });
+      setIsLoading(false); 
+    }
+  }, [profileResponse]);
+
+  const handleSave = (e) => {
+    e.preventDefault();
+    console.log(formValues)
+  }
+
+  if (isLoading) {
+    return <div>Loading...</div>; 
+  }
     return (
       <Fragment>
         <div className="main-wrapper">
@@ -17,7 +51,7 @@ class Accountinfo extends Component {
           <div className="main-content">
             <Appheader />
 
-            <div className="middle-sidebar-bottom bg-lightblue theme-dark-bg">
+            <div className="middle-sidebar-bottom  theme-dark-bg">
               <div className="middle-sidebar-left">
                 <div className="middle-wrap">
                   <div className="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
@@ -43,10 +77,10 @@ class Accountinfo extends Component {
                             />
                           </figure>
                           <h2 className="fw-700 font-sm text-grey-900 mt-3">
-                            Surfiya Zakir
+                            {}
                           </h2>
                           <h4 className="text-grey-500 fw-500 mb-3 font-xsss mb-4">
-                            Brooklyn
+                            {formValues.full_name}
                           </h4>
                         </div>
                       </div>
@@ -58,7 +92,8 @@ class Accountinfo extends Component {
                               <label className="mont-font fw-600 font-xsss">
                                 First Name
                               </label>
-                              <input type="text" className="form-control" />
+                              <input type="text" className="form-control" value={formValues.full_name}
+                              onChange={(e) => setFormValues({ ...formValues, full_name: e.target.value })}/>
                             </div>
                           </div>
 
@@ -67,7 +102,8 @@ class Accountinfo extends Component {
                               <label className="mont-font fw-600 font-xsss">
                                 Last Name
                               </label>
-                              <input type="text" className="form-control" />
+                              <input type="text" className="form-control" value={formValues.full_name}
+                              onChange={(e) => setFormValues({ ...formValues, full_name: e.target.value })}/>
                             </div>
                           </div>
                         </div>
@@ -78,7 +114,8 @@ class Accountinfo extends Component {
                               <label className="mont-font fw-600 font-xsss">
                                 Email
                               </label>
-                              <input type="text" className="form-control" />
+                              <input type="text" className="form-control" value={formValues.email}
+                              onChange={(e) => setFormValues({ ...formValues, email: e.target.value })}/>
                             </div>
                           </div>
 
@@ -87,51 +124,52 @@ class Accountinfo extends Component {
                               <label className="mont-font fw-600 font-xsss">
                                 Phone
                               </label>
-                              <input type="text" className="form-control" />
+                              <input type="text" className="form-control" value={formValues.phone}
+                              onChange={(e) => setFormValues({ ...formValues, phone: e.target.value })}/>
                             </div>
                           </div>
                         </div>
 
                         <div className="row">
-                          <div className="col-lg-12 mb-3">
+                          {/* <div className="col-lg-12 mb-3">
                             <div className="form-group">
                               <label className="mont-font fw-600 font-xsss">
                                 Country
                               </label>
                               <input type="text" className="form-control" />
                             </div>
-                          </div>
+                          </div> */}
 
-                          <div className="col-lg-12 mb-3">
+                          {/* <div className="col-lg-12 mb-3">
                             <div className="form-group">
                               <label className="mont-font fw-600 font-xsss">
                                 Address
                               </label>
                               <input type="text" className="form-control" />
                             </div>
-                          </div>
+                          </div> */}
                         </div>
 
                         <div className="row">
-                          <div className="col-lg-6 mb-3">
+                          {/* <div className="col-lg-6 mb-3">
                             <div className="form-group">
                               <label className="mont-font fw-600 font-xsss">
                                 Twon / City
                               </label>
                               <input type="text" className="form-control" />
                             </div>
-                          </div>
+                          </div> */}
 
-                          <div className="col-lg-6 mb-3">
+                          {/* <div className="col-lg-6 mb-3">
                             <div className="form-group">
                               <label className="mont-font fw-600 font-xsss">
                                 Postcode
                               </label>
                               <input type="text" className="form-control" />
                             </div>
-                          </div>
+                          </div> */}
 
-                          <div className="col-lg-12 mb-3">
+                          {/* <div className="col-lg-12 mb-3">
                             <div className="card mt-3 border-0">
                               <div className="card-body d-flex justify-content-between align-items-end p-0">
                                 <div className="form-group mb-0 w-100">
@@ -153,9 +191,9 @@ class Accountinfo extends Component {
                                 </div>
                               </div>
                             </div>
-                          </div>
+                          </div> */}
 
-                          <div className="col-lg-12 mb-3">
+                          {/* <div className="col-lg-12 mb-3">
                             <label className="mont-font fw-600 font-xsss">
                               Description
                             </label>
@@ -164,15 +202,15 @@ class Accountinfo extends Component {
                               rows="5"
                               placeholder="Write your message..."
                             ></textarea>
-                          </div>
+                          </div> */}
 
                           <div className="col-lg-12">
-                            <Link
-                              to="/account-information"
+                            <button
+                            onClick={handleSave}
                               className="bg-current text-center text-white font-xsss fw-600 p-3 w175 rounded-lg d-inline-block"
                             >
                               Save
-                            </Link>
+                            </button>
                           </div>
                         </div>
                       </form>
@@ -195,6 +233,5 @@ class Accountinfo extends Component {
       </Fragment>
     );
   }
-}
 
 export default Accountinfo;

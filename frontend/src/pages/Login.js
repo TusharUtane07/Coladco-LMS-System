@@ -4,8 +4,11 @@ import useAxios from '../network/useAxios';
 import { loginFunctionApi } from '../urls/urls';
 import { ToastContainer, toast } from 'react-toastify';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import {useDispatch} from 'react-redux'
+import { setUser } from '../redux/UserSlice';
 
 const Login = () => {
+  const dispatch = useDispatch(); 
   const route = useHistory()
   const [logineResponse, logineError, logineLoading, logineFetch] = useAxios();
   const [formValues, setFormValues] = useState({})
@@ -17,6 +20,7 @@ const Login = () => {
       localStorage.setItem("coladjsTk",  logineResponse?.token)
       console.log(logineResponse?.data)
       // edit - > profile - > redux
+      dispatch(setUser(logineResponse?.data));
      route.push('/overview');
     }
     if(logineError){
