@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import profilephoto from "../assets/profile.jpg";
 import logo from "../assets/logo.jpg";
+import Popupchat from "./Popupchat";
 
 const blogList = [
   {
@@ -684,6 +685,7 @@ const Homefive  = () => {
             </div>
           </div>
         </div>
+        <Popupchat/>
         <Footer bgColor="bg-dark" />
       </Fragment>
     );

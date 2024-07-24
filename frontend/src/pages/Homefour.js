@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Footertwo from '../components/Footertwo';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
+import Popupchat from './Popupchat';
 
 const blogList = [
   {
@@ -461,7 +462,7 @@ class Homefour extends Component {
             </div>
           </div>
         </div>
-
+<Popupchat/>
         <Footertwo />
       </Fragment>
     );

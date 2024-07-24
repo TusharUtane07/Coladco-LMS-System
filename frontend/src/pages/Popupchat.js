@@ -4,16 +4,10 @@ import Navheader from '../components/Navheader';
 import Appheader from '../components/Appheader';
 import { Link } from 'react-router-dom';
 
-class Popupchat extends Component {
-  render() {
-    return (
-      <Fragment>
-        <div className="main-wrapper">
-          <Navheader />
+const Popupchat = () => {
 
-          <div className="main-content">
-            <Appheader />
-          </div>
+    return (
+
 
           <div className="modal-popup-chat">
             <div className="modal-popup-wrap bg-white p-0 shadow-lg rounded-lg">
@@ -41,6 +35,12 @@ class Popupchat extends Component {
                   </Link>
                 </div>
               </div>
+
+
+            {/* body */}
+
+
+
               <div className="modal-popup-body w-100 p-4 h-auto">
                 <div className="message">
                   <div className="message-content font-xssss lh-24 fw-500">
@@ -83,14 +83,21 @@ class Popupchat extends Component {
                   </div>
                 </div>
               </div>
+
+
+            {/* body */}
+
+
+
+
+
+
+
+
             </div>
           </div>
 
-          <Appfooter />
-        </div>
-      </Fragment>
     );
   }
-}
 
 export default Popupchat;
