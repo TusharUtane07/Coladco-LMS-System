@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import PostViewSet, PostSingleView, CommentSingleView, CommentViewSet, NewPostUserSet, NewCommentUserSet
+from .views import PostViewSet, PostSingleView, CommentSingleView, CommentViewSet, NewPostUserSet, NewCommentUserSet, LikePostView
 
 urlpatterns = [
     path('/all-posts-fetch/', PostViewSet.as_view(), name='all-posts-fetch'),
@@ -13,4 +13,7 @@ urlpatterns = [
     path('/single-comments-fetch/', CommentSingleView.as_view(), name='single-comments-fetch'),
     path('/single-comments-update/', CommentSingleView.as_view(), name='single-comments-update'),
     path('/single-comments-delete/', CommentSingleView.as_view(), name='single-comments-delete'),
+
+    path('/new-like-user/', LikePostView.as_view(), name='new-like-user'),
+
 ]

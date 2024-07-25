@@ -85,6 +85,7 @@ class NewCommentUserSet(APIView):
         except Exception as err:
             return Response(str(err), 500)
 
+
 class CommentSingleView(APIView):
 
     @staticmethod
@@ -115,4 +116,22 @@ class CommentSingleView(APIView):
         except Exception as err:
             return Response(str(err), 500)
 
-        
+class LikePostView(APIView):
+
+    permission_classes = [IsUserAuth]
+
+    @staticmethod
+    def post(request):
+        try:
+            data = request.data
+            post_id = data.get("postId")
+            if not post_id:
+                raise Exception("No post id provided")
+
+            post = PostManager.like_post(post_id)
+            if not post:
+                return Response({"result": "error", "message": "Post not found"}, 404)
+            
+            return Response({"result": "success", "likes": post.likes, "message": PostConstants.SUCCESS}, 200)
+        except Exception as err:
+            return Response(str(err), 500)
