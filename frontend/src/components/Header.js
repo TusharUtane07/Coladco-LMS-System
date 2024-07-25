@@ -152,17 +152,121 @@
 
 //New Code
 
+// import React, { useState } from 'react';
+// import { Link } from 'react-router-dom';
+// import { Navbar, Nav } from 'react-bootstrap';
+// import logo from "../assets/logo.jpg";
+
+// const Header = ({ divClass, color = 'light' }) => {
+//   const [isOpen, setIsOpen] = useState(false);
+//   const toggleOpen = () => setIsOpen(!isOpen);
+
+//   const navClass = `${isOpen ? ' show' : ''}`;
+//   const colorClass = color === 'dark' ? 'text-white' : '';
+
+//   return (
+//     <div className={`header-wrapper pt-3 pb-3 shadow-xss ${divClass}`}>
+//       <div className="container">
+//         <div className="row">
+//           <div className="col-lg-9 navbar pt-0 pb-0">
+//             <Link to="/">
+//             <div style={{display:"flex" }}>
+//             <img
+//                 src={logo}
+//                 style={{ width: "86px", height: "76px", marginRight: "0.3rem",marginTop:"3px" }}
+//                 alt="Logo"
+//               />
+               
+//             </div>
+             
+//             </Link>
+//             <button className="navbar-toggler" onClick={toggleOpen}>
+//               <span className="navbar-toggler-icon"></span>
+//             </button>
+//             <div
+//               className={`collapse navbar-collapse ${navClass}`}
+//               id="navbarNavDropdown"
+//             >
+//               <Navbar expand="lg" className="nav-menu">
+//                 <Navbar id="basic-navbar-nav" className="w-100 d-block">
+//                   <Nav className={`${colorClass} w-100 d-flex justify-content-around`}>
+//                     <Nav.Item>
+//                       <Nav.Link as={Link} to="/">
+//                         Home
+//                       </Nav.Link>
+//                     </Nav.Item>
+//                     <Nav.Item>
+//                       <Nav.Link as={Link} to="/about">
+//                         About
+//                       </Nav.Link>
+//                     </Nav.Item>
+//                     <Nav.Item>
+//                       <Nav.Link as={Link} to="/course-details">
+//                         Course
+//                       </Nav.Link>
+//                     </Nav.Item>
+//                     <Nav.Item>
+//                       <Nav.Link as={Link} to="/contact">
+//                         Contact
+//                       </Nav.Link>
+//                     </Nav.Item>
+//                   </Nav>
+//                 </Navbar>
+//               </Navbar>
+//             </div>
+//           </div>
+//           <div className="col-lg-3 text-right d-none d-lg-block">
+//             <Link
+//               to="#"
+//               data-toggle="modal"
+//               data-target="#ModalCart"
+//               className={`float-right text-center mt-1 ml-4 text-grey-800 position-relative ${colorClass}`}
+//             >
+//               <i className="ti-shopping-cart font-lg"></i>
+//               <span className="font-xssss fw-500 d-block lh-1">Cart</span>
+//               <span className="icon-count bg-current">3</span>
+//             </Link>
+//             <Link
+//               to="#"
+//               className={`float-right text-center mt-1 ml-4 text-grey-800 position-relative ${colorClass}`}
+//             >
+//               <i className="ti-heart font-lg"></i>
+//               <span className="font-xssss fw-500 d-block lh-1">Saved</span>
+//               <span className="icon-count bg-current">2</span>
+//             </Link>
+//             <Link
+//               to="/login"
+//               className={`float-right d-none d-lg-block text-center mt-1 ml-4 text-grey-800 ${colorClass}`}
+//             >
+//               <i className="ti-user font-lg"></i>
+//               <span className="font-xssss fw-500 d-block lh-1">Account</span>
+//             </Link>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Header;
+
+
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 import logo from "../assets/logo.jpg";
+import './Header.css';  // Import the CSS file
 
 const Header = ({ divClass, color = 'light' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = () => setIsOpen(!isOpen);
-
+  const location = useLocation();
+  
   const navClass = `${isOpen ? ' show' : ''}`;
   const colorClass = color === 'dark' ? 'text-white' : '';
+
+  // Function to determine if a link is active
+  const isActive = (path) => location.pathname === path;
 
   return (
     <div className={`header-wrapper pt-3 pb-3 shadow-xss ${divClass}`}>
@@ -170,43 +274,54 @@ const Header = ({ divClass, color = 'light' }) => {
         <div className="row">
           <div className="col-lg-9 navbar pt-0 pb-0">
             <Link to="/">
-            <div style={{display:"flex" }}>
-            <img
-                src={logo}
-                style={{ width: "86px", height: "76px", marginRight: "0.3rem",marginTop:"3px" }}
-                alt="Logo"
-              />
-               
-            </div>
-             
+              <div style={{ display: "flex" }}>
+                <img
+                  src={logo}
+                  style={{ width: "86px", height: "76px", marginRight: "0.3rem", marginTop: "3px" }}
+                  alt="Logo"
+                />
+              </div>
             </Link>
             <button className="navbar-toggler" onClick={toggleOpen}>
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div
-              className={`collapse navbar-collapse ${navClass}`}
-              id="navbarNavDropdown"
-            >
+            <div className={`collapse navbar-collapse ${navClass}`} id="navbarNavDropdown">
               <Navbar expand="lg" className="nav-menu">
                 <Navbar id="basic-navbar-nav" className="w-100 d-block">
                   <Nav className={`${colorClass} w-100 d-flex justify-content-around`}>
                     <Nav.Item>
-                      <Nav.Link as={Link} to="/">
+                      <Nav.Link 
+                        as={Link} 
+                        to="/" 
+                        className={isActive('/') ? 'nav-link-active' : ''}
+                      >
                         Home
                       </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link as={Link} to="/about">
+                      <Nav.Link 
+                        as={Link} 
+                        to="/about" 
+                        className={isActive('/about') ? 'nav-link-active' : ''}
+                      >
                         About
                       </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link as={Link} to="/course-details">
+                      <Nav.Link 
+                        as={Link} 
+                        to="/course-details" 
+                        className={isActive('/course-details') ? 'nav-link-active' : ''}
+                      >
                         Course
                       </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link as={Link} to="/contact">
+                      <Nav.Link 
+                        as={Link} 
+                        to="/contact" 
+                        className={isActive('/contact') ? 'nav-link-active' : ''}
+                      >
                         Contact
                       </Nav.Link>
                     </Nav.Item>
