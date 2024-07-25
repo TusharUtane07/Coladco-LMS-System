@@ -103,11 +103,8 @@ const Defaultfollower = () => {
                         to="/default-follower"
                         className="ml-auto mr-auto rounded-lg overflow-hidden d-inline-block"
                       >
-                        <img
-                          src={profile}
-                          alt="avater"
-                          className="p-0 w100 shadow-xss"
-                        />
+                                                <a className="media-left" href="#"><img className="img-circle img-sm rounded-circle" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar2.png" height={"100px"}/></a>
+
                       </Link>
                       <h4 className="fw-700 text-capitalize font-xs mt-3 mb-1">
                         {value.full_name}{' '}

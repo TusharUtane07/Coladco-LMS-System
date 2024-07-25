@@ -93,6 +93,7 @@ import JobListingDetails from './pages/JobListingDetails';
 import VerifyOtp from './pages/VerifyOtp';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import ReviewsAll from './pages/ReviewsAll';
 
 class Root extends Component {
   render() {
@@ -306,6 +307,11 @@ class Root extends Component {
             exact
             path={`${process.env.PUBLIC_URL}/overview`}
             component={Default}
+          />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/all-reviews`}
+            component={ReviewsAll}
           />
           <Route
             exact

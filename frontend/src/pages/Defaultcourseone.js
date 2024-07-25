@@ -8,13 +8,15 @@ import Subscribe from '../components/Subscribe';
 import { Accordion } from 'react-bootstrap';
 import ReactPlayer from 'react-player';
 import { Modal, Input, Rate, Form, Button } from 'antd';
-import { courseApi, moduleApi, videosApi } from '../urls/urls';
+import { courseApi, gettingReviewsDataApi, moduleApi, NewCourseReview, videosApi } from '../urls/urls';
 import useAxios from '../network/useAxios';
+import { toast, ToastContainer } from 'react-toastify';
+import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
+import moment from 'moment'
 
 const Defaultcourseone = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [rating, setRating] = useState(0);
-  const [review, setReview] = useState('');  
+  const [form] = Form.useForm();
+  const [isModalOpen, setIsModalOpen] = useState(false); 
   const [formValues, setFormValues] = useState({
     rating: 0,
     review: '',
@@ -23,10 +25,13 @@ const Defaultcourseone = () => {
   const [courseResponse, courseError, courseLoading, courseFetch] = useAxios();
   const [moduleResponse, moduleError, moduleLoading, moduleFetch] = useAxios();
   const [videosResponse, videosError, videosLoading, videosFetch] = useAxios();
+  const [gettingReviewResponse, gettingReviewError, gettingReviewLoading, gettingReviewFetch] = useAxios();
+  const [addingReviewResponse, addingReviewError, addingReviewLoading, addingReviewFetch] = useAxios();
 
   const [course, setCourse] = useState([]);
   const [module, setModule] = useState([]);
   const [videos, setVideos] = useState([]);
+  const [reviewToDisplay, setReviewsToDisply] = useState(null);
   const [activeVideoUrl, setVideoUrl] = useState(false)
 
   useEffect(() => {
@@ -34,6 +39,7 @@ const Defaultcourseone = () => {
       await courseFetch(courseApi());
       await moduleFetch(moduleApi());
       await videosFetch(videosApi());
+      await gettingReviewFetch(gettingReviewsDataApi())
     };
 
     fetchData();
@@ -45,6 +51,9 @@ const Defaultcourseone = () => {
       setCourse(courseResponse.data);
       console.log(courseResponse.data);
     }
+    if (addingReviewError) {
+      toast.error(addingReviewError?.response?.data);
+    }
     if (moduleResponse?.data) {
       setModule(moduleResponse.data);
       console.log(moduleResponse.data);
@@ -53,15 +62,49 @@ const Defaultcourseone = () => {
       setVideos(videosResponse.data);
       console.log(videosResponse.data);
     }
-  }, [courseResponse, moduleResponse, videosResponse]);
+    if (gettingReviewResponse?.data) {
+      setReviewsToDisply(gettingReviewResponse.data);
+      console.log(gettingReviewResponse.data);
+    }
+  }, [courseResponse, moduleResponse, videosResponse, gettingReviewResponse]);
+
+  function formatDateToMonthDay(timestamp) {
+    return moment(timestamp).format('MMMM D');
+}
 
   const showModal = () => {
     setIsModalOpen(true);
   };
 
+  const handleChange = (changedFields) => {
+    setFormValues(prevValues => ({
+      ...prevValues,
+      ...changedFields
+    }));
+  };
+
+  const addNewReview = async () => {
+    try {
+      await addingReviewFetch(NewCourseReview(formValues));
+      form.resetFields();
+    } catch (error) {
+      toast.error('Error adding review');
+    }
+  }
+
   const handleOk = () => {
-    console.log('Rating:', rating);
-    console.log('Review:', review);
+    if (formValues.rating < 1) {
+      toast.error("Please select a rating");
+      return;
+    }
+    if (!formValues?.review?.trim()) {
+      toast.error("Please add a review message");
+      return;
+    }
+    
+    
+    addNewReview();
+    form.resetFields();
     setIsModalOpen(false);
   };
 
@@ -69,20 +112,6 @@ const Defaultcourseone = () => {
     setIsModalOpen(false);
   };
 
-  const handleRatingChange = (value) => {
-    setRating(value);
-  };
-
-  const handleReviewChange = (e) => {
-    setReview(e.target.value);
-  };
-
-  const handleFormChange = (changedValues) => {
-    setFormValues({
-      ...formValues,
-      ...changedValues,
-    });
-  };
 
   return (
     <Fragment>
@@ -174,7 +203,7 @@ const Defaultcourseone = () => {
           <Accordion.Body>
             {filteredVideos.length > 0 ? (
               filteredVideos.map(video => (
-                <div key={video.id} className="card-body d-flex p-2" 
+                <div key={video.id} className="card-body cursor-pointer d-flex p-2" 
                 onClick={()=>{
                   console.log(video)
                   setVideoUrl(video.url)
@@ -516,25 +545,18 @@ const Defaultcourseone = () => {
                     </div>
                     {/* new review added */}
                     <div className="row">
-                    <div className="col-2 text-left">
-                      <figure className="avatar float-left mb-0">
-                        <img
-                          src="assets/images/user.png"
-                          alt="avatar"
-                          className="float-right shadow-none w40 mr-2"
-                        />
-                      </figure>
-                    </div>
+                    {reviewToDisplay?.slice(0, 3)?.map((item, index) => {
+                      return(                  
                     <div className="col-10 pl-4">
                       <div className="content">
-                        <h6 className="author-name font-xssss fw-600 mb-0 text-grey-800">
-                          Rahul Kumar
+                        <h6 style={{textTransform: "capitalize"}} className="author-name font-xssss  fw-600 mb-0 text-grey-800">
+                          {item?.profile?.full_name}
                         </h6>
                         <h6 className="d-block font-xsssss fw-500 text-grey-500 mt-2 mb-0">
-                          June 5
+                          {formatDateToMonthDay(item?.created_at)}
                         </h6>
                         <div className="star d-block text-left">
-                          {[...Array(5)].map((star, index) => (
+                          {[...Array(item?.rating)].map((star, index) => (
                             <img
                               key={index}
                               src="assets/images/star.png"
@@ -544,18 +566,18 @@ const Defaultcourseone = () => {
                           ))}
                         </div>
                         <p className="comment-text lh-24 fw-500 font-xssss text-grey-500 mt-2">
-                          The web development course gave a thorough overview of
-                          modern tools and frameworks, simplifying complex
-                          concepts. Excited to apply these skills in real
-                          projects.
+                         {item?.review_text}
                         </p>
                       </div>
                     </div>
+                    )
+                  }) }
                   </div>
+                  <NavLink to={"/all-reviews"} className='text-grey-500'>Show all...</NavLink>
 
                   <div className="row mt-4">
                     {/* Review 2 */}
-                    <div className="col-2 text-left">
+                    {/* {/* <div className="col-2 text-left">
                       <figure className="avatar float-left mb-0">
                         <img
                           src="assets/images/user.png"
@@ -587,8 +609,10 @@ const Defaultcourseone = () => {
                           development. The instructor's teaching style made
                           complex topics seem easy. Highly recommend it!
                         </p>
-                      </div>
-                    </div>
+                      </div> 
+                     
+                    </div> 
+                     */}
                   
 
                     </div>
@@ -603,14 +627,15 @@ const Defaultcourseone = () => {
                       onCancel={handleCancel}
                     >
                       <Form
-  initialValues={formValues}
-  onValuesChange={(changedValues) => handleFormChange(changedValues)}
+                       form={form}
+                      onValuesChange={(_, allValues) => handleChange(allValues)}
+                      onFinish={handleOk}
 >
   <Form.Item label="Rating" name="rating">
-    <Rate />
+    <Rate onChange={value => handleChange({ rating: value })}/>
   </Form.Item>
   <Form.Item label="Review" name="review">
-    <Input.TextArea />
+  <Input.TextArea onChange={e => handleChange({ review: e.target.value })} />
   </Form.Item>
 </Form>
 
@@ -631,6 +656,8 @@ const Defaultcourseone = () => {
 
         <Appfooter />
       </div>
+      <ToastContainer />
+
     </Fragment>
   );
 };
