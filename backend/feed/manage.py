@@ -1,11 +1,20 @@
-from feed.models import Post, PostComments
+from django.db.models import Count, OuterRef, Exists, Prefetch
+
+from feed.models import Post, PostComments, PostLike
 
 
 class PostManager:
 
     @staticmethod
-    def get_all_posts(data):
-        all_posts_objs = Post.objects.filter().prefetch_related("post_comments", "profile").order_by("-created_at")
+    def get_all_posts(request, data):
+        user = request.user.id
+        user_liked_subquery = PostLike.objects.filter(
+            post=OuterRef('pk'),
+            profile_id=user
+        )
+        comment_prefetch = Prefetch("post_comments",PostComments.objects.filter().order_by("-created_at") )
+        all_posts_objs = Post.objects.filter().annotate(like_count=Count('post_like'),user_liked=Exists(user_liked_subquery)
+        ).prefetch_related("profile").prefetch_related(comment_prefetch).order_by("-created_at")
         return all_posts_objs
 
     @staticmethod
@@ -19,13 +28,17 @@ class PostManager:
         Post.objects.create(message=message, profile_id=user_id)
 
     @staticmethod
-    def like_post(post_id):
-        post = Post.objects.filter(id=post_id).first()
-        if post:
-            post.likes += 1
-            post.save()
-        return post
-    
+    def like_post(request, post_id):
+        user = request.user.id
+        if post_id:
+            check_like = PostLike.objects.filter(post_id=post_id,profile_id=user )
+            if check_like:
+                check_like[0].delete()
+            else:
+                PostLike.objects.create(post_id=post_id,profile_id=user)
+        else:
+            raise Exception("Post not found")
+
     @staticmethod
     def get_single_posts(data):
         posts_id = data.get("postId", False)

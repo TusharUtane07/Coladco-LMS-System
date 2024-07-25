@@ -26,6 +26,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 @import './../vendor/owl-carousel/css/owl.carousel.min.css';
 @import './../vendor/owl-carousel/css/owl.theme.default.css';
+*{
+  overflow-x: hidden;
+}
 .theme-dark {
   background-color: #1a2236;
 }

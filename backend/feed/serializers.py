@@ -15,3 +15,12 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = '__all__'
+
+class PostWithLikeSerializer(serializers.ModelSerializer):
+    post_comments = CommentsSerializer(many=True)
+    profile = ProfileSerializer()
+    like_count = serializers.IntegerField()
+    user_liked = serializers.BooleanField()
+    class Meta:
+        model = Post
+        fields = '__all__'

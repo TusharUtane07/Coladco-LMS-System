@@ -13,13 +13,13 @@ const Footer = ({ bgColor } ) => {
                     <h1 className="fredoka-font ls-3 fw-700 text-current font-xxl">
                       Coladco
                       <span className="d-block font-xsssss ls-1 text-grey-500 open-font ">
-                        Online Learning Platform
+                        Best Full Stack Couse in Faridabad
                       </span>
                     </h1>
                   </Link>
                   <p className="w-100 mt-5">
                   425, Sector 31, Faridabad, Haryana 121002<br />
-                  +91 70424 14212 <br /> support@mail.com
+                  +91 70424 14212 <br /> support@coladco.com
                   </p>
                   <ul className="list-inline">
                     <li className="list-inline-item mr-3">
@@ -105,16 +105,11 @@ const Footer = ({ bgColor } ) => {
             <div className="col-sm-12 lower-footer pt-0"></div>
             <div className="col-sm-6 col-xs-12">
               <p className="copyright-text">
-                © 2021 Coladco. All rights reserved.
+                © 2024 Coladco. All rights reserved.
               </p>
             </div>
             <div className="col-sm-6 col-xs-12 text-right">
-              <p className="copyright-text float-right">
-                Design and Developed by {""}
-                <Link to="#" className="">
-                Coladco
-                </Link>
-              </p>
+              
             </div>
           </div>
         </div>

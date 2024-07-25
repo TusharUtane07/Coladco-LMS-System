@@ -4,16 +4,18 @@ from rest_framework.response import Response
 from jwtconfig.custom_permissions import IsUserAuth
 from .constants import PostConstants, CommentsConstants
 from .manage import PostManager,  CommentsManager
-from .serializers import PostSerializer, CommentsSerializer
+from .serializers import PostSerializer, CommentsSerializer, PostWithLikeSerializer
+
 
 class PostViewSet(APIView):
+    permission_classes = [IsUserAuth]
 
     @staticmethod
     def get(request):
         try:
             data = request.query_params
-            post_objs = PostManager.get_all_posts(data)
-            serialized_data = PostSerializer(post_objs, many=True).data
+            post_objs = PostManager.get_all_posts(request, data)
+            serialized_data = PostWithLikeSerializer(post_objs, many=True).data
             return Response({"result": "success", "data": serialized_data, "message": PostConstants.SUCCESS}, 200)
         except Exception as err:
             return Response(str(err), 500)
@@ -124,14 +126,8 @@ class LikePostView(APIView):
     def post(request):
         try:
             data = request.data
-            post_id = data.get("postId")
-            if not post_id:
-                raise Exception("No post id provided")
-
-            post = PostManager.like_post(post_id)
-            if not post:
-                return Response({"result": "error", "message": "Post not found"}, 404)
-            
-            return Response({"result": "success", "likes": post.likes, "message": PostConstants.SUCCESS}, 200)
+            post_id = data.get("postId", False)
+            PostManager.like_post(request, post_id)
+            return Response({"result": "success", "message": PostConstants.SUCCESS}, 200)
         except Exception as err:
             return Response(str(err), 500)

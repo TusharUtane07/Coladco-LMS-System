@@ -218,8 +218,12 @@ const Feed = () => {
                           <div className="pad-ver">
                             <div className="btn-group">
                               <button className="btn btn-sm btn-default btn-hover-success" onClick={() => handleLike(item?.id)} ><i className="fa fa-thumbs-up" /></button>
-                              <span className="text-sm">{item?.likes}</span>
+                              <span className="text-sm">{item?.like_count}</span>
                             </div>
+
+                            {/* user_liked */}
+
+                            
                             <button className="btn btn-sm btn-default btn-hover-primary" onClick={() => setCommentsModal(commentsModal === item?.id ? null : item?.id)}>Comment</button>
                           </div>
                           {commentsModal === item?.id  ? (

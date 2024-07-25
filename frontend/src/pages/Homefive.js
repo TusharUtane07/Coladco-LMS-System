@@ -6,34 +6,42 @@ import Slider from "react-slick";
 import profilephoto from "../assets/profile.jpg";
 import logo from "../assets/logo.jpg";
 import Popupchat from "./Popupchat";
+import background from "../assets/images/background.png"
+import yatin from "../assets/images/yatin.png"
 
 const blogList = [
   {
     imageUrl: "blog.png",
-    title: "Mastering React Native Development",
+    title: "Mock Interviews",
     meta: "React Native",
-    des: "Learn the ins and outs of React Native, a popular framework for building cross-platform mobile applications.",
+    des: " Prepare for job interviews with our mock interview sessions by professionals.",
   },
   {
     imageUrl: "blog.png",
-    title: "Why Freelance Mastery is a Lucrative Career Choice",
+    title: "Preparation & Placements",
     meta: "Freelance Mastery",
-    des: "Explore the advantages of freelancing, tips for success, and how to thrive in the gig economy.",
+    des: "Get help crafting a professional resume that highlights your skills and projects.",
   },
   {
     imageUrl: "blog.png",
-    title: "The Ultimate Guide to Drop Shipping Business",
+    title: "Live Projects",
     meta: "Drop Shipping",
-    des: "Discover how drop shipping works, its pros and cons, and how to start and grow a successful drop shipping business.",
+    des: "Work on live projects that simulate real-world challenges and scenarios.",
   },
 ];
 const courseList = [
   {
     imageUrl: "course.png",
-    title: "Complete Web Development Bootcamp From Zero to Hero",
-    price: "4999",
-    tag: "Mern",
+    title: "Complete Web Development Bootcamp From Scratch",
+    tag: "ONLINE",
     lesson: "32 ",
+    status: "alert-warning text-warning",
+  },
+  {
+    imageUrl: "course.png",
+    title: "Offline Co-Hort / Internship development program",
+    tag: "OFFLINE",
+    time: "6 ",
     status: "alert-warning text-warning",
   },
 ];
@@ -127,7 +135,7 @@ const feedbackList = [
     status: "Full Stack Developer and Freelancer",
     color: "bg-warning",
     icon: "ti-quote-right",
-    des: "Hello, My name is Yatin Vohra. I am a full-stack developer and freelancer with a total of five years of experience in web development and freelancing. Over the years, I have created multiple websites for clients from all over the world. I have also been doing dropshipping for almost five years. I assure you that I will teach you web development and freelancing in the best way possible, based on my extensive experience. I will guide you on how to work effectively in the real market, sharing practical insights and strategies",
+    des: "Stay ahead with a curriculum designed by industry experts to meet current market demands",
   },
 ];
 
@@ -218,27 +226,26 @@ const Homefive  = () => {
         <div
           className="banner-wrapper bg-image-cover bg-image-bottomcenter"
           style={{
-            backgroundImage: `url("https://via.placeholder.com/1900x950.png")`,
+            backgroundImage: `${background}`,
           }}
         >
           <div className="container">
             <div className="row">
               <div className="col-xl-6 col-lg-6 vh-lg--100 align-items-center d-flex sm-mt-7">
-                <div className="card w-100 border-0 bg-transparent d-block sm-mt-7">
+                <div className="card w-100 border-0 bg-transparent d-block sm-mt-7" style={{
+                height:"90vh"
+              }}>
                   <span className="font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-xl ls-2 alert-primary d-inline-block text-primary mb-3">
-                    Welcome to Coladco Online Learning Platform
+                  Choose Your Path: Online Course or Offline Internship Cohort
+
+
                   </span>
-                  <h2 className="fw-700 text-grey-900 display4-size display4-lg-size display4-md-size lh-1 mb-0 os-init aos-init aos-animate">
-                    Discover Our Latest Courses for 2024{" "}
+                  <h2 className="fw-700 text-grey-900 display4-size display4-lg-size display4-md-size lh-1 mb-0 os-init aos-init aos-animate overflow-hidden">
+                  Transform Your Career with Our Courses{" "}
                     <i className="feather-slack text-success font-xxl"></i>
                   </h2>
                   <h4 className="fw-500 mb-4 lh-30 font-xsss text-grey-500 mt-3 os-init aos-init aos-animate">
-                    Explore our comprehensive range of courses designed to help
-                    you master web development, frontend frameworks, backend
-                    technologies, and more. Whether you're a beginner or an
-                    experienced developer, our courses offer hands-on learning
-                    and expert guidance to advance your career.
-                  </h4>
+                  For those who have already mastered the basics or starting from scratch and are looking to deepen their knowledge, our Advanced Full Stack Specialization Courses offer the perfect next step. These courses are designed to help you become an expert in the latest technologies and best practices in full stack development.                  </h4>
                   <Link
                     to="/course-details"
                     className="btn border-0 w200 bg-primary p-3 text-white fw-600 rounded-lg d-inline-block font-xssss btn-light mt-1 os-init aos-init aos-animate"
@@ -247,20 +254,25 @@ const Homefive  = () => {
                   </Link>
                 </div>
               </div>
-              <div className="col-lg-6 align-items-center d-flex vh-lg--100 ">
-                {/* <img
-                  src="https://via.placeholder.com/720x550.png"
+              <div className="col-lg-6 align-items-center d-flex " style={{
+                height:"80vh",
+                padding:"0rem"
+              }}>
+                <img
+                  src={yatin}
                   alt="icon"
                   className="pt-5 d-none d-lg-block"
-                /> */}
+                />
               </div>
             </div>
           </div>
         </div>
-        <div className="search-wrap position-relative" style={{ top: "-50px" }}>
+        <div className="search-wrap position-relative" style={{ top: "-50px", background:"rgb(243,242,240)", display:"flex", alignItems:"center",justifyContent:"center" }}>
           <div className="container">
             <div className="row">
-              <div className="col-lg-12 mb-4">
+              <div className="col-lg-12"  style={{
+                margin:"2rem 0rem"
+          }}>
                 <div className="card rounded-lg p-3 border-0 bg-no-repeat bg-white shadow-lg">
                   <div className="card-body w-100 p-0">
                     <div className="form-group mt-0 p-2 mb-0 bg-white rounded-lg">
@@ -271,7 +283,7 @@ const Homefive  = () => {
                             <input
                               type="text"
                               className="style1-input border-0 pl-5 font-xsss mb-0 text-grey-500 fw-500"
-                              placeholder="Search online courses.."
+                              placeholder="Search your doubt.."
                             />
                           </div>
                         </div>
@@ -308,7 +320,7 @@ const Homefive  = () => {
             <div className="row">
               <div className="page-title style1 col-xl-4 col-lg-4 col-md-6 text-left">
                 <h2 className="text-grey-900 fw-700  display2-md-size pb-3 mb-0 mt-1 d-block lh-3">
-                  Explore by Category
+                  Tech You Will Learn
                 </h2>
               </div>
             </div>
@@ -366,7 +378,7 @@ const Homefive  = () => {
               {courseList.map((value, index) => (
                 // Strat Single Demo
                 <div
-                  className="card course-card vw-100 h-25 shadow-xss border-0 rounded-lg overflow-hidden mb-4"
+                  className="card course-card  h-25 shadow-xss border-0 rounded-lg overflow-hidden mb-4 col-6"
                   key={index}
                 >
                   <div
@@ -390,17 +402,15 @@ const Homefive  = () => {
                     >
                       {value.tag}
                     </span>
-                    <span className="font-xss fw-700 pl-3 pr-3 ls-2 lh-32 d-inline-block text-success float-right">
-                      <span className="font-xsssss">₹</span>
-                      {value.price}
-                    </span>
+                    
                     <h4 className="fw-700 font-xss mt-3 lh-28 mt-0">
                       <span className="text-dark text-grey-900">
                         {value.title}
                       </span>
                     </h4>
                     <h6 className="font-xssss text-grey-500 fw-600 ml-0 mt-2">
-                      {value.lesson} Lesson
+                      {value?.lesson && value?.lesson + "Modules"} 
+                      {value?.time && value?.time + "Months Duration"} 
                     </h6>
                     <ul className="memberlist mt-3 mb-2 ml-0 d-block">
                       <li>
@@ -468,10 +478,10 @@ const Homefive  = () => {
             <div className="row justify-content-center">
               <div className="page-title style1 col-xl-6 col-lg-8 col-md-10 text-center mb-5">
                 <span className="font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-xl ls-2 alert-warning d-inline-block text-warning mr-1">
-                  Upcoming Courses
+                  Additional Offerings
                 </span>
                 <h2 className="text-grey-900 fw-700 font-xxl mb-0 mt-3 d-block lh-3">
-                  Don't Miss Out Our Latest Offerings
+                  Don't Miss Out Our Additional Offerings
                 </h2>
                 <p className="fw-300 font-xssss lh-28 text-grey-500">
                   Explore our latest courses designed to enhance your skills and
@@ -494,15 +504,7 @@ const Homefive  = () => {
                       />
                     </Link>
                     <div className="post-content p-4">
-                      <h6 className="font-xsss text-success fw-600 float-left">
-                        {value.meta}
-                      </h6>
-                      <h6 className="font-xssss text-grey-500 fw-600 ml-3 float-left">
-                        <i className="ti-time mr-2"></i> 24 May 2020
-                      </h6>
-                      <h6 className="font-xssss text-grey-500 fw-600 ml-3 float-left">
-                        <i className="ti-user mr-2"></i> Yatin Vohra
-                      </h6>
+                     
                       <div className="clearfix"></div>
                       <h2 className="post-title mt-2 mb-2 pr-3">
                         <Link
@@ -536,46 +538,12 @@ const Homefive  = () => {
                 <Slider {...feedbacksettings}>
                   {feedbackList.map((value, index) => (
                     <div key={index} className="text-center">
-                      <span
-                        className={`btn-round-xxxl mb-4 mr-5 `}
-                        style={{ paddingRight: "5rem" }}
-                      >
-                        <img
-                          style={{
-                            marginRight: "10rem",
-                            width: "95px",
-                            height: "95px",
-                            borderRadius: "50%",
-                            overflow: "hidden",
-                            display: "inline-block",
-                          }}
-                          src={logo}
-                        />
-                      </span>
+                    
                       <h4 className="fw-500 lh-5 font-md mb-3 text-grey-700">
-                        {value.des}
+                        " {value.des} "
                       </h4>
                       <div className="clearfix"></div>
-                      <div className="card-body pl-0 pt-0 mt-4 mb-5 pb-4 d-block">
-                        <img
-                          style={{
-                            width: "95px",
-                            height: "95px",
-                            borderRadius: "50%",
-                            overflow: "hidden",
-                            display: "inline-block",
-                          }}
-                          src={profilephoto}
-                          alt="user"
-                          className="w55 mr-auto ml-auto mb-2 rounded-circle"
-                        />
-                        <h4 className="text-grey-900 fw-700 font-xsss mb-1 pt-1">
-                          {value.name}
-                        </h4>
-                        <h5 className="font-xssss fw-500 mb-1 text-grey-500">
-                          {value.status}
-                        </h5>
-                      </div>
+                     
                     </div>
                   ))}
                 </Slider>
@@ -592,17 +560,14 @@ const Homefive  = () => {
                   Our Pricing
                 </span>
                 <h2 className="text-grey-900 fw-700 font-xxl pb-3 mb-0 mt-3 d-block lh-3">
-                  Choose the plan that's right for your learning journey
+                Ready to Start Your Journey?
                 </h2>
                 <p className="fw-300 font-xssss lh-28 text-grey-500">
-                  Learn web development and freelancing from an experienced
-                  full-stack developer. With over five years in the industry, I
-                  will guide you through practical insights and strategies to
-                  succeed in the real market.
+                Complete the program with a potential internship or job placement at our partnering companies.
                 </p>
                 <div className="custom-control custom-switch pl-0">
                   <p className="fw-600 font-xssss lh-28 text-grey-900 d-inline-block pr-5 mr-3">
-                    Free
+                  Offline
                   </p>
                   <input
                     type="checkbox"
@@ -614,7 +579,7 @@ const Homefive  = () => {
                     htmlFor="pricecheck"
                   ></label>
                   <p className="fw-600 font-xssss lh-28 text-grey-900 d-inline-block">
-                    Premium
+                  Online
                   </p>
                 </div>
               </div>
