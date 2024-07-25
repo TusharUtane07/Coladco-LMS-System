@@ -25,6 +25,21 @@ class JobPostingViewSet(APIView):
                 "message": str(err)
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+    @staticmethod
+    def post(request):
+        try:
+            data = request.data
+            JobPostingManager.post_new_job_posting(data)
+            return Response({
+                "result": "success",
+                "message": JobPostingConstants.NEW_JOB_ADDED
+            }, status=status.HTTP_200_OK)
+        except Exception as err:
+            return Response({
+                "result": "error",
+                "message": str(err)
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 class JobPostingSingleView(APIView):
 
     @staticmethod
@@ -61,8 +76,10 @@ class JobPostingSingleView(APIView):
                 "message": str(err)
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+class JobPostingDelete(APIView):
+
     @staticmethod
-    def delete(request):
+    def post(request):
         try:
             data = request.data
             JobPostingManager.delete_single_job_posting(data)

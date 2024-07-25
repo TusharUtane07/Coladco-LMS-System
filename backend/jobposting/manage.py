@@ -50,3 +50,15 @@ class JobPostingManager:
         job_posting.delete()
         
         return job_posting
+
+    @staticmethod
+    def post_new_job_posting(data):
+        company_name = data.get('companyName')
+        years_of_experience = data.get('yearsOfExperience')
+        description = data.get('description')
+        job_profile = data.get('jobProfile')
+        link = data.get('link')
+
+        JobPosting.objects.create(company_name=company_name, years_of_experience = years_of_experience,
+                                  description= description, job_profile= job_profile, link = link)
+
