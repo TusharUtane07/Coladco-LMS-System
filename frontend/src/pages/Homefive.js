@@ -230,9 +230,12 @@ const Homefive  = () => {
           }}
         >
           <div className="container">
-            <div className="row">
-              <div className="col-xl-6 col-lg-6 vh-lg--100 align-items-center d-flex sm-mt-7">
-                <div className="card w-100 border-0 bg-transparent d-block sm-mt-7" style={{
+            <div className="row" style={{
+              overflow: "hidden",
+              height: "45rem"
+            }}>
+              <div className="col-xl-6 col-lg-6 vh-lg--100 align-items-center d-flex sm-mt-2">
+                <div className="card w-100 border-0 bg-transparent d-block sm-mt-2" style={{
                 height:"90vh"
               }}>
                   <span className="font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-xl ls-2 alert-primary d-inline-block text-primary mb-3">
@@ -269,7 +272,7 @@ const Homefive  = () => {
         </div>
         <div className="search-wrap position-relative" style={{ top: "-50px", background:"rgb(243,242,240)", display:"flex", alignItems:"center",justifyContent:"center" }}>
           <div className="container">
-            <div className="row">
+            <div className="row" >
               <div className="col-lg-12"  style={{
                 margin:"2rem 0rem"
           }}>
