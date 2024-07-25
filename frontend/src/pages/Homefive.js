@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
@@ -141,6 +141,7 @@ const brandList = [
 ];
 
 const Homefive  = () => {
+  const [onChat,setoffChat] = useState(false)
     const brandsettings = {
       arrows: true,
       dots: false,
@@ -685,7 +686,7 @@ const Homefive  = () => {
             </div>
           </div>
         </div>
-        <Popupchat/>
+        <Popupchat onChat={onChat} setoffChat={setoffChat}/>
         <Footer bgColor="bg-dark" />
       </Fragment>
     );

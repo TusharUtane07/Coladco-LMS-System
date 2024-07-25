@@ -4,14 +4,21 @@ import Navheader from '../components/Navheader';
 import Appheader from '../components/Appheader';
 import { Link } from 'react-router-dom';
 
-const Popupchat = () => {
+const Popupchat = ({onChat, setoffChat}) => {
 
     return (
 
 
           <div className="modal-popup-chat">
             <div className="modal-popup-wrap bg-white p-0 shadow-lg rounded-lg">
-              <div className="modal-popup-header w-100 border-bottom">
+              <div className="modal-popup-header w-100 border-bottom" 
+              onClick={()=>{
+                setoffChat(!onChat)
+              }}
+              style={{
+                cursor:"pointer"
+              }}
+              >
                 <div className="card p-3 d-block border-0 d-block">
                   <figure className="avatar mb-0 float-left mr-2">
                     <img
@@ -40,7 +47,8 @@ const Popupchat = () => {
             {/* body */}
 
 
-
+            {onChat &&
+            <>
               <div className="modal-popup-body w-100 p-4 h-auto">
                 <div className="message">
                   <div className="message-content font-xssss lh-24 fw-500">
@@ -83,7 +91,8 @@ const Popupchat = () => {
                   </div>
                 </div>
               </div>
-
+              </>
+            }
 
             {/* body */}
 
