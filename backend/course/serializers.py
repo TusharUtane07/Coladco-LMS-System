@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Course, Module, Video, Review
+from users.serializers import ProfileSerializer
 
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
@@ -18,6 +19,7 @@ class VideoSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ReviewSerializer(serializers.ModelSerializer):
+    profile = ProfileSerializer()
     class Meta:
         model = Review
         fields = '__all__'

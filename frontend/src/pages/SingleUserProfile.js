@@ -318,11 +318,7 @@ const courseList = [
                     <div className="row">
                       <div className="col-lg-12 pl-xl-5 pt-xl-5">
                         <figure className="avatar ml-0 mb-4 position-relative w100 z-index-1">
-                          <img
-                            src="assets/images/user.png"
-                            alt="avater"
-                            className="float-right p-1 bg-white rounded-circle w-100 rounded-circle"
-                          />
+                        <a className="media-left" href="#"><img className="img-circle img-sm rounded-circle" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar2.png" height={"100px"}/></a>
                         </figure>
                       </div>
                       <div className="col-xl-4 col-lg-6 pl-xl-5 pb-xl-5 pb-3">

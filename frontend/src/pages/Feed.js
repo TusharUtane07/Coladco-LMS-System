@@ -9,6 +9,7 @@ import { GoComment } from "react-icons/go";
 import { feedPostApi, LikePostApi, NewCommentPost, NewFeedPost } from "../urls/urls";
 import useAxios from "../network/useAxios";
 import { ToastContainer, toast } from 'react-toastify';
+import moment from 'moment'
 
 const Feed = () => {
   const [feedPostResponse, feedPostError, feedPostLoading, feedPostFetch] = useAxios();
@@ -86,6 +87,10 @@ const Feed = () => {
   const handleLike = (postId) => {
     likeFetch(LikePostApi({ postId }));
   };
+
+  function formatDate(isoString) {
+    return moment(isoString).format('HH:mm - MMMM D');
+}
 
   return (
     <Fragment>
@@ -211,20 +216,24 @@ const Feed = () => {
                       <div className="media-block">
                         <a className="media-left" href="#"><img className="img-circle img-sm rounded-circle" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar1.png" /></a>
                         <div className="media-body">
-                          <div className="mar-btm ml-3">
-                            <a href="#" className="btn-link text-semibold media-heading box-inline">{item?.profile?.full_name}</a>
+                          <div className="mar-btm ml-3" style={{display: "flex", gap: "1rem", alignItems: "center"}}> 
+                            <p href="#" className="btn-link text-semibold media-heading box-inline" style={{fontSize: "16px ", textTransform: "capitalize"}}>{item?.profile?.full_name}</p>
+                            <p className=" text-grey-600 media-heading box-inline" style={{fontSize:"14px"}}>{formatDate(item?.created_at)}</p>
                           </div>
                           <p className="ml-2">{item?.message}</p>
                           <div className="pad-ver">
-                            <div className="btn-group">
-                              <button className="btn btn-sm btn-default btn-hover-success" onClick={() => handleLike(item?.id)} ><i className="fa fa-thumbs-up" /></button>
-                              <span className="text-sm">{item?.like_count}</span>
+                            <div className="btn-group" >
+                              <div style={{display: "flex", alignItems: "center"}}>
+                              <button className="btn btn-default btn-hover-success" onClick={() => handleLike(item?.id)} ><i className="fa fa-thumbs-up"     style={{ fontSize: "20px", color: item?.user_liked ? 'blue' : 'inherit' }} 
+                              /></button>
+                              <span className="text-sm" style={{fontSize: "15px", marginRight: "10px"}}>{item?.like_count}</span>
+                              </div>
                             </div>
 
                             {/* user_liked */}
 
                             
-                            <button className="btn btn-sm btn-default btn-hover-primary" onClick={() => setCommentsModal(commentsModal === item?.id ? null : item?.id)}>Comment</button>
+                            <button className="btn btn-sm btn-default btn-hover-primary" style={{fontSize: "13px"}} onClick={() => setCommentsModal(commentsModal === item?.id ? null : item?.id)}>Comment</button>
                           </div>
                           {commentsModal === item?.id  ? (
                             <> <textarea className="form-control" rows={2} placeholder="Write a comment..." onChange={(e) => setCommentValues({ ...commentValues, comment: e.target.value })} value={commentValues.comment} />
@@ -237,8 +246,10 @@ const Feed = () => {
                                 <hr />
                                 <a className="media-left" href="#"><img className="img-circle img-sm rounded-circle" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar2.png" /></a>
                                 <div className="media-body">
-                                  <div className="mar-btm ml-3">
-                                    <a href="#" className="btn-link text-semibold media-heading box-inline">{comment?.profile?.full_name}</a>
+                                  <div className="mar-btm ml-3" style={{display: "flex", gap: "1rem"}}>
+                                    <a href="#" className="btn-link text-semibold media-heading box-inline"  style={{fontSize: "16px", textTransform: "capitalize"}} >{comment?.profile?.full_name}</a>
+                            <p className=" text-grey-600 media-heading box-inline" style={{fontSize:"14px"}}>{formatDate(item?.created_at)}</p>
+
                                   </div>
                                   <p className="ml-2">{comment?.comment}</p>
                                 </div>

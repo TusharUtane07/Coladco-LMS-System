@@ -25,6 +25,14 @@ export const techToLearnApi = (payload_data) => {
   return project.get(Urls.TECH_TO_LEARN, payload_data)
 }
 
+// reviews 
+export const gettingReviewsDataApi = (payload_data) => {
+  return project.get(Urls.REVIEWS_GET, payload_data)
+}
+export const NewCourseReview = (payload_data) => {
+  return project.post(Urls.NEW_USER_REVIEW, payload_data)
+}
+
 // course 
 export const courseApi = (payload_data) => {
   return project.get(Urls.COURSE, payload_data)

@@ -4,29 +4,32 @@ import useAxios from '../network/useAxios';
 import { loginFunctionApi } from '../urls/urls';
 import { ToastContainer, toast } from 'react-toastify';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import {useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux';
 import { setUser } from '../redux/UserSlice';
+import { IoEyeOff, IoEye } from "react-icons/io5";
 
 const Login = () => {
   const dispatch = useDispatch(); 
-  const route = useHistory()
+  const route = useHistory();
   const [logineResponse, logineError, logineLoading, logineFetch] = useAxios();
-  const [formValues, setFormValues] = useState({})
+  const [formValues, setFormValues] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
+
   const loginFunction = () => {
-    logineFetch(loginFunctionApi(formValues))
-  }
-  useEffect(()=>{
-    if(logineResponse?.result == "success"){
-      localStorage.setItem("coladjsTk",  logineResponse?.token)
-      console.log(logineResponse?.data)
-      // edit - > profile - > redux
+    logineFetch(loginFunctionApi(formValues));
+  };
+
+  useEffect(() => {
+    if (logineResponse?.result === "success") {
+      localStorage.setItem("coladjsTk", logineResponse?.token);
       dispatch(setUser(logineResponse?.data));
-     route.push('/overview');
+      route.push('/overview');
     }
-    if(logineError){
-      toast.error(logineError?.response?.data)
+    if (logineError) {
+      toast.error(logineError?.response?.data);
     }
-  },[logineResponse,logineError ])
+  }, [logineResponse, logineError]);
+
   return (
     <Fragment>
       <div className="main-wrap">
@@ -52,22 +55,36 @@ const Login = () => {
                       type="text"
                       className="style2-input pl-5 form-control text-grey-900 font-xssss fw-600"
                       placeholder="Enter your Username or Phone"
-                      onChange={(e)=>{
-                        setFormValues((prev)=>({...prev, username:e.target.value}))
+                      onChange={(e) => {
+                        setFormValues((prev) => ({ ...prev, username: e.target.value }));
                       }}
                     />
                   </div>
-                  <div className="form-group icon-input mb-1">
-                    <input
-                      type="Password"
-                      className="style2-input pl-5 form-control text-grey-900 font-xssss ls-3"
-                      placeholder="Password"
-                      onChange={(e)=>{
-                        setFormValues((prev)=>({...prev, password:e.target.value}))
-                      }}
-                    />
-                    <i className="font-sm ti-lock text-grey-500 pr-0"></i>
-                  </div>
+                  <div className="form-group icon-input mb-1" style={{ position: 'relative' }}>
+      <input
+        type={showPassword ? "text" : "password"}
+        className="style2-input pl-5 pr-5 form-control text-grey-900 font-xssss ls-3"
+        placeholder="Password"
+        onChange={(e) => {
+          setFormValues((prev) => ({ ...prev, password: e.target.value }));
+        }}
+        style={{ paddingRight: '40px' }}
+      />
+      <i className="font-sm ti-lock text-grey-500 pr-0" style={{ position: 'absolute', left: '10px' }}></i>
+      <span
+        className="password-toggle-icon text-grey-500"
+        onClick={() => setShowPassword(!showPassword)}
+        style={{
+          position: 'absolute',
+          right: '10px',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          cursor: 'pointer',
+        }}
+      >
+        {showPassword ? <IoEyeOff size={20} /> : <IoEye size={20} />}
+      </span>
+    </div>
                   <div className="form-check text-left mb-3">
                     <input
                       type="checkbox"
@@ -92,22 +109,18 @@ const Login = () => {
                 <div className="col-sm-12 p-0 text-left">
                   <div className="form-group mb-1">
                     <button
-                    onClick={()=>{
-                      loginFunction()
-                    }}
-                     
+                      onClick={loginFunction}
                       className="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0"
                     >
-                     {logineLoading ? "loading" : "Login" } 
+                      {logineLoading ? "Loading" : "Login"}
                     </button>
-
                   </div>
                   <h6 className="text-grey-500 font-xssss fw-500 mt-0 mb-0 lh-32">
-                      Dont have account{' '}
-                      <Link to="/register" className="fw-700 ml-1">
-                        Register
-                      </Link>
-                    </h6>
+                    Don't have an account?{' '}
+                    <Link to="/register" className="fw-700 ml-1">
+                      Register
+                    </Link>
+                  </h6>
                 </div>
               </div>
             </div>

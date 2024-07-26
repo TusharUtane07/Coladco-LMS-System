@@ -33,10 +33,18 @@ class Video(models.Model):
         db_table = "video"
         
 class Review(models.Model):
-    course = models.ForeignKey(Course, related_name='reviews', on_delete=models.CASCADE)
+    RATING_CHOICES = [
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+    ]
+    course = models.ForeignKey(Course, related_name='reviews', on_delete=models.CASCADE, default=1)
     # profile = models.ForeignKey(Profile, related_name='profile_reviews', on_delete=models.CASCADE, default=1)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="review", default=1)
     review_text = models.TextField()
-    rating = models.DecimalField(max_digits=5, decimal_places=2)
+    rating = models.IntegerField(choices=RATING_CHOICES, default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

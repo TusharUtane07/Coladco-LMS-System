@@ -10,6 +10,11 @@ export class Urls {
 
     // tech to learn
     static TECH_TO_LEARN = Urls.MPHRMS_API_PREFIX + 'additional/all-tech-to-learn-fetch/'
+    
+    // reviews
+    static REVIEWS_GET = Urls.MPHRMS_API_PREFIX + 'course/all-reviews-fetch/'
+    static NEW_USER_REVIEW = Urls.MPHRMS_API_PREFIX + 'course/new-review-course/'
+
 
     // course
     static COURSE = Urls.MPHRMS_API_PREFIX + 'course/all-courses-fetch/'
@@ -34,6 +39,8 @@ export class Urls {
     static NEW_POST_USER = Urls.MPHRMS_API_PREFIX + 'feed/new-post-user/'
     static NEW_COMMENT_USER = Urls.MPHRMS_API_PREFIX + 'feed/new-comment-user/'
     static NEW_LIKE_POST = Urls.MPHRMS_API_PREFIX + 'feed/new-like-user/'
+
+
 
     // bookmarks
     static BOOKMARKS = Urls.MPHRMS_API_PREFIX + 'additional/all-bookmarks-fetch/'
