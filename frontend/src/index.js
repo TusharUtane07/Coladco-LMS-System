@@ -91,6 +91,7 @@ import Feed from './pages/Feed';
 import SingleFeedPage from './pages/SingleFeedPage';
 import JobListingDetails from './pages/JobListingDetails';
 import VerifyOtp from './pages/VerifyOtp';
+import AdminJobPanel from './pages/AdminJobPannel';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import ReviewsAll from './pages/ReviewsAll';
@@ -483,6 +484,11 @@ class Root extends Component {
             exact
             path={`${process.env.PUBLIC_URL}/feed`}
             component={Feed}
+          />
+           <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/admin-job-list`}
+            component={AdminJobPanel}
           />
           <Route
             exact
