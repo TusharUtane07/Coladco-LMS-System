@@ -6,7 +6,8 @@ import axios from "axios";
 import useAxios from "../network/useAxios";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 import { Link } from "react-router-dom"; 
-
+import master from "../assets/about/master.png"
+import fullStack from "../assets/about/full-stack-banner.png"
 
 const brandList = [
   { bimg: "b-1.png" },
@@ -120,17 +121,17 @@ const About = () => {
             <div className="col-lg-5 offset-lg-1">
               <ul className="d-block list-inline float-right-md mb-3">
                 <li className="list-inline-item mr-1">
-                  <a href="https://www.linkedin.com/in/yatinvohra/" target="_blank" className="btn-round-md bg-linkedin">
+                  <a href="https://www.linkedin.com/in/yatinvohra/" target="_blank" className="btn-round-md bg-linkedin overflow-hidden">
                     <i className="font-xs ti-linkedin text-white"></i>
                   </a>
                 </li>
                 <li className="list-inline-item mr-1">
-                  <a href="https://www.instagram.com/devwithyatin?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"className="btn-round-md bg-instagram">
+                  <a href="https://www.instagram.com/devwithyatin?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"className="btn-round-md bg-instagram overflow-hidden">
                     <i className="font-xs ti-instagram text-white"></i>
                   </a>
                 </li>
                  <li className="list-inline-item mr-1">
-                  <a href="https://twitter.com/devwithyatin" target="_blank" className="btn-round-md bg-twiiter">
+                  <a href="https://twitter.com/devwithyatin" target="_blank" className="btn-round-md bg-twiiter overflow-hidden">
                     <i className="font-xs ti-twitter-alt text-white"></i>
                   </a>
                 </li>
@@ -144,7 +145,7 @@ const About = () => {
                 data-target="#Modalvideo"
               >
                 <img
-                  src="https://via.placeholder.com/1200x400.png"
+                  src={fullStack}
                   alt="about"
                   className="img-fluid rounded-lg"
                 />
@@ -176,7 +177,7 @@ const About = () => {
           <div className="row">
             <div className="col-lg-5 mb-4">
               <img
-                src="https://via.placeholder.com/600x800.png"
+                src={master}
                 alt="about"
                 className="rounded-lg img-fluid shadow-xs"
               />
@@ -319,19 +320,7 @@ const About = () => {
       <div className="brand-wrapper pb-lg--7 pt-lg--7 pb-5 pt-5">
         <div className="container">
           <div className="row">
-            <div className="col-lg-12">
-              <Slider {...brandsettings}>
-                {brandList.map((value, index) => (
-                  <div key={index}>
-                    <img
-                      src={`assets/images/${value.bimg}`}
-                      alt="avater"
-                      className="w100"
-                    />
-                  </div>
-                ))}
-              </Slider>
-            </div>
+           
           </div>
         </div>
       </div>

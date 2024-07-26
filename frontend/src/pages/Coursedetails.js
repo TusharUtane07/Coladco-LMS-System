@@ -6,7 +6,11 @@ import { Accordion } from "react-bootstrap";
 import ReactPlayer from "react-player";
 import { FaAngleDown } from "react-icons/fa";
 
-
+import person1 from "../assets/people/1.png"
+import person2 from "../assets/people/2.png"
+import person3 from "../assets/people/3.png"
+import person4 from "../assets/people/4.png"
+import person5 from "../assets/people/5.png"
 
 const Coursedetails = () => {
     return (
@@ -15,7 +19,7 @@ const Coursedetails = () => {
         <div className="course-details pt-lg--7 pb-lg--7 pb-5">
           <div className="container">
             <div className="row">
-              <div className="col-xl-8 col-xxl-9 col-lg-8 mt-n5">
+              <div className="col-xl-8 col-xxl-9 col-lg-8 mt-3">
                 {/* <div className="card border-0 mb-0 rounded-lg overflow-hidden">
                   <ReactPlayer
                     controls="true"
@@ -31,7 +35,7 @@ const Coursedetails = () => {
                   <div className="row">
                     <div className="col-10">
                       <h2 className="fw-700 font-md d-block lh-4 mb-3 "style={{ width: '46rem' }}>
-                        Complete Web Development Bootcamp From Zero to Hero
+                        Complete Web Development Bootcamp From Zero <br/>to Hero
                       </h2>
                     </div>
                     {/* <div className="col-2">
@@ -50,15 +54,12 @@ const Coursedetails = () => {
                     </div> */}
                   </div>
 
-                  <span className="font-xsss fw-700 text-grey-900 d-inline-block ml-0 text-dark">
-                    Yatin Vohra
-                  </span>
-                  <span className="dot ml-2 mr-2 d-inline-block btn-round-xss bg-grey"></span>
+            
                   <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
-                    Full Stack Developer,
+                    HTML,
                   </span>
                   <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
-                    Freelancer,
+                    CSS,
                   </span>
                   <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
                     Javascript,
@@ -70,12 +71,19 @@ const Coursedetails = () => {
                     Python,
                   </span>
                   <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
-                    Django
+                    Django,
+                  </span>
+                  <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
+                    GitHub,
+                  </span>
+                  <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
+                    Docker,
+                  </span>
+                  <span className="font-xssss fw-600 text-grey-500 d-inline-block ml-1">
+                    VPS
                   </span>
                   <span className="dot ml-2 mr-2 d-inline-block btn-round-xss bg-grey"></span>
-                  <span className="font-xssss fw-700 text-primary d-inline-block ml-0 ">
-                    Instructor
-                  </span>
+                  
                 </div>
 
                 <div className="card d-block border-0 rounded-lg overflow-hidden mt-3">
@@ -491,7 +499,7 @@ const Coursedetails = () => {
                 <div className="card w-100 border-0 mt-0 mb-4 p-4 shadow-xss position-relative rounded-lg bg-white">
                   <div className="row">
                     <div className="col-5 pr-0">
-                      <h2 className="display3-size lh-1 m-0 text-grey-900 fw-700">
+                      <h2 className="display3-size lh-1 m-0 text-grey-900 fw-700 overflow-hidden">
                         4.2
                       </h2>
                     </div>
@@ -671,7 +679,7 @@ const Coursedetails = () => {
                     <div className="col-2 text-left">
                       <figure className="avatar float-left mb-0">
                         <img
-                          src="assets/images/user.png"
+                          src={person2}
                           alt="avatar"
                           className="float-right shadow-none w40 mr-2"
                         />
@@ -710,7 +718,7 @@ const Coursedetails = () => {
                     <div className="col-2 text-left">
                       <figure className="avatar float-left mb-0">
                         <img
-                          src="assets/images/user.png"
+                           src={person1}
                           alt="avatar"
                           className="float-right shadow-none w40 mr-2"
                         />
@@ -748,7 +756,7 @@ const Coursedetails = () => {
                     <div className="col-2 text-left">
                       <figure className="avatar float-left mb-0">
                         <img
-                          src="assets/images/user.png"
+                          src={person3}
                           alt="avatar"
                           className="float-right shadow-none w40 mr-2"
                         />
@@ -787,7 +795,7 @@ const Coursedetails = () => {
                     <div className="col-2 text-left">
                       <figure className="avatar float-left mb-0">
                         <img
-                          src="assets/images/user.png"
+                          src={person4}
                           alt="avatar"
                           className="float-right shadow-none w40 mr-2"
                         />
@@ -826,7 +834,7 @@ const Coursedetails = () => {
                     <div className="col-2 text-left">
                       <figure className="avatar float-left mb-0">
                         <img
-                          src="assets/images/user.png"
+                          src={person5}
                           alt="avatar"
                           className="float-right shadow-none w40 mr-2"
                         />

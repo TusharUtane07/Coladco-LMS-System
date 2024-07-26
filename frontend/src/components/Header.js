@@ -224,7 +224,7 @@
 //             >
 //               <i className="ti-shopping-cart font-lg"></i>
 //               <span className="font-xssss fw-500 d-block lh-1">Cart</span>
-//               <span className="icon-count bg-current">3</span>
+//               <span className="icon-count bg-curreFsavednt">3</span>
 //             </Link>
 //             <Link
 //               to="#"
@@ -338,23 +338,21 @@ const Header = ({ divClass, color = 'light' }) => {
               className={`float-right text-center mt-1 ml-4 text-grey-800 position-relative ${colorClass}`}
             >
               <i className="ti-shopping-cart font-lg"></i>
-              <span className="font-xssss fw-500 d-block lh-1">Cart</span>
-              <span className="icon-count bg-current">3</span>
+              <span className="font-xssss fw-500 d-block">Cart</span>
             </Link>
             <Link
               to="#"
               className={`float-right text-center mt-1 ml-4 text-grey-800 position-relative ${colorClass}`}
             >
               <i className="ti-heart font-lg"></i>
-              <span className="font-xssss fw-500 d-block lh-1">Saved</span>
-              <span className="icon-count bg-current">2</span>
+              <span className="font-xssss fw-500 d-block">Saved</span>
             </Link>
             <Link
               to="/login"
               className={`float-right d-none d-lg-block text-center mt-1 ml-4 text-grey-800 ${colorClass}`}
             >
               <i className="ti-user font-lg"></i>
-              <span className="font-xssss fw-500 d-block lh-1">Account</span>
+              <span className="font-xssss fw-500 d-block ">Account</span>
             </Link>
           </div>
         </div>

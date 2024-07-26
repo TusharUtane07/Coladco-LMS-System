@@ -6,15 +6,15 @@ const Footer = ({ bgColor } ) => {
       <div className={`footer-wrapper mt-0 ${bgColor}`}>
         <div className="container">
           <div className="row">
+    
+       
             <div className="col-sm-12">
               <div className="row">
                 <div className="col-md-12 col-lg-4 col-sm-9 col-xs-12 md-mb-2">
                   <Link to="/">
                     <h1 className="fredoka-font ls-3 fw-700 text-current font-xxl">
                       Coladco
-                      <span className="d-block font-xsssss ls-1 text-grey-500 open-font ">
-                        Best Full Stack Couse in Faridabad
-                      </span>
+                     
                     </h1>
                   </Link>
                   <p className="w-100 mt-5">

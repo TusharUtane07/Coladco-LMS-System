@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import emailjs from 'emailjs-com'; // Make sure to install this package
 import click from '../../src/assets/openclosesound.wav'; 
 import profile from '../assets/bot.jpeg';
@@ -15,13 +15,27 @@ const Popupchat = () => {
   const [userName, setUserName] = useState('');
   const [contactInfo, setContactInfo] = useState('');
   const [userMessage, setUserMessage] = useState('');
-
+  const [autoOpenDone, isAutoOpenDone] = useState(false);
   const playSound = () => {
     const sound = new Audio(click);
     sound.play().catch(error => {
       console.error('Error playing sound:', error);
     });
   };
+  const [isTyping, setIsTyping] = useState(false); 
+
+  const autoOpeningFunc = () => {
+    if(!autoOpenDone){
+      setTimeout(() => {
+        handleChatToggle()
+      }, 2500);
+      isAutoOpenDone(true)
+    }
+  }
+  useEffect(()=>{
+    autoOpeningFunc()
+  },[])
+
 
   const handleChatToggle = () => {
     setOnChat(prevState => !prevState);
@@ -37,6 +51,7 @@ const Popupchat = () => {
   };
 
   const handleSubmit = () => {
+    
     const serviceID = 'service_hxdupy7';
     const templateID = 'template_okaqtw8';
     const publicKey = 'BJkIfTD2K83BpACiU';
@@ -79,18 +94,14 @@ const Popupchat = () => {
     }
   };
 
+  useEffect(() => {
+    setIsTyping(false);
+  }, [step]);
+
   return (
     <div
       className="modal-popup-chat"
-      style={{
-        width: '400px',
-        height: onChat ? '475px' : '60px',
-        position: 'fixed',
-        bottom: '4rem',
-        right: '10px',
-        zIndex: 1000,
-        transition: 'height 0.3s ease',
-      }}
+
     >
       <div className="modal-popup-wrap bg-white p-0 shadow-lg rounded-lg" style={{ height: '100%' }}>
         <div
@@ -107,7 +118,7 @@ const Popupchat = () => {
               />
             </figure>
             <h5 className="fw-700 text-primary font-xss mt-2 mb-1">
-              Chat with Yatin
+              Chat with Alex
             </h5>
             <h4 className="text-grey-500 font-xssss mt-0">
               <span className="d-inline-block bg-success btn-round-xss m-0 mr-1"></span>
@@ -118,146 +129,152 @@ const Popupchat = () => {
 
         {onChat && (
           <>
-            <div className="modal-popup-body w-100 p-4 h-auto" style={{ overflowY: 'auto', maxHeight: '300px' }}>
-              <div className="message">
-                <div className="message-content font-xssss lh-24 fw-500">
-                  Hi, how can I help you?
-                </div>
-              </div>
-              <div className="message">
-                <div className="message-content font-xssss lh-24 fw-500 mt-3">
-                  Hi, my name is Yatin, I will be happy to assist you.
-                </div>
-              </div>
-              {step === 0 && (
-                <div className="message self text-right mt-4">
-                  <div className="message-content font-xssss lh-24 fw-500">
-                    Please provide your name :
-                    <input
-                      type="text"
-                      value={userName}
-                      onChange={(e) => setUserName(e.target.value)}
-                      placeholder="Your Name"
-                      className="form-control rounded-xl bg-greylight border-0 font-xssss fw-500 pl-3 mt-2"
-                    />
-                    <button
-                      onClick={() => setStep(1)}
-                      className="btn btn-primary mt-3"
-                    >
-                      Next
-                    </button>
-                  </div>
-                </div>
-              )}
-              {step === 1 && (
-                <div className="message self text-right mt-4">
-                  <div className="message-content font-xssss lh-24 fw-500">
-                    Which type of help do you need {userName} ?
-                    <div className="option mt-2">
-                      <label>
-                        <input
-                          type="checkbox"
-                          name="offlineCoding"
-                          checked={selectedOptions.offlineCoding}
-                          onChange={handleOptionChange}
-                        />
-                        Offline Coding Course
-                      </label>
-                    </div>
-                    <div className="option mt-2 ">
-                      <label>
-                        <input
-                          type="checkbox"
-                          name="cohortInternships"
-                          checked={selectedOptions.cohortInternships}
-                          onChange={handleOptionChange}
-                        />
-                        Co-hort & Internships
-                      </label>
-                    </div>
-                    <div className="option mt-2">
-                      <label>
-                        <input
-                          type="checkbox"
-                          name="onlineFullStack"
-                          checked={selectedOptions.onlineFullStack}
-                          onChange={handleOptionChange}
-                        />
-                        Online Full Stack Course
-                      </label>
-                    </div>
-                    <div className="option mt-2">
-                      <label>
-                        <input
-                          type="checkbox"
-                          name="other"
-                          checked={selectedOptions.other}
-                          onChange={handleOptionChange}
-                        />
-                        Other
-                      </label>
-                    </div>
-                    <button
-                      onClick={handleNextStep}
-                      className="btn btn-primary mt-3"
-                    >
-                      Next
-                    </button>
-                  </div>
-                </div>
-              )}
-              {step === 2 && selectedOptions.other && (
-                <div className="message self text-right mt-4">
-                  <div className="message-content font-xssss lh-24 fw-500">
-                    Please describe your requirement {userName} :
-                    <textarea
-                      value={userMessage}
-                      onChange={(e) => setUserMessage(e.target.value)}
-                      placeholder="Please describe your requirement"
-                      className="form-control rounded-xl bg-greylight border-0 font-xssss fw-500 pl-3 mt-2"
-                    ></textarea>
-                    <button
-                      onClick={handleNextStep}
-                      className="btn btn-primary mt-3"
-                    >
-                      Next
-                    </button>
-                  </div>
-                </div>
-              )}
-              {step === 3 && (
-                <div className="message self text-right mt-4">
-                  <div className="message-content font-xssss lh-24 fw-500">
-                    Please provide your contact information {userName} :
-                    <input
-                      type="text"
-                      value={contactInfo}
-                      onChange={(e) => setContactInfo(e.target.value)}
-                      placeholder="Email or Contact Number"
-                      className="form-control rounded-xl bg-greylight border-0 font-xssss fw-500 pl-3 mt-2 "
-                    />
-                    <button
-                      onClick={handleSubmit}
-                      className="btn btn-primary mt-3"
-                    >
-                      Submit
-                    </button>
-                  </div>
-                </div>
-              )}
-              {step === 4 && (
-                <div className="message self text-right mt-4">
-                  <div className="message-content font-xssss lh-24 fw-500">
-                    <p><strong>Name:</strong> {userName}</p>
-                    <p><strong>Service Type/Requirement:</strong> {selectedOptions.other ? userMessage : Object.keys(selectedOptions).find(key => selectedOptions[key]) || 'Not specified'}</p>
-                    <p><strong>Contact Info:</strong> {contactInfo}</p>
-                    <div className="mt-3 fw-500">
-                      Thank you for your message {userName}. We will contact you soon 😊.
-                    </div>
-                  </div>
-                </div>
-              )}
+    <div className="modal-popup-body w-100 p-4 h-auto" style={{ overflowY: 'auto', maxHeight: '300px' }}>
+      <div className="message">
+        <div className="message-content font-xssss lh-24 fw-500 mt-3">
+          Hi, my name is Alex, I will be happy to assist you.
+        </div>
+      </div>
+      {step === 0 && (
+        <div className="message self text-right mt-4">
+          <div className="message-content font-xssss lh-24 fw-500">
+            Please provide your name :
+            <input
+              type="text"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              placeholder="Your Name"
+              className="form-control rounded-xl bg-greylight border-0 font-xssss fw-500 pl-3 mt-2"
+            />
+            <button
+              onClick={() => setStep(1)}
+              className="btn btn-primary mt-3"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      )}
+      {step === 1 && !isTyping && (
+        <div className="message self text-right mt-4">
+          <div className="message-content font-xssss lh-24 fw-500">
+            Which type of help do you need {userName} ?
+            <div className="option mt-2">
+              <label>
+                <input
+                  type="checkbox"
+                  name="offlineCoding"
+                  checked={selectedOptions.offlineCoding}
+                  onChange={handleOptionChange}
+                />
+                Offline Coding Course
+              </label>
             </div>
+            <div className="option mt-2 ">
+              <label>
+                <input
+                  type="checkbox"
+                  name="cohortInternships"
+                  checked={selectedOptions.cohortInternships}
+                  onChange={handleOptionChange}
+                />
+                Co-hort & Internships
+              </label>
+            </div>
+            <div className="option mt-2">
+              <label>
+                <input
+                  type="checkbox"
+                  name="onlineFullStack"
+                  checked={selectedOptions.onlineFullStack}
+                  onChange={handleOptionChange}
+                />
+                Online Full Stack Course
+              </label>
+            </div>
+            <div className="option mt-2">
+              <label>
+                <input
+                  type="checkbox"
+                  name="other"
+                  checked={selectedOptions.other}
+                  onChange={handleOptionChange}
+                />
+                Other
+              </label>
+            </div>
+            <button
+              onClick={handleNextStep}
+              className="btn btn-primary mt-3"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      )}
+      {step === 2 && selectedOptions.other && !isTyping && (
+        <div className="message self text-right mt-4">
+          <div className="message-content font-xssss lh-24 fw-500">
+            Please describe your requirement {userName} :
+            <textarea
+              value={userMessage}
+              onChange={(e) => setUserMessage(e.target.value)}
+              placeholder="Please describe your requirement"
+              className="form-control rounded-xl bg-greylight border-0 font-xssss fw-500 pl-3 mt-2"
+            ></textarea>
+            <button
+              onClick={handleNextStep}
+              className="btn btn-primary mt-3"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      )}
+      {step === 3 && !isTyping && (
+        <div className="message self text-right mt-4">
+          <div className="message-content font-xssss lh-24 fw-500">
+            Please provide your contact information {userName} :
+            <input
+              type="text"
+              value={contactInfo}
+              onChange={(e) => setContactInfo(e.target.value)}
+              placeholder="Email or Contact Number"
+              className="form-control rounded-xl bg-greylight border-0 font-xssss fw-500 pl-3 mt-2 "
+            />
+            <button
+              onClick={handleSubmit}
+              className="btn btn-primary mt-3"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      )}
+      {step === 4 && !isTyping && (
+        <div className="message self text-right mt-4">
+          <div className="message-content font-xssss lh-24 fw-500">
+            <p><strong>Name:</strong> {userName}</p>
+            <p><strong>Service Type/Requirement:</strong> {selectedOptions.other ? userMessage : Object.keys(selectedOptions).find(key => selectedOptions[key]) || 'Not specified'}</p>
+            <p><strong>Contact Info:</strong> {contactInfo}</p>
+            <div className="mt-3 fw-500">
+              Thank you for your message {userName}. We will contact you soon 😊.
+            </div>
+          </div>
+        </div>
+      )}
+      {isTyping && (
+        <div className="message self text-right mt-4">
+          <div className="message-content font-xssss lh-24 fw-500">
+            <div className="typing-indicator">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
           </>
         )}
       </div>

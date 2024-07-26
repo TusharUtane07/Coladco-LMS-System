@@ -30,12 +30,16 @@ class Contact extends Component {
           </div>
         </div>
 
-        <div className="map-wrapper pb-2 pb-lg--5">
+        <div className="map-wrapper pb-2 pb-lg--5 mt-5">
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-lg-10">
-                <div className="contact-wrap bg-white shadow-lg rounded-lg position-relative">
-                  <h1 className="text-grey-900 fw-700 display3-size mb-5 lh-1">
+                <div className="contact-wrap bg-white shadow-lg rounded-lg position-relative" style={
+                  {
+                    marginTop:"8rem"
+                  }
+                }>
+                  <h1 className="text-grey-900 fw-700 display3-size mb-5 lh-1" >
                     Contact us
                   </h1>
                   <form action="#">
