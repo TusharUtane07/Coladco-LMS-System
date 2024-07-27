@@ -4,7 +4,7 @@ from .views import (
     ModuleViewSet, ModuleSingleView,
     VideoViewSet, VideoSingleView,
     ReviewViewSet, ReviewSingleView,
-    NewReviewPostSet
+    NewReviewPostSet, ReviewSummaryView
 )
 
 urlpatterns = [
@@ -25,6 +25,7 @@ urlpatterns = [
     
     path('/all-reviews-fetch/',  ReviewViewSet.as_view(), name='all-reviews-fetch'),
     path('/new-review-course/', NewReviewPostSet.as_view(), name='new-review-course'),
+    path('/reviews-summary/', ReviewSummaryView.as_view(), name='reviews-summary'),
     path('/single-reviews-fetch/',  ReviewSingleView.as_view(), name='single-reviews-fetch'),
     path('/single-reviews-update/', ReviewSingleView.as_view(), name='single-reviews-update'),
     path('/single-reviews-delete/', ReviewSingleView.as_view(), name='single-reviews-delete'), 

@@ -13,6 +13,7 @@ export class Urls {
     
     // reviews
     static REVIEWS_GET = Urls.MPHRMS_API_PREFIX + 'course/all-reviews-fetch/'
+    static REVIEWS_SUMMARY_GET = Urls.MPHRMS_API_PREFIX + 'course/reviews-summary/'
     static NEW_USER_REVIEW = Urls.MPHRMS_API_PREFIX + 'course/new-review-course/'
 
 
