@@ -101,7 +101,12 @@ const Popupchat = () => {
   return (
     <div
       className="modal-popup-chat"
+style={{
+  padding: "0rem",
+  paddingRight:" 1rem",
+  paddingBottom: "1rem"
 
+}}
     >
       <div className="modal-popup-wrap bg-white p-0 shadow-lg rounded-lg" style={{ height: '100%' }}>
         <div

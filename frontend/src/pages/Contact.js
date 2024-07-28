@@ -39,7 +39,7 @@ class Contact extends Component {
                     marginTop:"8rem"
                   }
                 }>
-                  <h1 className="text-grey-900 fw-700 display3-size mb-5 lh-1" >
+                  <h1 className="text-grey-900 fw-700 display3-size mb-5 lh-1 overflow-hidden" >
                     Contact us
                   </h1>
                   <form action="#">
@@ -102,10 +102,10 @@ class Contact extends Component {
                 <div className="row">
                   <div className="col-lg-4 col-md-4 xs-mb-2">
                     <div className="card shadow-xss border-0 p-5 rounded-lg">
-                      <span className="btn-round-xxxl alert-success">
-                        <i className="feather-mail text-success font-xl"></i>
+                      <span className="btn-round-xxxl alert-success overflow-hidden">
+                        <i className="feather-mail text-success font-xl "></i>
                       </span>
-                      <h2 className="fw-700 font-sm mt-4 mb-3 text-grey-900">
+                      <h2 className="fw-700 font-sm mt-4 mb-3 text-grey-900 over">
                         Email us
                       </h2>
                       <p className="font-xsss text-grey-500 fw-500 mb-3">
@@ -123,7 +123,7 @@ class Contact extends Component {
 
                   <div className="col-lg-4 col-md-4 xs-mb-2">
                     <div className="card shadow-xss border-0 p-5 rounded-lg">
-                      <span className="btn-round-xxxl alert-danger">
+                      <span className="btn-round-xxxl alert-danger overflow-hidden">
                         <i className="feather-phone text-danger font-xl"></i>
                       </span>
                       <h2 className="fw-700 font-sm mt-4 mb-3 text-grey-900">
@@ -143,7 +143,7 @@ class Contact extends Component {
 
                   <div className="col-lg-4 col-md-4 xs-mb-2">
                     <div className="card shadow-xss border-0 p-5 rounded-lg">
-                      <span className="btn-round-xxxl alert-primary">
+                      <span className="btn-round-xxxl alert-primary overflow-hidden">
                         <i className="feather-map-pin text-primary font-xl"></i>
                       </span>
                       <h2 className="fw-700 font-sm mt-4 mb-3 text-grey-900">

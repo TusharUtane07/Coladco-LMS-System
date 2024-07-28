@@ -100,6 +100,7 @@ const About = () => {
   return (
     <Fragment>
       <Header />
+
       <div className="about-wrapper pb-lg--7 pt-lg--7 pt-5 pb-7">
         <div className="container">
           <div className="row">
@@ -193,7 +194,7 @@ const About = () => {
               </p>
 
               <h4 className="fw-600 font-xs mt-5 mb-2">
-                <i className="ti-check btn-round-xs text-white bg-success mr-2 border"></i>
+                <i className="ti-check btn-round-xs text-white bg-success mr-2 border overflow-hidden"></i>
                 Develop robust web applications
               </h4>
               <p className="fw-300 font-xsss lh-28 text-grey-500 mt-0 ml-4 pl-3 w-75 w-xs-90">
@@ -202,7 +203,7 @@ const About = () => {
               </p>
 
               <h4 className="fw-600 font-xs mt-4 mb-2">
-                <i className="ti-check btn-round-xs text-white bg-success mr-2 border"></i>
+                <i className="ti-check btn-round-xs text-white bg-success mr-2 border overflow-hidden"></i>
                 Master freelancing strategies
               </h4>
               <p className="fw-300 font-xsss lh-28 text-grey-500 mt-0 ml-4 pl-3 w-75 w-xs-90">
@@ -211,7 +212,7 @@ const About = () => {
               </p>
 
               <h4 className="fw-600 font-xs mt-4 mb-2">
-                <i className="ti-check btn-round-xs text-white bg-success mr-2 border"></i>
+                <i className="ti-check btn-round-xs text-white bg-success mr-2 border overflow-hidden"></i>
                 Career support and job opportunities
               </h4>
               <p className="fw-300 font-xsss lh-28 text-grey-500 mt-0 ml-4 pl-3 w-75 w-xs-90">
@@ -223,7 +224,9 @@ const About = () => {
         </div>
       </div>
 
-      <div className="popular-wrapper pb-0 pt-5">
+      <div className="popular-wrapper pb-0 pt-5" style={{
+      background:"rgb(243, 242, 240)"
+      }}>
         <div className="container">
           <div className="row">
             <div className="col-lg-6 text-left mb-3 pb-0">
@@ -324,7 +327,6 @@ const About = () => {
           </div>
         </div>
       </div>
-
       <Footer bgColor="bg-dark" />
     </Fragment>
   );

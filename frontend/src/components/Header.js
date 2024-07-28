@@ -256,6 +256,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 import logo from "../assets/logo.jpg";
 import './Header.css';  // Import the CSS file
+import { FaBars } from 'react-icons/fa';
+import { FaTimes } from 'react-icons/fa';
 
 const Header = ({ divClass, color = 'light' }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -283,7 +285,7 @@ const Header = ({ divClass, color = 'light' }) => {
               </div>
             </Link>
             <button className="navbar-toggler" onClick={toggleOpen}>
-              <span className="navbar-toggler-icon"></span>
+             {isOpen ? <FaTimes/> :<FaBars/>} 
             </button>
             <div className={`collapse navbar-collapse ${navClass}`} id="navbarNavDropdown">
               <Navbar expand="lg" className="nav-menu">

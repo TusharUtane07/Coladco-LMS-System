@@ -35,7 +35,7 @@ const Coursedetails = () => {
                   <div className="row">
                     <div className="col-10">
                       <h2 className="fw-700 font-md d-block lh-4 mb-3 "style={{ width: '46rem' }}>
-                        Complete Web Development Bootcamp From Zero <br/>to Hero
+                        Complete Web Development Bootcamp<br/>from Scratch
                       </h2>
                     </div>
                     {/* <div className="col-2">
@@ -166,7 +166,7 @@ const Coursedetails = () => {
                             6
                           </span>
                           <span className="font-xssss fw-500 text-grey-500 ml-2">
-                            Connections with 3 Recruiter Agencies for Jobs and
+                            Connections with 3 Recruiting Agencies for Jobs and
                             Internships
                           </span>
                         </div>
@@ -329,7 +329,7 @@ const Coursedetails = () => {
                             3
                           </span>
                           <span className="font-xssss fw-500 text-grey-500 ml-2">
-                            Connections with 3 Recruiter Agencies
+                            Connections with 3 Recruiting Agencies
                           </span>
                         </div>
                       </Accordion.Body>
@@ -415,7 +415,7 @@ const Coursedetails = () => {
                   </h4>
                   <h4 className="font-xssss fw-600 text-grey-600 mb-3 pl-4 position-relative lh-24">
                     <i className="ti-check font-xssss btn-round-xs bg-success text-white position-absolute left-0 top-5"></i>
-                    Benefit from our network with 3 recruiter agencies,
+                    Benefit from our network with 3 recruiting agencies,
                     providing opportunities for both jobs and internships in the
                     tech industry.
                   </h4>
@@ -444,7 +444,7 @@ const Coursedetails = () => {
                     support including certificate programs, internship
                     placements, and job assistance. I also provide guidance on
                     freelancing strategies and acquiring clients. Furthermore, I
-                    maintain connections with 3 recruiter agencies, offering
+                    maintain connections with 3 recruiting agencies, offering
                     opportunities for career growth in the tech industry. <br />
                     <br />
                     Whether you're starting your journey or looking to enhance
