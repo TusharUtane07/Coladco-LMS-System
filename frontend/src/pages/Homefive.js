@@ -31,6 +31,7 @@ import person2 from "../assets/people/2.png"
 import person3 from "../assets/people/3.png"
 import person4 from "../assets/people/4.png"
 import person5 from "../assets/people/5.png"
+import { Modal } from 'antd';
 
 const blogList = [
   {
@@ -165,13 +166,19 @@ const feedbackList = [
   },
 ];
 
-const brandList = [
-  bharatDigital,
-  techkareer
-];
 
 const Homefive  = () => {
   const [onChat,setoffChat] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
     const brandsettings = {
       arrows: true,
       dots: false,
@@ -270,12 +277,12 @@ const Homefive  = () => {
                   </h2>
                   <h4 className="fw-500 mb-4 lh-30 font-xsss text-grey-500 mt-3 os-init aos-init aos-animate overflow-hidden">
                   For those who have already mastered the basics or starting from scratch and are looking to deepen their knowledge, our Advanced Full Stack Specialization Courses offer the perfect next step. These courses are designed to help you become an expert in the latest technologies and best practices in full stack development.                  </h4>
-                  <Link
-                    to="/course-details"
+                  <button
+                    onClick={showModal}
                     className="btn border-0 w200 bg-primary p-3 text-white fw-600 rounded-lg d-inline-block font-xssss btn-light mt-1 os-init aos-init aos-animate overflow-hidden"
                   >
                     Enroll Now
-                  </Link>
+                  </button>
                 </div>
               </div>
               <div className="col-lg-6 align-items-center d-flex " style={{
@@ -418,6 +425,11 @@ const Homefive  = () => {
           src={`${value.imageUrl}`}
           alt="course"
           className="course-image"
+          style={{
+            height:"20rem",
+            width:"100%",
+            objectFit:"contain"
+          }}
         />
       </span>
     </div>
@@ -627,9 +639,9 @@ const Homefive  = () => {
                             {value.benefits?.[2]}
 
                           </h4>
-                          <Link to="#" className={value.btn}>
+                          <button onClick={showModal} className={value.btn}>
                             Enroll Now
-                          </Link>
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -647,6 +659,65 @@ const Homefive  = () => {
             </div>
           </div>
         </div>
+
+      <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={[]}>
+      <div className="card w-100 border-0 shadow-lg bg-white p-4 p-md--5">
+                  <h2 className="fw-700 text-grey-800 display2-size display2-md-size lh-1 mb-0 mt-0 overflow-hidden">
+                    Explore Course
+                  </h2>
+                  <h4 className=" fw-500 mb-3 lh-30 font-xsss text-grey-500 mt-2">
+                  Join our comprehensive Full Stack Development Course and transform your career. 
+                  </h4>
+                  <div className="form-group mt-0 p-2 mb-0 bg-white rounded-lg">
+                    <div className="row">
+
+                    <div className="col-lg-12">
+                        <div className="form-group icon-input mb-3">
+                          <i className="ti-package font-xs text-grey-400"></i>
+                          <select className="style2-select bg-transparent border-1 pl-5 w-100" style={{
+                            color:"black"
+                          }}>
+                            <option value="">All Courses</option>
+                            <option value="Co-Hort">Co-Hort & Internship</option>
+                            <option value="Online-Course">Online Course</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="col-lg-12">
+                        <div className="form-group icon-input mb-3">
+                          <i className="ti-search font-xs text-grey-400"></i>
+                          <input
+                            type="text"
+                            className="style2-input pl-5  w-100 font-xsss mb-0 text-grey-500 fw-500"
+                            placeholder="Enter your full name"
+                          />
+                        </div>
+                      </div>
+                      <div className="col-lg-12">
+                        <div className="form-group icon-input mb-3">
+                          <i className="ti-search font-xs text-grey-400"></i>
+                          <input
+                            type="text"
+                            className="style2-input pl-5  w-100 font-xsss mb-0 text-grey-500 fw-500"
+                            placeholder="Enter your phone number"
+                          />
+                        </div>
+                      </div>
+
+                      
+                      <div className="col-lg-12">
+                        <button
+                          href="/default-search"
+                          className="w-100 d-block btn bg-current text-white font-xssss fw-600 ls-3 style1-input p-0 border-0 text-uppercase mt-4"
+                        >
+                          DOWNLOAD BROCHURE
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+      </Modal>
         <Popupchat onChat={onChat} setoffChat={setoffChat}/>
         <Footer bgColor="bg-dark" />
       </Fragment>

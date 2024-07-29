@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useEffect } from "react";
 import Header from "../components/Header";
 import Upperheader from "../components/Upperheader";
 import Footer from "../components/Footer";
@@ -13,6 +13,9 @@ import person4 from "../assets/people/4.png"
 import person5 from "../assets/people/5.png"
 
 const Coursedetails = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
     return (
       <Fragment >
         <Header />

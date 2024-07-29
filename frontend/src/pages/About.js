@@ -8,21 +8,9 @@ import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 import { Link } from "react-router-dom"; 
 import master from "../assets/about/master.png"
 import fullStack from "../assets/about/full-stack-banner.png"
+import IsMobileView from "../components/IsMobile";
 
-const brandList = [
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-];
+
 const feedbackList = [
   {
     name: "Rajesh Patel",
@@ -53,6 +41,7 @@ const feedbackList = [
 
 const About = () => {
   const [url, setUrl] = useState("");
+  const isMobile = IsMobileView()  
   const { loading, data, error } = useAxios(url);
 
   const check = () => {
@@ -60,30 +49,13 @@ const About = () => {
     console.log(loading, data, error);
   };
 
-  const brandsettings = {
-    arrows: true,
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 6,
-    centerMode: false,
-    variableWidth: false,
-    autoplay: true,
-    autoplaySpeed: 1000,
-    prevArrow: (
-      <button className="btn btn-primary slick-prev">Previous</button>
-    ),
-    nextArrow: (
-      <button className="btn btn-primary slick-next">Next</button>
-    ),
-  };
   
   const feedbacksettings = {
     arrows: true,
     dots: false,
     infinite: true,
-    speed: 500,
-    slidesToShow: 3,
+    speed: 900,
+    slidesToShow: isMobile? 1 : 3,
     centerMode: false,
     variableWidth: false,
     autoplay: true,
@@ -224,7 +196,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className="popular-wrapper pb-0 pt-5" style={{
+      <div className="popular-wrapper pb-0 pt-5 review-screen-get" style={{
       background:"rgb(243, 242, 240)"
       }}>
         <div className="container">
@@ -235,11 +207,12 @@ const About = () => {
               </h2>
             </div>
 
-            <div className="col-lg-12 p-0">
+            <div className="col-lg-12 p-0 pick-check">
               <Slider {...feedbacksettings}>
                 {feedbackList.map((value, index) => (
-                  <div key={index} className="text-center py-4 px-3">
-                    <div className="card w-100 p-5 text-left border-0 shadow-xss rounded-lg">
+                  <div key={index} className="text-center py-4 px-3" >
+                    <div className="card p-5 text-left border-0 shadow-xss rounded-lg"
+                    >
                       <div className="card-body pl-0 pt-0">
                         <h4 className="text-grey-900 fw-700 font-xsss mt-0 pt-1">
                           {value.name}

@@ -85,7 +85,10 @@ class Contact extends Component {
                             </a>
                           </label>
                         </div>
-                        <div className="form-group">
+                        <br/>
+                        <br/>
+                        <br/>
+                        <div className="form-group row">
                           <a
                             href="/contact"
                             className="rounded-lg style1-input float-right bg-current text-white text-center font-xss fw-500 border-2 border-0 p-0 w175"
