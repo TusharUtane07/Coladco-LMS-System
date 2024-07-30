@@ -113,7 +113,7 @@ const About = () => {
             <div className="col-lg-12 mt-3">
               <a
                 href="/about"
-                className="video-bttn"
+                className=""
                 data-toggle="modal"
                 data-target="#Modalvideo"
               >

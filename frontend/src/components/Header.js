@@ -19,7 +19,6 @@ const Header = ({ divClass, color = 'light' }) => {
   const navClass = `${isOpen ? ' show' : ''}`;
   const colorClass = color === 'dark' ? 'text-white' : '';
 
-  // Function to determine if a link is active
   const isActive = (path) => location.pathname === path;
 
   return (
@@ -67,7 +66,16 @@ const Header = ({ divClass, color = 'light' }) => {
                         to="/course-details" 
                         className={isActive('/course-details') ? 'nav-link-active' : ''}
                       >
-                        Course
+                        Internship Details
+                      </Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link 
+                        as={Link} 
+                        to="/course-details-online" 
+                        className={isActive('/course-details-online') ? 'nav-link-active' : ''}
+                      >
+                        Online Guidance Course
                       </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>

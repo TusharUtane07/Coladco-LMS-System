@@ -20,7 +20,7 @@ class Contact extends Component {
         <div className="map-wrapper">
           <div style={{ border: "none" }}>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.2063592405652!2d77.31077127382802!3d28.443195092656573!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cdd5a5c0f5ee5%3A0xdb84e509fb0203a9!2sColadco%20Digital%20And%20Software%20Solutions!5e0!3m2!1sen!2sin!4v1720693848739!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.206515683139!2d77.31077127541838!3d28.443190375768697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cddb682b1ff6f%3A0x563cf9eaf8f6c262!2sColadco%20coding%20institute!5e0!3m2!1sen!2sin!4v1722263254611!5m2!1sen!2sin"               
               width="100%"
               height="450"
               allowfullscreen

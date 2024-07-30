@@ -453,9 +453,10 @@ class Root extends Component {
             path={`${process.env.PUBLIC_URL}/course-details`}
             component={Coursedetails}
           />
+        
           <Route
             exact
-            path={`${process.env.PUBLIC_URL}/course-details-2`}
+            path={`${process.env.PUBLIC_URL}/course-details-online`}
             component={Coursedetailstwo}
           />
 

@@ -57,15 +57,15 @@ const courseList = [
   {
     imageUrl: banner2,
     title: "Offline Co-Hort / Internship development program",
-    tag: "OFFLINE",
-    time: "6 ",
+    tag: "OFFLINE / ONLINE",
+    lesson: "6 Months",
     status: "alert-warning text-warning",
   },
   {
     imageUrl: banner1,
     title: "Complete Web Development Bootcamp From Scratch",
     tag: "ONLINE",
-    lesson: "32 ",
+    lesson: "12 Modules",
     status: "alert-warning text-warning",
   },
 
@@ -74,7 +74,7 @@ const courseList = [
 const priceList = [
   {
     color: "bg-primary shadow-xss",
-    price: "₹24999 /-",
+    // price: "₹24999 /-",
     title: "CO-HORT & INTERNSHIP",
     des: "An intensive full stack development program with hands-on internship experience.",
     status: "text-white",
@@ -88,7 +88,7 @@ const priceList = [
   {
     color: "bg-white shadow-lg",
     price: "₹4999 /-",
-    title: "ONLINE COURSE",
+    title: "ONLINE COURSE & Guidance",
     des: "A comprehensive online full stack development course for career advancement.",
     status: "text-grey-900",
     benefits: [
@@ -404,114 +404,115 @@ const Homefive  = () => {
                 </p>
               </div>
             </div>
+<div className="row">
+            {courseList.map((value, index) => (
+                // Strat Single Demo
+                <div className="col-xl-6 col-lg-12 mb-4" key={index}>
+                  <div className="card course-card w-100 p-0 shadow-xss border-0 rounded-lg overflow-hidden mr-1">
+                    <div className="row">
+                      <div className="col-sm-6">
+                        <div className="card-image w-100 mb-3">
+                          <Link
+                            to="/coursedetails"
+                            className="video-bttn position-relative d-block"
+                          >
+                            <img
+                              src={`${value.imageUrl}`}
+                              alt="course"
+                              className="w-100"
+                            />
+                          </Link>
+                        </div>
+                      </div>
+                      <div className="col-sm-6">
+                        <div className="card-body pt-0 w-100 float-left pt-3 pl-0 pr-0 pb-0">
+                          <span
+                            className={`font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-lg ls-2 d-inline-block mr-1 ${value.status}`}
+                          >
+                            {value.tag}
+                          </span>
+                          <span className="font-xss fw-700 pl-3 pr-3 ls-2 lh-32 d-inline-block text-success float-right">
+                            <span className="font-xsssss"></span> {value.price}
+                          </span>
+                          <h4 className="fw-700 font-xss mt-3 lh-28 mt-0">
+                            <Link
+                              to="/coursedetails"
+                              className="text-dark text-grey-900"
+                            >
+                              {value.title}
+                            </Link>
+                          </h4>
+                          <h6 className="font-xssss text-grey-500 fw-600 ml-0 mt-2">
+                            {value.lesson} 
+                          </h6>
+                          <ul className="memberlist mt-3 mb-2 ml-0 d-block">
+                            <li>
+                              <a href="/">
+                                <img
+                                  src={person1}
+                                  alt="avater"
+                                  className="w30 d-inline-block rounded-circle"
+                                />
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/">
+                                <img
+                                  src={person2}
+                                  alt="avater"
+                                  className="w30 d-inline-block rounded-circle"
+                                />
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/">
+                                <img
+                                  src={person3}
+                                  alt="avater"
+                                  className="w30 d-inline-block rounded-circle"
+                                />
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/">
+                                <img
+                                  src={person4}
+                                  alt="avater"
+                                  className="w30 d-inline-block rounded-circle"
+                                />
+                              </a>
+                            </li>
+                            <li className="last-member">
+                              <a
+                                href="/"
+                                className="bg-greylight fw-600 text-grey-500 font-xssss ls-3 text-center"
+                              >
+                                +2
+                              </a>
+                            </li>
+                            <li className="pl-4 w-auto">
+                              <a
+                                href="/"
+                                className="fw-500 text-grey-500 font-xssss"
+                              >
+                                Student apply
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-            <div className="row p-4" style={{
-              justifyContent:"space-around"
-            }}>
-{courseList.map((value, index) => (
-  // Start Single Demo
-  <div
-    className="card course-card h-25 shadow-xss border-0 rounded-lg overflow-hidden mb-4 lg-col-5 md-col-5 sm-col-12"
-    key={index}
-  >
-    <div
-      className="card-image-container w-100 mb-3"
-    >
-      <span
-        to="/coursedetails"
-        className="video-bttn position-relative d-block overflow-hidden"
-      >
-        <img
-          src={`${value.imageUrl}`}
-          alt="course"
-          className="course-image"
-          style={{
-            height:"20rem",
-            width:"100%",
-            objectFit:"contain"
-          }}
-        />
-      </span>
-    </div>
-    <div className="card-body pt-0 overflow-hidden">
-      <span
-        className={`font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-lg ls-2 d-inline-block mr-1 ${value.status}`}
-      >
-        {value.tag}
-      </span>
-
-      <h4 className="fw-700 font-xss mt-3 lh-28 mt-0">
-        <span className="text-dark text-grey-900">
-          {value.title}
-        </span>
-      </h4>
-      <h6 className="font-xssss text-grey-500 fw-600 ml-0 mt-2">
-        {value?.lesson && value?.lesson + " Modules"} 
-        {value?.time && value?.time + " Months Duration"} 
-      </h6>
-      <ul className="memberlist mt-3 mb-2 ml-0 d-block">
-        <li>
-          <img
-            src={person1}
-            alt="avatar"
-            className="w30 d-inline-block rounded-circle"
-          />
-        </li>
-        <li>
-          <img
-            src={person2}
-            alt="avatar"
-            className="w30 d-inline-block rounded-circle"
-          />
-        </li>
-        <li>
-          <img
-            src={person3}
-            alt="avatar"
-            className="w30 d-inline-block"
-          />
-        </li>
-        <li>
-          <img
-            src={person4}
-            alt="avatar"
-            className="w30 d-inline-block rounded-circle"
-          />
-        </li>
-        <li className="last-member">
-          <Link
-            to="/default-course-one"
-            className="bg-greylight fw-600 text-grey-500 font-xssss ls-3 text-center"
-          >
-            +2
-          </Link>
-        </li>
-        <li className="pl-4 w-auto">
-          <Link
-            to="/default-course-one"
-            className="fw-500 text-grey-500 font-xssss"
-          >
-            Student apply
-          </Link>
-        </li>
-      </ul>
-      <Link
-        to="/course-details"
-        className="btn btn-primary mt-3 p-3"
-      >
-        View Course
-      </Link>
-    </div>
-  </div>
-  // End Single Demo
-))}
-
-            </div>
+                // End Single Demo
+              ))}
+              </div>
           </div>
         </div>
 
         <div className="blog-page" style={{
-              background: "rgb(243, 242, 240) !important"
+              background: "rgb(243, 242, 240)"
         }}>
           <div className="container">
             <div className="row justify-content-center">
@@ -522,7 +523,7 @@ const Homefive  = () => {
                 <h2 className="text-grey-900 fw-700 font-xxl mb-0 mt-3 d-block lh-3">
                   Don't Miss Out Our Additional Offerings
                 </h2>
-                <p className="fw-300 font-xssss lh-28 text-grey-500">
+                <p className="fw-300 font-xssss lh-28 text-black-500 mt-2">
                   Explore our latest courses designed to enhance your skills and
                   career prospects. Whether you're diving into React Native,
                   mastering freelance mastery, or exploring drop shipping, our
@@ -611,15 +612,14 @@ const Homefive  = () => {
                       >
                         <div className="card-body">
                           <h2
-                            className={`font-xsssss fw-700 text-uppercase ls-3 ${value.status}`}
+                            className={` text-uppercase ${value.status}`}
+                            style={{
+                              fontSize:"1.5rem"
+                            }}
                           >
                             {value.title}
                           </h2>
-                          <h1
-                            className={`display2-size  fw-700 ${value.status}`}
-                          >
-                            {value.price}
-                          </h1>
+                        
                           <h4
                             className={`fw-500 mb-4 lh-24 font-xssss ${value.status}`}
                           >
