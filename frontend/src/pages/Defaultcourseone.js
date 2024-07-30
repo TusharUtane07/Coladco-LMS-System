@@ -8,7 +8,7 @@ import Subscribe from '../components/Subscribe';
 import { Accordion } from 'react-bootstrap';
 import ReactPlayer from 'react-player';
 import { Modal, Input, Rate, Form, Button } from 'antd';
-import { courseApi, gettingReviewsDataApi, moduleApi, NewCourseReview, videosApi } from '../urls/urls';
+import { courseApi, gettingReviewsDataApi, gettingReviewSummary, moduleApi, NewCourseReview, videosApi } from '../urls/urls';
 import useAxios from '../network/useAxios';
 import { toast, ToastContainer } from 'react-toastify';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
@@ -27,12 +27,14 @@ const Defaultcourseone = () => {
   const [videosResponse, videosError, videosLoading, videosFetch] = useAxios();
   const [gettingReviewResponse, gettingReviewError, gettingReviewLoading, gettingReviewFetch] = useAxios();
   const [addingReviewResponse, addingReviewError, addingReviewLoading, addingReviewFetch] = useAxios();
+  const [reviewSummaryResponse, reviewSummaryError, reviewSummaryLoading, reviewSummaryFetch] = useAxios();
 
   const [course, setCourse] = useState([]);
   const [module, setModule] = useState([]);
   const [videos, setVideos] = useState([]);
   const [reviewToDisplay, setReviewsToDisply] = useState(null);
   const [activeVideoUrl, setVideoUrl] = useState(false)
+  const [reviewSummary, setReviewSummary] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,6 +42,7 @@ const Defaultcourseone = () => {
       await moduleFetch(moduleApi());
       await videosFetch(videosApi());
       await gettingReviewFetch(gettingReviewsDataApi())
+      await reviewSummaryFetch(gettingReviewSummary())
     };
 
     fetchData();
@@ -54,6 +57,9 @@ const Defaultcourseone = () => {
     if (addingReviewError) {
       toast.error(addingReviewError?.response?.data);
     }
+    if (addingReviewResponse.result === "success") {
+      toast.success("Added review successfully");
+    }
     if (moduleResponse?.data) {
       setModule(moduleResponse.data);
       console.log(moduleResponse.data);
@@ -66,7 +72,16 @@ const Defaultcourseone = () => {
       setReviewsToDisply(gettingReviewResponse.data);
       console.log(gettingReviewResponse.data);
     }
-  }, [courseResponse, moduleResponse, videosResponse, gettingReviewResponse]);
+    
+  }, [courseResponse, moduleResponse,addingReviewResponse, addingReviewError, videosResponse, gettingReviewResponse, reviewSummaryResponse]);
+
+
+  useEffect(() => {
+    if (reviewSummaryResponse?.data) {
+      setReviewSummary(reviewSummaryResponse?.data);
+      console.log(reviewSummaryResponse.data);
+    }
+  }, [reviewSummaryResponse])
 
   function formatDateToMonthDay(timestamp) {
     return moment(timestamp).format('MMMM D');
@@ -87,6 +102,7 @@ const Defaultcourseone = () => {
     try {
       await addingReviewFetch(NewCourseReview(formValues));
       form.resetFields();
+
     } catch (error) {
       toast.error('Error adding review');
     }
@@ -112,6 +128,9 @@ const Defaultcourseone = () => {
     setIsModalOpen(false);
   };
 
+  if(reviewSummaryLoading){
+    return <div>loadingg.....</div>
+  }
 
   return (
     <Fragment>
@@ -357,42 +376,27 @@ const Defaultcourseone = () => {
                     }
                   </div>
                   <div className="card w-100 border-0 mt-0 mb-4 p-4 shadow-xss position-relative rounded-lg bg-white">
+                  
+<>
                     <div className="row">
                       <div className="col-5 pr-0">
                         <h2 className="display3-size lh-1 m-0 text-grey-900 fw-700">
-                          {course[0]?.rating}
+                        {reviewSummaryResponse?.data?.average_rating && reviewSummaryResponse.data.average_rating.toFixed(1) }
                         </h2>
                       </div>
                       <div className="col-7 pl-0 text-right">
                         <div className="star d-block w-100 text-right">
-                          <img
-                            src="assets/images/star.png"
-                            alt="star"
-                            className="w10"
-                          />
-                          <img
-                            src="assets/images/star.png"
-                            alt="star"
-                            className="w10"
-                          />
-                          <img
-                            src="assets/images/star.png"
-                            alt="star"
-                            className="w10"
-                          />
-                          <img
-                            src="assets/images/star.png"
-                            alt="star"
-                            className="w10"
-                          />
-                          <img
-                            src="assets/images/star-disable.png"
-                            alt="star"
-                            className="w10"
-                          />
+                        {reviewSummaryResponse?.data?.average_rating && [...Array( Math.round(reviewSummaryResponse.data.average_rating) )]?.map((star, index) => (
+                            <img
+                              key={index}
+                              src="assets/images/star.png"
+                              alt="star"
+                              className="w10"
+                            />
+                          ))}
                         </div>
                         <h4 className="font-xsssss text-grey-600 fw-600 mt-1">
-                          Based on 433 rating
+                          Based on {reviewSummaryResponse?.data?.total_reviews && reviewSummaryResponse.data.total_reviews }{" "}rating
                         </h4>
                       </div>
                     </div>
@@ -422,7 +426,7 @@ const Defaultcourseone = () => {
                         </div>
                         <div className="col-2 pl-0">
                           <h4 className="font-xssss fw-600 text-grey-800">
-                            70%
+                          {reviewSummaryResponse?.data?.five_star_percentage && Math.round(reviewSummaryResponse.data.five_star_percentage) }%{" "}
                           </h4>
                         </div>
                       </div>
@@ -451,7 +455,8 @@ const Defaultcourseone = () => {
                         </div>
                         <div className="col-2 pl-0">
                           <h4 className="font-xssss fw-600 text-grey-800">
-                            50%
+                          {reviewSummaryResponse?.data?.four_star_percentage && Math.round(reviewSummaryResponse.data.four_star_percentage) }%{" "}
+
                           </h4>
                         </div>
                       </div>
@@ -480,7 +485,8 @@ const Defaultcourseone = () => {
                         </div>
                         <div className="col-2 pl-0">
                           <h4 className="font-xssss fw-600 text-grey-800">
-                            40%
+                          {reviewSummaryResponse?.data?.three_star_percentage && Math.round(reviewSummaryResponse.data.three_star_percentage) }%{" "}
+
                           </h4>
                         </div>
                       </div>
@@ -509,7 +515,7 @@ const Defaultcourseone = () => {
                         </div>
                         <div className="col-2 pl-0">
                           <h4 className="font-xssss fw-600 text-grey-800">
-                            30%
+                          {reviewSummaryResponse?.data?.two_star_percentage && Math.round(reviewSummaryResponse.data.two_star_percentage) }%{" "}
                           </h4>
                         </div>
                       </div>
@@ -538,11 +544,13 @@ const Defaultcourseone = () => {
                         </div>
                         <div className="col-2 pl-0">
                           <h4 className="font-xssss fw-600 text-grey-800">
-                            20%
+                          {reviewSummaryResponse?.data?.one_star_percentage && Math.round(reviewSummaryResponse.data.one_star_percentage) }%{" "}
                           </h4>
                         </div>
                       </div>
                     </div>
+</>
+                   
                     {/* new review added */}
                     <div className="row">
                     {reviewToDisplay?.slice(0, 3)?.map((item, index) => {

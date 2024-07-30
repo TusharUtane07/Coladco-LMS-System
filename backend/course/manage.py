@@ -1,6 +1,6 @@
 from course.models import Course, Module, Video, Review
-
-
+from django.db.models import Count, Avg
+from django.db import models
 class CourseManager:
 
     @staticmethod
@@ -115,13 +115,17 @@ class ReviewManager:
     def add_new_review(request, data):
         review_text = data.get("review")
         rating = data.get("rating")
+        course_id = 1
         user_id = request.user.id
         if not review_text:
             raise Exception("No review message is provided")
         if not user_id:
             raise Exception("No user is provided")
-        Review.objects.create(review_text=review_text, rating=rating, profile_id=user_id)
-
+        
+        existing_review = Review.objects.filter(course_id=course_id, profile_id=user_id).first()
+        if existing_review:
+            raise Exception("User has already reviewed this course")
+        Review.objects.create(review_text=review_text, rating=rating, profile_id=user_id, course_id=course_id)
 
 
     @staticmethod
@@ -146,3 +150,44 @@ class ReviewManager:
             review.rating = data.get("rating", review.rating)
             review.save()
         return all_reviews_objs
+    
+    @staticmethod
+    def get_reviews_summary(data):
+        course_id = 1
+        if not course_id:
+            raise Exception("No course id provided")
+
+        review_counts = Review.objects.filter(course_id=course_id).aggregate(
+            one_star=Count('rating', filter=models.Q(rating=1)),
+            two_star=Count('rating', filter=models.Q(rating=2)),
+            three_star=Count('rating', filter=models.Q(rating=3)),
+            four_star=Count('rating', filter=models.Q(rating=4)),
+            five_star=Count('rating', filter=models.Q(rating=5)),
+            total_reviews=Count('rating')
+        )
+
+        total_reviews = review_counts['total_reviews']
+        if total_reviews == 0:
+            percentages = {
+                'one_star_percentage': 0,
+                'two_star_percentage': 0,
+                'three_star_percentage': 0,
+                'four_star_percentage': 0,
+                'five_star_percentage': 0,
+            }
+        else:
+            percentages = {
+                'one_star_percentage': (review_counts['one_star'] / total_reviews) * 100,
+                'two_star_percentage': (review_counts['two_star'] / total_reviews) * 100,
+                'three_star_percentage': (review_counts['three_star'] / total_reviews) * 100,
+                'four_star_percentage': (review_counts['four_star'] / total_reviews) * 100,
+                'five_star_percentage': (review_counts['five_star'] / total_reviews) * 100,
+            }
+
+        review_summary = {
+            **percentages,
+            'average_rating': Review.objects.filter(course_id=course_id).aggregate(average_rating=Avg('rating'))['average_rating'],
+            'total_reviews': total_reviews
+        }
+
+        return review_summary

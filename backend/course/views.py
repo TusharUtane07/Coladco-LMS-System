@@ -194,3 +194,15 @@ class NewReviewPostSet(APIView):
             return Response({"result": "success", "message": ReviewConstants.REVIEW_SUCCESS_UPDATE}, 200)
         except Exception as err:
             return Response(str(err), 500)
+        
+        
+class ReviewSummaryView(APIView):
+    
+    @staticmethod
+    def get(request):
+        try:
+            data = request.query_params
+            review_summary = ReviewManager.get_reviews_summary(data)
+            return Response({"result": "success", "data": review_summary, "message": ReviewConstants.SUCCESS}, 200)
+        except Exception as err:
+            return Response(str(err), 500)
