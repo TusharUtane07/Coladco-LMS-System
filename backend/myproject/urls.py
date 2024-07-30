@@ -31,6 +31,7 @@ urlpatterns = [
     path('api/v1/users', include('users.urls')),
     path('api/v1/additional', include('additional.urls')),
     path('api/v1/jobposting', include('jobposting.urls')),
+    path('api/v1/assignments', include('assignments.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

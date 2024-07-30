@@ -26,6 +26,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import RegisterNext from './pages/RegisterNext';
 import JobPosting from './pages/JobPosting';
+import Assignments from './pages/Assignments';
 import Forgot from './pages/Forgot';
 import Coming from './pages/Coming';
 import Notfound from './pages/Notfound';
@@ -95,6 +96,7 @@ import AdminJobPanel from './pages/AdminJobPannel';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import ReviewsAll from './pages/ReviewsAll';
+import AssignmentDetails from './pages/AssignementDetails';
 
 class Root extends Component {
   render() {
@@ -202,8 +204,18 @@ class Root extends Component {
           />
           <Route
             exact
+            path={`${process.env.PUBLIC_URL}/assignments`}
+            component={Assignments}
+          />
+          <Route
+            exact
             path={`${process.env.PUBLIC_URL}/job-listing/:id`}
             component={JobListingDetails}
+          />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/assignments/:id`}
+            component={AssignmentDetails}
           />
           <Route
             exact

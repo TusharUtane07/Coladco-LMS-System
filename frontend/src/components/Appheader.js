@@ -237,6 +237,17 @@ const Appheader = () => {
               <li>
                 <NavLink
                   activeClassName="active"
+                  to="/assignments"
+                  className="nav-content-bttn open-font"
+                  data-tab="feed"
+                >
+                  <i className="feather-clipboard mr-3"></i>
+                  <span>Assignments</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  activeClassName="active"
                   to="/default-follower"
                   className=" nav-content-bttn open-font"
                   data-tab="friends"

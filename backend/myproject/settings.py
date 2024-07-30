@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'additional',
     'users',
     'jobposting',
+    'assignments'
 ]
 
 MIDDLEWARE = [

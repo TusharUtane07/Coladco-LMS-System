@@ -58,6 +58,15 @@ export const profileApi = (payload_data) => {
   return project.get(Urls.USER_PROFILE, payload_data)
 }
 
+// assignemnets
+export const assignmentsApi = (payload_data) => {
+  return project.get(Urls.ASSIGNMENTS, payload_data)
+}
+
+export const assignemnetsDetails = (payload_data) => {
+  return project.get(Urls.AASSIGNMENTS_DETAILS, payload_data)
+}
+
 // job posting
 export const jobPostingApi = (payload_data) => {
   return project.get(Urls.JOBPOSTING, payload_data)
