@@ -3,12 +3,13 @@ import Header from '../components/Header';
 import Upperheader from '../components/Upperheader';
 import Footer from '../components/Footer';
 import { Accordion } from 'react-bootstrap';
+import backImg from '../assets/onlinecourse/course-back.png'
+import people1 from "../assets/course-people/1.png"
+import people2 from "../assets/course-people/2.png"
 
-class Coursedetailstwo extends Component {
-  render() {
+const Coursedetailstwo = () => {
     return (
       <Fragment>
-        <Upperheader />
         <Header />
 
         <div className="course-details pt-lg--7 pb-lg--7 pt-5 pb-5">
@@ -18,12 +19,12 @@ class Coursedetailstwo extends Component {
                 <div
                   className="card border-0 mb-0 rounded-lg overflow-hidden"
                   style={{
-                    backgroundImage: `url("https://via.placeholder.com/1200x800.png")`,
+                    backgroundImage: backImg,
                   }}
                 >
                   <div className="card-body p-5 bg-black-08">
                     <span className="font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-lg ls-2 alert-warning d-inline-block text-warning mr-1">
-                      Python
+                      Online
                     </span>
                     <h2 className="fw-700 font-lg d-block lh-4 mb-1 text-white mt-2">
                       Microsoft Access Development, Design and Advanced Methods
@@ -348,7 +349,7 @@ class Coursedetailstwo extends Component {
                 <div className="card overflow-hidden subscribe-widget p-3 mb-3 rounded-xxl border-0 shadow-xss">
                   <div className="card-body p-3 d-block text-left">
                     <h1 className="display1-size text-current fw-700 mb-4">
-                      € 49
+                      Rs 4999
                       <span className="font-xssss text-grey-500 fw-500">
                         / Lifetime Access
                       </span>
@@ -357,42 +358,28 @@ class Coursedetailstwo extends Component {
                       <i className="feather-shield font-lg text-current position-absolute left-0"></i>
                       Experience
                       <span className="d-block text-grey-500 mt-1 font-xssss">
-                        0 - 2 Year
+                        Not Required
                       </span>
                     </h4>
                     <h4 className="pl-35 mb-4 font-xsss fw-600 text-grey-900 position-relative">
                       <i className="feather-database font-lg text-current position-absolute left-0"></i>
                       Language
                       <span className="d-block text-grey-500 mt-1 font-xssss">
-                        English, Germen, Spanish
+                        Hindi
                       </span>
                     </h4>
                     <h4 className="pl-35 mb-4 font-xsss fw-600 text-grey-900 position-relative">
                       <i className="feather-home font-lg text-current position-absolute left-0"></i>
-                      Gender
+                      Modules
                       <span className="d-block text-grey-500 mt-1 font-xssss">
-                        Male
+                        12
                       </span>
                     </h4>
                     <h4 className="pl-35 mb-4 font-xsss fw-600 text-grey-900 position-relative">
                       <i className="feather-shield font-lg text-current position-absolute left-0"></i>
-                      Education
+                      Videos
                       <span className="d-block text-grey-500 mt-1 font-xssss">
-                        MBA
-                      </span>
-                    </h4>
-                    <h4 className="pl-35 mb-4 font-xsss fw-600 text-grey-900 position-relative">
-                      <i className="feather-flag font-lg text-current position-absolute left-0"></i>
-                      Company
-                      <span className="d-block text-grey-500 mt-1 font-xssss">
-                        Github
-                      </span>
-                    </h4>
-                    <h4 className="pl-35 mb-0 font-xsss fw-600 text-grey-900 position-relative">
-                      <i className="feather-award font-lg text-current position-absolute left-0"></i>
-                      Age
-                      <span className="d-block text-grey-500 mt-1 font-xssss">
-                        32 Year
+                        70
                       </span>
                     </h4>
                     <a
@@ -407,7 +394,7 @@ class Coursedetailstwo extends Component {
                   <div className="row">
                     <div className="col-5 pr-0">
                       <h2 className="display3-size lh-1 m-0 text-grey-900 fw-700">
-                        4.2
+                        4.8
                       </h2>
                     </div>
                     <div className="col-7 pl-0 text-right">
@@ -439,7 +426,7 @@ class Coursedetailstwo extends Component {
                         />
                       </div>
                       <h4 className="font-xsssss text-grey-600 fw-600 mt-1">
-                        Based on 433 rating
+                        Based on 39 rating
                       </h4>
                     </div>
                   </div>
@@ -463,12 +450,12 @@ class Coursedetailstwo extends Component {
                         >
                           <div
                             className="bar-percentage"
-                            style={{ Width: `70%` }}
+                            style={{ Width: `90%` }}
                           ></div>
                         </div>
                       </div>
                       <div className="col-2 pl-0">
-                        <h4 className="font-xssss fw-600 text-grey-800">70%</h4>
+                        <h4 className="font-xssss fw-600 text-grey-800">96%</h4>
                       </div>
                     </div>
                     <div className="row mt-1">
@@ -495,7 +482,7 @@ class Coursedetailstwo extends Component {
                         </div>
                       </div>
                       <div className="col-2 pl-0">
-                        <h4 className="font-xssss fw-600 text-grey-800">50%</h4>
+                        <h4 className="font-xssss fw-600 text-grey-800">4%</h4>
                       </div>
                     </div>
                     <div className="row mt-1">
@@ -522,7 +509,7 @@ class Coursedetailstwo extends Component {
                         </div>
                       </div>
                       <div className="col-2 pl-0">
-                        <h4 className="font-xssss fw-600 text-grey-800">40%</h4>
+                        <h4 className="font-xssss fw-600 text-grey-800">0%</h4>
                       </div>
                     </div>
                     <div className="row mt-1">
@@ -549,7 +536,7 @@ class Coursedetailstwo extends Component {
                         </div>
                       </div>
                       <div className="col-2 pl-0">
-                        <h4 className="font-xssss fw-600 text-grey-800">30%</h4>
+                        <h4 className="font-xssss fw-600 text-grey-800">0%</h4>
                       </div>
                     </div>
                     <div className="row mt-1">
@@ -576,7 +563,7 @@ class Coursedetailstwo extends Component {
                         </div>
                       </div>
                       <div className="col-2 pl-0">
-                        <h4 className="font-xssss fw-600 text-grey-800">20%</h4>
+                        <h4 className="font-xssss fw-600 text-grey-800">0%</h4>
                       </div>
                     </div>
                   </div>
@@ -585,7 +572,7 @@ class Coursedetailstwo extends Component {
                     <div className="col-2 text-left">
                       <figure className="avatar float-left mb-0">
                         <img
-                          src="assets/images/user.png"
+                          src={people1}
                           alt="banner"
                           className="float-right shadow-none w40 mr-2"
                         />
@@ -594,10 +581,10 @@ class Coursedetailstwo extends Component {
                     <div className="col-10 pl-4">
                       <div className="content">
                         <h6 className="author-name font-xssss fw-600 mb-0 text-grey-800">
-                          Goria Coast
+                        Varnika Budhiraja
                         </h6>
                         <h6 className="d-block font-xsssss fw-500 text-grey-500 mt-2 mb-0">
-                          July 26 at 8:20 PM
+                        3 years ago
                         </h6>
                         <div className="star d-block w-100 text-left">
                           <img
@@ -621,15 +608,19 @@ class Coursedetailstwo extends Component {
                             className="w10"
                           />
                           <img
-                            src="assets/images/star-disable.png"
+                            src="assets/images/star.png"
                             alt="star"
                             className="w10"
                           />
+                            
+                          {/* <img
+                            src="assets/images/star-disable.png"
+                            alt="star"
+                            className="w10"
+                          /> */}
                         </div>
                         <p className="comment-text lh-24 fw-500 font-xssss text-grey-500 mt-2">
-                          Enjoyed this a lot and well done. We are an early
-                          stage digitally native vertical brand, making travel
-                          bags.
+                        Amazing learning experience, professional interaction. Definitely worth it!!
                         </p>
                       </div>
                     </div>
@@ -639,7 +630,7 @@ class Coursedetailstwo extends Component {
                     <div className="col-2 text-left">
                       <figure className="avatar float-left mb-0">
                         <img
-                          src="assets/images/user.png"
+                           src={people2}
                           alt="banner"
                           className="float-right shadow-none w40 mr-2"
                         />
@@ -648,10 +639,10 @@ class Coursedetailstwo extends Component {
                     <div className="col-10 pl-4">
                       <div className="content">
                         <h6 className="author-name font-xssss fw-600 mb-0 text-grey-800">
-                          Goria Coast
+                         James Pal
                         </h6>
                         <h6 className="d-block font-xsssss fw-500 text-grey-500 mt-2 mb-0">
-                          July 26 at 8:20 PM
+                        3 years ago
                         </h6>
                         <div className="star d-block w-100 text-left">
                           <img
@@ -675,32 +666,26 @@ class Coursedetailstwo extends Component {
                             className="w10"
                           />
                           <img
-                            src="assets/images/star-disable.png"
+                            src="assets/images/star.png"
                             alt="star"
                             className="w10"
                           />
+                        
                         </div>
                         <p className="comment-text lh-24 fw-500 font-xssss text-grey-500 mt-2">
-                          Enjoyed this a lot and well done. We are an early
-                          stage digitally native vertical brand, making travel
-                          bags.
+                        Value for money. Instead of going to established centers, I think you'll learn more practical stuff here. ❤️
                         </p>
                       </div>
                     </div>
                   </div>
 
                   <div className="row">
-                    <a
-                      href="/default-course-one"
-                      className="d-block p-2 lh-32 w-100 text-center ml-3 mr-3 bg-greylight fw-600 font-xssss text-grey-900"
-                    >
-                      Add a Review
-                    </a>
+                   
                   </div>
                 </div>
                 <div className="card shadow-xss rounded-lg border-0 p-4 mb-4">
                   <h4 className="font-xs fw-700 text-grey-900 d-block mb-3">
-                    Modul
+                    Modules
                     <a href="/default-course-one" className="float-right">
                       <i className="ti-arrow-circle-right text-grey-500 font-xss"></i>
                     </a>
@@ -710,10 +695,11 @@ class Coursedetailstwo extends Component {
                       1
                     </span>
                     <span className="font-xssss fw-500 text-grey-500 ml-2">
-                      Introduction
+                    Introduction
+
                     </span>
                     <span className="ml-auto font-xssss fw-500 text-grey-500">
-                      12:34
+                      
                     </span>
                   </div>
                   <div className="card-body d-flex p-0 mt-3">
@@ -721,10 +707,10 @@ class Coursedetailstwo extends Component {
                       2
                     </span>
                     <span className="font-xssss fw-500 text-grey-500 ml-2">
-                      Watch the videos
+                    Foundations of the Web
                     </span>
                     <span className="ml-auto font-xssss fw-500 text-grey-500">
-                      22:34
+                    
                     </span>
                   </div>
 
@@ -733,10 +719,10 @@ class Coursedetailstwo extends Component {
                       3
                     </span>
                     <span className="font-xssss fw-500 text-grey-500 ml-2">
-                      Creating a sliding
+                    HTML & CSS Mastery (HTML, CSS)
                     </span>
                     <span className="ml-auto font-xssss fw-500 text-grey-500">
-                      34:34
+                    
                     </span>
                   </div>
 
@@ -745,10 +731,10 @@ class Coursedetailstwo extends Component {
                       4
                     </span>
                     <span className="font-xssss fw-500 text-grey-500 ml-2">
-                      Make a Dropdown
+                    JavaScript Essentials (JavaScript)
                     </span>
                     <span className="ml-auto font-xssss fw-500 text-grey-500">
-                      40:34
+                    
                     </span>
                   </div>
 
@@ -757,10 +743,76 @@ class Coursedetailstwo extends Component {
                       5
                     </span>
                     <span className="font-xssss fw-500 text-grey-500 ml-2">
-                      Conclusion
+                    React Revolution (React, JavaScript)
                     </span>
                     <span className="ml-auto font-xssss fw-500 text-grey-500">
-                      2:34
+                    
+                    </span>
+                  </div>
+                  <div className="card-body d-flex p-0 mt-3">
+                    <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
+                      6
+                    </span>
+                    <span className="font-xssss fw-500 text-grey-500 ml-2">
+                    Django Dynamics (Python, Django)
+                    </span>
+                    <span className="ml-auto font-xssss fw-500 text-grey-500">
+                    
+                    </span>
+                  </div>
+                  <div className="card-body d-flex p-0 mt-3">
+                    <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
+                      7
+                    </span>
+                    <span className="font-xssss fw-500 text-grey-500 ml-2">
+                    Code Mastery (Git)
+                    </span>
+                    <span className="ml-auto font-xssss fw-500 text-grey-500">
+                    
+                    </span>
+                  </div>
+                  <div className="card-body d-flex p-0 mt-3">
+                    <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
+                      8
+                    </span>
+                    <span className="font-xssss fw-500 text-grey-500 ml-2">
+                    Containerization with Docker (Docker)
+                    </span>
+                    <span className="ml-auto font-xssss fw-500 text-grey-500">
+                    
+                    </span>
+                  </div>
+                  <div className="card-body d-flex p-0 mt-3">
+                    <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
+                      9
+                    </span>
+                    <span className="font-xssss fw-500 text-grey-500 ml-2">
+                    VPS and Deployment Mastery (Linux, Nginx, VPS)
+                    </span>
+                    <span className="ml-auto font-xssss fw-500 text-grey-500">
+                    
+                    </span>
+                  </div>
+                  <div className="card-body d-flex p-0 mt-3">
+                    <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
+                      10
+                    </span>
+                    <span className="font-xssss fw-500 text-grey-500 ml-2">
+                    The Grand Showcase (Full Stack)
+                    </span>
+                    <span className="ml-auto font-xssss fw-500 text-grey-500">
+                    
+                    </span>
+                  </div>
+                  <div className="card-body d-flex p-0 mt-3">
+                    <span className="bg-current btn-round-xs rounded-lg font-xssss text-white fw-600">
+                      11
+                    </span>
+                    <span className="font-xssss fw-500 text-grey-500 ml-2">
+                    Career Launchpad
+                    </span>
+                    <span className="ml-auto font-xssss fw-500 text-grey-500">
+                    
                     </span>
                   </div>
                 </div>
@@ -772,7 +824,7 @@ class Coursedetailstwo extends Component {
         <Footer />
       </Fragment>
     );
-  }
+  
 }
 
 export default Coursedetailstwo;

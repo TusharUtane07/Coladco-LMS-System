@@ -31,6 +31,7 @@ import person2 from "../assets/people/2.png"
 import person3 from "../assets/people/3.png"
 import person4 from "../assets/people/4.png"
 import person5 from "../assets/people/5.png"
+import { Modal } from 'antd';
 
 const blogList = [
   {
@@ -54,36 +55,47 @@ const blogList = [
 ];
 const courseList = [
   {
-    imageUrl: banner1,
-    title: "Complete Web Development Bootcamp From Scratch",
-    tag: "ONLINE",
-    lesson: "32 ",
+    imageUrl: banner2,
+    title: "Offline Co-Hort / Internship development program",
+    tag: "OFFLINE / ONLINE",
+    lesson: "6 Months",
     status: "alert-warning text-warning",
   },
   {
-    imageUrl: banner2,
-    title: "Offline Co-Hort / Internship development program",
-    tag: "OFFLINE",
-    time: "6 ",
+    imageUrl: banner1,
+    title: "Complete Web Development Bootcamp From Scratch",
+    tag: "ONLINE",
+    lesson: "12 Modules",
     status: "alert-warning text-warning",
   },
+
 ];
 
 const priceList = [
   {
     color: "bg-primary shadow-xss",
-    price: "₹4999",
-    title: "Premium",
-    des: "For anyone validating Framer as a professional prototyping tool.",
+    // price: "₹24999 /-",
+    title: "CO-HORT & INTERNSHIP",
+    des: "An intensive full stack development program with hands-on internship experience.",
     status: "text-white",
+    benefits: [
+      "Real-world project experience through internships.",
+      "Personalized mentorship and guidance.",
+      "Job placement assistance and networking opportunities."
+    ],
     btn: "btn btn-block border-0 w-100 bg-white p-3 text-primary fw-600 rounded-lg d-inline-block font-xssss btn-light",
   },
   {
     color: "bg-white shadow-lg",
-    price: "₹0",
-    title: "Free",
-    des: "For anyone validating Framer as a professional prototyping tool.",
+    price: "₹4999 /-",
+    title: "ONLINE COURSE & Guidance",
+    des: "A comprehensive online full stack development course for career advancement.",
     status: "text-grey-900",
+    benefits: [
+      "Flexible learning schedule at your own pace.",
+      "Access to recorded lectures and resources.",
+      "Interactive community support and discussion forums."
+    ],
     btn: "btn btn-block border-0 w-100 bg-primary p-3 text-white fw-600 rounded-lg d-inline-block font-xssss btn-light",
   },
 ];
@@ -154,13 +166,19 @@ const feedbackList = [
   },
 ];
 
-const brandList = [
-  bharatDigital,
-  techkareer
-];
 
 const Homefive  = () => {
   const [onChat,setoffChat] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
     const brandsettings = {
       arrows: true,
       dots: false,
@@ -257,14 +275,14 @@ const Homefive  = () => {
                   Transform Your Career with Our Courses{" "}
                     <i className="feather-slack text-success font-xxl"></i>
                   </h2>
-                  <h4 className="fw-500 mb-4 lh-30 font-xsss text-grey-500 mt-3 os-init aos-init aos-animate">
+                  <h4 className="fw-500 mb-4 lh-30 font-xsss text-grey-500 mt-3 os-init aos-init aos-animate overflow-hidden">
                   For those who have already mastered the basics or starting from scratch and are looking to deepen their knowledge, our Advanced Full Stack Specialization Courses offer the perfect next step. These courses are designed to help you become an expert in the latest technologies and best practices in full stack development.                  </h4>
-                  <Link
-                    to="/course-details"
-                    className="btn border-0 w200 bg-primary p-3 text-white fw-600 rounded-lg d-inline-block font-xssss btn-light mt-1 os-init aos-init aos-animate"
+                  <button
+                    onClick={showModal}
+                    className="btn border-0 w200 bg-primary p-3 text-white fw-600 rounded-lg d-inline-block font-xssss btn-light mt-1 os-init aos-init aos-animate overflow-hidden"
                   >
                     Enroll Now
-                  </Link>
+                  </button>
                 </div>
               </div>
               <div className="col-lg-6 align-items-center d-flex " style={{
@@ -344,7 +362,7 @@ const Homefive  = () => {
                   {classesList.map((value, index) => (
                     <div
                       key={index}
-                      className="card cat-card-hover mr-1 w140 border-0 p-0 text-center"
+                      className="card mr-1 w140 border-0 p-0 text-center"
                     >
                       <div
                         className="card-body p-4 ml-0 rounded-lg"
@@ -386,119 +404,126 @@ const Homefive  = () => {
                 </p>
               </div>
             </div>
-
-            <div className="row">
-              {courseList.map((value, index) => (
+<div className="row">
+            {courseList.map((value, index) => (
                 // Strat Single Demo
-                <div
-                  className="card course-card  h-25 shadow-xss border-0 rounded-lg overflow-hidden mb-4 col-6"
-                  key={index}
-                >
-                  <div
-                    className="card-image w-100 mb-3"
-                   style={{
-                    overflow:"hidden"
-                   }}
-                  >
-                    <span
-                      to="/coursedetails"
-                      className="video-bttn position-relative d-block"
-                    >
-                      <img
-                        src={`${value.imageUrl}`}
-                        alt="course"
-                        className="w-100"
-                      />
-                    </span>
-                  </div>
-                  <div className="card-body pt-0">
-                    <span
-                      className={`font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-lg ls-2 d-inline-block mr-1 ${value.status}`}
-                    >
-                      {value.tag}
-                    </span>
-                    
-                    <h4 className="fw-700 font-xss mt-3 lh-28 mt-0">
-                      <span className="text-dark text-grey-900">
-                        {value.title}
-                      </span>
-                    </h4>
-                    <h6 className="font-xssss text-grey-500 fw-600 ml-0 mt-2">
-                      {value?.lesson && value?.lesson + "Modules"} 
-                      {value?.time && value?.time + "Months Duration"} 
-                    </h6>
-                    <ul className="memberlist mt-3 mb-2 ml-0 d-block">
-                      <li>
-                        <img
-                          src={person1}
-                          alt="avater"
-                          className="w30 d-inline-block rounded-circle"
-                        />
-                      </li>
-                      <li>
-                        <img
-                          src={person2}
-                          alt="avater"
-                          className="w30 d-inline-block rounded-circle"
-                        />
-                      </li>
-                      <li>
-                        <img
-                          src={person3}
-                          alt="avater"
-                          className="w30 d-inline-block"
-                        />
-                      </li>
-                      <li>
-                        <img
-                          src={person4}
-                          alt="avater"
-                          className="w30 d-inline-block rounded-circle"
-                        />
-                      </li>
-                      <li className="last-member">
-                        <Link
-                          to="/default-course-one"
-                          className="bg-greylight fw-600 text-grey-500 font-xssss ls-3 text-center"
-                        >
-                          +2
-                        </Link>
-                      </li>
-                      <li className="pl-4 w-auto">
-                        <Link
-                          to="/default-course-one"
-                          className="fw-500 text-grey-500 font-xssss"
-                        >
-                          Student apply
-                        </Link>
-                      </li>
-                    </ul>
-                    <Link
-                      to="/course-details"
-                      className="btn btn-primary mt-3 p-3"
-                    >
-                      View Course
-                    </Link>
+                <div className="col-xl-6 col-lg-12 mb-4" key={index}>
+                  <div className="card course-card w-100 p-0 shadow-xss border-0 rounded-lg overflow-hidden mr-1">
+                    <div className="row">
+                      <div className="col-sm-6">
+                        <div className="card-image w-100 mb-3">
+                          <Link
+                            to="/coursedetails"
+                            className="video-bttn position-relative d-block"
+                          >
+                            <img
+                              src={`${value.imageUrl}`}
+                              alt="course"
+                              className="w-100"
+                            />
+                          </Link>
+                        </div>
+                      </div>
+                      <div className="col-sm-6">
+                        <div className="card-body pt-0 w-100 float-left pt-3 pl-0 pr-0 pb-0">
+                          <span
+                            className={`font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-lg ls-2 d-inline-block mr-1 ${value.status}`}
+                          >
+                            {value.tag}
+                          </span>
+                          <span className="font-xss fw-700 pl-3 pr-3 ls-2 lh-32 d-inline-block text-success float-right">
+                            <span className="font-xsssss"></span> {value.price}
+                          </span>
+                          <h4 className="fw-700 font-xss mt-3 lh-28 mt-0">
+                            <Link
+                              to="/coursedetails"
+                              className="text-dark text-grey-900"
+                            >
+                              {value.title}
+                            </Link>
+                          </h4>
+                          <h6 className="font-xssss text-grey-500 fw-600 ml-0 mt-2">
+                            {value.lesson} 
+                          </h6>
+                          <ul className="memberlist mt-3 mb-2 ml-0 d-block">
+                            <li>
+                              <a href="/">
+                                <img
+                                  src={person1}
+                                  alt="avater"
+                                  className="w30 d-inline-block rounded-circle"
+                                />
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/">
+                                <img
+                                  src={person2}
+                                  alt="avater"
+                                  className="w30 d-inline-block rounded-circle"
+                                />
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/">
+                                <img
+                                  src={person3}
+                                  alt="avater"
+                                  className="w30 d-inline-block rounded-circle"
+                                />
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/">
+                                <img
+                                  src={person4}
+                                  alt="avater"
+                                  className="w30 d-inline-block rounded-circle"
+                                />
+                              </a>
+                            </li>
+                            <li className="last-member">
+                              <a
+                                href="/"
+                                className="bg-greylight fw-600 text-grey-500 font-xssss ls-3 text-center"
+                              >
+                                +2
+                              </a>
+                            </li>
+                            <li className="pl-4 w-auto">
+                              <a
+                                href="/"
+                                className="fw-500 text-grey-500 font-xssss"
+                              >
+                                Student apply
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 // End Single Demo
               ))}
-            </div>
+              </div>
           </div>
         </div>
 
-        <div className="blog-page bg-white">
+        <div className="blog-page" style={{
+              background: "rgb(243, 242, 240)"
+        }}>
           <div className="container">
             <div className="row justify-content-center">
               <div className="page-title style1 col-xl-6 col-lg-8 col-md-10 text-center mb-5">
-                <span className="font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-xl ls-2 alert-warning d-inline-block text-warning mr-1">
+                <span className="font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-xl ls-2 alert-warning d-inline-block text-warning mr-1 mt-5">
                   Additional Offerings
                 </span>
                 <h2 className="text-grey-900 fw-700 font-xxl mb-0 mt-3 d-block lh-3">
                   Don't Miss Out Our Additional Offerings
                 </h2>
-                <p className="fw-300 font-xssss lh-28 text-grey-500">
+                <p className="fw-300 font-xssss lh-28 text-black-500 mt-2">
                   Explore our latest courses designed to enhance your skills and
                   career prospects. Whether you're diving into React Native,
                   mastering freelance mastery, or exploring drop shipping, our
@@ -518,7 +543,7 @@ const Homefive  = () => {
                         className="w-100"
                       />
                     </Link>
-                    <div className="post-content p-4">
+                    <div className="post-content p-4 bg-white">
                      
                       <div className="clearfix"></div>
                       <h2 className="post-title mt-2 mb-2 pr-3">
@@ -587,35 +612,36 @@ const Homefive  = () => {
                       >
                         <div className="card-body">
                           <h2
-                            className={`font-xsssss fw-700 text-uppercase ls-3 ${value.status}`}
+                            className={` text-uppercase ${value.status}`}
+                            style={{
+                              fontSize:"1.5rem"
+                            }}
                           >
                             {value.title}
                           </h2>
-                          <h1
-                            className={`display2-size  fw-700 ${value.status}`}
-                          >
-                            {value.price}
-                          </h1>
+                        
                           <h4
                             className={`fw-500 mb-4 lh-24 font-xssss ${value.status}`}
                           >
                             {value.des}
                           </h4>
-                          <h4 className={`font-xssss mb-2 ${value.status}`}>
+                          <h4 className={`font-xssss mb-4 ${value.status}`}>
                             <i className={`ti-check mr-2 ${value.status}`}></i>
-                            lorem
+                            {value.benefits?.[0]}
                           </h4>
-                          <h4 className={`font-xssss mb-2 ${value.status}`}>
+                          <h4 className={`font-xssss mb-4 ${value.status}`}>
                             <i className={`ti-check mr-2 ${value.status}`}></i>
-                            lorem
+                            {value.benefits?.[1]}
+
                           </h4>
                           <h4 className={`font-xssss mb-4 ${value.status}`}>
                             <i className={`ti-check mr-2 ${value.status}`}></i>{" "}
-                            lorem
+                            {value.benefits?.[2]}
+
                           </h4>
-                          <Link to="#" className={value.btn}>
-                            Buy Now
-                          </Link>
+                          <button onClick={showModal} className={value.btn}>
+                            Enroll Now
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -633,6 +659,65 @@ const Homefive  = () => {
             </div>
           </div>
         </div>
+
+      <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={[]}>
+      <div className="card w-100 border-0 shadow-lg bg-white p-4 p-md--5">
+                  <h2 className="fw-700 text-grey-800 display2-size display2-md-size lh-1 mb-0 mt-0 overflow-hidden">
+                    Explore Course
+                  </h2>
+                  <h4 className=" fw-500 mb-3 lh-30 font-xsss text-grey-500 mt-2">
+                  Join our comprehensive Full Stack Development Course and transform your career. 
+                  </h4>
+                  <div className="form-group mt-0 p-2 mb-0 bg-white rounded-lg">
+                    <div className="row">
+
+                    <div className="col-lg-12">
+                        <div className="form-group icon-input mb-3">
+                          <i className="ti-package font-xs text-grey-400"></i>
+                          <select className="style2-select bg-transparent border-1 pl-5 w-100" style={{
+                            color:"black"
+                          }}>
+                            <option value="">All Courses</option>
+                            <option value="Co-Hort">Co-Hort & Internship</option>
+                            <option value="Online-Course">Online Course</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="col-lg-12">
+                        <div className="form-group icon-input mb-3">
+                          <i className="ti-search font-xs text-grey-400"></i>
+                          <input
+                            type="text"
+                            className="style2-input pl-5  w-100 font-xsss mb-0 text-grey-500 fw-500"
+                            placeholder="Enter your full name"
+                          />
+                        </div>
+                      </div>
+                      <div className="col-lg-12">
+                        <div className="form-group icon-input mb-3">
+                          <i className="ti-search font-xs text-grey-400"></i>
+                          <input
+                            type="text"
+                            className="style2-input pl-5  w-100 font-xsss mb-0 text-grey-500 fw-500"
+                            placeholder="Enter your phone number"
+                          />
+                        </div>
+                      </div>
+
+                      
+                      <div className="col-lg-12">
+                        <button
+                          href="/default-search"
+                          className="w-100 d-block btn bg-current text-white font-xssss fw-600 ls-3 style1-input p-0 border-0 text-uppercase mt-4"
+                        >
+                          DOWNLOAD BROCHURE
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+      </Modal>
         <Popupchat onChat={onChat} setoffChat={setoffChat}/>
         <Footer bgColor="bg-dark" />
       </Fragment>

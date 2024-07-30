@@ -27,7 +27,11 @@ SECRET_KEY = 'django-insecure-xszqbcu9f)3n-@qsmqb55-p&7fw0dhf2bjw3ki^ql_8gbyeqj^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+"0.0.0.0",
+    "localhost",
+    "127.0.0.1"
+]
 
 
 # Application definition
@@ -167,9 +171,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # AUTH_USER_MODEL = 'users.User'
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
+
 }
 
 

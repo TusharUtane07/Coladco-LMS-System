@@ -1,6 +1,5 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework_simplejwt.tokens import RefreshToken
 
 from users.models import UserDefault, Profile
 from .constants import UserConstants, ProfileConstants

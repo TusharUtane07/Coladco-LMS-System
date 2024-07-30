@@ -20,7 +20,7 @@ class Contact extends Component {
         <div className="map-wrapper">
           <div style={{ border: "none" }}>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.2063592405652!2d77.31077127382802!3d28.443195092656573!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cdd5a5c0f5ee5%3A0xdb84e509fb0203a9!2sColadco%20Digital%20And%20Software%20Solutions!5e0!3m2!1sen!2sin!4v1720693848739!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.206515683139!2d77.31077127541838!3d28.443190375768697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cddb682b1ff6f%3A0x563cf9eaf8f6c262!2sColadco%20coding%20institute!5e0!3m2!1sen!2sin!4v1722263254611!5m2!1sen!2sin"               
               width="100%"
               height="450"
               allowfullscreen
@@ -39,7 +39,7 @@ class Contact extends Component {
                     marginTop:"8rem"
                   }
                 }>
-                  <h1 className="text-grey-900 fw-700 display3-size mb-5 lh-1" >
+                  <h1 className="text-grey-900 fw-700 display3-size mb-5 lh-1 overflow-hidden" >
                     Contact us
                   </h1>
                   <form action="#">
@@ -85,7 +85,10 @@ class Contact extends Component {
                             </a>
                           </label>
                         </div>
-                        <div className="form-group">
+                        <br/>
+                        <br/>
+                        <br/>
+                        <div className="form-group row">
                           <a
                             href="/contact"
                             className="rounded-lg style1-input float-right bg-current text-white text-center font-xss fw-500 border-2 border-0 p-0 w175"
@@ -102,10 +105,10 @@ class Contact extends Component {
                 <div className="row">
                   <div className="col-lg-4 col-md-4 xs-mb-2">
                     <div className="card shadow-xss border-0 p-5 rounded-lg">
-                      <span className="btn-round-xxxl alert-success">
-                        <i className="feather-mail text-success font-xl"></i>
+                      <span className="btn-round-xxxl alert-success overflow-hidden">
+                        <i className="feather-mail text-success font-xl "></i>
                       </span>
-                      <h2 className="fw-700 font-sm mt-4 mb-3 text-grey-900">
+                      <h2 className="fw-700 font-sm mt-4 mb-3 text-grey-900 over">
                         Email us
                       </h2>
                       <p className="font-xsss text-grey-500 fw-500 mb-3">
@@ -123,7 +126,7 @@ class Contact extends Component {
 
                   <div className="col-lg-4 col-md-4 xs-mb-2">
                     <div className="card shadow-xss border-0 p-5 rounded-lg">
-                      <span className="btn-round-xxxl alert-danger">
+                      <span className="btn-round-xxxl alert-danger overflow-hidden">
                         <i className="feather-phone text-danger font-xl"></i>
                       </span>
                       <h2 className="fw-700 font-sm mt-4 mb-3 text-grey-900">
@@ -143,7 +146,7 @@ class Contact extends Component {
 
                   <div className="col-lg-4 col-md-4 xs-mb-2">
                     <div className="card shadow-xss border-0 p-5 rounded-lg">
-                      <span className="btn-round-xxxl alert-primary">
+                      <span className="btn-round-xxxl alert-primary overflow-hidden">
                         <i className="feather-map-pin text-primary font-xl"></i>
                       </span>
                       <h2 className="fw-700 font-sm mt-4 mb-3 text-grey-900">

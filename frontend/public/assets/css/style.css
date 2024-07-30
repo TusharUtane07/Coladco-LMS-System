@@ -18568,3 +18568,18 @@ body.theme-dark .page-item .page-link i {
     padding: 1rem 0 !important;
   }
 }
+@media (max-width: 900px) {
+.pick-check .slick-slide{
+  width: 400px !important;
+}
+.review-screen-get{
+  height: 40rem !important;
+}
+
+}
+@media (max-width: 500px) {
+.review-screen-get{
+  height: 35rem !important;
+}
+
+}

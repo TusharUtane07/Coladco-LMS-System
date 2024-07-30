@@ -13,3 +13,19 @@
 
   }
   
+  @media (max-width: 768px) {
+    .nav-link-active {
+      border-bottom: 0px solid currentColor;
+
+      background-color: rgb(190, 215, 255);
+      padding-bottom: 1px;
+      font-weight: bold;
+    
+      }
+
+  }
+  .nav-link-custom-btn {
+    margin-top: 3rem;
+    background: rgb(0, 97, 253);
+    color: white !important;
+  }

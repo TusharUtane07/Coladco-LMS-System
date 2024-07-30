@@ -8,21 +8,9 @@ import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 import { Link } from "react-router-dom"; 
 import master from "../assets/about/master.png"
 import fullStack from "../assets/about/full-stack-banner.png"
+import IsMobileView from "../components/IsMobile";
 
-const brandList = [
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-  { bimg: "b-1.png" },
-];
+
 const feedbackList = [
   {
     name: "Rajesh Patel",
@@ -53,6 +41,7 @@ const feedbackList = [
 
 const About = () => {
   const [url, setUrl] = useState("");
+  const isMobile = IsMobileView()  
   const { loading, data, error } = useAxios(url);
 
   const check = () => {
@@ -60,30 +49,13 @@ const About = () => {
     console.log(loading, data, error);
   };
 
-  const brandsettings = {
-    arrows: true,
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 6,
-    centerMode: false,
-    variableWidth: false,
-    autoplay: true,
-    autoplaySpeed: 1000,
-    prevArrow: (
-      <button className="btn btn-primary slick-prev">Previous</button>
-    ),
-    nextArrow: (
-      <button className="btn btn-primary slick-next">Next</button>
-    ),
-  };
   
   const feedbacksettings = {
     arrows: true,
     dots: false,
     infinite: true,
-    speed: 500,
-    slidesToShow: 3,
+    speed: 900,
+    slidesToShow: isMobile? 1 : 3,
     centerMode: false,
     variableWidth: false,
     autoplay: true,
@@ -100,6 +72,7 @@ const About = () => {
   return (
     <Fragment>
       <Header />
+
       <div className="about-wrapper pb-lg--7 pt-lg--7 pt-5 pb-7">
         <div className="container">
           <div className="row">
@@ -140,7 +113,7 @@ const About = () => {
             <div className="col-lg-12 mt-3">
               <a
                 href="/about"
-                className="video-bttn"
+                className=""
                 data-toggle="modal"
                 data-target="#Modalvideo"
               >
@@ -193,7 +166,7 @@ const About = () => {
               </p>
 
               <h4 className="fw-600 font-xs mt-5 mb-2">
-                <i className="ti-check btn-round-xs text-white bg-success mr-2 border"></i>
+                <i className="ti-check btn-round-xs text-white bg-success mr-2 border overflow-hidden"></i>
                 Develop robust web applications
               </h4>
               <p className="fw-300 font-xsss lh-28 text-grey-500 mt-0 ml-4 pl-3 w-75 w-xs-90">
@@ -202,7 +175,7 @@ const About = () => {
               </p>
 
               <h4 className="fw-600 font-xs mt-4 mb-2">
-                <i className="ti-check btn-round-xs text-white bg-success mr-2 border"></i>
+                <i className="ti-check btn-round-xs text-white bg-success mr-2 border overflow-hidden"></i>
                 Master freelancing strategies
               </h4>
               <p className="fw-300 font-xsss lh-28 text-grey-500 mt-0 ml-4 pl-3 w-75 w-xs-90">
@@ -211,7 +184,7 @@ const About = () => {
               </p>
 
               <h4 className="fw-600 font-xs mt-4 mb-2">
-                <i className="ti-check btn-round-xs text-white bg-success mr-2 border"></i>
+                <i className="ti-check btn-round-xs text-white bg-success mr-2 border overflow-hidden"></i>
                 Career support and job opportunities
               </h4>
               <p className="fw-300 font-xsss lh-28 text-grey-500 mt-0 ml-4 pl-3 w-75 w-xs-90">
@@ -223,7 +196,9 @@ const About = () => {
         </div>
       </div>
 
-      <div className="popular-wrapper pb-0 pt-5">
+      <div className="popular-wrapper pb-0 pt-5 review-screen-get" style={{
+      background:"rgb(243, 242, 240)"
+      }}>
         <div className="container">
           <div className="row">
             <div className="col-lg-6 text-left mb-3 pb-0">
@@ -232,11 +207,12 @@ const About = () => {
               </h2>
             </div>
 
-            <div className="col-lg-12 p-0">
+            <div className="col-lg-12 p-0 pick-check">
               <Slider {...feedbacksettings}>
                 {feedbackList.map((value, index) => (
-                  <div key={index} className="text-center py-4 px-3">
-                    <div className="card w-100 p-5 text-left border-0 shadow-xss rounded-lg">
+                  <div key={index} className="text-center py-4 px-3" >
+                    <div className="card p-5 text-left border-0 shadow-xss rounded-lg"
+                    >
                       <div className="card-body pl-0 pt-0">
                         <h4 className="text-grey-900 fw-700 font-xsss mt-0 pt-1">
                           {value.name}
@@ -324,7 +300,6 @@ const About = () => {
           </div>
         </div>
       </div>
-
       <Footer bgColor="bg-dark" />
     </Fragment>
   );
