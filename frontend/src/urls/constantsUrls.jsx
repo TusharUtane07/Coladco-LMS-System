@@ -35,6 +35,11 @@ export class Urls {
     static JOBLISTINGDETAILS = Urls.MPHRMS_API_PREFIX + 'jobposting/single-job-posting-fetch/'
     static JOB_POSTING_SINGLE_TASK =  Urls.MPHRMS_API_PREFIX + 'jobposting/single-job-posting-delete/'
     
+    // assignements
+    static ASSIGNMENTS = Urls.MPHRMS_API_PREFIX + 'assignments/all-assignments-fetch/'
+    static AASSIGNMENTS_DETAILS = Urls.MPHRMS_API_PREFIX + 'assignments/single-assignment-fetch/'
+
+
     // feed post 
     static FEEDPOST = Urls.MPHRMS_API_PREFIX + 'feed/all-posts-fetch/'
     static NEW_POST_USER = Urls.MPHRMS_API_PREFIX + 'feed/new-post-user/'
